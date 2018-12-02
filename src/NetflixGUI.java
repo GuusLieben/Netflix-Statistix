@@ -10,7 +10,7 @@ import static com.netflix.Commons.*;
 import static java.awt.BorderLayout.*;
 import static javax.swing.JFrame.*;
 
-public class NetflixGUI {
+class NetflixGUI {
 
   private JFrame frame;
   private String title = "House of Cards";
@@ -24,7 +24,7 @@ public class NetflixGUI {
     "The Crown"
   };
 
-  public NetflixGUI(int width, int height) {
+  NetflixGUI(int width, int height) {
     frame = new JFrame();
     setFrame(width, height);
   }
