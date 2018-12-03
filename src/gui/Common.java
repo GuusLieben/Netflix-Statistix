@@ -13,34 +13,43 @@ class Common {
 
   static JPanel menu() {
     // Create and set up the content pane.
+    JPanel wrapper = new JPanel(new BorderLayout());
     JPanel menu = new JPanel();
     menu.setBorder(new EmptyBorder(10, 15, 0, 15));
     menu.setBackground(new Color(51, 51, 51));
-    fillMenu(menu);
 
-    return menu;
+    JLabel breadcrumb = new JLabel("Overzicht : Series");
+    breadcrumb.setBorder(new EmptyBorder(3, 0, 3, 0));
+    fillMenu(menu, breadcrumb);
+
+    wrapper.add(menu, CENTER);
+
+    breadcrumb.setHorizontalAlignment(JLabel.CENTER);
+    wrapper.add(breadcrumb, SOUTH);
+
+    return wrapper;
   }
 
-  private static void fillMenu(Container pane) {
+  private static void fillMenu(Container pane, JLabel label) {
     // Make all content (buttons) align vertically
     pane.setLayout(new BoxLayout(pane, BoxLayout.LINE_AXIS));
 
     // Sample data
-    addButton("Series", pane);
-    addButton("Films", pane);
-    addButton("Account", pane);
+    addButton("Series", pane, label);
+    addButton("Films", pane, label);
+    addButton("Account", pane, label);
   }
 
-  private static void addButton(String text, Container container) {
+  private static void addButton(String text, Container container, JLabel label) {
     // Add button with text, align left
     JButton button = new JButton(text);
-    HashMap<TextAttribute, Object> textAttrMap = new HashMap<>();
     button.setForeground(Color.WHITE);
 
-    if (text.equals("Series")) NetflixGUI.showOnClick(button, "Series");
-    if (text.equals("Films")) NetflixGUI.showOnClick(button, "Films");
-    if (text.equals("Account")) NetflixGUI.showOnClick(button, "Account");
+    if (text.equals("Series")) NetflixGUI.showOnClick(button, "Series", label);
+    if (text.equals("Films")) NetflixGUI.showOnClick(button, "Films", label);
+    if (text.equals("Account")) NetflixGUI.showOnClick(button, "Account", label);
 
+    HashMap<TextAttribute, Object> textAttrMap = new HashMap<>();
     button.addMouseListener(
         new java.awt.event.MouseAdapter() {
           public void mouseEntered(MouseEvent evt) {
