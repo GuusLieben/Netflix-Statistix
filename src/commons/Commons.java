@@ -1,12 +1,12 @@
-package com.netflix;
+package com.netflix.commons;
 
 import java.util.*;
 
 import static java.lang.System.*;
 
-class Commons {
+public class Commons {
 
-  static void exception(Exception ex) {
+  public static void exception(Exception ex) {
     out.println(ex.getMessage());
     out.println(ex.getCause());
     out.println(Arrays.toString(ex.getStackTrace()));

@@ -1,4 +1,4 @@
-package com.netflix;
+package com.netflix.commons;
 
 public class DatabaseHandle {
     public String generateConnectionString() {

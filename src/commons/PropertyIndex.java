@@ -1,15 +1,15 @@
-package com.netflix;
+package com.netflix.commons;
 
 import java.io.*;
 import java.util.*;
 
-import static com.netflix.Commons.*;
+import static com.netflix.commons.Commons.exception;
 
-class PropertyIndex {
+public class PropertyIndex {
     private static Properties properties = new Properties();
     private static ThreadLocal<InputStream> inputStream = new ThreadLocal<>();
 
-    static String get(String property) {
+    public static String get(String property) {
         inputStream.set(PropertyIndex.class.getClassLoader().getResourceAsStream("package.properties"));
         Objects.requireNonNull(inputStream);
         // Assume none found if exception throws
