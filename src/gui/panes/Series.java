@@ -87,12 +87,19 @@ public class Series {
         quickView.setBackground(Color.WHITE);
         main.setBackground(Color.WHITE);
 
+
         // Add all the things!
         aboutSerieInner.add(aboutSerie, NORTH);
         quickView.add(serieTitle, NORTH);
         quickView.add(episodeCount, SOUTH);
         inner.add(quickView, NORTH);
-        inner.add(aboutSerieInner, CENTER);
+
+        JScrollPane SerieDisplay = new JScrollPane(aboutSerieInner);
+        SerieDisplay.setBorder(null);
+        SerieDisplay.setPreferredSize(new Dimension(SerieDisplay.getWidth(), SerieDisplay.getHeight()));
+        SerieDisplay.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+
+        inner.add(SerieDisplay, CENTER);
         main.add(inner);
 
         return main;

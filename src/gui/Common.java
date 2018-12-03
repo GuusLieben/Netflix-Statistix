@@ -15,14 +15,32 @@ class Common {
     // Create and set up the content pane.
     JPanel wrapper = new JPanel(new BorderLayout());
     JPanel menu = new JPanel();
-    menu.setBorder(new EmptyBorder(10, 15, 0, 15));
-    menu.setBackground(new Color(51, 51, 51));
+    menu.setBorder(new EmptyBorder(0, 15, 0, 15));
+    menu.setBackground(new Color(31, 31, 31));
 
     JLabel breadcrumb = new JLabel("Overzicht : Series");
     breadcrumb.setBorder(new EmptyBorder(3, 0, 3, 0));
     fillMenu(menu, breadcrumb);
 
     wrapper.add(menu, CENTER);
+
+    JPanel logo = new JPanel();
+
+    ImageIcon icon = new ImageIcon("netflix.png");
+    Image image = icon.getImage(); // transform it
+    Image newimg =
+        image.getScaledInstance(153, 54, java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
+    icon = new ImageIcon(newimg); // transform it back
+
+    JLabel thumb = new JLabel();
+    thumb.setHorizontalAlignment(JLabel.CENTER);
+    thumb.setIcon(icon);
+
+    logo.setBackground(new Color(131, 16, 16));
+    logo.setBorder(new EmptyBorder(5, 0, 5, 0));
+    logo.add(thumb);
+
+    wrapper.add(logo, NORTH);
 
     breadcrumb.setHorizontalAlignment(JLabel.CENTER);
     wrapper.add(breadcrumb, SOUTH);
@@ -67,7 +85,7 @@ class Common {
           }
         });
     button.setAlignmentX(Component.LEFT_ALIGNMENT);
-    button.setBackground(new Color(51, 51, 51));
+    button.setBackground(new Color(41, 41, 41));
 
     Border margin = new EmptyBorder(5, 15, 5, 15);
     Border compound = new CompoundBorder(margin, null);
@@ -75,7 +93,7 @@ class Common {
 
     JPanel panel = new JPanel();
     panel.setBorder(new EmptyBorder(5, 0, 5, 0));
-    panel.setBackground(new Color(51, 51, 51));
+    panel.setBackground(new Color(31, 31, 31));
     panel.add(button);
 
     container.add(panel);
