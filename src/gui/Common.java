@@ -34,6 +34,7 @@ class Common {
     JButton button = new JButton(text);
     button.setAlignmentX(Component.LEFT_ALIGNMENT);
     button.setForeground(Color.WHITE);
+    button.setBackground(new Color(51, 51, 51));
     Border margin = new EmptyBorder(5, 15, 5, 15);
     Border compound = new CompoundBorder(margin, null);
     button.setBorder(compound);
