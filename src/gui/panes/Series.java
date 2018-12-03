@@ -1,4 +1,4 @@
-package com.netflix.gui;
+package com.netflix.gui.panes;
 
 import javax.swing.*;
 import javax.swing.border.*;
@@ -8,7 +8,7 @@ import static java.awt.BorderLayout.CENTER;
 import static java.awt.BorderLayout.NORTH;
 import static java.awt.BorderLayout.SOUTH;
 
-public class MainGUI {
+public class Series {
     private static String title = "House of Cards";
     private static int episodes = 73;
     private static String[] choices = {
@@ -19,6 +19,19 @@ public class MainGUI {
             "Narcos",
             "The Crown"
     };
+
+    public static JPanel pane() {
+        // Create panel with 10px padding
+        JPanel mainPanel = new JPanel(new BorderLayout());
+        mainPanel.setBorder(new EmptyBorder(10, 10, 10, 10));
+        mainPanel.setBackground(Color.WHITE);
+
+        // Add sub-panels
+        mainPanel.add(selectSeries(), NORTH);
+        mainPanel.add(seriesOverview(), CENTER);
+
+        return mainPanel;
+    }
 
     static JPanel seriesOverview() {
         JPanel seriesOverview = new JPanel(new BorderLayout());
@@ -60,7 +73,7 @@ public class MainGUI {
         aboutSerie.setText(
                 "<html><i>A Congressman works with his equally conniving wife to exact revenge on the people who betrayed him.</i>"
                         + "<br><br><b>Creator</b>: Beau Willimon"
-                        + "<br><br><b>Stars</b>: Kevin Spacey, Michel Gill, Robin WrightNewline</html>");
+                        + "<br><br><b>Stars</b>: Kevin Spacey, Michel Gill, Robin Wright</html>");
         aboutSerie.setFont(
                 new Font(aboutSerie.getFont().getFontName(), Font.PLAIN, aboutSerie.getFont().getSize()));
 

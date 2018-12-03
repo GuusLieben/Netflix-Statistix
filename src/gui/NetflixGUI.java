@@ -1,10 +1,11 @@
 package com.netflix.gui;
 
+import com.netflix.gui.panes.*;
 import com.raphaellevy.fullscreen.*;
 
 import javax.swing.*;
-import javax.swing.border.*;
 import java.awt.*;
+import java.awt.event.*;
 
 import static com.netflix.commons.Commons.*;
 import static java.awt.BorderLayout.*;
@@ -12,7 +13,7 @@ import static javax.swing.JFrame.*;
 
 public class NetflixGUI {
 
-  private JFrame frame;
+  public static JFrame frame;
 
   public NetflixGUI(int width, int height) {
     frame = new JFrame();
@@ -35,7 +36,7 @@ public class NetflixGUI {
     // Add all panes
     frame.add(Common.bottomPane(), SOUTH);
     frame.add(Common.menu(), NORTH);
-    frame.add(mainPane(), CENTER);
+    frame.add(Series.pane(), CENTER);
 
     // Make sure the application can be used full-screen on MacOS devices
     try {
@@ -49,16 +50,19 @@ public class NetflixGUI {
     frame.setVisible(true);
   }
 
-  private JPanel mainPane() {
-    // Create panel with 10px padding
-    JPanel mainPanel = new JPanel(new BorderLayout());
-    mainPanel.setBorder(new EmptyBorder(10, 10, 10, 10));
-    mainPanel.setBackground(Color.WHITE);
+  public static void showOnClick(JButton button, String pane) {
+    button.addActionListener(
+        new ActionListener() {
+          @Override
+          public void actionPerformed(ActionEvent e) {
+            if (!(pane.equals("Series"))) frame.remove(Series.pane());
+            if (!(pane.equals("Films"))) frame.remove(Films.pane());
+            if (!(pane.equals("Account"))) frame.remove(Account.pane());
 
-    // Add sub-panels
-    mainPanel.add(MainGUI.selectSeries(), NORTH);
-    mainPanel.add(MainGUI.seriesOverview(), CENTER);
-
-    return mainPanel;
+            if ((pane.equals("Series"))) frame.add(Series.pane(), CENTER);
+            if ((pane.equals("Films"))) frame.add(Films.pane(), CENTER);
+            if ((pane.equals("Account"))) frame.add(Account.pane(), CENTER);
+          }
+        });
   }
 }

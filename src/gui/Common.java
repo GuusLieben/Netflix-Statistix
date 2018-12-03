@@ -3,6 +3,9 @@ package com.netflix.gui;
 import javax.swing.*;
 import javax.swing.border.*;
 import java.awt.*;
+import java.awt.event.*;
+import java.awt.font.*;
+import java.util.*;
 
 import static java.awt.BorderLayout.*;
 
@@ -23,24 +26,49 @@ class Common {
     pane.setLayout(new BoxLayout(pane, BoxLayout.LINE_AXIS));
 
     // Sample data
-    addButton("Algemene informatie", pane);
-    addButton("Statistieken", pane);
-    addButton("Account informatie", pane);
-    addButton("Profiel informatie", pane);
+    addButton("Series", pane);
+    addButton("Films", pane);
+    addButton("Account", pane);
   }
 
   private static void addButton(String text, Container container) {
     // Add button with text, align left
     JButton button = new JButton(text);
-    button.setAlignmentX(Component.LEFT_ALIGNMENT);
+    HashMap<TextAttribute, Object> textAttrMap = new HashMap<>();
     button.setForeground(Color.WHITE);
+
+    if (text.equals("Series")) NetflixGUI.showOnClick(button, "Series");
+    if (text.equals("Films")) NetflixGUI.showOnClick(button, "Films");
+    if (text.equals("Account")) NetflixGUI.showOnClick(button, "Account");
+
+    button.addMouseListener(
+        new java.awt.event.MouseAdapter() {
+          public void mouseEntered(MouseEvent evt) {
+            textAttrMap.put(TextAttribute.UNDERLINE, TextAttribute.UNDERLINE_LOW_GRAY);
+            button.setFont(button.getFont().deriveFont(textAttrMap));
+            Cursor hoverCursor = new Cursor(Cursor.HAND_CURSOR);
+            button.setCursor(hoverCursor);
+          }
+
+          public void mouseExited(MouseEvent evt) {
+            textAttrMap.put(TextAttribute.UNDERLINE, null);
+            button.setFont(button.getFont().deriveFont(textAttrMap));
+            Cursor normalCursor = new Cursor(Cursor.DEFAULT_CURSOR);
+            button.setCursor(normalCursor);
+          }
+        });
+    button.setAlignmentX(Component.LEFT_ALIGNMENT);
+    button.setBackground(new Color(51, 51, 51));
+
     Border margin = new EmptyBorder(5, 15, 5, 15);
     Border compound = new CompoundBorder(margin, null);
     button.setBorder(compound);
+
     JPanel panel = new JPanel();
     panel.setBorder(new EmptyBorder(5, 0, 5, 0));
     panel.setBackground(new Color(51, 51, 51));
     panel.add(button);
+
     container.add(panel);
   }
 
