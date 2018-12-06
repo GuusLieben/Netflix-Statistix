@@ -18,19 +18,19 @@ class Common {
     menu.setBorder(new EmptyBorder(0, 15, 0, 15));
     menu.setBackground(new Color(31, 31, 31));
 
+    // Setup breadcrumbs, can be modified by switching panels
     JLabel breadcrumb = new JLabel("Overzicht : Series");
     breadcrumb.setBorder(new EmptyBorder(3, 0, 3, 0));
     fillMenu(menu, breadcrumb);
 
     wrapper.add(menu, CENTER);
 
+    // Create and add logo above menu
     JPanel logo = new JPanel();
-
-    ImageIcon icon = new ImageIcon("netflix.png");
-    Image image = icon.getImage(); // transform it
-    Image newimg =
-        image.getScaledInstance(153, 54, java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
-    icon = new ImageIcon(newimg); // transform it back
+    Image image = new ImageIcon("netflix.png").getImage(); // Get image from local file
+    ImageIcon icon =
+        new ImageIcon(
+            image.getScaledInstance(153, 54, java.awt.Image.SCALE_SMOOTH)); // Create icon from smoothed down image
 
     JLabel thumb = new JLabel();
     thumb.setHorizontalAlignment(JLabel.CENTER);
@@ -42,6 +42,7 @@ class Common {
 
     wrapper.add(logo, NORTH);
 
+    // Center breadcrumb, add it
     breadcrumb.setHorizontalAlignment(JLabel.CENTER);
     wrapper.add(breadcrumb, SOUTH);
 
@@ -63,10 +64,11 @@ class Common {
     JButton button = new JButton(text);
     button.setForeground(Color.WHITE);
 
-    if (text.equals("Series")) NetflixGUI.showOnClick(button, "Series", label);
-    if (text.equals("Films")) NetflixGUI.showOnClick(button, "Films", label);
-    if (text.equals("Account")) NetflixGUI.showOnClick(button, "Account", label);
+    if (text.equals("Series")) NetflixGUI.switchPane(button, "Series", label);
+    if (text.equals("Films")) NetflixGUI.switchPane(button, "Films", label);
+    if (text.equals("Account")) NetflixGUI.switchPane(button, "Account", label);
 
+    // MouseOver effects for the menu (underline and cursor effect)
     HashMap<TextAttribute, Object> textAttrMap = new HashMap<>();
     button.addMouseListener(
         new java.awt.event.MouseAdapter() {
@@ -84,6 +86,8 @@ class Common {
             button.setCursor(normalCursor);
           }
         });
+
+    // Style buttons
     button.setAlignmentX(Component.LEFT_ALIGNMENT);
     button.setBackground(new Color(41, 41, 41));
 
@@ -91,6 +95,7 @@ class Common {
     Border compound = new CompoundBorder(margin, null);
     button.setBorder(compound);
 
+    // Create panel for single button, easy for margins
     JPanel panel = new JPanel();
     panel.setBorder(new EmptyBorder(5, 0, 5, 0));
     panel.setBackground(new Color(31, 31, 31));
@@ -106,7 +111,7 @@ class Common {
     bottomPanel.setBackground(new Color(34, 31, 31));
     bottomPanel.setBorder(new EmptyBorder(4, 7, 4, 7));
 
-    // Add labels to panel
+    // Add static labels to panel
     JLabel creators =
         new JLabel("Informatica 1.2 - 23IVT1D - Guus Lieben, Tim van Wouwe, Coen Rijsdijk");
     creators.setFont(

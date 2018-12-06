@@ -13,28 +13,25 @@ import static javax.swing.JFrame.*;
 public class NetflixGUI {
 
   public static JFrame frame;
-  private static String currentPanel = "Series";
   private static JPanel lpane = new JPanel(new BorderLayout());
-  private static int layer = 1;
 
+  // Basic constructor
   public NetflixGUI(int width, int height) {
     frame = new JFrame();
     setFrame(width, height);
   }
 
-  public static void showOnClick(JButton button, String pane, JLabel label) {
+  public static void switchPane(JButton button, String pane, JLabel label) {
+    // Lambda : actionListener
     button.addActionListener(
         e -> {
-          lpane.removeAll();
-          lpane.repaint();
-          lpane.revalidate();
+          lpane.removeAll(); // Remove all panes from lpane
+          lpane.repaint(); // Repaint
+          lpane.revalidate(); // Revalidate
 
           if ((pane.equals("Series"))) lpane.add(Series.pane());
           if ((pane.equals("Films"))) lpane.add(Films.pane());
-          if ((pane.equals("Account"))) lpane.add(Account.pane());
-
-          currentPanel = pane;
-          layer++;
+          if ((pane.equals("Account"))) lpane.add(AccountView.pane());
 
           label.setText("Overzicht : " + pane);
         });
