@@ -1,9 +1,9 @@
 package com.netflix.gui;
 
+import com.netflix.gui.panes.*;
 import com.raphaellevy.fullscreen.*;
 
 import javax.swing.*;
-import javax.swing.border.*;
 import java.awt.*;
 
 import static com.netflix.commons.Commons.*;
@@ -12,11 +12,29 @@ import static javax.swing.JFrame.*;
 
 public class NetflixGUI {
 
-  private JFrame frame;
+  public static JFrame frame;
+  private static JPanel lpane = new JPanel(new BorderLayout());
 
+  // Basic constructor
   public NetflixGUI(int width, int height) {
     frame = new JFrame();
     setFrame(width, height);
+  }
+
+  public static void switchPane(JButton button, String pane, JLabel label) {
+    // Lambda : actionListener
+    button.addActionListener(
+        e -> {
+          lpane.removeAll(); // Remove all panes from lpane
+          lpane.repaint(); // Repaint
+          lpane.revalidate(); // Revalidate
+
+          if ((pane.equals("Series"))) lpane.add(Series.pane());
+          if ((pane.equals("Films"))) lpane.add(Films.pane());
+          if ((pane.equals("Account"))) lpane.add(AccountView.pane());
+
+          label.setText("Overzicht : " + pane);
+        });
   }
 
   private void setFrame(int width, int height) {
@@ -32,10 +50,13 @@ public class NetflixGUI {
     frame.setMinimumSize(new Dimension(650, 400));
     frame.setSize(width, height);
 
+    // Add to LayeredPane
+    lpane.add(Series.pane());
+
     // Add all panes
     frame.add(Common.bottomPane(), SOUTH);
     frame.add(Common.menu(), NORTH);
-    frame.add(mainPane(), CENTER);
+    frame.add(lpane, CENTER);
 
     // Make sure the application can be used full-screen on MacOS devices
     try {
@@ -47,18 +68,5 @@ public class NetflixGUI {
 
     // Make the frame visible
     frame.setVisible(true);
-  }
-
-  private JPanel mainPane() {
-    // Create panel with 10px padding
-    JPanel mainPanel = new JPanel(new BorderLayout());
-    mainPanel.setBorder(new EmptyBorder(10, 10, 10, 10));
-    mainPanel.setBackground(Color.WHITE);
-
-    // Add sub-panels
-    mainPanel.add(MainGUI.selectSeries(), NORTH);
-    mainPanel.add(MainGUI.seriesOverview(), CENTER);
-
-    return mainPanel;
   }
 }
