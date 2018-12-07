@@ -21,15 +21,19 @@ public class NetflixGUI {
     setFrame(width, height);
   }
 
-  public static void switchPane(JButton button, String pane) {
+  public static void switchPane(JButton button, String pane, JLabel label) {
     // Lambda : actionListener
     button.addActionListener(
         e -> {
-          Overview.clearPane(lpane);
+          lpane.removeAll(); // Remove all panes from lpane
+          lpane.repaint(); // Repaint
+          lpane.revalidate(); // Revalidate
 
           if ((pane.equals("Series"))) lpane.add(Series.pane());
           if ((pane.equals("Films"))) lpane.add(Films.pane());
           if ((pane.equals("Account"))) lpane.add(AccountView.pane());
+
+          label.setText("Overzicht : " + pane);
         });
   }
 
@@ -51,8 +55,7 @@ public class NetflixGUI {
 
     // Add all panes
     frame.add(Common.bottomPane(), SOUTH);
-    frame.add(Common.logo(), NORTH);
-    frame.add(Common.menu(), WEST);
+    frame.add(Common.menu(), NORTH);
     frame.add(lpane, CENTER);
 
     // Make sure the application can be used full-screen on MacOS devices

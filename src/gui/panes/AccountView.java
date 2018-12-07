@@ -3,14 +3,12 @@ package com.netflix.gui.panes;
 import com.netflix.objects.*;
 
 import javax.swing.*;
-import javax.swing.border.*;
 import java.awt.*;
 
 public class AccountView {
 
   public static JPanel pane() {
-    JPanel panel = new JPanel(new FlowLayout(FlowLayout.LEFT));
-    panel.setBorder(new EmptyBorder(10, 10, 10, 10));
+    JPanel panel = new JPanel();
 
     Account accountView = new Account("Guus", true, "g.lieben@avans.student.nl");
     Profile profile = new Profile(accountView, "Profiel 1");
@@ -29,7 +27,7 @@ public class AccountView {
     for (Profile prof : accountView.getProfiles()) {
       profileLabel.setText(profileLabel.getText() + ".Profile name : " + prof.getName());
       for (Film film : prof.getFilmsWatched()) {
-        profileLabel.setText(profileLabel.getText() + "<br>...Film watched: " + film.getTitle());
+          profileLabel.setText(profileLabel.getText() + "<br>...Film watched: " + film.getTitle());
       }
       profileLabel.setText(profileLabel.getText() + "<br><br>");
     }
@@ -38,8 +36,7 @@ public class AccountView {
     JLabel labelBoi =
         new JLabel(
             String.format(
-                "<html><h1>Account overzicht</h1>"
-                    + "<br>Account name : %s<br>Is admin : %s<br>E-mail : %s<br><br><b>Profile(s) attached :</b> <br>%s</html>",
+                "<html>Account name : %s<br>Is admin : %s<br>E-mail : %s<br><br><b>Profile(s) attached :</b> <br>%s</html>",
                 accountView.getName(),
                 accountView.isAdmin(),
                 accountView.getEmail(),

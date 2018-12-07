@@ -11,91 +11,67 @@ import static java.awt.BorderLayout.*;
 
 class Common {
 
-  static JPanel logo() {
-    // Create and add logo above menu
-    JPanel logo =
-        new JPanel(new BorderLayout()) {
-          @Override
-          protected void paintComponent(Graphics graphics) {
-            super.paintComponent(graphics);
-            Graphics2D g2d = (Graphics2D) graphics;
-            g2d.setRenderingHint(
-                RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-            GradientPaint gp =
-                new GradientPaint(
-                    0, 0, getBackground().brighter(), 0, getHeight(), getBackground().darker());
-            g2d.setPaint(gp);
-            g2d.fillRect(0, 0, getWidth(), getHeight());
-          }
-        };
-    Image image = new ImageIcon("netflix.png").getImage();
-    ImageIcon icon = new ImageIcon(image.getScaledInstance(68, 30, Image.SCALE_SMOOTH));
-
-    JLabel thumb = new JLabel();
-    thumb.setIcon(icon);
-
-    logo.setBackground(new Color(151, 2, 4));
-    logo.setBorder(new EmptyBorder(10, 10, 7, 0));
-    logo.add(thumb, WEST);
-
-    return logo;
-  }
-
   static JPanel menu() {
     // Create and set up the content pane.
     JPanel wrapper = new JPanel(new BorderLayout());
     JPanel menu = new JPanel();
-    menu.setBorder(new EmptyBorder(0, 5, 0, 15));
-    menu.setBackground(new Color(34, 34, 34));
-    wrapper.setBackground(new Color(34, 34, 34));
-    menu.setLayout(new FlowLayout(FlowLayout.LEFT));
+    menu.setBorder(new EmptyBorder(0, 15, 0, 15));
+    menu.setBackground(new Color(31, 31, 31));
 
-    fillMenu(menu);
+    // Setup breadcrumbs, can be modified by switching panels
+    JLabel breadcrumb = new JLabel("Overzicht : Series");
+    breadcrumb.setBorder(new EmptyBorder(3, 0, 3, 0));
+    fillMenu(menu, breadcrumb);
 
-    wrapper.add(menu);
+    wrapper.add(menu, CENTER);
+
+    // Create and add logo above menu
+    JPanel logo = new JPanel();
+    Image image = new ImageIcon("netflix.png").getImage(); // Get image from local file
+    ImageIcon icon =
+        new ImageIcon(
+            image.getScaledInstance(153, 54, java.awt.Image.SCALE_SMOOTH)); // Create icon from smoothed down image
+
+    JLabel thumb = new JLabel();
+    thumb.setHorizontalAlignment(JLabel.CENTER);
+    thumb.setIcon(icon);
+
+    logo.setBackground(new Color(131, 16, 16));
+    logo.setBorder(new EmptyBorder(5, 0, 5, 0));
+    logo.add(thumb);
+
+    wrapper.add(logo, NORTH);
+
+    // Center breadcrumb, add it
+    breadcrumb.setHorizontalAlignment(JLabel.CENTER);
+    wrapper.add(breadcrumb, SOUTH);
 
     return wrapper;
   }
 
-  private static void fillMenu(Container pane) {
+  private static void fillMenu(Container pane, JLabel label) {
     // Make all content (buttons) align vertically
-    pane.setLayout(new BoxLayout(pane, BoxLayout.Y_AXIS));
-    JPanel panel = new JPanel(new BorderLayout());
-    addButton("Series", panel, NORTH);
-    addButton("Films", panel, CENTER);
-    addButton("Account", panel, SOUTH);
+    pane.setLayout(new BoxLayout(pane, BoxLayout.LINE_AXIS));
 
-    pane.add(panel);
+    // Sample data
+    addButton("Series", pane, label);
+    addButton("Films", pane, label);
+    addButton("Account", pane, label);
   }
 
-  private static void addButton(String text, Container container, String location) {
+  private static void addButton(String text, Container container, JLabel label) {
     // Add button with text, align left
     JButton button = new JButton(text);
     button.setForeground(Color.WHITE);
 
-    JPanel wrapper = new JPanel(new FlowLayout(FlowLayout.LEFT));
-    wrapper.setBackground(new Color(31, 31, 31));
-    Image image = null;
-    if (text.equals("Series")) {
-      NetflixGUI.switchPane(button, "Series");
-      image = new ImageIcon("serie.png").getImage();
-    }
-    if (text.equals("Films")) {
-      NetflixGUI.switchPane(button, "Films");
-      image = new ImageIcon("film.png").getImage();
-    }
-    if (text.equals("Account")) {
-      NetflixGUI.switchPane(button, "Account");
-      image = new ImageIcon("account.png").getImage();
-    }
-
-    ImageIcon icon = new ImageIcon(image.getScaledInstance(12, 12, Image.SCALE_SMOOTH));
-    button.setIcon(icon);
+    if (text.equals("Series")) NetflixGUI.switchPane(button, "Series", label);
+    if (text.equals("Films")) NetflixGUI.switchPane(button, "Films", label);
+    if (text.equals("Account")) NetflixGUI.switchPane(button, "Account", label);
 
     // MouseOver effects for the menu (underline and cursor effect)
     HashMap<TextAttribute, Object> textAttrMap = new HashMap<>();
     button.addMouseListener(
-        new MouseAdapter() {
+        new java.awt.event.MouseAdapter() {
           public void mouseEntered(MouseEvent evt) {
             textAttrMap.put(TextAttribute.UNDERLINE, TextAttribute.UNDERLINE_LOW_GRAY);
             button.setFont(button.getFont().deriveFont(textAttrMap));
@@ -112,28 +88,27 @@ class Common {
         });
 
     // Style buttons
+    button.setAlignmentX(Component.LEFT_ALIGNMENT);
     button.setBackground(new Color(41, 41, 41));
 
-    Border margin = new EmptyBorder(0, 0, 0, 15);
+    Border margin = new EmptyBorder(5, 15, 5, 15);
     Border compound = new CompoundBorder(margin, null);
     button.setBorder(compound);
-    button.setFont(new Font(button.getFont().getName(), button.getFont().getStyle(), 12));
 
     // Create panel for single button, easy for margins
     JPanel panel = new JPanel();
-    panel.setBorder(new EmptyBorder(5, 0, 0, 0));
+    panel.setBorder(new EmptyBorder(5, 0, 5, 0));
     panel.setBackground(new Color(31, 31, 31));
     panel.add(button);
 
-    wrapper.add(panel);
-    container.add(wrapper, location);
+    container.add(panel);
   }
 
   static JPanel bottomPane() {
     // Create bottom panel (static information)
     JPanel bottomPanel = new JPanel(new BorderLayout());
 
-    bottomPanel.setBackground(new Color(34, 31, 31).darker().darker());
+    bottomPanel.setBackground(new Color(34, 31, 31));
     bottomPanel.setBorder(new EmptyBorder(4, 7, 4, 7));
 
     // Add static labels to panel
