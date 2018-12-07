@@ -12,6 +12,7 @@ import java.sql.Time;
 import static java.awt.BorderLayout.CENTER;
 import static java.awt.BorderLayout.NORTH;
 
+@SuppressWarnings("deprecation")
 public class Films {
   private static String title = "House of Cards";
   private static int episodes = 73;
@@ -36,7 +37,7 @@ public class Films {
             new Genre("Action"),
             new Language("de_DE", "German"),
             "Twilight",
-            new Time(2,16,48),
+            new Time(2, 16, 48),
             "Bob Bobber");
 
     // Add sub-panels
