@@ -75,7 +75,7 @@ class Common {
 
     JPanel wrapper = new JPanel(new FlowLayout(FlowLayout.LEFT));
 
-    wrapper.setBackground(new Color(31, 31, 31));
+    wrapper.setBackground(new Color(34, 34, 34));
     Image image = null;
     if (text.equals("Series")) {
       NetflixGUI.switchPane(button, "Series");
@@ -113,7 +113,7 @@ class Common {
         });
 
     // Style buttons
-    button.setBackground(new Color(41, 41, 41));
+    button.setBackground(new Color(34, 34, 34));
 
     Border margin = new EmptyBorder(0, 0, 0, 15);
     Border compound = new CompoundBorder(margin, null);
@@ -123,7 +123,7 @@ class Common {
     // Create panel for single button, easy for margins
     JPanel panel = new JPanel();
     panel.setBorder(new EmptyBorder(5, 0, 0, 0));
-    panel.setBackground(new Color(31, 31, 31));
+    panel.setBackground(new Color(34, 34, 34));
     panel.add(button);
 
     wrapper.add(panel);
