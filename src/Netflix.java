@@ -1,7 +1,7 @@
 package com.netflix;
 
-import com.netflix.commons.*;
-import com.netflix.gui.*;
+import com.netflix.commons.PropertyIndex;
+import com.netflix.gui.NetflixGUI;
 
 public class Netflix {
 

@@ -1,12 +1,15 @@
 package com.netflix.gui.panes;
 
-import com.netflix.objects.*;
+import com.netflix.objects.Film;
+import com.netflix.objects.Genre;
+import com.netflix.objects.Language;
 
 import javax.swing.*;
-import javax.swing.border.*;
+import javax.swing.border.EmptyBorder;
 import java.awt.*;
 
-import static java.awt.BorderLayout.*;
+import static java.awt.BorderLayout.CENTER;
+import static java.awt.BorderLayout.NORTH;
 
 public class Films {
   private static String title = "House of Cards";

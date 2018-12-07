@@ -1,9 +1,10 @@
 package com.netflix.gui.panes;
 
-import com.netflix.objects.*;
+import com.netflix.objects.Film;
+import com.netflix.objects.Serie;
 
 import javax.swing.*;
-import javax.swing.border.*;
+import javax.swing.border.EmptyBorder;
 import java.awt.*;
 
 import static java.awt.BorderLayout.*;

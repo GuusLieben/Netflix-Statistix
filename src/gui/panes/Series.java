@@ -3,10 +3,11 @@ package com.netflix.gui.panes;
 import com.netflix.objects.*;
 
 import javax.swing.*;
-import javax.swing.border.*;
+import javax.swing.border.EmptyBorder;
 import java.awt.*;
 
-import static java.awt.BorderLayout.*;
+import static java.awt.BorderLayout.CENTER;
+import static java.awt.BorderLayout.NORTH;
 
 public class Series {
   private static String title = "House of Cards";

@@ -1,10 +1,10 @@
 package com.netflix.objects;
 
-import com.netflix.gui.*;
+import com.netflix.gui.NetflixGUI;
 
 import javax.swing.*;
-import java.util.*;
-import java.util.regex.*;
+import java.util.ArrayList;
+import java.util.regex.Pattern;
 
 public class Account {
 

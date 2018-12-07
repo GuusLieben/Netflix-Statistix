@@ -2,18 +2,18 @@ package com.netflix.commons;
 
 import com.netflix.objects.*;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
 
-import static java.lang.System.*;
+import static java.lang.System.out;
 
 public class Commons {
 
   public static ArrayList<Serie> series = new ArrayList<>();
-  public HashMap<Season, Serie> seasons = new HashMap<>();
   public static HashMap<Episode, Season> episodes = new HashMap<>();
-
   public static ArrayList<Film> films = new ArrayList<>();
-
+  public HashMap<Season, Serie> seasons = new HashMap<>();
   public ArrayList<Genre> genres = new ArrayList<>();
   public ArrayList<Language> langs = new ArrayList<>();
 

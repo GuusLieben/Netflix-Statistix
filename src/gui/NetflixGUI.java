@@ -1,14 +1,18 @@
 package com.netflix.gui;
 
-import com.netflix.gui.panes.*;
-import com.raphaellevy.fullscreen.*;
+import com.netflix.gui.panes.AccountView;
+import com.netflix.gui.panes.Films;
+import com.netflix.gui.panes.Overview;
+import com.netflix.gui.panes.Series;
+import com.raphaellevy.fullscreen.FullScreenException;
+import com.raphaellevy.fullscreen.FullScreenMacOS;
 
 import javax.swing.*;
 import java.awt.*;
 
-import static com.netflix.commons.Commons.*;
+import static com.netflix.commons.Commons.exception;
 import static java.awt.BorderLayout.*;
-import static javax.swing.JFrame.*;
+import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
 public class NetflixGUI {
 
