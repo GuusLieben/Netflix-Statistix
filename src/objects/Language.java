@@ -2,8 +2,8 @@ package com.netflix.objects;
 
 public class Language {
 
-  String langCode;
-  String language;
+  private String langCode;
+  private String language;
 
   public Language(String langCode, String language) {
     this.langCode = langCode;

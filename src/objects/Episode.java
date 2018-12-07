@@ -2,10 +2,10 @@ package com.netflix.objects;
 
 public class Episode {
 
-  Season season;
-  String title;
-  Serie serie;
-  double duration;
+  private Season season;
+  private String title;
+  private Serie serie;
+  private double duration;
 
   public Episode(Season season, String title, Serie serie, double duration) {
     this.season = season;

@@ -5,12 +5,17 @@ import com.netflix.objects.*;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
+import java.sql.Time;
 
+@SuppressWarnings("deprecation")
 public class AccountView {
 
   public static JPanel pane() {
     JPanel panel = new JPanel(new FlowLayout(FlowLayout.LEFT));
     panel.setBorder(new EmptyBorder(10, 10, 10, 10));
+
+
+
 
     Account accountView = new Account("Guus", true, "g.lieben@avans.student.nl");
     Profile profile = new Profile(accountView, "Profiel 1");
@@ -20,10 +25,13 @@ public class AccountView {
             new Genre("Romance"),
             new Language("nl_NL", "Dutch"),
             "The Avengers",
-            57.10,
+            new Time(1,57,38),
             "Bob"));
 
     Profile profile2 = new Profile(accountView, "Profiel 2");
+
+
+
 
     JLabel profileLabel = new JLabel("<html>");
     for (Profile prof : accountView.getProfiles()) {

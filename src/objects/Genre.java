@@ -2,7 +2,7 @@ package com.netflix.objects;
 
 public class Genre {
 
-  String genre;
+  private String genre;
 
   public Genre(String genre) {
     this.genre = genre;
@@ -12,8 +12,8 @@ public class Genre {
     return genre;
   }
 
-    @Override
-    public String toString() {
-        return genre;
-    }
+  @Override
+  public String toString() {
+    return genre;
+  }
 }

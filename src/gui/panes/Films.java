@@ -7,6 +7,7 @@ import com.netflix.objects.Language;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
+import java.sql.Time;
 
 import static java.awt.BorderLayout.CENTER;
 import static java.awt.BorderLayout.NORTH;
@@ -35,7 +36,7 @@ public class Films {
             new Genre("Action"),
             new Language("de_DE", "German"),
             "Twilight",
-            57.2,
+            new Time(2,16,48),
             "Bob Bobber");
 
     // Add sub-panels

@@ -3,6 +3,7 @@ package com.netflix.objects;
 import java.util.ArrayList;
 
 public class Profile {
+
   private Account account;
   private String name;
   private ArrayList<Episode> episodesWatched;

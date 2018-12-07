@@ -30,10 +30,9 @@ public class Overview {
     title = new JLabel(serie.getTitle());
     description =
         String.format(
-            "<html>Genre : %s<br>Language : %s (%s)<br>Rating : %s<br>Seasons : %d<br>Episodes : %d</html>",
+            "<html>Genre : %s<br>Language : %s<br>Rating : %s<br>Seasons : %d<br>Episodes : %d</html>",
             serie.getGenre(),
             serie.getLang().getLanguage(),
-            serie.getLang().getLangCode(),
             serie.getRating(),
             serie.getSeasons(),
             serie.getEpisodes());
@@ -44,10 +43,9 @@ public class Overview {
     title = new JLabel(film.getTitle()); // Director, duration, rating
     description =
         String.format(
-            "<html>Genre : %s<br>Language : %s (%s)<br>Rating : %s<br>Director : %s<br>Duration : %s</html>",
+            "<html>Genre : %s<br>Language : %s<br>Rating : %s<br>Director : %s<br>Duration : %s</html>",
             film.getGenre(),
             film.getLang().getLanguage(),
-            film.getLang().getLangCode(),
             film.getRating(),
             film.getDirector(),
             film.getDuration());
