@@ -74,6 +74,7 @@ class Common {
     button.setForeground(Color.WHITE);
 
     JPanel wrapper = new JPanel(new FlowLayout(FlowLayout.LEFT));
+
     wrapper.setBackground(new Color(31, 31, 31));
     Image image = null;
     if (text.equals("Series")) {
