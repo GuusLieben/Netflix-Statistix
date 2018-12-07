@@ -2,25 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="234d0243-9dea-46f1-ab80-3e6e9971e668" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/gui/panes/Overview.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/objects/Account.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/objects/Episode.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/objects/Film.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/objects/Genre.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/objects/Language.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/objects/Profile.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/objects/Season.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/objects/Serie.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Netflix.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/commons/Commons.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/commons/Commons.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/commons/DatabaseHandle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/commons/DatabaseHandle.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gui/Common.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/Common.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gui/NetflixGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/NetflixGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gui/panes/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/panes/AccountView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gui/panes/Films.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/panes/Films.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gui/panes/Series.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/panes/Series.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Unconfirmed 523620.crdownload" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -111,23 +93,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/gui/panes/Overview.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2024">
-              <caret line="88" column="31" selection-start-line="88" selection-start-column="31" selection-end-line="88" selection-end-column="31" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/gui/panes/AccountView.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="550">
-              <caret line="38" column="80" selection-start-line="38" selection-start-column="80" selection-end-line="38" selection-end-column="80" />
+            <state relative-caret-position="520">
+              <caret line="30" column="48" selection-start-line="30" selection-start-column="48" selection-end-line="30" selection-end-column="48" />
             </state>
           </provider>
         </entry>
@@ -209,8 +179,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/gui/NetflixGUI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="782">
-              <caret line="34" selection-start-line="34" selection-end-line="34" />
+            <state relative-caret-position="590">
+              <caret line="48" column="25" lean-forward="true" selection-start-line="48" selection-start-column="25" selection-end-line="48" selection-end-column="25" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -379,7 +349,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1544086850584" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1544172883845" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -448,14 +418,16 @@
       <workItem from="1544034255587" duration="7997000" />
       <workItem from="1544085970957" duration="1099000" />
       <workItem from="1544090644324" duration="99000" />
+      <workItem from="1544101323797" duration="6262000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="36673000" />
+    <option name="totallyTimeSpent" value="42935000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1920" height="1080" extended-state="0" />
+    <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.10330138" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -882,10 +854,37 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/gui/Common.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-16">
+          <caret line="43" column="18" selection-start-line="43" selection-start-column="18" selection-end-line="43" selection-end-column="18" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/gui/NetflixGUI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="782">
-          <caret line="34" selection-start-line="34" selection-end-line="34" />
+        <state relative-caret-position="590">
+          <caret line="48" column="25" lean-forward="true" selection-start-line="48" selection-start-column="25" selection-end-line="48" selection-end-column="25" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Netflix.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="10" selection-start-line="10" selection-end-line="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gui/panes/Overview.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-7">
+          <caret line="79" column="30" selection-start-line="79" selection-start-column="21" selection-end-line="79" selection-end-column="30" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -894,8 +893,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/gui/panes/AccountView.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="550">
-          <caret line="38" column="80" selection-start-line="38" selection-start-column="80" selection-end-line="38" selection-end-column="80" />
+        <state relative-caret-position="520">
+          <caret line="30" column="48" selection-start-line="30" selection-start-column="48" selection-end-line="30" selection-end-column="48" />
         </state>
       </provider>
     </entry>
