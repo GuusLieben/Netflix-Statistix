@@ -8,7 +8,7 @@ import java.awt.*;
 
 import static java.awt.BorderLayout.*;
 
-class Overview {
+public class Overview {
 
   // Default panels
   private static JPanel main = new JPanel(new BorderLayout());
@@ -77,7 +77,7 @@ class Overview {
     return overview;
   }
 
-  private void clearPane(JPanel pane) {
+  public static void clearPane(JPanel pane) {
     pane.removeAll();
     pane.repaint();
     pane.revalidate();
