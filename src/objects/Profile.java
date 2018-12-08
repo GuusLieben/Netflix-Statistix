@@ -38,7 +38,6 @@ public class Profile {
   }
 
   public Set<Serie> getSeriesWatched() {
-    StringBuilder series = new StringBuilder();
     Set<Serie> serieSet = new HashSet<>();
 
     for (Episode episode : episodesWatched) serieSet.add(episode.getSeason().getSerie());

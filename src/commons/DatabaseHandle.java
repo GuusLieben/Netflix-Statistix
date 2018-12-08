@@ -15,6 +15,11 @@ public class DatabaseHandle {
         + PropertyIndex.get("jdbc.password");
   }
 
+  public static void connectDatabase() {
+      SqlConnection connection = new SqlConnection();
+      connection.connectDatabase(generateConnectionString());
+  }
+
   public void loadSeries() {
 //    Commons.series.add(Serie);
   }
