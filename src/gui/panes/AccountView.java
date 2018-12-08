@@ -27,12 +27,25 @@ public class AccountView {
 
     Profile profile2 = new Profile(accountView, "Profiel 2");
 
+    Serie serie =
+        new Serie(new Genre("Drama"), new Language("nl_NL", "Dutch"), "House of Cards", 8.6);
+    Season season = new Season(serie, "newSeason", 1, 1);
+    Episode episode = new Episode(season, "Pilot", serie, 16.57);
+    Episode episode2 = new Episode(season, "Pilot Continued", serie, 12.35);
+
+    profile2.viewEpisode(episode);
+    profile2.viewEpisode(episode2);
+
     JLabel profileLabel = new JLabel("<html>");
     for (Profile prof : accountView.getProfiles()) {
       profileLabel.setText(profileLabel.getText() + ".Profile name : " + prof.getName());
-      for (Film film : prof.getFilmsWatched()) {
+
+      for (Film film : prof.getFilmsWatched())
         profileLabel.setText(profileLabel.getText() + "<br>...Film watched: " + film.getTitle());
-      }
+
+      for (Serie ser : prof.getSeriesWatched())
+        profileLabel.setText(profileLabel.getText() + "<br>...Series watched: " + serie.getTitle());
+
       profileLabel.setText(profileLabel.getText() + "<br><br>");
     }
     profileLabel.setText(profileLabel.getText() + "</html>");

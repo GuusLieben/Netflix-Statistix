@@ -1,5 +1,7 @@
 package com.netflix.gui;
 
+import com.netflix.gui.panes.GradientPanel;
+
 import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.CompoundBorder;
@@ -16,21 +18,10 @@ class Common {
 
   static JPanel logo() {
     // Create and add logo above menu
-    JPanel logo =
-        new JPanel(new BorderLayout()) {
-          @Override
-          protected void paintComponent(Graphics graphics) {
-            super.paintComponent(graphics);
-            Graphics2D g2d = (Graphics2D) graphics;
-            g2d.setRenderingHint(
-                RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-            GradientPaint gp =
-                new GradientPaint(
-                    0, 0, getBackground().brighter(), 0, getHeight(), getBackground().darker());
-            g2d.setPaint(gp);
-            g2d.fillRect(0, 0, getWidth(), getHeight());
-          }
-        };
+      GradientPanel gradientPanel = new GradientPanel();
+
+    JPanel logo = gradientPanel.getGradientPanel();
+    logo.setLayout(new BorderLayout());
     Image image = new ImageIcon("netflix.png").getImage();
     ImageIcon icon = new ImageIcon(image.getScaledInstance(68, 30, Image.SCALE_SMOOTH));
 
@@ -42,6 +33,28 @@ class Common {
     logo.add(thumb, WEST);
 
     return logo;
+  }
+
+  static void addHoverEffect(JButton button) {
+      // MouseOver effects for the menu (underline and cursor effect)
+      HashMap<TextAttribute, Object> textAttrMap = new HashMap<>();
+
+      button.addMouseListener(
+              new MouseAdapter() {
+                  public void mouseEntered(MouseEvent evt) {
+                      textAttrMap.put(TextAttribute.UNDERLINE, TextAttribute.UNDERLINE_LOW_GRAY);
+                      button.setFont(button.getFont().deriveFont(textAttrMap));
+                      Cursor hoverCursor = new Cursor(Cursor.HAND_CURSOR);
+                      button.setCursor(hoverCursor);
+                  }
+
+                  public void mouseExited(MouseEvent evt) {
+                      textAttrMap.put(TextAttribute.UNDERLINE, null);
+                      button.setFont(button.getFont().deriveFont(textAttrMap));
+                      Cursor normalCursor = new Cursor(Cursor.DEFAULT_CURSOR);
+                      button.setCursor(normalCursor);
+                  }
+              });
   }
 
   static JPanel menu() {
@@ -96,24 +109,7 @@ class Common {
     ImageIcon icon = new ImageIcon(image.getScaledInstance(12, 12, Image.SCALE_SMOOTH));
     button.setIcon(icon);
 
-    // MouseOver effects for the menu (underline and cursor effect)
-    HashMap<TextAttribute, Object> textAttrMap = new HashMap<>();
-    button.addMouseListener(
-        new MouseAdapter() {
-          public void mouseEntered(MouseEvent evt) {
-            textAttrMap.put(TextAttribute.UNDERLINE, TextAttribute.UNDERLINE_LOW_GRAY);
-            button.setFont(button.getFont().deriveFont(textAttrMap));
-            Cursor hoverCursor = new Cursor(Cursor.HAND_CURSOR);
-            button.setCursor(hoverCursor);
-          }
-
-          public void mouseExited(MouseEvent evt) {
-            textAttrMap.put(TextAttribute.UNDERLINE, null);
-            button.setFont(button.getFont().deriveFont(textAttrMap));
-            Cursor normalCursor = new Cursor(Cursor.DEFAULT_CURSOR);
-            button.setCursor(normalCursor);
-          }
-        });
+    addHoverEffect(button);
 
     // Style buttons
     button.setBackground(new Color(34, 34, 34));

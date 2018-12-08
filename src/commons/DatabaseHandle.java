@@ -1,7 +1,8 @@
 package com.netflix.commons;
 
 public class DatabaseHandle {
-  public String generateConnectionString() {
+
+  public static String generateConnectionString() {
     return "jdbc:sqlserver://"
         + PropertyIndex.get("jdbc.server")
         + ":"
@@ -15,26 +16,30 @@ public class DatabaseHandle {
   }
 
   public void loadSeries() {
-    //        Commons.series.add(Serie);
+//    Commons.series.add(Serie);
   }
 
   public void loadSeasons() {
-    //        Commons.seasons.put(Season, Season.getSerie());
+//    Commons.seasons.add(Season);
   }
 
   public void loadEpisodes() {
-    //        Commons.episodes.put(Episode, Episode.getSeason());
+//    Commons.episodes.add(Episode);
   }
 
   public void loadFilms() {
-    //        Commons.films.add(Film);
+//    Commons.films.add(Film);
   }
 
   public void loadGenres() {
-    //        Commons.genres.add(Genre);
+//    Commons.genres.add(Genre);
   }
 
   public void loadLangs() {
-    //        Commons.langs.add(Language);
+//    Commons.langs.add(Language);
+  }
+
+  public void loadUsers() {
+//    Commons.users.put(AccountMail, Password);
   }
 }
