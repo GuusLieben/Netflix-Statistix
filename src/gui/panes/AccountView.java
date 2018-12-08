@@ -11,9 +11,11 @@ import java.sql.Time;
 public class AccountView {
 
   public static JPanel pane() {
+    // Make sure content is aligned to the left and add a basic margin
     JPanel panel = new JPanel(new FlowLayout(FlowLayout.LEFT));
     panel.setBorder(new EmptyBorder(10, 10, 10, 10));
 
+    // Create a sample account with profile and additional data
     Account accountView = new Account("Guus", true, "g.lieben@avans.student.nl");
     Profile profile = new Profile(accountView, "Profiel 1");
     profile.viewFilm(
@@ -36,31 +38,52 @@ public class AccountView {
     profile2.viewEpisode(episode);
     profile2.viewEpisode(episode2);
 
-    JLabel profileLabel = new JLabel("<html>");
-    for (Profile prof : accountView.getProfiles()) {
-      profileLabel.setText(profileLabel.getText() + ".Profile name : " + prof.getName());
+    //////////// End the sample data
 
-      for (Film film : prof.getFilmsWatched())
-        profileLabel.setText(profileLabel.getText() + "<br>...Film watched: " + film.getTitle());
+    // Label for profiles
+    JLabel profileLabel = new JLabel("<html>"); // Use html because we can
+    // For all profiles
+    accountView
+        .getProfiles()
+        .forEach(
+            prof -> {
+              profileLabel.setText(
+                  profileLabel.getText()
+                      + ".Profile name : "
+                      + prof.getName()); // Show the profile name
 
-      for (Serie ser : prof.getSeriesWatched())
-        profileLabel.setText(profileLabel.getText() + "<br>...Series watched: " + serie.getTitle());
+              for (Film film : prof.getFilmsWatched()) // If they have any
+              profileLabel.setText(
+                    profileLabel.getText()
+                        + "<br>...Film watched: "
+                        + film.getTitle()); // Show what films they watched lately
+              for (Serie ser : prof.getSeriesWatched()) // If they have any
+              profileLabel.setText(
+                    profileLabel.getText()
+                        + "<br>...Series watched: "
+                        + serie.getTitle()); // Show what series they watched lately
+              profileLabel.setText(profileLabel.getText() + "<br><br>"); // Add spacing
+            });
+    profileLabel.setText(profileLabel.getText() + "</html>"); // End html
 
-      profileLabel.setText(profileLabel.getText() + "<br><br>");
-    }
-    profileLabel.setText(profileLabel.getText() + "</html>");
-
-    JLabel labelBoi =
+    JLabel
+        accountLabel = // Basic string formatting to include all basic account information, and the
+                       // profile label
         new JLabel(
-            String.format(
-                "<html><h1>Account overzicht</h1>"
-                    + "<br>Account name : %s<br>Is admin : %s<br>E-mail : %s<br><br><b>Profile(s) attached :</b> <br>%s</html>",
-                accountView.getName(),
-                accountView.isAdmin(),
-                accountView.getEmail(),
-                profileLabel.getText()));
-    panel.add(labelBoi);
+                String.format(
+                    "<html><h1>Account overzicht</h1>"
+                        + "<br>Account name : %s<br>Is admin : %s<br>E-mail : %s<br><br><b>Profile(s) attached :</b> <br>%s</html>",
+                    accountView.getName(),
+                    accountView.isAdmin(),
+                    accountView.getEmail(),
+                    profileLabel.getText()));
+
+    // Add all the things
+    panel.add(accountLabel);
+
+    // Styling
     panel.setBackground(Color.WHITE);
+
     return panel;
   }
 }

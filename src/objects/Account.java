@@ -26,6 +26,7 @@ public class Account {
   }
 
   public boolean emailIsValid(String email) {
+      // Check that the email matches a proper format (using Regex)
     String emailRegex =
         "^[a-zA-Z0-9_+&*-]+(?:\\."
             + "[a-zA-Z0-9_+&*-]+)*@"

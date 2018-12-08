@@ -10,6 +10,7 @@ import static java.lang.System.out;
 
 public class Commons {
 
+  // Holds data from the database
   public static ArrayList<Serie> series = new ArrayList<>();
   public static ArrayList<Episode> episodes = new ArrayList<>();
   public static ArrayList<Film> films = new ArrayList<>();
@@ -18,6 +19,7 @@ public class Commons {
   public static ArrayList<Language> langs = new ArrayList<>();
   public static HashMap<String, String> users = new HashMap<>();
 
+  // Exception handle
   public static void exception(Exception ex) {
     out.println(ex.getMessage());
     out.println(ex.getCause());

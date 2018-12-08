@@ -4,8 +4,8 @@ import com.netflix.gui.NetflixGUI;
 
 import javax.swing.*;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class Profile {
 
@@ -15,7 +15,7 @@ public class Profile {
   private ArrayList<Film> filmsWatched;
 
   public Profile(Account account, String name) {
-    if (!(account.getProfiles().size() >= 5)) {
+    if (!(account.getProfiles().size() >= 5)) { // Make sure there are less than 5 profiles attached
       this.account = account;
       this.name = name;
       episodesWatched = new ArrayList<>();
@@ -38,11 +38,10 @@ public class Profile {
   }
 
   public Set<Serie> getSeriesWatched() {
-    Set<Serie> serieSet = new HashSet<>();
-
-    for (Episode episode : episodesWatched) serieSet.add(episode.getSeason().getSerie());
-
-    return serieSet;
+    return episodesWatched
+        .stream()
+        .map(episode -> episode.getSeason().getSerie())
+        .collect(Collectors.toSet());
   }
 
   public String getName() {
