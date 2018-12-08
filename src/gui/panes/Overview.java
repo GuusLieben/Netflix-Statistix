@@ -25,7 +25,7 @@ public class Overview {
     inner.setBorder(new EmptyBorder(10, 10, 10, 10));
   }
 
-  Overview(Serie serie) {
+  private Overview(Serie serie) {
     new Overview();
     title = new JLabel(serie.getTitle());
     description =
@@ -38,7 +38,7 @@ public class Overview {
             serie.getEpisodes());
   }
 
-  Overview(Film film) {
+  private Overview(Film film) {
     new Overview();
     title = new JLabel(film.getTitle()); // Director, duration, rating
     description =
@@ -51,38 +51,29 @@ public class Overview {
             film.getDuration());
   }
 
-  public static JPanel newOverview(Film film, Serie serie) {
+  static JPanel newOverview(Film film, Serie serie) {
 
-    JPanel overview = new JPanel(new BorderLayout());
-
-    // Create, center, and add padding to label
-    JLabel averageViews = null;
-    if (film == null)
-      averageViews = new JLabel("Gemiddeld 48.2% bekeken per aflevering"); // Sample label
-    if (serie == null)
-      averageViews = new JLabel("Gemiddeld 48.2% bekeken per film"); // Sample label
-    averageViews.setBorder(new EmptyBorder(5, 0, 10, 0));
-    averageViews.setHorizontalAlignment(JLabel.CENTER);
+    JPanel overviewPanel = new JPanel(new BorderLayout());
 
     // Add sub-panels
-    Overview serieOverview = null;
-    if (film == null) serieOverview = new Overview(serie);
-    if (serie == null) serieOverview = new Overview(film);
-    overview.add(averageViews, NORTH);
-    overview.add(serieOverview.Panel());
+    Overview overview = null;
+    if (film == null) overview = new Overview(serie);
+    if (serie == null) overview = new Overview(film);
 
-    overview.setBackground(Color.WHITE);
+    overviewPanel.add(overview.Panel());
 
-    return overview;
+    overviewPanel.setBackground(Color.WHITE);
+
+    return overviewPanel;
   }
 
-  public static void clearPane(JPanel pane) {
-    pane.removeAll();
-    pane.repaint();
-    pane.revalidate();
+  public static void clearPane(Container con) {
+    con.removeAll();
+    con.repaint();
+    con.revalidate();
   }
 
-  JPanel Panel() {
+  private JPanel Panel() {
     clearPane(main);
     clearPane(inner);
     clearPane(aboutMediaInner);

@@ -11,11 +11,12 @@ import static java.lang.System.out;
 public class Commons {
 
   public static ArrayList<Serie> series = new ArrayList<>();
-  public static HashMap<Episode, Season> episodes = new HashMap<>();
+  public static ArrayList<Episode> episodes = new ArrayList<>();
   public static ArrayList<Film> films = new ArrayList<>();
-  public HashMap<Season, Serie> seasons = new HashMap<>();
-  public ArrayList<Genre> genres = new ArrayList<>();
-  public ArrayList<Language> langs = new ArrayList<>();
+  public static ArrayList<Season> seasons = new ArrayList<>();
+  public static ArrayList<Genre> genres = new ArrayList<>();
+  public static ArrayList<Language> langs = new ArrayList<>();
+  public static HashMap<String, String> users = new HashMap<>();
 
   public static void exception(Exception ex) {
     out.println(ex.getMessage());
