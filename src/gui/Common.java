@@ -48,6 +48,7 @@ class Common {
     button.addMouseListener(
         new MouseAdapter() {
           // If you hover it ...
+          @Override
           public void mouseEntered(MouseEvent evt) {
             // Underline the text...
             textAttrMap.put(TextAttribute.UNDERLINE, TextAttribute.UNDERLINE_LOW_GRAY);
@@ -58,6 +59,7 @@ class Common {
           }
 
           // If you are no longer hovering it ...
+          @Override
           public void mouseExited(MouseEvent evt) {
             // Remove the underline effect ...
             textAttrMap.put(TextAttribute.UNDERLINE, null);
@@ -123,6 +125,8 @@ class Common {
       case "Account":
         NetflixGUI.switchPane(button, "Account");
         image = new ImageIcon("account.png").getImage();
+        break;
+      default:
         break;
     }
 

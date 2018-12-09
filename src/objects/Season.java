@@ -7,11 +7,11 @@ public class Season {
   private int seaonNumber;
   private int amountOfEpisodes;
 
-  public Season(Serie serie, String title, int seaonNumber, int amountOfEpisodes) {
+  public Season(Serie serie, String title, int seaonNumber) {
     this.serie = serie;
     this.title = title;
     this.seaonNumber = seaonNumber;
-    this.amountOfEpisodes = 0;
+    amountOfEpisodes = 0;
     serie.setSeasons(serie.getSeasons() + 1);
   }
 

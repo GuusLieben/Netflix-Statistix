@@ -4,6 +4,7 @@ import com.netflix.gui.NetflixGUI;
 
 import javax.swing.*;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -15,13 +16,13 @@ public class Profile {
   private ArrayList<Film> filmsWatched;
 
   public Profile(Account account, String name) {
-    if (!(account.getProfiles().size() >= 5)) { // Make sure there are less than 5 profiles attached
+    if (account.getProfiles().size() < 5) { // Make sure there are less than 5 profiles attached
       this.account = account;
       this.name = name;
       episodesWatched = new ArrayList<>();
       filmsWatched = new ArrayList<>();
       account.addProfile(this);
-    } else
+    } else {
       JOptionPane.showMessageDialog(
           NetflixGUI.frame,
           "Profile limit reached for account '"
@@ -31,6 +32,7 @@ public class Profile {
               + ")",
           null,
           JOptionPane.ERROR_MESSAGE);
+      }
   }
 
   public Account getAccount() {
@@ -48,11 +50,11 @@ public class Profile {
     return name;
   }
 
-  public ArrayList<Episode> getEpisodesWatched() {
+  public List<Episode> getEpisodesWatched() {
     return episodesWatched;
   }
 
-  public ArrayList<Film> getFilmsWatched() {
+  public List<Film> getFilmsWatched() {
     return filmsWatched;
   }
 

@@ -3,26 +3,28 @@ package com.netflix.commons;
 import com.netflix.objects.*;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
-
-import static java.lang.System.out;
+import java.util.List;
+import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Commons {
 
+  private static final Logger logger = Logger.getLogger(Commons.class.getName());
+
+  public static Map<String, String> users = new HashMap<>();
+  protected static List<Episode> episodes = new ArrayList<>();
   // Holds data from the database
-  public static ArrayList<Serie> series = new ArrayList<>();
-  public static ArrayList<Episode> episodes = new ArrayList<>();
-  public static ArrayList<Film> films = new ArrayList<>();
-  public static ArrayList<Season> seasons = new ArrayList<>();
-  public static ArrayList<Genre> genres = new ArrayList<>();
-  public static ArrayList<Language> langs = new ArrayList<>();
-  public static HashMap<String, String> users = new HashMap<>();
+  protected static List<Serie> series = new ArrayList<>();
+  protected static List<Film> films = new ArrayList<>();
+  protected static List<Season> seasons = new ArrayList<>();
+  protected static List<Genre> genres = new ArrayList<>();
+  protected static List<Language> langs = new ArrayList<>();
 
   // Exception handle
   public static void exception(Exception ex) {
-    out.println(ex.getMessage());
-    out.println(ex.getCause());
-    out.println(Arrays.toString(ex.getStackTrace()));
+    logger.log(Level.SEVERE, ex.getMessage());
+    logger.log(Level.SEVERE, "Suspected cause : {0}", ex.getCause());
   }
 }

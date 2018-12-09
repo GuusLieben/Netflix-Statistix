@@ -15,8 +15,6 @@ import static java.awt.BorderLayout.NORTH;
 
 @SuppressWarnings("deprecation")
 public class Films {
-  private static String title = "House of Cards";
-  private static int episodes = 73;
   private static String[] choices = {
     "Twilight",
     "Narnia",

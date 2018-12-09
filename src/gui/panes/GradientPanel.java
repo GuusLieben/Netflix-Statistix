@@ -5,7 +5,7 @@ import java.awt.*;
 
 public class GradientPanel {
 
-    private JPanel gradientPanel = new JPanel() {
+    private JPanel panel = new JPanel() {
         @Override
         protected void paintComponent(Graphics graphics) {
             super.paintComponent(graphics);
@@ -27,6 +27,6 @@ public class GradientPanel {
     };
 
     public JPanel getGradientPanel() {
-        return gradientPanel;
+        return panel;
     }
 }

@@ -34,7 +34,7 @@ public class NetflixGUI {
   static void switchPane(JButton button, String pane) {
     // Use lambda to handle button pressing to switch panes
     button.addActionListener(
-        e -> {
+        (ActionEvent e) -> {
           Overview.clearPane(lpane);
 
           switch (pane) {
@@ -46,6 +46,8 @@ public class NetflixGUI {
               break;
             case "Account":
               lpane.add(AccountView.pane());
+              break;
+            default:
               break;
           }
         });
@@ -144,26 +146,26 @@ public class NetflixGUI {
 
     // If someone presses the button..
     login.addActionListener(
-        (ActionEvent e) -> {
-          Commons.users.forEach(
-              (key, value) -> { // Loop through the users
-                // and check if they match the input
-                if (usernameBox.getText().equals(key) && passwordBox.getText().equals(value)) {
-                  // Clear the mainPanel (removing login panel), set loggedIn status to true and
-                  // load the media panels
-                  Overview.clearPane(mainPanel);
-                  loggedIn = true;
-                  loadPanels();
+        (ActionEvent e) ->
+            Commons.users.forEach(
+                (key, value) -> { // Loop through the users
+                  // and check if they match the input
+                  if (usernameBox.getText().equals(key) && passwordBox.getText().equals(value)) {
+                    // Clear the mainPanel (removing login panel), set loggedIn status to true and
+                    // load the media panels
+                    Overview.clearPane(mainPanel);
+                    loggedIn = true;
+                    loadPanels();
 
-                } else
-                  // If it doesn't match, show an error
-                  JOptionPane.showMessageDialog(
-                      NetflixGUI.frame,
-                      "Incorrect credentials, please try again",
-                      null,
-                      JOptionPane.WARNING_MESSAGE);
-              });
-        });
+                  } else {
+                    // If it doesn't match, show an error
+                    JOptionPane.showMessageDialog(
+                        NetflixGUI.frame,
+                        "Incorrect credentials, please try again",
+                        null,
+                        JOptionPane.WARNING_MESSAGE);
+                  }
+                }));
 
     // If someone presses enter on the passwordBox, simulate a button click
     passwordBox.addKeyListener(
@@ -174,10 +176,14 @@ public class NetflixGUI {
           }
 
           @Override
-          public void keyPressed(KeyEvent e) {}
+          public void keyPressed(KeyEvent e) {
+            // Ignored
+          }
 
           @Override
-          public void keyReleased(KeyEvent e) {}
+          public void keyReleased(KeyEvent e) {
+            // Ignored
+          }
         });
 
     // If someone types in the usernameBox
@@ -190,10 +196,14 @@ public class NetflixGUI {
           }
 
           @Override
-          public void keyPressed(KeyEvent e) {}
+          public void keyPressed(KeyEvent e) {
+            // Ignored
+          }
 
           @Override
-          public void keyReleased(KeyEvent e) {}
+          public void keyReleased(KeyEvent e) {
+            // Ignored
+          }
         });
 
     addHoverEffect(login);
@@ -205,16 +215,16 @@ public class NetflixGUI {
     constraints.gridy = 1;
     loginbox.add(loginTitle, constraints);
 
-    constraints.gridy = 2;
+    constraints.gridy++; // 2
     loginbox.add(usernameBox, constraints);
 
-    constraints.gridy = 3;
+    constraints.gridy++; // 3
     loginbox.add(spacer, constraints);
 
-    constraints.gridy = 4;
+    constraints.gridy++; // 4
     loginbox.add(passwordBox, constraints);
 
-    constraints.gridy = 5;
+    constraints.gridy++; // 5
     loginbox.add(login, constraints);
 
     // Styling
@@ -223,6 +233,8 @@ public class NetflixGUI {
     login.setForeground(Color.LIGHT_GRAY);
     usernameBox.setForeground(Color.LIGHT_GRAY);
     passwordBox.setForeground(Color.LIGHT_GRAY);
+    usernameBox.setCaretColor(Color.LIGHT_GRAY);
+    passwordBox.setCaretColor(Color.LIGHT_GRAY);
 
     usernameBox.setBorder(new EmptyBorder(8, 8, 8, 8));
     passwordBox.setBorder(new EmptyBorder(8, 8, 8, 8));

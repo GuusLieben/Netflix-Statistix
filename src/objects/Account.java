@@ -4,6 +4,7 @@ import com.netflix.gui.NetflixGUI;
 
 import javax.swing.*;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.regex.Pattern;
 
 public class Account {
@@ -46,7 +47,7 @@ public class Account {
     return isAdmin;
   }
 
-  public ArrayList<Profile> getProfiles() {
+  public List<Profile> getProfiles() {
     return profiles;
   }
 
