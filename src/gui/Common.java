@@ -14,9 +14,9 @@ import java.util.HashMap;
 
 import static java.awt.BorderLayout.*;
 
-class Common {
+public class Common {
 
-  static JPanel logo() {
+  public static JPanel logo() {
     // Create and add logo above menu
     GradientPanel gradientPanel = new GradientPanel();
 
@@ -25,7 +25,7 @@ class Common {
     logo.setLayout(new BorderLayout());
 
     // Get the Netflix logo and scale it properly
-    Image image = new ImageIcon("netflix.png").getImage();
+    Image image = new ImageIcon("resources/netflix.png").getImage();
     ImageIcon icon = new ImageIcon(image.getScaledInstance(68, 30, Image.SCALE_SMOOTH));
 
     // Use a label to attach the image as icon
@@ -40,7 +40,7 @@ class Common {
     return logo;
   }
 
-  static void addHoverEffect(JButton button) {
+  public static void addHoverEffect(JButton button) {
     // MouseOver effects for the menu (underline and cursor effect)
     HashMap<TextAttribute, Object> textAttrMap = new HashMap<>();
 
@@ -73,8 +73,8 @@ class Common {
 
   static JPanel menu() {
     // Create and set up the content pane.
+    JPanel menu = new GradientPanel().getGradientPanel();
     JPanel wrapper = new JPanel(new BorderLayout());
-    JPanel menu = new JPanel();
 
     // Basic styling
     menu.setBorder(new EmptyBorder(0, 5, 0, 15));
@@ -116,15 +116,15 @@ class Common {
     switch (text) {
       case "Series":
         NetflixGUI.switchPane(button, "Series");
-        image = new ImageIcon("serie.png").getImage();
+        image = new ImageIcon("resources/serie.png").getImage();
         break;
       case "Films":
         NetflixGUI.switchPane(button, "Films");
-        image = new ImageIcon("film.png").getImage();
+        image = new ImageIcon("resources/film.png").getImage();
         break;
       case "Account":
         NetflixGUI.switchPane(button, "Account");
-        image = new ImageIcon("account.png").getImage();
+        image = new ImageIcon("resources/account.png").getImage();
         break;
       default:
         break;
@@ -156,7 +156,7 @@ class Common {
     container.add(wrapper, location);
   }
 
-  static JPanel bottomPane() {
+  public static JPanel bottomPane() {
     // Create bottom panel (static information)
     JPanel bottomPanel = new JPanel(new BorderLayout());
 

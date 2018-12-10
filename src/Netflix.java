@@ -19,5 +19,7 @@ public class Netflix {
     final int height = Integer.parseInt(PropertyIndex.get("window.height"));
 
     new NetflixGUI(width, height);
+
+    System.out.println(Commons.hashMD5("pass"));
   }
 }

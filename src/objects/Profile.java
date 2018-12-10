@@ -14,11 +14,13 @@ public class Profile {
   private String name;
   private ArrayList<Episode> episodesWatched;
   private ArrayList<Film> filmsWatched;
+  private int age;
 
-  public Profile(Account account, String name) {
+  public Profile(Account account, String name, int age) {
     if (account.getProfiles().size() < 5) { // Make sure there are less than 5 profiles attached
       this.account = account;
       this.name = name;
+      this.age = age;
       episodesWatched = new ArrayList<>();
       filmsWatched = new ArrayList<>();
       account.addProfile(this);

@@ -1,24 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="Netflix:jar" />
+    </artifacts-to-build>
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="234d0243-9dea-46f1-ab80-3e6e9971e668" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/8/0817954661fcedaf924808a585347decb79d5615" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/8/0817954661fcedaf924808a585347decb79d5615" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/4/24bd7a9bd7ca6062ff272717043f40d0fd2e0815" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/4/24bd7a9bd7ca6062ff272717043f40d0fd2e0815" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/5/55a52407b28485ede4c98ab3c57ae712e19896ca" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/5/55a52407b28485ede4c98ab3c57ae712e19896ca" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/1/b1e708b60a39938b0366208232a446a1a2b4e746" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/1/b1e708b60a39938b0366208232a446a1a2b4e746" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/d/dd2648400ccb965d2d3b1f5d24692d6063c8928a" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/d/dd2648400ccb965d2d3b1f5d24692d6063c8928a" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Netflix.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Netflix.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/account.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/film.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/netflix.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/serie.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Netflix.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Netflix.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/commons/Commons.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/commons/Commons.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/commons/SqlConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/commons/SqlConnection.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/gui/Common.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/Common.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/gui/NetflixGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/NetflixGUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/gui/panes/AccountView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/panes/AccountView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gui/panes/Films.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/panes/Films.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gui/panes/GradientPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/panes/GradientPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gui/panes/Overview.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/panes/Overview.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gui/panes/Series.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/panes/Series.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/objects/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/objects/Account.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/objects/Genre.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/objects/Genre.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/objects/Language.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/objects/Language.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/objects/Profile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/objects/Profile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/objects/Season.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/objects/Season.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vpproject/Netflix.vpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vpproject/diagram.vpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vpproject/diagram.vpp.bak_000d" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vpproject/diagram.vpp.bak_001f" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vpproject/diagram.vpp.bak_002d" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -26,6 +38,20 @@
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/Netflix$All_Features_in__src.ic" NAME="All Features in: src Coverage Results" MODIFIED="1544437240316" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>cucumber.api.cli.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Netflix$Netflix.ic" NAME="Netflix Coverage Results" MODIFIED="1544428783237" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.netflix.commons.*</FILTER>
+    </SUITE>
+  </component>
+  <component name="CoverageOptionsProvider">
+    <option name="myAddOrReplace" value="1" />
+  </component>
+  <component name="CoverageViewManager">
+    <option name="myElementSize" value="282" />
   </component>
   <component name="DatabaseView">
     <option name="SHOW_INTERMEDIATE" value="true" />
@@ -50,11 +76,12 @@
     </expand>
     <select />
   </component>
+  <component name="ExportTestResults" outputFolder="$PROJECT_DIR$/testresults" openResultsInEditor="true" userTempatePath="" />
   <component name="FUSProjectUsageTrigger">
     <session id="-1169601790">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="26" />
+          <entry key="project.closed" value="27" />
           <entry key="project.open.time.0" value="1" />
           <entry key="project.open.time.1" value="4" />
           <entry key="project.open.time.10" value="1" />
@@ -67,19 +94,28 @@
           <entry key="project.open.time.2" value="1" />
           <entry key="project.open.time.20" value="1" />
           <entry key="project.open.time.21" value="1" />
+          <entry key="project.open.time.22" value="1" />
           <entry key="project.open.time.23" value="1" />
           <entry key="project.open.time.8" value="2" />
           <entry key="project.open.time.9" value="4" />
-          <entry key="project.opened" value="26" />
+          <entry key="project.opened" value="27" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
+          <entry key="JavaScript-modules-diagram//Users/guuslieben/IdeaProjects/Netflix/src/commons;/Users/guuslieben/IdeaProjects/Netflix/src/objects;/Users/guuslieben/IdeaProjects/Netflix/src/gui;/Users/guuslieben/IdeaProjects/Netflix/src/gui/panes;" value="1" />
+          <entry key="Language" value="1" />
+          <entry key="MF" value="1" />
           <entry key="Main" value="1" />
+          <entry key="Netflix" value="2" />
+          <entry key="diagram" value="2" />
           <entry key="gitattributes" value="2" />
           <entry key="gitignore" value="3" />
           <entry key="iml" value="1" />
-          <entry key="java" value="207" />
+          <entry key="java" value="235" />
+          <entry key="netflix" value="1" />
+          <entry key="pkg" value="1" />
+          <entry key="png" value="2" />
           <entry key="properties" value="9" />
           <entry key="puml" value="4" />
           <entry key="sql" value="1" />
@@ -87,20 +123,24 @@
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
+          <entry key="DBN-PSQL" value="1" />
           <entry key="IDEA_MODULE" value="1" />
-          <entry key="JAVA" value="207" />
-          <entry key="PLAIN_TEXT" value="5" />
+          <entry key="Image" value="2" />
+          <entry key="JAVA" value="235" />
+          <entry key="Manifest" value="1" />
+          <entry key="PLAIN_TEXT" value="7" />
           <entry key="PlantUML file" value="4" />
           <entry key="Properties" value="9" />
           <entry key="SQL" value="1" />
-          <entry key="UML" value="1" />
+          <entry key="UML" value="6" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
+          <entry key="diagram" value="1" />
           <entry key="dummy" value="67" />
           <entry key="gitignore" value="5" />
-          <entry key="java" value="21771" />
+          <entry key="java" value="24014" />
           <entry key="properties" value="196" />
           <entry key="puml" value="18" />
           <entry key="txt" value="34" />
@@ -108,8 +148,8 @@
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="21771" />
-          <entry key="PLAIN_TEXT" value="106" />
+          <entry key="JAVA" value="24014" />
+          <entry key="PLAIN_TEXT" value="107" />
           <entry key="PlantUML file" value="18" />
           <entry key="Properties" value="196" />
         </counts>
@@ -127,114 +167,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/gui/panes/Series.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="108">
-              <caret line="29" column="52" lean-forward="true" selection-start-line="29" selection-start-column="52" selection-end-line="29" selection-end-column="52" />
-              <folding>
-                <element signature="e#1738#1739#0" expanded="true" />
-                <element signature="e#1765#1766#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/commons/Commons.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="9">
-              <caret line="13" column="2" selection-start-line="13" selection-start-column="2" selection-end-line="13" selection-end-column="81" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/objects/Episode.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="32">
-              <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/objects/Film.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="361">
-              <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/objects/Genre.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="176">
-              <caret line="16" column="20" selection-start-line="16" selection-start-column="20" selection-end-line="16" selection-end-column="20" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/objects/Language.java">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/gui/panes/AccountRegister.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="256">
-              <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/objects/Profile.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="236">
-              <caret line="59" lean-forward="true" selection-start-line="59" selection-end-line="59" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#990#991#0" expanded="true" />
-                <element signature="e#1014#1015#0" expanded="true" />
-                <element signature="e#1228#1229#0" expanded="true" />
-                <element signature="e#1249#1250#0" expanded="true" />
-                <element signature="e#1301#1302#0" expanded="true" />
-                <element signature="e#1333#1334#0" expanded="true" />
-                <element signature="e#1379#1380#0" expanded="true" />
-                <element signature="e#1408#1409#0" expanded="true" />
-                <element signature="e#1445#1446#0" expanded="true" />
-                <element signature="e#1477#1478#0" expanded="true" />
-                <element signature="e#1523#1524#0" expanded="true" />
-                <element signature="e#1561#1562#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/objects/Season.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="89">
-              <caret line="12" column="8" selection-start-line="12" selection-start-column="8" selection-end-line="12" selection-end-column="8" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/objects/Serie.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="73">
-              <caret line="8" column="24" lean-forward="true" selection-start-line="8" selection-start-column="24" selection-end-line="8" selection-end-column="24" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/Netflix.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="245">
-              <caret line="21" column="3" lean-forward="true" selection-start-line="21" selection-start-column="3" selection-end-line="21" selection-end-column="3" />
+              <caret line="106" column="44" selection-start-line="106" selection-start-column="44" selection-end-line="106" selection-end-column="44" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -255,11 +192,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>Color.</find>
-      <find>House of Cards</find>
-      <find>new Color(245, 245, 241)</find>
-      <find>newline</find>
-      <find>Cursor</find>
       <find>public</find>
       <find>CENTER</find>
       <find>center</find>
@@ -280,6 +212,16 @@
       <find>Please</find>
       <find>border</find>
       <find>Border</find>
+      <find>netflix.png</find>
+      <find>addB</find>
+      <find>try</find>
+      <find>Overview</find>
+      <find>Gradient</find>
+      <find>Common</find>
+      <find>Common.</find>
+      <find>addButt</find>
+      <find>switch</find>
+      <find>menu</find>
     </findStrings>
     <replaceStrings>
       <replace>Color.WHITE</replace>
@@ -320,21 +262,24 @@
         <option value="$PROJECT_DIR$/resources/package.properties" />
         <option value="$PROJECT_DIR$/src/commons/DatabaseHandle.java" />
         <option value="$PROJECT_DIR$/src/gui/Login.java" />
-        <option value="$PROJECT_DIR$/src/commons/SqlConnection.java" />
-        <option value="$PROJECT_DIR$/src/gui/Common.java" />
-        <option value="$PROJECT_DIR$/src/commons/Commons.java" />
-        <option value="$PROJECT_DIR$/src/gui/NetflixGUI.java" />
-        <option value="$PROJECT_DIR$/src/gui/panes/AccountView.java" />
         <option value="$PROJECT_DIR$/src/gui/panes/Films.java" />
         <option value="$PROJECT_DIR$/src/gui/panes/GradientPanel.java" />
         <option value="$PROJECT_DIR$/src/gui/panes/Overview.java" />
         <option value="$PROJECT_DIR$/src/objects/Account.java" />
         <option value="$PROJECT_DIR$/src/objects/Genre.java" />
         <option value="$PROJECT_DIR$/src/objects/Language.java" />
-        <option value="$PROJECT_DIR$/src/objects/Profile.java" />
         <option value="$PROJECT_DIR$/src/objects/Season.java" />
         <option value="$PROJECT_DIR$/src/gui/panes/Series.java" />
+        <option value="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" />
+        <option value="$PROJECT_DIR$/diagram" />
+        <option value="$PROJECT_DIR$/src/commons/SqlConnection.java" />
+        <option value="$PROJECT_DIR$/src/objects/Profile.java" />
         <option value="$PROJECT_DIR$/src/Netflix.java" />
+        <option value="$PROJECT_DIR$/src/commons/Commons.java" />
+        <option value="$PROJECT_DIR$/src/gui/panes/AccountView.java" />
+        <option value="$PROJECT_DIR$/src/gui/Common.java" />
+        <option value="$PROJECT_DIR$/src/gui/NetflixGUI.java" />
+        <option value="$PROJECT_DIR$/src/gui/panes/AccountRegister.java" />
       </list>
     </option>
   </component>
@@ -343,6 +288,12 @@
   <component name="JsGulpfileManager">
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="MavenProjectNavigator">
+    <treeState>
+      <expand />
+      <select />
+    </treeState>
   </component>
   <component name="NamedScopeManager">
     <scope name="Copyright" pattern="" />
@@ -359,6 +310,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -396,24 +348,40 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="objects" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="Netflix" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Netflix" type="462c0819:PsiDirectoryNode" />
+              <item name="libs" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="GenerateAntBuildDialog.backupFiles" value="true" />
+    <property name="GenerateAntBuildDialog.enableUiFormCompile" value="true" />
+    <property name="GenerateAntBuildDialog.forceTargetJdk" value="true" />
+    <property name="GenerateAntBuildDialog.generateIdeaHomeProperty" value="true" />
+    <property name="GenerateAntBuildDialog.generateSingleFile" value="true" />
+    <property name="GenerateAntBuildDialog.inclineRuntiemClasspath" value="true" />
+    <property name="GenerateAntBuildDialog.outputFileNameProperty" value="netflix-2.jar" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1544369581137" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1544437238359" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="MavenSettings" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/resources" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -427,7 +395,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Cucumber java.All Features in: src">
     <configuration name="Netflix" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.netflix.Netflix" />
       <module name="Netflix" />
@@ -441,6 +409,28 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="All Features in: src" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" nameIsGenerated="true">
+      <option name="CUCUMBER_CORE_VERSION" value="3" />
+      <option name="FILE_PATH" value="$PROJECT_DIR$/src" />
+      <option name="MAIN_CLASS_NAME" value="com.netflix.Netflix" />
+      <module name="Netflix" />
+      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm3SMFormatter" />
+      <option name="SUGGESTED_NAME" value="All Features in: src" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="cucumber.api.cli.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Cucumber java.All Features in: src" />
+      <item itemvalue="Application.Netflix" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Netflix" />
@@ -466,17 +456,50 @@
       <workItem from="1544262252575" duration="756000" />
       <workItem from="1544363558677" duration="64000" />
       <workItem from="1544363663205" duration="348000" />
-      <workItem from="1544364148083" duration="1613000" />
+      <workItem from="1544364148083" duration="5783000" />
+      <workItem from="1544388988983" duration="6321000" />
     </task>
     <servers />
   </component>
+  <component name="TestHistory">
+    <history-entry file="All_Features_in__src - 2018.12.10 at 11h 12m 38s.xml">
+      <configuration name="All Features in: src" configurationId="CucumberJavaRunConfigurationType" />
+    </history-entry>
+    <history-entry file="All_Features_in__src - 2018.12.10 at 11h 13m 12s.xml">
+      <configuration name="All Features in: src" configurationId="CucumberJavaRunConfigurationType" />
+    </history-entry>
+    <history-entry file="All_Features_in__src - 2018.12.10 at 11h 13m 49s.xml">
+      <configuration name="All Features in: src" configurationId="CucumberJavaRunConfigurationType" />
+    </history-entry>
+    <history-entry file="All_Features_in__src - 2018.12.10 at 11h 14m 30s.xml">
+      <configuration name="All Features in: src" configurationId="CucumberJavaRunConfigurationType" />
+    </history-entry>
+    <history-entry file="All_Features_in__src - 2018.12.10 at 11h 14m 57s.xml">
+      <configuration name="All Features in: src" configurationId="CucumberJavaRunConfigurationType" />
+    </history-entry>
+    <history-entry file="All_Features_in__src - 2018.12.10 at 11h 16m 15s.xml">
+      <configuration name="All Features in: src" configurationId="CucumberJavaRunConfigurationType" />
+    </history-entry>
+    <history-entry file="All_Features_in__src - 2018.12.10 at 11h 16m 49s.xml">
+      <configuration name="All Features in: src" configurationId="CucumberJavaRunConfigurationType" />
+    </history-entry>
+    <history-entry file="All_Features_in__src - 2018.12.10 at 11h 17m 03s.xml">
+      <configuration name="All Features in: src" configurationId="CucumberJavaRunConfigurationType" />
+    </history-entry>
+    <history-entry file="All_Features_in__src - 2018.12.10 at 11h 17m 43s.xml">
+      <configuration name="All Features in: src" configurationId="CucumberJavaRunConfigurationType" />
+    </history-entry>
+    <history-entry file="All_Features_in__src - 2018.12.10 at 11h 18m 19s.xml">
+      <configuration name="All Features in: src" configurationId="CucumberJavaRunConfigurationType" />
+    </history-entry>
+  </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="31711000" />
+    <option name="totallyTimeSpent" value="42202000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17582418" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.3015873" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -486,22 +509,23 @@
       <window_info id="JRebel" order="7" side_tool="true" />
       <window_info id="DB Browser" order="8" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.29485834" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32948583" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.26128018" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.32948583" />
       <window_info anchor="bottom" id="Database Changes" order="8" />
-      <window_info anchor="bottom" id="Terminal" order="9" />
+      <window_info anchor="bottom" id="Terminal" order="9" weight="0.32948583" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="TMC Test Results" order="11" />
-      <window_info anchor="bottom" id="Messages" order="12" weight="0.32911393" />
+      <window_info anchor="bottom" id="Messages" order="12" weight="0.32843652" />
       <window_info anchor="bottom" id="FindBugs-IDEA" order="13" weight="0.6841553" />
       <window_info anchor="bottom" id="DB Execution Console" order="14" />
-      <window_info active="true" anchor="bottom" id="SonarLint" order="15" visible="true" weight="0.5424974" />
+      <window_info anchor="bottom" id="SonarLint" order="15" weight="0.4155299" />
       <window_info anchor="bottom" id="JRebel Console" order="16" side_tool="true" />
+      <window_info active="true" anchor="right" id="Coverage" side_tool="true" visible="true" weight="0.32967034" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -511,7 +535,7 @@
       <window_info anchor="right" id="Theme Preview" order="6" />
       <window_info anchor="right" id="Palette&#9;" order="7" />
       <window_info anchor="right" id="Database" order="8" />
-      <window_info anchor="right" id="Maven Projects" order="9" />
+      <window_info anchor="right" id="Maven Projects" order="9" weight="0.32967034" />
       <window_info anchor="right" id="PlantUML" order="10" />
       <window_info anchor="right" id="Color Manager" order="11" />
     </layout>
@@ -644,88 +668,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/commons/DatabaseHandle.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="19" column="3" lean-forward="true" selection-start-line="19" selection-start-column="3" selection-end-line="19" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/commons/PropertyIndex.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-15">
-          <caret line="9" column="28" selection-start-line="9" selection-start-column="28" selection-end-line="9" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/commons/SqlConnection.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="213">
-          <caret line="55" column="5" lean-forward="true" selection-start-line="55" selection-start-column="5" selection-end-line="55" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/gui/Common.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="124">
-          <caret line="134" column="25" lean-forward="true" selection-start-line="134" selection-start-column="25" selection-end-line="134" selection-end-column="25" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/gui/NetflixGUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="163" column="27" lean-forward="true" selection-start-line="163" selection-start-column="27" selection-end-line="163" selection-end-column="27" />
-          <folding>
-            <element signature="e#5683#5684#0" expanded="true" />
-            <element signature="e#5765#5766#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/gui/panes/AccountView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="65" column="15" lean-forward="true" selection-start-line="65" selection-start-column="15" selection-end-line="65" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/gui/panes/Films.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="80">
           <caret line="16" column="20" selection-start-line="16" selection-start-column="20" selection-end-line="16" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/gui/panes/GradientPanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="112">
-          <caret line="8" column="17" lean-forward="true" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
-          <folding>
-            <element signature="e#862#863#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/gui/panes/Overview.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="188">
-          <caret line="109" lean-forward="true" selection-start-line="109" selection-end-line="109" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/objects/Account.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="197">
-          <caret line="50" column="20" lean-forward="true" selection-start-line="50" selection-start-column="20" selection-end-line="50" selection-end-column="20" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1211#1212#0" expanded="true" />
-            <element signature="e#1236#1237#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -750,63 +696,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/objects/Language.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="256">
-          <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/objects/Profile.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="236">
-          <caret line="59" lean-forward="true" selection-start-line="59" selection-end-line="59" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#990#991#0" expanded="true" />
-            <element signature="e#1014#1015#0" expanded="true" />
-            <element signature="e#1228#1229#0" expanded="true" />
-            <element signature="e#1249#1250#0" expanded="true" />
-            <element signature="e#1301#1302#0" expanded="true" />
-            <element signature="e#1333#1334#0" expanded="true" />
-            <element signature="e#1379#1380#0" expanded="true" />
-            <element signature="e#1408#1409#0" expanded="true" />
-            <element signature="e#1445#1446#0" expanded="true" />
-            <element signature="e#1477#1478#0" expanded="true" />
-            <element signature="e#1523#1524#0" expanded="true" />
-            <element signature="e#1561#1562#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/objects/Season.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="89">
-          <caret line="12" column="8" selection-start-line="12" selection-start-column="8" selection-end-line="12" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/objects/Serie.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="73">
-          <caret line="8" column="24" lean-forward="true" selection-start-line="8" selection-start-column="24" selection-end-line="8" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/commons/Commons.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="9">
-          <caret line="13" column="2" selection-start-line="13" selection-start-column="2" selection-end-line="13" selection-end-column="81" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/META-INF/MANIFEST.MF" />
     <entry file="file://$PROJECT_DIR$/src/gui/panes/Series.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="108">
-          <caret line="29" column="52" lean-forward="true" selection-start-line="29" selection-start-column="52" selection-end-line="29" selection-end-column="52" />
+          <caret line="29" column="52" selection-start-line="29" selection-start-column="52" selection-end-line="29" selection-end-column="52" />
           <folding>
             <element signature="e#1738#1739#0" expanded="true" />
             <element signature="e#1765#1766#0" expanded="true" />
@@ -814,10 +708,690 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/objects/Language.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="256">
+          <caret line="20" selection-start-line="20" selection-end-line="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/objects/Season.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="12" column="8" selection-start-line="12" selection-start-column="8" selection-end-line="12" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/objects/Serie.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="73">
+          <caret line="8" column="24" selection-start-line="8" selection-start-column="24" selection-end-line="8" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="uml://JAVA/com.netflix.objects.Language">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>JAVA</ID>
+          <OriginalElement>com.netflix.objects.Language</OriginalElement>
+          <nodes>
+            <node x="" y="">com.netflix.objects.Film</node>
+            <node x="" y="">com.netflix.gui.panes.AccountView</node>
+            <node x="" y="">com.netflix.gui.panes.GradientPanel</node>
+            <node x="" y="">com.netflix.gui.Common</node>
+            <node x="" y="">com.netflix.objects.Language</node>
+            <node x="" y="">com.netflix.objects.Season</node>
+            <node x="" y="">com.netflix.commons.SqlConnection</node>
+            <node x="" y="">java.lang.SuppressWarnings</node>
+            <node x="" y="">com.netflix.gui.panes.Series</node>
+            <node x="" y="">com.netflix.commons.PropertyIndex</node>
+            <node x="" y="">com.netflix.commons.Commons</node>
+            <node x="" y="">com.netflix.gui.panes.Overview</node>
+            <node x="" y="">com.netflix.gui.panes.Films</node>
+            <node x="" y="">com.netflix.objects.Profile</node>
+            <node x="" y="">com.netflix.objects.Episode</node>
+            <node x="" y="">com.netflix.commons.DatabaseHandle</node>
+            <node x="" y="">com.netflix.gui.NetflixGUI</node>
+            <node x="" y="">com.netflix.objects.Genre</node>
+            <node x="" y="">com.netflix.objects.Account</node>
+            <node x="" y="">com.netflix.objects.Serie</node>
+            <node x="" y="">com.netflix.Netflix</node>
+          </nodes>
+          <notes />
+          <edges />
+          <settings layout="Hierarchic Group" zoom="0.4599219574830939" x="1147.0" y="1029.0" />
+          <SelectedNodes />
+          <Categories>
+            <Category>Fields</Category>
+            <Category>Constructors</Category>
+            <Category>Methods</Category>
+            <Category>Properties</Category>
+            <Category>Inner Classes</Category>
+          </Categories>
+          <SCOPE>All</SCOPE>
+          <VISIBILITY>private</VISIBILITY>
+        </state>
+      </provider>
+    </entry>
+    <entry file="uml://JavaScript-modules-diagram//Users/guuslieben/IdeaProjects/Netflix/src/commons;/Users/guuslieben/IdeaProjects/Netflix/src/objects;/Users/guuslieben/IdeaProjects/Netflix/src/gui;/Users/guuslieben/IdeaProjects/Netflix/src/gui/panes;">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>JavaScript-modules-diagram</ID>
+          <OriginalElement>$PROJECT_DIR$/src/commons;/Users/guuslieben/IdeaProjects/Netflix/src/objects;/Users/guuslieben/IdeaProjects/Netflix/src/gui;/Users/guuslieben/IdeaProjects/Netflix/src/gui/panes;</OriginalElement>
+          <nodes />
+          <notes />
+          <edges />
+          <settings layout="Hierarchic Group" zoom="1.0" x="675.0" y="442.0" />
+          <SelectedNodes />
+          <Categories>
+            <Category>All</Category>
+          </Categories>
+          <SCOPE>All</SCOPE>
+          <VISIBILITY>Details</VISIBILITY>
+        </state>
+      </provider>
+    </entry>
+    <entry file="uml://JAVA/com.netflix">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>JAVA</ID>
+          <OriginalElement>com.netflix</OriginalElement>
+          <nodes>
+            <node x="" y="">com.netflix.gui</node>
+            <node x="" y="">com.netflix.commons</node>
+            <node x="" y="">com.netflix.Netflix</node>
+            <node x="" y="">com.netflix.objects</node>
+          </nodes>
+          <notes />
+          <edges />
+          <settings layout="Hierarchic Group" zoom="1.0" x="381.0" y="337.0" />
+          <SelectedNodes />
+          <Categories>
+            <Category>Fields</Category>
+            <Category>Constructors</Category>
+            <Category>Methods</Category>
+            <Category>Properties</Category>
+            <Category>Inner Classes</Category>
+          </Categories>
+          <SCOPE>All</SCOPE>
+          <VISIBILITY>private</VISIBILITY>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/diagram" />
+    <entry file="file://$PROJECT_DIR$/netflix-2.png" />
+    <entry file="file://$PROJECT_DIR$/netflix.png" />
+    <entry file="file://$PROJECT_DIR$/libs/jgrasp205_03.pkg" />
+    <entry file="file://$PROJECT_DIR$/src/commons/DatabaseHandle.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="266">
+          <caret line="19" column="3" lean-forward="true" selection-start-line="19" selection-start-column="3" selection-end-line="19" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/commons/SqlConnection.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="640">
+          <caret line="43" column="27" selection-start-line="43" selection-start-column="27" selection-end-line="43" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/commons/PropertyIndex.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="64">
+          <caret line="9" column="28" selection-start-line="9" selection-start-column="28" selection-end-line="9" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="uml://JAVA/com.netflix.Netflix">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>JAVA</ID>
+          <OriginalElement>com.netflix.Netflix</OriginalElement>
+          <nodes>
+            <node x="1293.0365800865798" y="1616.0">com.netflix.gui.panes.AccountView</node>
+            <node x="1408.9968484268702" y="721.0">com.netflix.objects.Film</node>
+            <node x="2167.1083333333336" y="1149.0">com.netflix.gui.panes.GradientPanel</node>
+            <node x="1270.65" y="0.5">com.netflix.objects.Language</node>
+            <node x="2135.4069742385586" y="1561.0">com.netflix.gui.Common</node>
+            <node x="610.3494110428261" y="511.0">com.netflix.objects.Season</node>
+            <node x="0.0" y="1571.5">com.netflix.commons.SqlConnection</node>
+            <node x="1681.4968484268702" y="555.5">java.lang.SuppressWarnings</node>
+            <node x="940.2238225688002" y="1582.5">com.netflix.gui.panes.Series</node>
+            <node x="273.9999999999999" y="1593.5">com.netflix.commons.PropertyIndex</node>
+            <node x="314.7528201337352" y="1060.5">com.netflix.commons.Commons</node>
+            <node x="1764.9968484268702" y="1038.0">com.netflix.gui.panes.Overview</node>
+            <node x="949.3874999999998" y="1071.0">com.netflix.objects.Profile</node>
+            <node x="1947.4069742385586" y="1593.5">com.netflix.gui.panes.Films</node>
+            <node x="703.5809654259431" y="754.5">com.netflix.objects.Episode</node>
+            <node x="45.66666666666674" y="1813.0">com.netflix.commons.DatabaseHandle</node>
+            <node x="1784.629004329004" y="1812.0">com.netflix.gui.NetflixGUI</node>
+            <node x="951.9083333333333" y="0.0">com.netflix.objects.Genre</node>
+            <node x="1010.2270562770559" y="732.0">com.netflix.objects.Account</node>
+            <node x="735.6874999999999" y="247.0">com.netflix.objects.Serie</node>
+            <node x="470.85367965367914" y="2091.0">com.netflix.Netflix</node>
+          </nodes>
+          <notes />
+          <edges>
+            <edge source="com.netflix.objects.Serie" target="com.netflix.objects.Genre">
+              <point x="-101.25" y="-92.0" />
+              <point x="769.4374999999999" y="177.0" />
+              <point x="999.4083333333333" y="177.0" />
+              <point x="-28.5" y="48.5" />
+            </edge>
+            <edge source="com.netflix.Netflix" target="com.netflix.gui.NetflixGUI">
+              <point x="62.625" y="-37.0" />
+              <point x="616.9786796536791" y="2071.0" />
+              <point x="1903.629004329004" y="2071.0" />
+              <point x="0.0" y="114.5" />
+            </edge>
+            <edge source="com.netflix.gui.panes.Films" target="com.netflix.objects.Language">
+              <point x="69.58333333333326" y="-48.0" />
+              <point x="2100.490307571892" y="1521.0" />
+              <point x="2066.663696757112" y="1521.0" />
+              <point x="2066.663696757112" y="117.0" />
+              <point x="1456.275" y="117.0" />
+              <point x="86.625" y="48.0" />
+            </edge>
+            <edge source="com.netflix.gui.Common" target="com.netflix.gui.NetflixGUI">
+              <point x="69.5" y="80.5" />
+              <point x="2343.9069742385586" y="1782.0" />
+              <point x="1990.1744588744584" y="1782.0" />
+              <point x="86.5454545454545" y="-114.5" />
+            </edge>
+            <edge source="com.netflix.objects.Episode" target="com.netflix.objects.Serie">
+              <point x="100.875" y="-70.0" />
+              <point x="938.9559654259431" y="701.0" />
+              <point x="881.6874999999999" y="701.0" />
+              <point x="881.6874999999999" y="491.0" />
+              <point x="895.2329545454544" y="491.0" />
+              <point x="24.545454545454504" y="92.0" />
+            </edge>
+            <edge source="com.netflix.gui.NetflixGUI" target="com.netflix.commons.Commons">
+              <point x="-108.18181818181824" y="-114.5" />
+              <point x="1795.4471861471857" y="1792.0" />
+              <point x="719.8220368545145" y="1792.0" />
+              <point x="719.8220368545145" y="1531.0" />
+              <point x="494.1278201337352" y="1531.0" />
+              <point x="76.875" y="114.0" />
+            </edge>
+            <edge source="com.netflix.objects.Film" target="com.netflix.objects.Language">
+              <point x="0.0" y="-103.5" />
+              <point x="1576.4968484268702" y="701.0" />
+              <point x="1596.629004329004" y="701.0" />
+              <point x="1596.629004329004" y="147.0" />
+              <point x="1406.775" y="147.0" />
+              <point x="37.125" y="48.0" />
+            </edge>
+            <edge source="com.netflix.gui.panes.Series" target="com.netflix.objects.Language">
+              <point x="-59.0" y="-59.0" />
+              <point x="969.7238225688002" y="1511.0" />
+              <point x="541.2528201337352" y="1511.0" />
+              <point x="541.2528201337352" y="207.0" />
+              <point x="1307.775" y="207.0" />
+              <point x="-61.875" y="48.0" />
+            </edge>
+            <edge source="com.netflix.gui.panes.Films" target="com.netflix.gui.panes.Overview">
+              <point x="-69.58333333333331" y="-48.0" />
+              <point x="1961.3236409052254" y="1541.0" />
+              <point x="1962.4968484268702" y="1541.0" />
+              <point x="79.0" y="136.5" />
+            </edge>
+            <edge source="com.netflix.commons.Commons" target="com.netflix.objects.Language">
+              <point x="-51.25" y="-114.0" />
+              <point x="366.0028201337352" y="1008.0" />
+              <point x="400.7528201337352" y="1008.0" />
+              <point x="400.7528201337352" y="197.0" />
+              <point x="1283.025" y="197.0" />
+              <point x="-86.625" y="48.0" />
+            </edge>
+            <edge source="com.netflix.objects.Profile" target="com.netflix.gui.NetflixGUI">
+              <point x="-75.0" y="103.5" />
+              <point x="986.8874999999998" y="1441.0" />
+              <point x="1127.7238225688002" y="1441.0" />
+              <point x="1127.7238225688002" y="1762.0" />
+              <point x="1860.3562770562767" y="1762.0" />
+              <point x="-43.27272727272725" y="-114.5" />
+            </edge>
+            <edge source="com.netflix.gui.panes.AccountView" target="com.netflix.objects.Serie">
+              <point x="9.266666666666652" y="-25.5" />
+              <point x="1371.8032467532464" y="1351.0" />
+              <point x="1345.1645499961344" y="1351.0" />
+              <point x="1345.1645499961344" y="481.0" />
+              <point x="944.3238636363636" y="481.0" />
+              <point x="73.63636363636374" y="92.0" />
+            </edge>
+            <edge source="com.netflix.objects.Profile" target="com.netflix.objects.Serie">
+              <point x="-50.0" y="-103.5" />
+              <point x="1011.8874999999998" y="978.0" />
+              <point x="999.7270562770559" y="978.0" />
+              <point x="999.7270562770559" y="491.0" />
+              <point x="919.7784090909091" y="491.0" />
+              <point x="49.090909090909236" y="92.0" />
+            </edge>
+            <edge source="com.netflix.gui.panes.AccountView" target="com.netflix.objects.Episode">
+              <point x="-64.86666666666667" y="-25.5" />
+              <point x="1297.669913419913" y="1431.0" />
+              <point x="742.0547681856832" y="1431.0" />
+              <point x="742.0547681856832" y="988.0" />
+              <point x="838.0809654259431" y="988.0" />
+              <point x="0.0" y="70.0" />
+            </edge>
+            <edge source="com.netflix.gui.panes.Overview" target="com.netflix.objects.Film">
+              <point x="-59.25" y="-136.5" />
+              <point x="1824.2468484268702" y="1018.0" />
+              <point x="1639.3093484268702" y="1018.0" />
+              <point x="62.8125" y="103.5" />
+            </edge>
+            <edge source="com.netflix.gui.panes.AccountView" target="com.netflix.objects.Genre">
+              <point x="27.799999999999955" y="-25.5" />
+              <point x="1390.3365800865797" y="1331.0" />
+              <point x="1382.7236409052252" y="1331.0" />
+              <point x="1382.7236409052252" y="187.0" />
+              <point x="1037.4083333333333" y="187.0" />
+              <point x="9.5" y="48.5" />
+            </edge>
+            <edge source="com.netflix.gui.NetflixGUI" target="com.netflix.gui.panes.Films">
+              <point x="21.636363636363512" y="-114.5" />
+              <point x="1925.2653679653674" y="1752.0" />
+              <point x="2030.9069742385586" y="1752.0" />
+              <point x="0.0" y="48.0" />
+            </edge>
+            <edge source="com.netflix.gui.Common" target="com.netflix.gui.panes.GradientPanel">
+              <point x="-69.5" y="-80.5" />
+              <point x="2204.9069742385586" y="1541.0" />
+              <point x="2227.4833333333336" y="1541.0" />
+              <point x="-20.125" y="25.5" />
+            </edge>
+            <edge source="com.netflix.gui.panes.Overview" target="com.netflix.objects.Serie">
+              <point x="59.25" y="-136.5" />
+              <point x="1942.7468484268702" y="461.0" />
+              <point x="993.4147727272726" y="461.0" />
+              <point x="122.72727272727275" y="92.0" />
+            </edge>
+            <edge source="com.netflix.gui.panes.Films" target="com.netflix.objects.Genre">
+              <point x="41.75" y="-48.0" />
+              <point x="2072.6569742385586" y="1531.0" />
+              <point x="2046.2885150935367" y="1531.0" />
+              <point x="2046.2885150935367" y="127.0" />
+              <point x="1094.4083333333333" y="127.0" />
+              <point x="66.5" y="48.5" />
+            </edge>
+            <edge source="com.netflix.objects.Profile" target="com.netflix.objects.Film">
+              <point x="75.0" y="-103.5" />
+              <point x="1136.8874999999998" y="1008.0" />
+              <point x="1471.8093484268702" y="1008.0" />
+              <point x="-104.6875" y="103.5" />
+            </edge>
+            <edge source="com.netflix.gui.panes.AccountView" target="com.netflix.objects.Account">
+              <point x="-18.533333333333303" y="-25.5" />
+              <point x="1344.0032467532465" y="1381.0" />
+              <point x="1280.7550261866106" y="1381.0" />
+              <point x="1280.7550261866106" y="978.0" />
+              <point x="1228.4413419913417" y="978.0" />
+              <point x="100.71428571428578" y="92.5" />
+            </edge>
+            <edge source="com.netflix.gui.panes.Series" target="com.netflix.gui.panes.Overview">
+              <point x="78.66666666666674" y="-59.0" />
+              <point x="1107.390489235467" y="1541.0" />
+              <point x="1804.4968484268702" y="1541.0" />
+              <point x="-79.0" y="136.5" />
+            </edge>
+            <edge source="com.netflix.commons.DatabaseHandle" target="com.netflix.commons.PropertyIndex">
+              <point x="81.33333333333348" y="-113.5" />
+              <point x="249.00000000000023" y="1792.0" />
+              <point x="342.9999999999999" y="1792.0" />
+              <point x="-69.0" y="48.0" />
+            </edge>
+            <edge source="com.netflix.gui.panes.AccountView" target="java.lang.SuppressWarnings">
+              <point x="64.86666666666667" y="-25.5" />
+              <point x="1427.4032467532463" y="1531.0" />
+              <point x="1754.4968484268702" y="1531.0" />
+              <point x="0.0" y="25.5" />
+            </edge>
+            <edge source="com.netflix.Netflix" target="com.netflix.commons.PropertyIndex">
+              <point x="-20.875" y="-37.0" />
+              <point x="533.4786796536791" y="2061.0" />
+              <point x="480.9999999999999" y="2061.0" />
+              <point x="69.0" y="48.0" />
+            </edge>
+            <edge source="com.netflix.objects.Account" target="com.netflix.gui.NetflixGUI">
+              <point x="-100.71428571428567" y="92.5" />
+              <point x="1027.0127705627701" y="988.0" />
+              <point x="889.1874999999999" y="988.0" />
+              <point x="889.1874999999999" y="1782.0" />
+              <point x="1817.0835497835494" y="1782.0" />
+              <point x="-86.5454545454545" y="-114.5" />
+            </edge>
+            <edge source="com.netflix.Netflix" target="com.netflix.commons.Commons">
+              <point x="20.875" y="-37.0" />
+              <point x="575.2286796536791" y="2071.0" />
+              <point x="560.4999999999999" y="2071.0" />
+              <point x="560.4999999999999" y="1541.0" />
+              <point x="442.8778201337352" y="1541.0" />
+              <point x="25.625" y="114.0" />
+            </edge>
+            <edge source="com.netflix.gui.panes.Series" target="com.netflix.objects.Serie">
+              <point x="-39.33333333333326" y="-59.0" />
+              <point x="989.3904892354669" y="1501.0" />
+              <point x="570.4119110428261" y="1501.0" />
+              <point x="570.4119110428261" y="461.0" />
+              <point x="772.5056818181816" y="461.0" />
+              <point x="-98.18181818181824" y="92.0" />
+            </edge>
+            <edge source="com.netflix.commons.Commons" target="com.netflix.objects.Serie">
+              <point x="-17.083333333333258" y="-114.0" />
+              <point x="400.16948680040196" y="1018.0" />
+              <point x="411.7528201337352" y="1018.0" />
+              <point x="411.7528201337352" y="451.0" />
+              <point x="747.9602272727271" y="451.0" />
+              <point x="-122.72727272727275" y="92.0" />
+            </edge>
+            <edge source="com.netflix.objects.Season" target="com.netflix.objects.Serie">
+              <point x="49.75" y="-70.0" />
+              <point x="759.5994110428261" y="491.0" />
+              <point x="846.1420454545454" y="491.0" />
+              <point x="-24.545454545454504" y="92.0" />
+            </edge>
+            <edge source="com.netflix.objects.Serie" target="com.netflix.objects.Language">
+              <point x="33.75" y="-92.0" />
+              <point x="904.4374999999999" y="217.0" />
+              <point x="1332.525" y="217.0" />
+              <point x="-37.125" y="48.0" />
+            </edge>
+            <edge source="com.netflix.commons.SqlConnection" target="com.netflix.commons.Commons">
+              <point x="0.0" y="-70.0" />
+              <point x="127.0" y="1541.0" />
+              <point x="340.3778201337352" y="1541.0" />
+              <point x="-76.875" y="114.0" />
+            </edge>
+            <edge source="com.netflix.commons.PropertyIndex" target="com.netflix.commons.Commons">
+              <point x="0.0" y="-48.0" />
+              <point x="411.9999999999999" y="1541.0" />
+              <point x="391.6278201337352" y="1541.0" />
+              <point x="-25.625" y="114.0" />
+            </edge>
+            <edge source="com.netflix.gui.panes.AccountView" target="com.netflix.objects.Season">
+              <point x="0.0" y="-25.5" />
+              <point x="1362.5365800865798" y="1361.0" />
+              <point x="1335.8978833294677" y="1361.0" />
+              <point x="1335.8978833294677" y="671.0" />
+              <point x="795.1351253285403" y="671.0" />
+              <point x="85.28571428571422" y="70.0" />
+            </edge>
+            <edge source="com.netflix.gui.panes.AccountView" target="com.netflix.objects.Film">
+              <point x="46.33333333333337" y="-25.5" />
+              <point x="1408.869913419913" y="1511.0" />
+              <point x="1582.0303634237785" y="1511.0" />
+              <point x="1582.0303634237785" y="1018.0" />
+              <point x="1555.5593484268702" y="1018.0" />
+              <point x="-20.9375" y="103.5" />
+            </edge>
+            <edge source="com.netflix.gui.panes.Series" target="com.netflix.objects.Episode">
+              <point x="39.33333333333326" y="-59.0" />
+              <point x="1068.0571559021334" y="1461.0" />
+              <point x="710.7148939973716" y="1461.0" />
+              <point x="710.7148939973716" y="968.0" />
+              <point x="761.2238225688002" y="968.0" />
+              <point x="-76.85714285714289" y="70.0" />
+            </edge>
+            <edge source="com.netflix.objects.Profile" target="com.netflix.objects.Episode">
+              <point x="-75.0" y="-103.5" />
+              <point x="986.8874999999998" y="968.0" />
+              <point x="914.938108283086" y="968.0" />
+              <point x="76.85714285714289" y="70.0" />
+            </edge>
+            <edge source="com.netflix.objects.Film" target="java.lang.SuppressWarnings">
+              <point x="134.0" y="-103.5" />
+              <point x="1710.4968484268702" y="701.0" />
+              <point x="1705.8301817602037" y="701.0" />
+              <point x="-48.66666666666666" y="25.5" />
+            </edge>
+            <edge source="com.netflix.commons.Commons" target="com.netflix.objects.Film">
+              <point x="85.41666666666674" y="-114.0" />
+              <point x="502.66948680040196" y="998.0" />
+              <point x="1429.9343484268702" y="998.0" />
+              <point x="-146.5625" y="103.5" />
+            </edge>
+            <edge source="com.netflix.commons.Commons" target="com.netflix.objects.Season">
+              <point x="17.083333333333258" y="-114.0" />
+              <point x="434.33615346706847" y="1018.0" />
+              <point x="422.7528201337352" y="1018.0" />
+              <point x="422.7528201337352" y="681.0" />
+              <point x="624.5636967571119" y="681.0" />
+              <point x="-85.28571428571422" y="70.0" />
+            </edge>
+            <edge source="com.netflix.gui.panes.Series" target="com.netflix.objects.Season">
+              <point x="0.0" y="-59.0" />
+              <point x="1028.7238225688002" y="1481.0" />
+              <point x="613.4833396142546" y="1481.0" />
+              <point x="613.4833396142546" y="691.0" />
+              <point x="652.9922681856832" y="691.0" />
+              <point x="-56.85714285714289" y="70.0" />
+            </edge>
+            <edge source="com.netflix.commons.Commons" target="com.netflix.objects.Genre">
+              <point x="-85.41666666666674" y="-114.0" />
+              <point x="331.83615346706847" y="998.0" />
+              <point x="389.27406704158875" y="998.0" />
+              <point x="389.27406704158875" y="157.0" />
+              <point x="961.4083333333333" y="157.0" />
+              <point x="-66.5" y="48.5" />
+            </edge>
+            <edge source="com.netflix.Netflix" target="com.netflix.commons.DatabaseHandle">
+              <point x="-62.625" y="-37.0" />
+              <point x="491.72867965367914" y="2071.0" />
+              <point x="167.66666666666674" y="2071.0" />
+              <point x="0.0" y="113.5" />
+            </edge>
+            <edge source="com.netflix.gui.NetflixGUI" target="com.netflix.gui.panes.GradientPanel">
+              <point x="108.18181818181824" y="-114.5" />
+              <point x="2011.8108225108222" y="1792.0" />
+              <point x="2423.9069742385586" y="1792.0" />
+              <point x="2423.9069742385586" y="1531.0" />
+              <point x="2307.9833333333336" y="1531.0" />
+              <point x="60.375" y="25.5" />
+            </edge>
+            <edge source="com.netflix.commons.DatabaseHandle" target="com.netflix.commons.SqlConnection">
+              <point x="-81.33333333333348" y="-113.5" />
+              <point x="86.33333333333326" y="1792.0" />
+              <point x="63.5" y="1792.0" />
+              <point x="-63.5" y="70.0" />
+            </edge>
+            <edge source="com.netflix.gui.panes.Films" target="java.lang.SuppressWarnings">
+              <point x="13.916666666666629" y="-48.0" />
+              <point x="2044.8236409052251" y="1541.0" />
+              <point x="2034.4968484268702" y="1541.0" />
+              <point x="2034.4968484268702" y="701.0" />
+              <point x="1803.1635150935367" y="701.0" />
+              <point x="48.66666666666663" y="25.5" />
+            </edge>
+            <edge source="com.netflix.objects.Episode" target="com.netflix.objects.Season">
+              <point x="-100.875" y="-70.0" />
+              <point x="737.2059654259431" y="701.0" />
+              <point x="709.8494110428261" y="701.0" />
+              <point x="0.0" y="70.0" />
+            </edge>
+            <edge source="com.netflix.objects.Film" target="com.netflix.objects.Genre">
+              <point x="-67.0" y="-103.5" />
+              <point x="1509.4968484268702" y="701.0" />
+              <point x="1513.129004329004" y="701.0" />
+              <point x="1513.129004329004" y="157.0" />
+              <point x="1075.4083333333333" y="157.0" />
+              <point x="47.5" y="48.5" />
+            </edge>
+            <edge source="com.netflix.gui.panes.Series" target="com.netflix.objects.Genre">
+              <point x="-78.66666666666674" y="-59.0" />
+              <point x="950.0571559021334" y="1521.0" />
+              <point x="530.2528201337352" y="1521.0" />
+              <point x="530.2528201337352" y="167.0" />
+              <point x="980.4083333333333" y="167.0" />
+              <point x="-47.5" y="48.5" />
+            </edge>
+            <edge source="com.netflix.gui.NetflixGUI" target="com.netflix.gui.panes.Series">
+              <point x="-64.90909090909099" y="-114.5" />
+              <point x="1838.719913419913" y="1772.0" />
+              <point x="1028.7238225688002" y="1772.0" />
+              <point x="0.0" y="59.0" />
+            </edge>
+            <edge source="com.netflix.gui.panes.AccountView" target="com.netflix.objects.Language">
+              <point x="37.06666666666672" y="-25.5" />
+              <point x="1399.6032467532464" y="1531.0" />
+              <point x="1398.4968484268702" y="1531.0" />
+              <point x="1398.4968484268702" y="177.0" />
+              <point x="1382.025" y="177.0" />
+              <point x="12.375" y="48.0" />
+            </edge>
+            <edge source="com.netflix.gui.NetflixGUI" target="com.netflix.gui.panes.AccountView">
+              <point x="-21.63636363636374" y="-114.5" />
+              <point x="1881.9926406926402" y="1752.0" />
+              <point x="1362.5365800865798" y="1752.0" />
+              <point x="0.0" y="25.5" />
+            </edge>
+            <edge source="com.netflix.objects.Account" target="com.netflix.objects.Profile">
+              <point x="0.0" y="92.5" />
+              <point x="1127.727056277056" y="978.0" />
+              <point x="1086.8874999999998" y="978.0" />
+              <point x="25.0" y="-103.5" />
+            </edge>
+            <edge source="com.netflix.gui.panes.AccountView" target="com.netflix.objects.Profile">
+              <point x="-55.60000000000002" y="-25.5" />
+              <point x="1306.9365800865796" y="1421.0" />
+              <point x="1061.8874999999998" y="1421.0" />
+              <point x="0.0" y="103.5" />
+            </edge>
+            <edge source="com.netflix.gui.NetflixGUI" target="com.netflix.gui.Common">
+              <point x="64.90909090909099" y="-114.5" />
+              <point x="1968.538095238095" y="1772.0" />
+              <point x="2204.9069742385586" y="1772.0" />
+              <point x="-69.5" y="80.5" />
+            </edge>
+            <edge source="com.netflix.gui.NetflixGUI" target="com.netflix.gui.panes.Overview">
+              <point x="0.0" y="-114.5" />
+              <point x="1903.629004329004" y="1742.0" />
+              <point x="1883.4968484268702" y="1742.0" />
+              <point x="0.0" y="136.5" />
+            </edge>
+            <edge source="com.netflix.commons.Commons" target="com.netflix.objects.Episode">
+              <point x="51.25" y="-114.0" />
+              <point x="468.5028201337352" y="958.0" />
+              <point x="722.7952511402287" y="958.0" />
+              <point x="-115.28571428571433" y="70.0" />
+            </edge>
+            <edge source="com.netflix.gui.panes.Films" target="com.netflix.objects.Film">
+              <point x="-41.75" y="-48.0" />
+              <point x="1989.1569742385586" y="1531.0" />
+              <point x="2012.4968484268702" y="1531.0" />
+              <point x="2012.4968484268702" y="1008.0" />
+              <point x="1681.1843484268702" y="1008.0" />
+              <point x="104.6875" y="103.5" />
+            </edge>
+            <edge source="com.netflix.objects.Profile" target="com.netflix.objects.Account">
+              <point x="0.0" y="-103.5" />
+              <point x="1061.8874999999998" y="968.0" />
+              <point x="1094.1556277056272" y="968.0" />
+              <point x="-33.571428571428555" y="92.5" />
+            </edge>
+          </edges>
+          <settings layout="Hierarchic Group" zoom="0.9310540319145574" x="103.7723652691563" y="1749.7723652691564" />
+          <SelectedNodes />
+          <Categories>
+            <Category>Fields</Category>
+            <Category>Constructors</Category>
+            <Category>Methods</Category>
+            <Category>Properties</Category>
+            <Category>Inner Classes</Category>
+          </Categories>
+          <SCOPE>All</SCOPE>
+          <VISIBILITY>private</VISIBILITY>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/commons/Commons.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="497">
+          <caret line="45" column="27" lean-forward="true" selection-start-line="45" selection-start-column="27" selection-end-line="45" selection-end-column="27" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Netflix.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="245">
-          <caret line="21" column="3" lean-forward="true" selection-start-line="21" selection-start-column="3" selection-end-line="21" selection-end-column="3" />
+        <state relative-caret-position="352">
+          <caret line="22" column="47" selection-start-line="22" selection-start-column="47" selection-end-line="22" selection-end-column="47" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gui/panes/GradientPanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="224">
+          <caret line="15" column="24" selection-start-line="15" selection-start-column="24" selection-end-line="15" selection-end-column="24" />
+          <folding>
+            <element signature="e#131#855#0" expanded="true" />
+            <element signature="e#854#855#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gui/panes/Overview.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="18" column="11" selection-start-line="18" selection-start-column="11" selection-end-line="18" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/objects/Account.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="12" column="25" selection-start-line="12" selection-start-column="18" selection-end-line="12" selection-end-column="25" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/objects/Profile.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="18" column="12" selection-start-line="18" selection-start-column="12" selection-end-line="18" selection-end-column="12" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gui/Common.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="181">
+          <caret line="71" column="3" lean-forward="true" selection-start-line="71" selection-start-column="3" selection-end-line="71" selection-end-column="3" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gui/panes/AccountView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="449">
+          <caret line="87" column="14" lean-forward="true" selection-start-line="87" selection-start-column="14" selection-end-line="87" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gui/NetflixGUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="230">
+          <caret line="210" lean-forward="true" selection-start-line="210" selection-end-line="210" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gui/panes/AccountRegister.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="256">
+          <caret line="106" column="44" selection-start-line="106" selection-start-column="44" selection-end-line="106" selection-end-column="44" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -829,11 +1403,20 @@
     <states>
       <state key="ArtifactsStructureConfigurable.UI">
         <settings>
-          <artifact-editor />
+          <artifact-editor>
+            <show-content>
+              <type id="javaee-facet-resources" />
+              <type id="jpa-descriptors" />
+              <type id="library" />
+              <type id="artifact" />
+            </show-content>
+          </artifact-editor>
+          <last-edited>Netflix:jar</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
                 <option value="0.2" />
+                <option value="0.5" />
               </list>
             </option>
           </splitter-proportions>
@@ -901,7 +1484,7 @@
       </state>
       <state key="ProjectLibrariesConfigurable.UI">
         <settings>
-          <last-edited>swing-fullscreen-macos-1.0.0</last-edited>
+          <last-edited>guava</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

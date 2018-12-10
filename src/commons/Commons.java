@@ -2,6 +2,9 @@ package com.netflix.commons;
 
 import com.netflix.objects.*;
 
+import javax.xml.bind.DatatypeConverter;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -26,5 +29,20 @@ public class Commons {
   public static void exception(Exception ex) {
     logger.log(Level.SEVERE, ex.getMessage());
     logger.log(Level.SEVERE, "Suspected cause : {0}", ex.getCause());
+  }
+
+  public static String hashMD5(String string) {
+    MessageDigest md = null;
+
+    String hash = "";
+    try {
+      md = MessageDigest.getInstance("MD5");
+      md.update(string.getBytes());
+      hash = DatatypeConverter.printHexBinary(md.digest());
+    } catch (NoSuchAlgorithmException ex) {
+      Commons.exception(ex);
+    }
+
+    return hash.toLowerCase();
   }
 }

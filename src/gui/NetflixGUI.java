@@ -66,8 +66,8 @@ public class NetflixGUI {
     frame.setSize(width, height);
 
     if (loggedIn) loadPanels();
-    else mainPanel.add(login());
-
+//    else mainPanel.add(login());
+      else mainPanel.add(AccountRegister.registerPanel(frame));
     // Make sure the application can be used full-screen on MacOS devices
     try {
       if (System.getProperty("os.name").startsWith("Mac"))
@@ -142,7 +142,7 @@ public class NetflixGUI {
     login.setBorder(new EmptyBorder(15, 0, 0, 0));
 
     // Sample login, will be grabbed from database later
-    Commons.users.put("guuslieben", "pass");
+    Commons.users.put("guuslieben", "1a1dc91c907325c69271ddf0c944bc72");
 
     // If someone presses the button..
     login.addActionListener(
@@ -150,7 +150,8 @@ public class NetflixGUI {
             Commons.users.forEach(
                 (key, value) -> { // Loop through the users
                   // and check if they match the input
-                  if (usernameBox.getText().equals(key) && passwordBox.getText().equals(value)) {
+                  if (usernameBox.getText().equals(key)
+                      && Commons.hashMD5(passwordBox.getText()).equals(value)) {
                     // Clear the mainPanel (removing login panel), set loggedIn status to true and
                     // load the media panels
                     Overview.clearPane(mainPanel);

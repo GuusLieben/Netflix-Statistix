@@ -38,8 +38,7 @@ public class SqlConnection {
 
   public ResultSet executeSql(String sqlQuery) {
     ResultSet rs = null;
-    try {
-      Statement statement = this.connection.createStatement();
+    try (Statement statement = this.connection.createStatement()) {
       // Make sure the results are passed
       rs = statement.executeQuery(sqlQuery);
     } catch (Exception e) {
@@ -50,8 +49,7 @@ public class SqlConnection {
 
   public boolean executeSqlNoResult(String sqlQuery) {
     // Return true if the query succeeded, even if it has no resultset
-    try {
-      Statement statement = this.connection.createStatement();
+    try (Statement statement = this.connection.createStatement()) {
       return statement.execute(sqlQuery);
     } catch (Exception e) {
       Commons.exception(e);

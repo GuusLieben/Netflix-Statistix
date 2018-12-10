@@ -1,9 +1,0 @@
-
-Ÿsquid:S1598"‚This file "Common.java" should be located in "com/netflix/gui" directory, not in "/Users/guuslieben/IdeaProjects/Netflix/src/gui".(¤ÿ¿ÿýÿÿÿÿ
-Psquid:S1161=":Add the "@Override" annotation above this method signature(îÓ…
-_squid:S1192b"HDefine a constant instead of duplicating this literal "Account" 3 times.(‘…Ý©
-Qsquid:S11613":Add the "@Override" annotation above this method signature(€Ý§ò
-`squid:S2259„"CA "NullPointerException" could be thrown; "image" is nullable here.(äÜ´Œûÿÿÿÿ
-Qsquid:S1118":Add a private constructor to hide the implicit public one.(Ÿ§äÙ
-bsquid:S1192a"FDefine a constant instead of duplicating this literal "Films" 3 times.(Ö å€úÿÿÿÿ
-^squid:S1192`"GDefine a constant instead of duplicating this literal "Series" 3 times.(­¼…Û

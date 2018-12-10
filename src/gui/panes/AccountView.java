@@ -19,7 +19,7 @@ public class AccountView {
 
     // Create a sample account with profile and additional data
     Account accountView = new Account("Guus", true, "g.lieben@avans.student.nl");
-    Profile profile = new Profile(accountView, "Profiel 1");
+    Profile profile = new Profile(accountView, "Profiel 1", 12);
     profile.viewFilm(
         new Film(
             8.3,
@@ -29,7 +29,7 @@ public class AccountView {
             new Time(1, 57, 38),
             "Bob"));
 
-    Profile profile2 = new Profile(accountView, "Profiel 2");
+    Profile profile2 = new Profile(accountView, "Profiel 2", 19);
 
     Serie serie =
         new Serie(new Genre("Drama"), new Language("nl_NL", "Dutch"), "House of Cards", 8.6);
