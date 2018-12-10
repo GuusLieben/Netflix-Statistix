@@ -3,18 +3,18 @@ package com.netflix.objects;
 public class Language {
 
   private String langCode;
-  private String language;
+  private String languageName;
 
-  public Language(String langCode, String language) {
+  public Language(String langCode, String languageName) {
     this.langCode = langCode;
-    this.language = language;
+    this.languageName = languageName;
   }
 
   public String getLangCode() {
     return langCode;
   }
 
-  public String getLanguage() {
-    return language;
+  public String getLanguageName() {
+    return languageName;
   }
 }

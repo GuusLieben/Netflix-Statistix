@@ -2,18 +2,18 @@ package com.netflix.objects;
 
 public class Genre {
 
-  private String genre;
+  private String genreName;
 
   public Genre(String genre) {
-    this.genre = genre;
+    this.genreName = genre;
   }
 
   public String getGenre() {
-    return genre;
+    return genreName;
   }
 
   @Override
   public String toString() {
-    return genre;
+    return genreName;
   }
 }

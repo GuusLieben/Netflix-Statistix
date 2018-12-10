@@ -10,8 +10,6 @@ import static java.awt.BorderLayout.CENTER;
 import static java.awt.BorderLayout.NORTH;
 
 public class Series {
-  private static String title = "House of Cards";
-  private static int episodes = 73;
   private static String[] choices = {
     "House of Cards",
     "Daredevil",
@@ -29,7 +27,7 @@ public class Series {
 
     Serie serie =
         new Serie(new Genre("Drama"), new Language("nl_NL", "Dutch"), "House of Cards", 8.6);
-    Season season = new Season(serie, "newSeason", 1, 1);
+    Season season = new Season(serie, "newSeason", 1);
     Episode episode = new Episode(season, "Pilot", serie, 16.57);
     Episode episode2 = new Episode(season, "Pilot Continued", serie, 12.35);
 
@@ -47,12 +45,21 @@ public class Series {
     JComboBox<String> comboBox = new JComboBox<>(choices);
     comboBox.setVisible(true);
 
+    String[] seasons = {"Season 1", "Season 2"};
+    JComboBox<String> seasonBox = new JComboBox<>(seasons);
+
     // Add label + dropdown
     selectSeries.add(selectSerie);
     selectSeries.add(comboBox);
+    selectSeries.add(seasonBox);
 
     selectSeries.setBackground(Color.WHITE);
 
     return selectSeries;
+  }
+
+  @Override
+  public String toString() {
+    return choices[0];
   }
 }

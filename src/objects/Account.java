@@ -4,6 +4,7 @@ import com.netflix.gui.NetflixGUI;
 
 import javax.swing.*;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.regex.Pattern;
 
 public class Account {
@@ -26,6 +27,7 @@ public class Account {
   }
 
   public boolean emailIsValid(String email) {
+      // Check that the email matches a proper format (using Regex)
     String emailRegex =
         "^[a-zA-Z0-9_+&*-]+(?:\\."
             + "[a-zA-Z0-9_+&*-]+)*@"
@@ -45,7 +47,7 @@ public class Account {
     return isAdmin;
   }
 
-  public ArrayList<Profile> getProfiles() {
+  public List<Profile> getProfiles() {
     return profiles;
   }
 
