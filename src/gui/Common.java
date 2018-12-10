@@ -14,20 +14,25 @@ import java.util.HashMap;
 
 import static java.awt.BorderLayout.*;
 
-class Common {
+public class Common {
 
-  static JPanel logo() {
+  public static JPanel logo() {
     // Create and add logo above menu
-      GradientPanel gradientPanel = new GradientPanel();
+    GradientPanel gradientPanel = new GradientPanel();
 
     JPanel logo = gradientPanel.getGradientPanel();
+
     logo.setLayout(new BorderLayout());
-    Image image = new ImageIcon("netflix.png").getImage();
+
+    // Get the Netflix logo and scale it properly
+    Image image = new ImageIcon("resources/netflix.png").getImage();
     ImageIcon icon = new ImageIcon(image.getScaledInstance(68, 30, Image.SCALE_SMOOTH));
 
+    // Use a label to attach the image as icon
     JLabel thumb = new JLabel();
     thumb.setIcon(icon);
 
+    // Fix some styling and add the label with icon
     logo.setBackground(new Color(151, 2, 4));
     logo.setBorder(new EmptyBorder(10, 10, 7, 0));
     logo.add(thumb, WEST);
@@ -35,39 +40,50 @@ class Common {
     return logo;
   }
 
-  static void addHoverEffect(JButton button) {
-      // MouseOver effects for the menu (underline and cursor effect)
-      HashMap<TextAttribute, Object> textAttrMap = new HashMap<>();
+  public static void addHoverEffect(JButton button) {
+    // MouseOver effects for the menu (underline and cursor effect)
+    HashMap<TextAttribute, Object> textAttrMap = new HashMap<>();
 
-      button.addMouseListener(
-              new MouseAdapter() {
-                  public void mouseEntered(MouseEvent evt) {
-                      textAttrMap.put(TextAttribute.UNDERLINE, TextAttribute.UNDERLINE_LOW_GRAY);
-                      button.setFont(button.getFont().deriveFont(textAttrMap));
-                      Cursor hoverCursor = new Cursor(Cursor.HAND_CURSOR);
-                      button.setCursor(hoverCursor);
-                  }
+    // Listens for mouse events
+    button.addMouseListener(
+        new MouseAdapter() {
+          // If you hover it ...
+          @Override
+          public void mouseEntered(MouseEvent evt) {
+            // Underline the text...
+            textAttrMap.put(TextAttribute.UNDERLINE, TextAttribute.UNDERLINE_LOW_GRAY);
+            button.setFont(button.getFont().deriveFont(textAttrMap));
+            // And change the cursor
+            Cursor hoverCursor = new Cursor(Cursor.HAND_CURSOR);
+            button.setCursor(hoverCursor);
+          }
 
-                  public void mouseExited(MouseEvent evt) {
-                      textAttrMap.put(TextAttribute.UNDERLINE, null);
-                      button.setFont(button.getFont().deriveFont(textAttrMap));
-                      Cursor normalCursor = new Cursor(Cursor.DEFAULT_CURSOR);
-                      button.setCursor(normalCursor);
-                  }
-              });
+          // If you are no longer hovering it ...
+          @Override
+          public void mouseExited(MouseEvent evt) {
+            // Remove the underline effect ...
+            textAttrMap.put(TextAttribute.UNDERLINE, null);
+            button.setFont(button.getFont().deriveFont(textAttrMap));
+            // And reset the cursor ...
+            Cursor normalCursor = new Cursor(Cursor.DEFAULT_CURSOR);
+            button.setCursor(normalCursor);
+          }
+        });
   }
 
   static JPanel menu() {
     // Create and set up the content pane.
+    JPanel menu = new GradientPanel().getGradientPanel();
     JPanel wrapper = new JPanel(new BorderLayout());
-    JPanel menu = new JPanel();
+
+    // Basic styling
     menu.setBorder(new EmptyBorder(0, 5, 0, 15));
     menu.setBackground(new Color(34, 34, 34));
     wrapper.setBackground(new Color(34, 34, 34));
     menu.setLayout(new FlowLayout(FlowLayout.LEFT));
 
+    // Fill the menu with buttons, then add the menu to the wrapper
     fillMenu(menu);
-
     wrapper.add(menu);
 
     return wrapper;
@@ -77,6 +93,8 @@ class Common {
     // Make all content (buttons) align vertically
     pane.setLayout(new BoxLayout(pane, BoxLayout.Y_AXIS));
     JPanel panel = new JPanel(new BorderLayout());
+
+    // Add buttons with their appropriate location and label
     addButton("Series", panel, NORTH);
     addButton("Films", panel, CENTER);
     addButton("Account", panel, SOUTH);
@@ -88,27 +106,35 @@ class Common {
     // Add button with text, align left
     JButton button = new JButton(text);
     button.setForeground(Color.WHITE);
-
     JPanel wrapper = new JPanel(new FlowLayout(FlowLayout.LEFT));
 
+    // Background styling
     wrapper.setBackground(new Color(34, 34, 34));
+
+    // Grab appropriate image depending on the label, image will be null if it's another label
     Image image = null;
-    if (text.equals("Series")) {
-      NetflixGUI.switchPane(button, "Series");
-      image = new ImageIcon("serie.png").getImage();
-    }
-    if (text.equals("Films")) {
-      NetflixGUI.switchPane(button, "Films");
-      image = new ImageIcon("film.png").getImage();
-    }
-    if (text.equals("Account")) {
-      NetflixGUI.switchPane(button, "Account");
-      image = new ImageIcon("account.png").getImage();
+    switch (text) {
+      case "Series":
+        NetflixGUI.switchPane(button, "Series");
+        image = new ImageIcon("resources/serie.png").getImage();
+        break;
+      case "Films":
+        NetflixGUI.switchPane(button, "Films");
+        image = new ImageIcon("resources/film.png").getImage();
+        break;
+      case "Account":
+        NetflixGUI.switchPane(button, "Account");
+        image = new ImageIcon("resources/account.png").getImage();
+        break;
+      default:
+        break;
     }
 
+    // Scale icon to fit labels, then add it to the label
     ImageIcon icon = new ImageIcon(image.getScaledInstance(12, 12, Image.SCALE_SMOOTH));
     button.setIcon(icon);
 
+    // Add hover effect (underline and cursor)
     addHoverEffect(button);
 
     // Style buttons
@@ -123,13 +149,14 @@ class Common {
     JPanel panel = new JPanel();
     panel.setBorder(new EmptyBorder(5, 0, 0, 0));
     panel.setBackground(new Color(34, 34, 34));
-    panel.add(button);
 
+    // Add all the things
+    panel.add(button);
     wrapper.add(panel);
     container.add(wrapper, location);
   }
 
-  static JPanel bottomPane() {
+  public static JPanel bottomPane() {
     // Create bottom panel (static information)
     JPanel bottomPanel = new JPanel(new BorderLayout());
 
@@ -143,9 +170,11 @@ class Common {
         new Font(creators.getFont().getFontName(), Font.ITALIC, creators.getFont().getSize() - 2));
     creators.setForeground(new Color(129, 130, 133));
 
+    // Project label
     JLabel project = new JLabel("Netflix Statistix");
     project.setForeground(new Color(219, 0, 0));
 
+    // Add all the things
     bottomPanel.add(project, WEST);
     bottomPanel.add(creators, EAST);
 

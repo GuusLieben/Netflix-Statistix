@@ -27,7 +27,7 @@ public class Series {
 
     Serie serie =
         new Serie(new Genre("Drama"), new Language("nl_NL", "Dutch"), "House of Cards", 8.6);
-    Season season = new Season(serie, "newSeason", 1, 1);
+    Season season = new Season(serie, "newSeason", 1);
     Episode episode = new Episode(season, "Pilot", serie, 16.57);
     Episode episode2 = new Episode(season, "Pilot Continued", serie, 12.35);
 

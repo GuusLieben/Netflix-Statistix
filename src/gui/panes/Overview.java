@@ -21,7 +21,6 @@ public class Overview {
   private String description;
 
   private Overview() {
-    main.setBorder(BorderFactory.createLineBorder(Color.black));
     inner.setBorder(new EmptyBorder(10, 10, 10, 10));
   }
 
@@ -32,7 +31,7 @@ public class Overview {
         String.format(
             "<html>Genre : %s<br>Language : %s<br>Rating : %s<br>Seasons : %d<br>Episodes : %d</html>",
             serie.getGenre(),
-            serie.getLang().getLanguage(),
+            serie.getLang().getLanguageName(),
             serie.getRating(),
             serie.getSeasons(),
             serie.getEpisodes());
@@ -45,7 +44,7 @@ public class Overview {
         String.format(
             "<html>Genre : %s<br>Language : %s<br>Rating : %s<br>Director : %s<br>Duration : %s</html>",
             film.getGenre(),
-            film.getLang().getLanguage(),
+            film.getLang().getLanguageName(),
             film.getRating(),
             film.getDirector(),
             film.getDuration());
@@ -60,7 +59,7 @@ public class Overview {
     if (film == null) overview = new Overview(serie);
     if (serie == null) overview = new Overview(film);
 
-    overviewPanel.add(overview.Panel());
+    overviewPanel.add(overview.getPanel());
 
     overviewPanel.setBackground(Color.WHITE);
 
@@ -73,7 +72,7 @@ public class Overview {
     con.revalidate();
   }
 
-  private JPanel Panel() {
+  private JPanel getPanel() {
     clearPane(main);
     clearPane(inner);
     clearPane(aboutMediaInner);
@@ -104,12 +103,12 @@ public class Overview {
     quickView.add(descriptionLabel, SOUTH);
     inner.add(quickView, NORTH);
 
-    JScrollPane SerieDisplay = new JScrollPane(aboutMediaInner);
-    SerieDisplay.setBorder(null);
-    SerieDisplay.setPreferredSize(new Dimension(SerieDisplay.getWidth(), SerieDisplay.getHeight()));
-    SerieDisplay.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+    JScrollPane serieDisplay = new JScrollPane(aboutMediaInner);
+    serieDisplay.setBorder(null);
+    serieDisplay.setPreferredSize(new Dimension(serieDisplay.getWidth(), serieDisplay.getHeight()));
+    serieDisplay.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
-    inner.add(SerieDisplay, CENTER);
+    inner.add(serieDisplay, CENTER);
     main.add(inner);
 
     return main;
