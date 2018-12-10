@@ -1,5 +1,7 @@
 package com.netflix.objects;
 
+import com.netflix.commons.Commons;
+
 public class Serie {
 
   private String title;
@@ -17,6 +19,14 @@ public class Serie {
     this.seasons = 0;
     this.episodes = 0;
   }
+
+    public static Serie getSerieByName(String title) {
+        return Commons.series
+                .stream()
+                .filter(serie -> serie.getTitle().equals(title))
+                .findFirst()
+                .orElse(null);
+    }
 
   public Genre getGenre() {
     return genre;

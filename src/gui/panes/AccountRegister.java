@@ -5,29 +5,29 @@
 
 package com.netflix.gui.panes;
 
-import com.netflix.objects.Account;
-
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
-import java.awt.event.ActionEvent;
 
 import static com.netflix.gui.Common.*;
-import static java.awt.BorderLayout.*;
+import static java.awt.BorderLayout.CENTER;
 
 public class AccountRegister {
 
-  public static void createAccount(Account account) {}
-
   public static JPanel registerPanel(JFrame frame) {
     frame.setResizable(false);
+    frame.setSize(frame.getWidth(), 550);
+    Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+    frame.setLocation(
+        dim.width / 2 - frame.getSize().width / 2, dim.height / 2 - frame.getSize().height / 2);
+
     // Background gradient
     GradientPanel gradientPanel = new GradientPanel();
 
     // Set panels
-    JPanel main = new JPanel(new BorderLayout());
-    JPanel box = gradientPanel.getGradientPanel();
-    box.setLayout(new BorderLayout());
+    JPanel mainRegister = new JPanel(new BorderLayout());
+    JPanel boxRegister = gradientPanel.getGradientPanel();
+    boxRegister.setLayout(new BorderLayout());
     JPanel leftBox = new JPanel(new GridBagLayout());
     JPanel rightBox = new JPanel(new GridBagLayout());
     leftBox.setOpaque(false);
@@ -36,10 +36,18 @@ public class AccountRegister {
     // GridBagLayout constraints to throw each new item on the appropriate y level
     GridBagConstraints constraints = new GridBagConstraints();
 
-    box.setBorder(new EmptyBorder(20, 20, 10, 25));
+    boxRegister.setBorder(new EmptyBorder(20, 20, 10, 25));
 
     // Title styling
     JLabel registerTitle = new JLabel("Registreer");
+    JCheckBox isAdminCheck = new JCheckBox("Gebruiker is admin?");
+    isAdminCheck.setForeground(Color.LIGHT_GRAY);
+    isAdminCheck.setBorder(new EmptyBorder(0, 10, 0, 0));
+
+    JPanel titleAndCheck = new JPanel(new BorderLayout());
+    titleAndCheck.add(registerTitle, BorderLayout.CENTER);
+    titleAndCheck.add(isAdminCheck, BorderLayout.SOUTH);
+
     registerTitle.setFont(
         new Font(registerTitle.getFont().getName(), registerTitle.getFont().getStyle(), 18));
 
@@ -48,10 +56,10 @@ public class AccountRegister {
     JTextField emailBox2 = new JTextField(20);
     JPasswordField passwordBox = new JPasswordField(20);
     JPasswordField passwordBox2 = new JPasswordField(20);
-    JTextField streetBox = new JTextField(10);
-    JTextField numberBox = new JTextField(10);
-    JTextField additionBox = new JTextField(10);
-    JTextField cityBox = new JTextField(10);
+    JTextField streetBox = new JTextField(15);
+    JTextField numberBox = new JTextField(15);
+    JTextField additionBox = new JTextField(15);
+    JTextField cityBox = new JTextField(15);
 
     // Button
     JButton register = new JButton("Registreren");
@@ -66,17 +74,26 @@ public class AccountRegister {
     registerTitle.setBorder(new EmptyBorder(0, 10, 20, 10));
     register.setBorder(new EmptyBorder(15, 0, 0, 0));
 
-    // If someone presses the button..
+    /*
+    If someone presses the button..
+
     register.addActionListener(
-        (ActionEvent e) -> {
-          //        DatabaseHandle.addUser();
-        });
+    (ActionEvent e) -> Netflix.database.registerAccount(
+    new Account(
+    isAdminCheck.isSelected(),
+    emailBox.getText(),
+    streetBox.getText(),
+    Integer.parseInt(numberBox.getText()),
+    additionBox.getText(),
+    cityBox.getText())));
+    */
 
     addHoverEffect(register);
 
     // Add items in order
     constraints.gridy = 1;
-    box.add(registerTitle, BorderLayout.NORTH);
+    titleAndCheck.setOpaque(false);
+    boxRegister.add(titleAndCheck, BorderLayout.NORTH);
 
     addBox(leftBox, constraints, emailBox, "E-mail");
     addBox(leftBox, constraints, emailBox2, "Bevestig e-mail");
@@ -93,26 +110,26 @@ public class AccountRegister {
     addBox(rightBox, constraints, cityBox, "Woonplaats");
 
     constraints.gridy++;
-    box.add(register, BorderLayout.SOUTH);
+    boxRegister.add(register, BorderLayout.SOUTH);
 
-    box.add(leftBox, BorderLayout.CENTER);
-    box.add(rightBox, BorderLayout.EAST);
+    boxRegister.add(leftBox, BorderLayout.CENTER);
+    boxRegister.add(rightBox, BorderLayout.EAST);
 
     register.setHorizontalAlignment(SwingConstants.RIGHT);
 
     // Styling
-    box.setBackground(new Color(43, 43, 43));
+    boxRegister.setBackground(new Color(43, 43, 43));
     register.setForeground(Color.LIGHT_GRAY);
     registerTitle.setForeground(Color.LIGHT_GRAY);
-    register.setBorder(new EmptyBorder(20,20,10,0));
+    register.setBorder(new EmptyBorder(20, 20, 10, 0));
     leftBox.setBorder(new EmptyBorder(0, -50, 0, 0));
 
     // Add all the things
-    main.add(logo(), BorderLayout.NORTH);
-    main.add(box, BorderLayout.CENTER);
-    main.add(bottomPane(), BorderLayout.SOUTH);
+    mainRegister.add(logo(), BorderLayout.NORTH);
+    mainRegister.add(boxRegister, BorderLayout.CENTER);
+    mainRegister.add(bottomPane(), BorderLayout.SOUTH);
 
-    return main;
+    return mainRegister;
   }
 
   private static void addBox(
@@ -124,7 +141,7 @@ public class AccountRegister {
 
     JPanel fieldLabel = new JPanel(new BorderLayout());
     JLabel descriptionLabel = new JLabel(description);
-    descriptionLabel.setBorder(new EmptyBorder(5,0,5,0));
+    descriptionLabel.setBorder(new EmptyBorder(5, 0, 5, 0));
     fieldLabel.add(descriptionLabel, BorderLayout.NORTH);
     fieldLabel.add(component, CENTER);
 

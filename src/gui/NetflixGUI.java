@@ -22,7 +22,7 @@ public class NetflixGUI {
 
   public static JFrame frame;
   private static JPanel lpane = new JPanel(new BorderLayout());
-  private static JPanel mainPanel = new JPanel(new BorderLayout());
+  public static JPanel mainPanel = new JPanel(new BorderLayout());
   private boolean loggedIn;
 
   // Basic constructor
@@ -66,8 +66,8 @@ public class NetflixGUI {
     frame.setSize(width, height);
 
     if (loggedIn) loadPanels();
-//    else mainPanel.add(login());
-      else mainPanel.add(AccountRegister.registerPanel(frame));
+    else mainPanel.add(login());
+
     // Make sure the application can be used full-screen on MacOS devices
     try {
       if (System.getProperty("os.name").startsWith("Mac"))
@@ -125,6 +125,13 @@ public class NetflixGUI {
 
     // Button
     JButton login = new JButton("Login");
+    JButton register = new JButton("Register");
+    JPanel buttonFrame = new JPanel(new BorderLayout());
+
+    buttonFrame.add(login, BorderLayout.WEST);
+    buttonFrame.add(register, BorderLayout.EAST);
+
+    buttonFrame.setOpaque(false);
 
     // Make sure all text in passwordBox is obscured with a specific character
     passwordBox.setEchoChar('⚬');
@@ -139,7 +146,8 @@ public class NetflixGUI {
 
     // Add borders to create extra spacing
     loginTitle.setBorder(new EmptyBorder(0, 10, 20, 10));
-    login.setBorder(new EmptyBorder(15, 0, 0, 0));
+    login.setBorder(new EmptyBorder(15, 0, 0, 10));
+    register.setBorder(new EmptyBorder(15, 10, 0, 0));
 
     // Sample login, will be grabbed from database later
     Commons.users.put("guuslieben", "1a1dc91c907325c69271ddf0c944bc72");
@@ -167,6 +175,12 @@ public class NetflixGUI {
                         JOptionPane.WARNING_MESSAGE);
                   }
                 }));
+
+    register.addActionListener(
+        (ActionEvent e) -> {
+          Overview.clearPane(mainPanel);
+          mainPanel.add(AccountRegister.registerPanel(frame));
+        });
 
     // If someone presses enter on the passwordBox, simulate a button click
     passwordBox.addKeyListener(
@@ -208,6 +222,7 @@ public class NetflixGUI {
         });
 
     addHoverEffect(login);
+    addHoverEffect(register);
 
     // Lazy spacing method, as the emptyborder added later will be colored
     JPanel spacer = new JPanel();
@@ -226,12 +241,13 @@ public class NetflixGUI {
     loginbox.add(passwordBox, constraints);
 
     constraints.gridy++; // 5
-    loginbox.add(login, constraints);
+    loginbox.add(buttonFrame, constraints);
 
     // Styling
     loginbox.setBackground(new Color(43, 43, 43));
     loginTitle.setForeground(Color.LIGHT_GRAY);
     login.setForeground(Color.LIGHT_GRAY);
+    register.setForeground(Color.LIGHT_GRAY);
     usernameBox.setForeground(Color.LIGHT_GRAY);
     passwordBox.setForeground(Color.LIGHT_GRAY);
     usernameBox.setCaretColor(Color.LIGHT_GRAY);

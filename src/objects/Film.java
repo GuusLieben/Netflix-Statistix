@@ -1,5 +1,7 @@
 package com.netflix.objects;
 
+import com.netflix.commons.Commons;
+
 import java.sql.Time;
 
 @SuppressWarnings("deprecation")
@@ -20,6 +22,14 @@ public class Film {
     this.title = title;
     this.duration = duration;
     this.director = director;
+  }
+
+  public static Film getFilmByName(String title) {
+    return Commons.films
+        .stream()
+        .filter(film -> film.getTitle().equals(title))
+        .findFirst()
+        .orElse(null);
   }
 
   public double getRating() {

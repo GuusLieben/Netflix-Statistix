@@ -1,11 +1,12 @@
 package com.netflix.gui.panes;
 
-import com.netflix.objects.*;
+import com.netflix.commons.Commons;
+import com.netflix.objects.Film;
+import com.netflix.objects.Serie;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
-import java.sql.Time;
 
 @SuppressWarnings("deprecation")
 public class AccountView {
@@ -15,37 +16,11 @@ public class AccountView {
     JPanel panel = new JPanel(new FlowLayout(FlowLayout.LEFT));
     panel.setBorder(new EmptyBorder(10, 10, 10, 10));
 
-    //////////// Start the sample data
-
-    // Create a sample account with profile and additional data
-    Account accountView = new Account("Guus", true, "g.lieben@avans.student.nl");
-    Profile profile = new Profile(accountView, "Profiel 1", 12);
-    profile.viewFilm(
-        new Film(
-            8.3,
-            new Genre("Romance"),
-            new Language("nl_NL", "Dutch"),
-            "The Avengers",
-            new Time(1, 57, 38),
-            "Bob"));
-
-    Profile profile2 = new Profile(accountView, "Profiel 2", 19);
-
-    Serie serie =
-        new Serie(new Genre("Drama"), new Language("nl_NL", "Dutch"), "House of Cards", 8.6);
-    Season season = new Season(serie, "newSeason", 1);
-    Episode episode = new Episode(season, "Pilot", serie, 16.57);
-    Episode episode2 = new Episode(season, "Pilot Continued", serie, 12.35);
-
-    profile2.viewEpisode(episode);
-    profile2.viewEpisode(episode2);
-
-    //////////// End the sample data
-
     // Label for profiles
     JLabel profileLabel = new JLabel("<html>"); // Use html because we can
     // For all profiles
-    accountView
+    Commons.currentUser
+        .getAccount()
         .getProfiles()
         .forEach(
             prof -> {
@@ -76,10 +51,9 @@ public class AccountView {
             new JLabel(
                 String.format(
                     "<html><h1>Account overzicht</h1>"
-                        + "<br>Account name : %s<br>Is admin : %s<br>E-mail : %s<br><br><b>Profile(s) attached :</b> <br>%s</html>",
-                    accountView.getName(),
-                    accountView.isAdmin(),
-                    accountView.getEmail(),
+                        + "<br>Is admin : %s<br>E-mail : %s<br><br><b>Profile(s) attached :</b> <br>%s</html>",
+                    Commons.currentUser.getAccount().isAdmin(),
+                    Commons.currentUser.getAccount().getEmail(),
                     profileLabel.getText()));
 
     // Add all the things
