@@ -9,16 +9,22 @@ import java.util.regex.Pattern;
 
 public class Account {
 
-  private String name;
   private boolean isAdmin;
   private ArrayList<Profile> profiles;
   private String email;
+  private String street;
+  private int houseNumber;
+  private String addition;
+  private String city;
 
-  public Account(String name, boolean isAdmin, String email) {
+  public Account(boolean isAdmin, String email, String street, int houseNumber, String addition, String city) {
     if (emailIsValid(email)) {
-      this.name = name;
       this.isAdmin = isAdmin;
       this.email = email;
+      this.street = street;
+      this.houseNumber = houseNumber;
+      this.addition = addition;
+      this.city = city;
       profiles = new ArrayList<>();
     } else {
       JOptionPane.showMessageDialog(
@@ -37,10 +43,6 @@ public class Account {
     Pattern pat = Pattern.compile(emailRegex);
     if (email == null) return false;
     return pat.matcher(email).matches();
-  }
-
-  public String getName() {
-    return name;
   }
 
   public boolean isAdmin() {

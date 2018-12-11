@@ -39,3 +39,5 @@ P
  src/gui/panes/GradientPanel.java,9/3/93b192ddb6ff57de2536b93883c3f153372eac64
 K
 src/gui/panes/Overview.java,a/d/adce0bad4a04db1a7369c2d4e9c259934d27b37d
+R
+"src/gui/panes/AccountRegister.java,b/f/bf31e39c407d37c1350db73ed74f2e0b69d9dfc8

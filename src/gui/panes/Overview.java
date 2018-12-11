@@ -1,5 +1,6 @@
 package com.netflix.gui.panes;
 
+import com.netflix.commons.Commons;
 import com.netflix.objects.Film;
 import com.netflix.objects.Serie;
 
@@ -15,12 +16,13 @@ public class Overview {
   private static JPanel main = new JPanel(new BorderLayout());
   private static JPanel inner = new JPanel(new BorderLayout());
   private static JPanel aboutMediaInner = new JPanel(new BorderLayout());
+  private static JPanel overviewPanel = new JPanel(new BorderLayout());
 
   // Common stuff
   private JLabel title;
   private String description;
 
-  private Overview() {
+  public Overview() {
     inner.setBorder(new EmptyBorder(10, 10, 10, 10));
   }
 
@@ -50,26 +52,29 @@ public class Overview {
             film.getDuration());
   }
 
-  static JPanel newOverview(Film film, Serie serie) {
+  public static void clearPane(Container con) {
+    con.removeAll();
+    con.repaint();
+    con.revalidate();
+  }
 
-    JPanel overviewPanel = new JPanel(new BorderLayout());
+  void clearOverview() {
+    Overview.clearPane(overviewPanel);
+  }
+
+  JPanel getOverview(Film film, Serie serie) {
 
     // Add sub-panels
     Overview overview = null;
-    if (film == null) overview = new Overview(serie);
-    if (serie == null) overview = new Overview(film);
+    if ((serie != null) && (film == null)) overview = new Overview(serie);
+    else if ((film != null) && (serie == null)) overview = new Overview(film);
+    else Commons.exception(new Exception("Could not collect series/films"));
 
     overviewPanel.add(overview.getPanel());
 
     overviewPanel.setBackground(Color.WHITE);
 
     return overviewPanel;
-  }
-
-  public static void clearPane(Container con) {
-    con.removeAll();
-    con.repaint();
-    con.revalidate();
   }
 
   private JPanel getPanel() {
