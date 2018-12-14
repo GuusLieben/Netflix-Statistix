@@ -17,6 +17,8 @@ import java.util.HashMap;
 
 public class ActionListeners {
 
+  private static String usernameBoxValue;
+
   public static void mouseEventUnderline(JButton button) {
     // MouseOver effects for the menu (underline and cursor effect)
     HashMap<TextAttribute, Object> textAttrMap = new HashMap<>();
@@ -48,13 +50,14 @@ public class ActionListeners {
         });
   }
 
-  public static void loginClickEvent(JButton login, String username, String passwordMD5) {
+  public static void loginClickEvent(JButton login, String passwordMD5) {
     login.addActionListener(
         (ActionEvent e) ->
             Commons.users.forEach(
                 (key, value) -> { // Loop through the users
                   // and check if they match the input
-                  if (username.equals(key) && Commons.hashMD5(passwordMD5).equals(value)) {
+                  if (usernameBoxValue.equals(key) && Commons.hashMD5(passwordMD5).equals(value)) {
+                      Commons.logger.info("Verified login '" + usernameBoxValue + "', '" + Commons.hashMD5(passwordMD5) + "'");
                     // Clear the mainPanel (removing login panel), set loggedIn status to true and
                     // load the media panels
                     Overview.clearPane(NetflixGUI.mainPanel);
@@ -67,7 +70,7 @@ public class ActionListeners {
                         NetflixGUI.frame,
                         "Incorrect credentials, please try again",
                         null,
-                        JOptionPane.WARNING_MESSAGE);
+                        JOptionPane.ERROR_MESSAGE);
                   }
                 }));
   }
@@ -80,14 +83,12 @@ public class ActionListeners {
             if (e.getKeyChar() == KeyEvent.VK_ENTER) button.doClick();
           }
 
-          @Override
           public void keyPressed(KeyEvent e) {
-            throw new UnsupportedOperationException();
+              // Ignored
           }
 
-          @Override
           public void keyReleased(KeyEvent e) {
-            throw new UnsupportedOperationException();
+              // Ignored
           }
         });
   }
@@ -101,14 +102,13 @@ public class ActionListeners {
             if (textField.getText().equals("")) textField.setText(s);
           }
 
-          @Override
           public void keyPressed(KeyEvent e) {
-            throw new UnsupportedOperationException();
+              // Ignored
           }
 
           @Override
           public void keyReleased(KeyEvent e) {
-            throw new UnsupportedOperationException();
+            usernameBoxValue = textField.getText();
           }
         });
   }

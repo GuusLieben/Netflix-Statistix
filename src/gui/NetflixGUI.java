@@ -1,8 +1,7 @@
 package com.netflix.gui;
-
-import com.netflix.commons.Commons;
 import com.netflix.gui.listeners.ActionListeners;
-import com.netflix.gui.panes.*;
+import com.netflix.gui.panes.GradientPanel;
+import com.netflix.gui.panes.Series;
 import com.raphaellevy.fullscreen.FullScreenException;
 import com.raphaellevy.fullscreen.FullScreenMacOS;
 
@@ -95,7 +94,7 @@ public class NetflixGUI {
         new Font(loginTitle.getFont().getName(), loginTitle.getFont().getStyle(), 18));
 
     // Basic text boxes
-    JTextField usernameBox = new JTextField("Username ...", 20);
+    JTextField usernameBox = new JTextField("Username...", 20);
     JPasswordField passwordBox = new JPasswordField(20);
 
     // Button
@@ -123,12 +122,6 @@ public class NetflixGUI {
     loginTitle.setBorder(new EmptyBorder(0, 10, 20, 10));
     login.setBorder(new EmptyBorder(15, 0, 0, 10));
     register.setBorder(new EmptyBorder(15, 10, 0, 0));
-
-    // Sample login, will be grabbed from database later
-    Commons.users.put("guuslieben", "1a1dc91c907325c69271ddf0c944bc72");
-
-    // If someone presses the button..
-    ActionListeners.loginClickEvent(login, usernameBox.getText(), passwordBox.getText());
 
     ActionListeners.switchRegisterPane(register);
 
@@ -181,6 +174,9 @@ public class NetflixGUI {
     main.add(logo(), BorderLayout.NORTH);
     main.add(loginbox, BorderLayout.CENTER);
     main.add(Common.bottomPane(), SOUTH);
+
+    // If someone presses the button..
+    ActionListeners.loginClickEvent(login, passwordBox.getText());
 
     return main;
   }

@@ -44,6 +44,9 @@ public class DatabaseHandle {
   public static void loadSampleData() {
     //////////// USER SAMPLE DATA
 
+    // Sample login, will be grabbed from database later
+    Commons.users.put("guuslieben", "d41d8cd98f00b204e9800998ecf8427e");
+
     // Create a sample account with profile and additional data
     Account account =
         new Account(true, "g.lieben@avans.student.nl", "Steur", 358, "", "Hendrik-Ido-Ambacht");
@@ -117,33 +120,32 @@ public class DatabaseHandle {
     connection.disconnectDatabase();
   }
 
-
   // TODO : add database handles
   public void loadSeasons() {
-      throw new UnsupportedOperationException();
+    throw new UnsupportedOperationException();
   }
 
   public void loadEpisodes() {
-      throw new UnsupportedOperationException();
+    throw new UnsupportedOperationException();
   }
 
   public void loadGenres() {
-      throw new UnsupportedOperationException();
+    throw new UnsupportedOperationException();
   }
 
   public void loadLangs() {
-      throw new UnsupportedOperationException();
+    throw new UnsupportedOperationException();
   }
 
   public void loadUsers() {
-      throw new UnsupportedOperationException();
+    throw new UnsupportedOperationException();
   }
 
   public void loadProfiles() {
-      throw new UnsupportedOperationException();
+    throw new UnsupportedOperationException();
   }
 
   public void registerAccount(Account account) {
-      throw new UnsupportedOperationException();
+    throw new UnsupportedOperationException();
   }
 }
