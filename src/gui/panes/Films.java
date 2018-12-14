@@ -6,6 +6,7 @@ import com.netflix.objects.Film;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
+import java.awt.event.ActionEvent;
 
 import static java.awt.BorderLayout.CENTER;
 import static java.awt.BorderLayout.NORTH;
@@ -38,7 +39,7 @@ public class Films {
     JLabel selectFilm = new JLabel("Selecteer een film : ");
 
     comboBox.addActionListener(
-        e -> {
+        (ActionEvent e) -> {
           filmView.clearOverview();
           Commons.logger.info(comboBox.getSelectedItem().toString());
           filmView.getOverview(Film.getFilmByName(comboBox.getSelectedItem().toString()), null);

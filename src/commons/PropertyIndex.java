@@ -27,7 +27,7 @@ public class PropertyIndex {
       return properties.getProperty(property);
     } catch (IOException e) {
       exception(e);
+      return null;
     }
-    return null;
   }
 }

@@ -15,15 +15,15 @@ public class Commons {
 
   public static final Logger logger = Logger.getLogger("Netflix");
   public static Map<String, String> users = new HashMap<>();
-  protected static List<Episode> episodes = new ArrayList<>();
   public static List<Serie> series = new ArrayList<>();
   public static List<Film> films = new ArrayList<>();
   public static List<String> filmTitles = new ArrayList<>();
-    public static List<String> serieTitles = new ArrayList<>();
+  public static List<String> serieTitles = new ArrayList<>();
   public static List<Season> seasons = new ArrayList<>();
-  protected static List<Genre> genres = new ArrayList<>();
-  protected static List<Language> langs = new ArrayList<>();
   public static Profile currentUser;
+  protected static List<Episode> episodes = new ArrayList<>();
+  protected static List<Genre> genres = new ArrayList<>();
+  protected static final List<Language> langs = new ArrayList<>();
 
   // Exception handle
   public static void exception(Exception ex) {
