@@ -22,6 +22,8 @@ public class Film {
     this.title = title;
     this.duration = duration;
     this.director = director;
+    Commons.films.add(this);
+    Commons.filmTitles.add(title);
   }
 
   public static Film getFilmByName(String title) {

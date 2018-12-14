@@ -1,11 +1,14 @@
 package com.netflix.objects;
 
+import com.netflix.commons.Commons;
+
 public class Genre {
 
   private String genreName;
 
   public Genre(String genre) {
     this.genreName = genre;
+    Commons.genres.add(this);
   }
 
   public String getGenre() {

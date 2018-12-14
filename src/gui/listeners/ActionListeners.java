@@ -59,7 +59,7 @@ public class ActionListeners {
                   // and check if they match the input
                   if (usernameBoxValue.equals(key) && Commons.hashMD5(passwordMD5).equals(value)) {
                     Commons.logger.info(
-                        "Verified login '"
+                        "Authorized login '"
                             + usernameBoxValue
                             + "', '"
                             + Commons.hashMD5(passwordMD5)

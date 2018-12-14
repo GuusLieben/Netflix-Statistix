@@ -1,5 +1,7 @@
 package com.netflix.objects;
 
+import com.netflix.commons.Commons;
+
 public class Episode {
 
   private Season season;
@@ -12,7 +14,9 @@ public class Episode {
     this.title = title;
     this.serie = serie;
     this.duration = duration;
-    serie.setEpisodes(serie.getEpisodes() + 1);
+    serie.setEpisodeCount(serie.getEpisodeCount() + 1);
+    Commons.episodes.add(this);
+    season.addEpisode(this);
   }
 
   public Season getSeason() {

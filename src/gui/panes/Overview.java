@@ -1,12 +1,16 @@
 package com.netflix.gui.panes;
 
 import com.netflix.commons.Commons;
+import com.netflix.objects.Episode;
 import com.netflix.objects.Film;
+import com.netflix.objects.Season;
 import com.netflix.objects.Serie;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
+import javax.swing.table.DefaultTableModel;
 import java.awt.*;
+import java.util.ArrayList;
 
 import static java.awt.BorderLayout.*;
 
@@ -17,7 +21,7 @@ public class Overview {
   private static JPanel inner = new JPanel(new BorderLayout());
   private static JPanel aboutMediaInner = new JPanel(new BorderLayout());
   private static JPanel overviewPanel = new JPanel(new BorderLayout());
-
+  public static Serie serie;
   // Common stuff
   private JLabel title;
   private String description;
@@ -31,12 +35,13 @@ public class Overview {
     title = new JLabel(serie.getTitle());
     description =
         String.format(
-            "<html>Genre : %s<br>Language : %s<br>Rating : %s<br>Seasons : %d<br>Episodes : %d</html>",
-            serie.getGenre(),
+            "<html>%s is a %s %s tv-show. <br>It has %d seasons and %d episodes. <br>It's rated for %s audiences</html>",
+            serie.getTitle(),
             serie.getLang().getLanguageName(),
-            serie.getRating(),
-            serie.getSeasons(),
-            serie.getEpisodes());
+            serie.getGenre(),
+            serie.getSeasonCount(),
+            serie.getEpisodeCount(),
+            serie.getRating());
   }
 
   private Overview(Film film) {
@@ -66,18 +71,24 @@ public class Overview {
 
     // Add sub-panels
     Overview overview = null;
-    if ((serie != null) && (film == null)) overview = new Overview(serie);
-    else if ((film != null) && (serie == null)) overview = new Overview(film);
+    if ((serie != null) && (film == null)) {
+      this.serie = serie;
+      overview = new Overview(serie);
+    } else if ((film != null) && (serie == null)) {
+        Overview.serie = null;
+        overview = new Overview(film);
+    }
     else Commons.exception(new Exception("Could not collect series/films"));
 
     overviewPanel.add(overview.getPanel());
-
     overviewPanel.setBackground(Color.WHITE);
 
     return overviewPanel;
   }
 
   private JPanel getPanel() {
+    Serie serie = this.serie;
+
     clearPane(main);
     clearPane(inner);
     clearPane(aboutMediaInner);
@@ -108,12 +119,46 @@ public class Overview {
     quickView.add(descriptionLabel, SOUTH);
     inner.add(quickView, NORTH);
 
-    JScrollPane serieDisplay = new JScrollPane(aboutMediaInner);
-    serieDisplay.setBorder(null);
-    serieDisplay.setPreferredSize(new Dimension(serieDisplay.getWidth(), serieDisplay.getHeight()));
-    serieDisplay.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+    JScrollPane mediaDisplay = new JScrollPane(aboutMediaInner);
+    mediaDisplay.setBorder(null);
+    mediaDisplay.setPreferredSize(new Dimension(mediaDisplay.getWidth(), mediaDisplay.getHeight()));
+    mediaDisplay.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
-    inner.add(serieDisplay, CENTER);
+    if (serie != null) {
+      JPanel episodes = new JPanel(new BorderLayout());
+      episodes.setOpaque(false);
+      episodes.setBorder(new EmptyBorder(10, 10, 10, 10));
+
+      JLabel episodeAnnouncer = new JLabel("<html><h3>Episodes</h3></html>");
+      episodes.add(episodeAnnouncer, BorderLayout.NORTH);
+
+      JTable table = new JTable();
+      DefaultTableModel tableModel = new DefaultTableModel(0, 0);
+
+      String[] columnNames = {"Title", "Season", "Duration"};
+
+      tableModel.setColumnIdentifiers(columnNames);
+      table.setModel(tableModel);
+
+      ArrayList<Object[]> episodeTable = new ArrayList<>();
+
+      for (Season season : this.serie.getSeasons()) {
+        System.out.println(season.getEpisodes().size());
+
+        for (Episode episode : season.getEpisodes()) {
+          System.out.println(episode.getTitle());
+          tableModel.addRow(
+              new Object[] {episode.getTitle(), episode.getSeason(), episode.getDuration()});
+        }
+      }
+
+      episodes.add(table.getTableHeader(), BorderLayout.CENTER);
+      episodes.add(table, BorderLayout.SOUTH);
+
+      inner.add(episodes, SOUTH);
+    }
+
+    inner.add(mediaDisplay, CENTER);
     main.add(inner);
 
     return main;

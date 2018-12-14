@@ -14,8 +14,6 @@ public class Netflix {
   @SuppressWarnings("deprecation")
   public static void main(String... args) {
     //    database.connectDatabase();
-    DatabaseHandle.loadFilms();
-    DatabaseHandle.loadSeries();
     DatabaseHandle.loadSampleData();
     gui = new NetflixGUI(width, height);
   }

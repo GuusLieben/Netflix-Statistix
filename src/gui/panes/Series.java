@@ -8,7 +8,6 @@ import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 
-import static java.awt.BorderLayout.CENTER;
 import static java.awt.BorderLayout.NORTH;
 
 @SuppressWarnings("deprecation")
@@ -26,9 +25,10 @@ public class Series {
     // Add sub-panels
     mainPanel.add(selectSeries(), NORTH);
 
-    Serie serie = Serie.getSerieByName(comboBox.getSelectedItem().toString());
+    String serieTitle = comboBox.getSelectedItem().toString();
+    Serie serie = Serie.getSerieByName(serieTitle);
 
-    mainPanel.add(serieView.getOverview(null, serie), CENTER);
+    mainPanel.add(serieView.getOverview(null, serie), BorderLayout.CENTER);
 
     return mainPanel;
   }
@@ -41,7 +41,7 @@ public class Series {
     comboBox.addActionListener(
         (ActionEvent e) -> {
           serieView.clearOverview();
-          Commons.logger.info(comboBox.getSelectedItem().toString());
+          Commons.logger.info("User selected serie: " + comboBox.getSelectedItem().toString());
           serieView.getOverview(null, Serie.getSerieByName(comboBox.getSelectedItem().toString()));
         });
 

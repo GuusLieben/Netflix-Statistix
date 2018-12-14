@@ -1,5 +1,6 @@
 package com.netflix.objects;
 
+import com.netflix.commons.Commons;
 import com.netflix.gui.NetflixGUI;
 
 import javax.swing.*;
@@ -18,7 +19,7 @@ public class Account {
   private String city;
 
   public Account(
-      boolean isAdmin, String email, String street, int houseNumber, String addition, String city) {
+      boolean isAdmin, String email, String street, int houseNumber, String addition, String city, String password) {
     if (emailIsValid(email)) {
       this.isAdmin = isAdmin;
       this.email = email;
@@ -27,6 +28,7 @@ public class Account {
       this.addition = addition;
       this.city = city;
       profiles = new ArrayList<>();
+      Commons.users.put(email, password);
     } else {
       JOptionPane.showMessageDialog(
           NetflixGUI.frame, "Invalid email found : " + email, null, JOptionPane.ERROR_MESSAGE);
