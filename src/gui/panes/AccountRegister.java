@@ -5,6 +5,8 @@
 
 package com.netflix.gui.panes;
 
+import com.netflix.gui.listeners.ActionListeners;
+
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
@@ -74,21 +76,20 @@ public class AccountRegister {
     registerTitle.setBorder(new EmptyBorder(0, 10, 20, 10));
     register.setBorder(new EmptyBorder(15, 0, 0, 0));
 
-    /*
-    If someone presses the button..
+    /* If someone presses the button.. */
 
-    register.addActionListener(
-    (ActionEvent e) -> Netflix.database.registerAccount(
-    new Account(
-    isAdminCheck.isSelected(),
-    emailBox.getText(),
-    streetBox.getText(),
-    Integer.parseInt(numberBox.getText()),
-    additionBox.getText(),
-    cityBox.getText())));
-    */
+//    register.addActionListener(
+//    (ActionEvent e) -> Netflix.database.registerAccount(
+//    new Account(
+//    isAdminCheck.isSelected(),
+//    emailBox.getText(),
+//    streetBox.getText(),
+//    Integer.parseInt(numberBox.getText()),
+//    additionBox.getText(),
+//    cityBox.getText())));
 
-    addHoverEffect(register);
+
+    ActionListeners.mouseEventUnderline(register);
 
     // Add items in order
     constraints.gridy = 1;

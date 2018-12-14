@@ -6,6 +6,7 @@ import com.netflix.objects.Serie;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
+import java.awt.event.ActionEvent;
 
 import static java.awt.BorderLayout.CENTER;
 import static java.awt.BorderLayout.NORTH;
@@ -38,7 +39,7 @@ public class Series {
     JLabel selectSerie = new JLabel("Selecteer een serie : ");
 
     comboBox.addActionListener(
-        e -> {
+        (ActionEvent e) -> {
           serieView.clearOverview();
           Commons.logger.info(comboBox.getSelectedItem().toString());
           serieView.getOverview(null, Serie.getSerieByName(comboBox.getSelectedItem().toString()));

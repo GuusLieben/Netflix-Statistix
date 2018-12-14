@@ -16,6 +16,10 @@ public class AccountView {
     JPanel panel = new JPanel(new FlowLayout(FlowLayout.LEFT));
     panel.setBorder(new EmptyBorder(10, 10, 10, 10));
 
+    JPanel inner = new JPanel(new GridBagLayout());
+    GridBagConstraints constraints = new GridBagConstraints();
+    constraints.gridy = 0;
+
     // Label for profiles
     JLabel profileLabel = new JLabel("<html>"); // Use html because we can
     // For all profiles
@@ -57,10 +61,16 @@ public class AccountView {
                     profileLabel.getText()));
 
     // Add all the things
-    panel.add(accountLabel);
+    constraints.gridy++;
+    inner.add(accountLabel, constraints);
 
+    constraints.gridy++;
+    inner.add(new JButton("Uitloggen"), constraints);
+
+    panel.add(inner);
     // Styling
     panel.setBackground(Color.WHITE);
+      inner.setBackground(Color.WHITE);
 
     return panel;
   }

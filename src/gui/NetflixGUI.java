@@ -1,6 +1,7 @@
 package com.netflix.gui;
 
 import com.netflix.commons.Commons;
+import com.netflix.gui.listeners.ActionListeners;
 import com.netflix.gui.panes.*;
 import com.raphaellevy.fullscreen.FullScreenException;
 import com.raphaellevy.fullscreen.FullScreenMacOS;
@@ -13,7 +14,6 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 import static com.netflix.commons.Commons.exception;
-import static com.netflix.gui.Common.addHoverEffect;
 import static com.netflix.gui.Common.logo;
 import static java.awt.BorderLayout.*;
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
@@ -21,9 +21,9 @@ import static javax.swing.JFrame.EXIT_ON_CLOSE;
 public class NetflixGUI {
 
   public static JFrame frame;
-  private static JPanel lpane = new JPanel(new BorderLayout());
   public static JPanel mainPanel = new JPanel(new BorderLayout());
-  private boolean loggedIn;
+  public static boolean loggedIn;
+  public static JPanel lpane = new JPanel(new BorderLayout());
 
   // Basic constructor
   public NetflixGUI(int width, int height) {
@@ -31,26 +31,15 @@ public class NetflixGUI {
     setFrame(width, height);
   }
 
-  static void switchPane(JButton button, String pane) {
-    // Use lambda to handle button pressing to switch panes
-    button.addActionListener(
-        (ActionEvent e) -> {
-          Overview.clearPane(lpane);
+  public static void loadPanels() {
+    // Add to LayeredPane
+    lpane.add(Series.pane());
 
-          switch (pane) {
-            case "Series":
-              lpane.add(Series.pane());
-              break;
-            case "Films":
-              lpane.add(Films.pane());
-              break;
-            case "Account":
-              lpane.add(AccountView.pane());
-              break;
-            default:
-              break;
-          }
-        });
+    // Add all panes
+    mainPanel.add(Common.bottomPane(), SOUTH);
+    mainPanel.add(logo(), NORTH);
+    mainPanel.add(Common.menu(), WEST);
+    mainPanel.add(lpane, CENTER);
   }
 
   private void setFrame(int width, int height) {
@@ -88,17 +77,6 @@ public class NetflixGUI {
     // Make the frame visible
     frame.pack();
     frame.setVisible(true);
-  }
-
-  private void loadPanels() {
-    // Add to LayeredPane
-    lpane.add(Series.pane());
-
-    // Add all panes
-    mainPanel.add(Common.bottomPane(), SOUTH);
-    mainPanel.add(logo(), NORTH);
-    mainPanel.add(Common.menu(), WEST);
-    mainPanel.add(lpane, CENTER);
   }
 
   @SuppressWarnings("deprecation")
@@ -153,76 +131,18 @@ public class NetflixGUI {
     Commons.users.put("guuslieben", "1a1dc91c907325c69271ddf0c944bc72");
 
     // If someone presses the button..
-    login.addActionListener(
-        (ActionEvent e) ->
-            Commons.users.forEach(
-                (key, value) -> { // Loop through the users
-                  // and check if they match the input
-                  if (usernameBox.getText().equals(key)
-                      && Commons.hashMD5(passwordBox.getText()).equals(value)) {
-                    // Clear the mainPanel (removing login panel), set loggedIn status to true and
-                    // load the media panels
-                    Overview.clearPane(mainPanel);
-                    loggedIn = true;
-                    loadPanels();
+    ActionListeners.loginClickEvent(login, usernameBox.getText(), passwordBox.getText());
 
-                  } else {
-                    // If it doesn't match, show an error
-                    JOptionPane.showMessageDialog(
-                        NetflixGUI.frame,
-                        "Incorrect credentials, please try again",
-                        null,
-                        JOptionPane.WARNING_MESSAGE);
-                  }
-                }));
-
-    register.addActionListener(
-        (ActionEvent e) -> {
-          Overview.clearPane(mainPanel);
-          mainPanel.add(AccountRegister.registerPanel(frame));
-        });
+    ActionListeners.switchRegisterPane(register);
 
     // If someone presses enter on the passwordBox, simulate a button click
-    passwordBox.addKeyListener(
-        new KeyListener() {
-          @Override
-          public void keyTyped(KeyEvent e) {
-            if (e.getKeyChar() == KeyEvent.VK_ENTER) login.doClick();
-          }
-
-          @Override
-          public void keyPressed(KeyEvent e) {
-            // Ignored
-          }
-
-          @Override
-          public void keyReleased(KeyEvent e) {
-            // Ignored
-          }
-        });
+    ActionListeners.simulateClickOnEnter(passwordBox, login);
 
     // If someone types in the usernameBox
-    usernameBox.addKeyListener(
-        new KeyListener() {
-          @Override
-          public void keyTyped(KeyEvent e) {
-            // If the text is "" then add out placeholder
-            if (usernameBox.getText().equals("")) usernameBox.setText("Username ...");
-          }
+    ActionListeners.onEmptyFieldSet(usernameBox, "Username...");
 
-          @Override
-          public void keyPressed(KeyEvent e) {
-            // Ignored
-          }
-
-          @Override
-          public void keyReleased(KeyEvent e) {
-            // Ignored
-          }
-        });
-
-    addHoverEffect(login);
-    addHoverEffect(register);
+    ActionListeners.mouseEventUnderline(login);
+    ActionListeners.mouseEventUnderline(register);
 
     // Lazy spacing method, as the emptyborder added later will be colored
     JPanel spacer = new JPanel();

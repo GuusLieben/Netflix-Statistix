@@ -1,9 +1,6 @@
 package com.netflix.commons;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.*;
 
 public class SqlConnection {
 
@@ -17,7 +14,7 @@ public class SqlConnection {
       connection = DriverManager.getConnection(connectionUrl);
       return true;
 
-    } catch (Exception e) {
+    } catch (ClassNotFoundException | SQLException e) {
       Commons.exception(e);
       connection = null;
       return false;
@@ -29,7 +26,7 @@ public class SqlConnection {
     if (connection != null)
       try {
         connection.close();
-      } catch (Exception e) {
+      } catch (SQLException e) {
         Commons.exception(e);
       }
     // Set connection to null, if it's already disconnected it'd be the same anyway
@@ -37,22 +34,22 @@ public class SqlConnection {
   }
 
   public ResultSet executeSql(String sqlQuery) {
-    ResultSet rs = null;
+    ResultSet results = null;
     try (Statement statement = this.connection.createStatement()) {
       // Make sure the results are passed
-      rs = statement.executeQuery(sqlQuery);
-    } catch (Exception e) {
-      Commons.exception(e);
+      results = statement.executeQuery(sqlQuery);
+    } catch (SQLException ex) {
+      Commons.exception(ex);
     }
-    return rs;
+    return results;
   }
 
   public boolean executeSqlNoResult(String sqlQuery) {
     // Return true if the query succeeded, even if it has no resultset
     try (Statement statement = this.connection.createStatement()) {
       return statement.execute(sqlQuery);
-    } catch (Exception e) {
-      Commons.exception(e);
+    } catch (Exception ex) {
+      Commons.exception(ex);
     }
     return false;
   }

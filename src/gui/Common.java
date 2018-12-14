@@ -1,5 +1,6 @@
 package com.netflix.gui;
 
+import com.netflix.gui.listeners.ActionListeners;
 import com.netflix.gui.panes.GradientPanel;
 
 import javax.swing.*;
@@ -40,41 +41,11 @@ public class Common {
     return logo;
   }
 
-  public static void addHoverEffect(JButton button) {
-    // MouseOver effects for the menu (underline and cursor effect)
-    HashMap<TextAttribute, Object> textAttrMap = new HashMap<>();
-
-    // Listens for mouse events
-    button.addMouseListener(
-        new MouseAdapter() {
-          // If you hover it ...
-          @Override
-          public void mouseEntered(MouseEvent evt) {
-            // Underline the text...
-            textAttrMap.put(TextAttribute.UNDERLINE, TextAttribute.UNDERLINE_LOW_GRAY);
-            button.setFont(button.getFont().deriveFont(textAttrMap));
-            // And change the cursor
-            Cursor hoverCursor = new Cursor(Cursor.HAND_CURSOR);
-            button.setCursor(hoverCursor);
-          }
-
-          // If you are no longer hovering it ...
-          @Override
-          public void mouseExited(MouseEvent evt) {
-            // Remove the underline effect ...
-            textAttrMap.put(TextAttribute.UNDERLINE, null);
-            button.setFont(button.getFont().deriveFont(textAttrMap));
-            // And reset the cursor ...
-            Cursor normalCursor = new Cursor(Cursor.DEFAULT_CURSOR);
-            button.setCursor(normalCursor);
-          }
-        });
-  }
-
   static JPanel menu() {
     // Create and set up the content pane.
     JPanel menu = new GradientPanel().getGradientPanel();
-    JPanel wrapper = new JPanel(new BorderLayout());
+    JPanel wrapper = new GradientPanel().getGradientPanel();
+    wrapper.setLayout(new BorderLayout());
 
     // Basic styling
     menu.setBorder(new EmptyBorder(0, 5, 0, 15));
@@ -93,6 +64,7 @@ public class Common {
     // Make all content (buttons) align vertically
     pane.setLayout(new BoxLayout(pane, BoxLayout.Y_AXIS));
     JPanel panel = new JPanel(new BorderLayout());
+    panel.setOpaque(false);
 
     // Add buttons with their appropriate location and label
     addButton("Series", panel, NORTH);
@@ -109,21 +81,21 @@ public class Common {
     JPanel wrapper = new JPanel(new FlowLayout(FlowLayout.LEFT));
 
     // Background styling
-    wrapper.setBackground(new Color(34, 34, 34));
+    wrapper.setOpaque(false);
 
     // Grab appropriate image depending on the label, image will be null if it's another label
     Image image = null;
     switch (text) {
       case "Series":
-        NetflixGUI.switchPane(button, "Series");
+        ActionListeners.switchPaneOnClick(button, "Series");
         image = new ImageIcon("resources/serie.png").getImage();
         break;
       case "Films":
-        NetflixGUI.switchPane(button, "Films");
+          ActionListeners.switchPaneOnClick(button, "Films");
         image = new ImageIcon("resources/film.png").getImage();
         break;
       case "Account":
-        NetflixGUI.switchPane(button, "Account");
+          ActionListeners.switchPaneOnClick(button, "Account");
         image = new ImageIcon("resources/account.png").getImage();
         break;
       default:
@@ -135,10 +107,10 @@ public class Common {
     button.setIcon(icon);
 
     // Add hover effect (underline and cursor)
-    addHoverEffect(button);
+    ActionListeners.mouseEventUnderline(button);
 
     // Style buttons
-    button.setBackground(new Color(34, 34, 34));
+    button.setOpaque(false);
 
     Border margin = new EmptyBorder(0, 0, 0, 15);
     Border compound = new CompoundBorder(margin, null);
@@ -148,7 +120,7 @@ public class Common {
     // Create panel for single button, easy for margins
     JPanel panel = new JPanel();
     panel.setBorder(new EmptyBorder(5, 0, 0, 0));
-    panel.setBackground(new Color(34, 34, 34));
+    panel.setOpaque(false);
 
     // Add all the things
     panel.add(button);
