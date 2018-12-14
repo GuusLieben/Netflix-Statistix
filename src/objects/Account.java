@@ -17,7 +17,8 @@ public class Account {
   private String addition;
   private String city;
 
-  public Account(boolean isAdmin, String email, String street, int houseNumber, String addition, String city) {
+  public Account(
+      boolean isAdmin, String email, String street, int houseNumber, String addition, String city) {
     if (emailIsValid(email)) {
       this.isAdmin = isAdmin;
       this.email = email;
@@ -33,12 +34,9 @@ public class Account {
   }
 
   public boolean emailIsValid(String email) {
-      // Check that the email matches a proper format (using Regex)
+    // Check that the email matches a proper format (using Regex)
     String emailRegex =
-        "^[a-zA-Z0-9_+&*-]+(?:\\."
-            + "[a-zA-Z0-9_+&*-]+)*@"
-            + "(?:[a-zA-Z0-9-]+\\.)+[a-z"
-            + "A-Z]{2,7}$";
+            "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
 
     Pattern pat = Pattern.compile(emailRegex);
     if (email == null) return false;

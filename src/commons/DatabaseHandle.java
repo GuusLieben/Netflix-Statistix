@@ -2,6 +2,8 @@ package com.netflix.commons;
 
 import com.netflix.objects.*;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Time;
 import java.util.Arrays;
 
@@ -43,6 +45,9 @@ public class DatabaseHandle {
   @SuppressWarnings("deprecation")
   public static void loadSampleData() {
     //////////// USER SAMPLE DATA
+
+    // Sample login, will be grabbed from database later
+    Commons.users.put("guuslieben", "d41d8cd98f00b204e9800998ecf8427e");
 
     // Create a sample account with profile and additional data
     Account account =
@@ -117,33 +122,73 @@ public class DatabaseHandle {
     connection.disconnectDatabase();
   }
 
-
-  // TODO : add database handles
   public void loadSeasons() {
-      throw new UnsupportedOperationException();
+    ResultSet seasonSet = connection.executeSql("SELECT * FROM Seasons");
+    try {
+      while (seasonSet.next()) {
+        //              Commons.seasons.add(...)
+      }
+    } catch (SQLException ex) {
+      Commons.exception(ex);
+    }
   }
 
   public void loadEpisodes() {
-      throw new UnsupportedOperationException();
+    ResultSet episodeSet = connection.executeSql("SELECT * FROM Episodes");
+    try {
+      while (episodeSet.next()) {
+        //              Commons.episodes.add(...)
+      }
+    } catch (SQLException ex) {
+      Commons.exception(ex);
+    }
   }
 
   public void loadGenres() {
-      throw new UnsupportedOperationException();
+    ResultSet genreSet = connection.executeSql("SELECT * FROM Genres");
+    try {
+      while (genreSet.next()) {
+        //              Commons.episodes.add(...)
+      }
+    } catch (SQLException ex) {
+      Commons.exception(ex);
+    }
   }
 
   public void loadLangs() {
-      throw new UnsupportedOperationException();
+    ResultSet langSet = connection.executeSql("SELECT * FROM Languages");
+    try {
+      while (langSet.next()) {
+        //              Commons.episodes.add(...)
+      }
+    } catch (SQLException ex) {
+      Commons.exception(ex);
+    }
   }
 
   public void loadUsers() {
-      throw new UnsupportedOperationException();
+    ResultSet userSet = connection.executeSql("SELECT * FROM Users");
+    try {
+      while (userSet.next()) {
+        //              Commons.episodes.add(...)
+      }
+    } catch (SQLException ex) {
+      Commons.exception(ex);
+    }
   }
 
   public void loadProfiles() {
-      throw new UnsupportedOperationException();
+    ResultSet profileSet = connection.executeSql("SELECT * FROM Profiles");
+    try {
+      while (profileSet.next()) {
+        //              Commons.episodes.add(...)
+      }
+    } catch (SQLException ex) {
+      Commons.exception(ex);
+    }
   }
 
   public void registerAccount(Account account) {
-      throw new UnsupportedOperationException();
+    throw new UnsupportedOperationException();
   }
 }

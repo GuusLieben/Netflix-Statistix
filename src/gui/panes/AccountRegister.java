@@ -82,16 +82,16 @@ public class AccountRegister {
 
     /* If someone presses the button.. */
 
-    register.addActionListener(
-        (ActionEvent e) ->
-            Netflix.database.registerAccount(
-                new Account(
-                    isAdminCheck.isSelected(),
-                    emailBox.getText(),
-                    streetBox.getText(),
-                    Integer.parseInt(numberBox.getText()),
-                    additionBox.getText(),
-                    cityBox.getText())));
+//    register.addActionListener(
+//        (ActionEvent e) ->
+//            Netflix.database.registerAccount(
+//                new Account(
+//                    isAdminCheck.isSelected(),
+//                    emailBox.getText(),
+//                    streetBox.getText(),
+//                    Integer.parseInt(numberBox.getText()),
+//                    additionBox.getText(),
+//                    cityBox.getText())));
 
     ActionListeners.mouseEventUnderline(register);
 

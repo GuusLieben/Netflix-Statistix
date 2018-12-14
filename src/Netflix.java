@@ -6,17 +6,17 @@ import com.netflix.gui.NetflixGUI;
 
 public class Netflix {
 
-  private static final int width = Integer.parseInt(PropertyIndex.get("window.width"));
-  private static final int height = Integer.parseInt(PropertyIndex.get("window.height"));
-  public static DatabaseHandle database = new DatabaseHandle();
+  public static final int width = Integer.parseInt(PropertyIndex.get("window.width"));
+  public static final int height = Integer.parseInt(PropertyIndex.get("window.height"));
+  //  public static DatabaseHandle database = new DatabaseHandle();
+  public static NetflixGUI gui;
 
   @SuppressWarnings("deprecation")
   public static void main(String... args) {
-    database.connectDatabase();
+    //    database.connectDatabase();
     DatabaseHandle.loadFilms();
     DatabaseHandle.loadSeries();
     DatabaseHandle.loadSampleData();
-
-    new NetflixGUI(width, height);
+    gui = new NetflixGUI(width, height);
   }
 }
