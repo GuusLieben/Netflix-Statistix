@@ -5,6 +5,7 @@
 
 package com.netflix.gui.listeners;
 
+import com.netflix.Netflix;
 import com.netflix.commons.Commons;
 import com.netflix.gui.NetflixGUI;
 import com.netflix.gui.panes.*;
@@ -57,7 +58,12 @@ public class ActionListeners {
                 (key, value) -> { // Loop through the users
                   // and check if they match the input
                   if (usernameBoxValue.equals(key) && Commons.hashMD5(passwordMD5).equals(value)) {
-                      Commons.logger.info("Verified login '" + usernameBoxValue + "', '" + Commons.hashMD5(passwordMD5) + "'");
+                    Commons.logger.info(
+                        "Verified login '"
+                            + usernameBoxValue
+                            + "', '"
+                            + Commons.hashMD5(passwordMD5)
+                            + "'");
                     // Clear the mainPanel (removing login panel), set loggedIn status to true and
                     // load the media panels
                     Overview.clearPane(NetflixGUI.mainPanel);
@@ -84,11 +90,11 @@ public class ActionListeners {
           }
 
           public void keyPressed(KeyEvent e) {
-              // Ignored
+            // Ignored
           }
 
           public void keyReleased(KeyEvent e) {
-              // Ignored
+            // Ignored
           }
         });
   }
@@ -103,7 +109,7 @@ public class ActionListeners {
           }
 
           public void keyPressed(KeyEvent e) {
-              // Ignored
+            // Ignored
           }
 
           @Override
@@ -140,6 +146,19 @@ public class ActionListeners {
             default:
               break;
           }
+        });
+  }
+
+  public static void logoutClickEvent(JButton logoutButton) {
+    logoutButton.addActionListener(
+        (ActionEvent e) -> {
+          Overview.clearPane(NetflixGUI.mainPanel);
+          NetflixGUI.loggedIn = false;
+          NetflixGUI.usernameBox.setText("Username...");
+          NetflixGUI.passwordBox.setText("");
+          usernameBoxValue = "";
+
+          Netflix.gui.setFrame(Netflix.width, Netflix.height);
         });
   }
 }

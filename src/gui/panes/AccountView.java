@@ -1,6 +1,7 @@
 package com.netflix.gui.panes;
 
 import com.netflix.commons.Commons;
+import com.netflix.gui.listeners.ActionListeners;
 import com.netflix.objects.Film;
 import com.netflix.objects.Serie;
 
@@ -64,8 +65,13 @@ public class AccountView {
     constraints.gridy++;
     inner.add(accountLabel, constraints);
 
+    JButton logoutButton = new JButton("Uitloggen");
+
     constraints.gridy++;
-    inner.add(new JButton("Uitloggen"), constraints);
+    inner.add(logoutButton, constraints);
+
+      ActionListeners.logoutClickEvent(logoutButton);
+
 
     panel.add(inner);
     // Styling
