@@ -5,7 +5,6 @@ import com.netflix.objects.*;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Time;
-import java.util.Arrays;
 
 public class DatabaseHandle {
 
@@ -30,17 +29,7 @@ public class DatabaseHandle {
         + PropertyIndex.get("jdbc.password");
   }
 
-  public static void loadFilms() {
-    String[] films = {
-      "Twilight",
-      "Narnia",
-      "The Avengers",
-      "The Lord of the Rings",
-      "Wildlife Pictured",
-      "Whatever Movie"
-    };
-    Commons.filmTitles.addAll(Arrays.asList(films));
-  }
+  public static void loadFilms() {}
 
   @SuppressWarnings("deprecation")
   public static void loadSampleData() {
@@ -51,67 +40,77 @@ public class DatabaseHandle {
 
     // Create a sample account with profile and additional data
     Account account =
-        new Account(true, "g.lieben@avans.student.nl", "Steur", 358, "", "Hendrik-Ido-Ambacht");
+        new Account(
+            true, "g.lieben@avans.student.nl", "Steur", 358, "", "Hendrik-Ido-Ambacht", "pass");
     Profile profile = new Profile(account, "Guus", 18);
-    profile.viewFilm(
+    Profile profile2 = new Profile(account, "Sarah", 19);
+
+    // Sample series
+    Serie HouseOfCards =
+        new Serie(
+            new Genre("Drama"),
+            new Language("nl_NL", "Dutch"),
+            "House of Cards",
+            new AgeRating("PG-13", 13));
+
+    Serie Daredevil =
+        new Serie(
+            new Genre("Action"),
+            new Language("de_DE", "German"),
+            "Daredevil",
+            new AgeRating("NC-17", 18));
+
+    Season Season1 = new Season(HouseOfCards, "Season 1", 1);
+    Episode episode1 = new Episode(Season1, "Pilot", HouseOfCards, 16.57);
+    Episode episode2 = new Episode(Season1, "Pilot Continued", HouseOfCards, 12.35);
+
+    // Sample films
+
+    Film Avengers =
         new Film(
             8.3,
             new Genre("Romance"),
             new Language("nl_NL", "Dutch"),
             "The Avengers",
             new Time(1, 57, 38),
-            "Bob"));
+            "Bob");
 
-    Profile profile2 = new Profile(account, "Sarah", 19);
-
-    Serie serie =
-        new Serie(new Genre("Drama"), new Language("nl_NL", "Dutch"), "House of Cards", 8.6);
-    Season season = new Season(serie, "newSeason", 1);
-    Episode episode = new Episode(season, "Pilot", serie, 16.57);
-    Episode episode2 = new Episode(season, "Pilot Continued", serie, 12.35);
-
-    profile2.viewEpisode(episode);
-    profile2.viewEpisode(episode2);
-
-    Commons.currentUser = profile2;
-
-    //////////// FILM SAMPLE DATA
-    Commons.films.add(
+    Film Twilight =
         new Film(
             8.0,
             new Genre("Romance"),
             new Language("nl_NL", "Dutch"),
             "Twilight",
             new Time(0, 57, 38),
-            "The Milkman"));
+            "The Milkman");
 
-    Commons.films.add(
+    Film Narnia =
         new Film(
             9.0,
             new Genre("Action"),
             new Language("nl_NL", "Dutch"),
             "Narnia",
             new Time(0, 57, 38),
-            "The Cartoonman"));
+            "The Cartoonman");
+
+    // Sample viewdata
+    profile2.viewEpisode(episode1);
+    profile2.viewEpisode(episode2);
+    profile.viewFilm(Avengers);
+
+    Commons.currentUser = profile2;
 
     //////////// FILM SAMPLE DATA
-    Commons.series.add(
-        new Serie(new Genre("Romance"), new Language("nl_NL", "Dutch"), "House of Cards", 8.0));
-    Commons.series.add(
-        new Serie(new Genre("Action"), new Language("de_DE", "German"), "Daredevil", 9.0));
+    Commons.films.add(Twilight);
+    Commons.films.add(Narnia);
+    Commons.films.add(Avengers);
+
+    //////////// SERIE SAMPLE DATA
+    Commons.series.add(HouseOfCards);
+    Commons.series.add(Daredevil);
   }
 
-  public static void loadSeries() {
-    String[] series = {
-      "House of Cards",
-      "Daredevil",
-      "Stranger Things",
-      "Orange Is the New Black",
-      "Narcos",
-      "The Crown"
-    };
-    Commons.serieTitles.addAll(Arrays.asList(series));
-  }
+  public static void loadSeries() {}
 
   // Connect to the database with the generated string
   public void connectDatabase() {

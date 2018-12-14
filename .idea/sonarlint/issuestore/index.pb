@@ -43,3 +43,8 @@ R
 "src/gui/panes/AccountRegister.java,b/f/bf31e39c407d37c1350db73ed74f2e0b69d9dfc8
 V
 &src/gui/listeners/ActionListeners.java,0/9/0924bf63d402cf09f90e4e9c408a709a02e6abbc
+:
+
+.gitignore,a/5/a5cc2925ca8258af241be7e5b0381edf30266302
+J
+src/objects/AgeRating.java,7/7/77b1626a8cf0a254966cccccd0221fb31bb43cdc
