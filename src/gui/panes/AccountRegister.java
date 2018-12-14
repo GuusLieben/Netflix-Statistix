@@ -5,13 +5,17 @@
 
 package com.netflix.gui.panes;
 
+import com.netflix.Netflix;
 import com.netflix.gui.listeners.ActionListeners;
+import com.netflix.objects.Account;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
+import java.awt.event.ActionEvent;
 
-import static com.netflix.gui.Common.*;
+import static com.netflix.gui.Common.bottomPane;
+import static com.netflix.gui.Common.logo;
 import static java.awt.BorderLayout.CENTER;
 
 public class AccountRegister {
@@ -78,16 +82,16 @@ public class AccountRegister {
 
     /* If someone presses the button.. */
 
-//    register.addActionListener(
-//    (ActionEvent e) -> Netflix.database.registerAccount(
-//    new Account(
-//    isAdminCheck.isSelected(),
-//    emailBox.getText(),
-//    streetBox.getText(),
-//    Integer.parseInt(numberBox.getText()),
-//    additionBox.getText(),
-//    cityBox.getText())));
-
+    register.addActionListener(
+        (ActionEvent e) ->
+            Netflix.database.registerAccount(
+                new Account(
+                    isAdminCheck.isSelected(),
+                    emailBox.getText(),
+                    streetBox.getText(),
+                    Integer.parseInt(numberBox.getText()),
+                    additionBox.getText(),
+                    cityBox.getText())));
 
     ActionListeners.mouseEventUnderline(register);
 

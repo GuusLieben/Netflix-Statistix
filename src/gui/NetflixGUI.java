@@ -9,9 +9,6 @@ import com.raphaellevy.fullscreen.FullScreenMacOS;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 
 import static com.netflix.commons.Commons.exception;
 import static com.netflix.gui.Common.logo;
