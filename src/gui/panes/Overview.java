@@ -9,6 +9,7 @@ import com.netflix.objects.Serie;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
 import java.awt.*;
 import java.util.ArrayList;
 
@@ -16,12 +17,12 @@ import static java.awt.BorderLayout.*;
 
 public class Overview {
 
+  public static Serie serie;
   // Default panels
   private static JPanel main = new JPanel(new BorderLayout());
   private static JPanel inner = new JPanel(new BorderLayout());
   private static JPanel aboutMediaInner = new JPanel(new BorderLayout());
   private static JPanel overviewPanel = new JPanel(new BorderLayout());
-  public static Serie serie;
   // Common stuff
   private JLabel title;
   private String description;
@@ -72,13 +73,12 @@ public class Overview {
     // Add sub-panels
     Overview overview = null;
     if ((serie != null) && (film == null)) {
-      this.serie = serie;
+      Overview.serie = serie;
       overview = new Overview(serie);
     } else if ((film != null) && (serie == null)) {
-        Overview.serie = null;
-        overview = new Overview(film);
-    }
-    else Commons.exception(new Exception("Could not collect series/films"));
+      Overview.serie = null;
+      overview = new Overview(film);
+    } else Commons.exception(new Exception("Could not collect series/films"));
 
     overviewPanel.add(overview.getPanel());
     overviewPanel.setBackground(Color.WHITE);
@@ -87,8 +87,6 @@ public class Overview {
   }
 
   private JPanel getPanel() {
-    Serie serie = this.serie;
-
     clearPane(main);
     clearPane(inner);
     clearPane(aboutMediaInner);
@@ -124,7 +122,7 @@ public class Overview {
     mediaDisplay.setPreferredSize(new Dimension(mediaDisplay.getWidth(), mediaDisplay.getHeight()));
     mediaDisplay.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
-    if (serie != null) {
+    if (Overview.serie != null) {
       JPanel episodes = new JPanel(new BorderLayout());
       episodes.setOpaque(false);
       episodes.setBorder(new EmptyBorder(10, 10, 10, 10));
@@ -142,17 +140,22 @@ public class Overview {
 
       ArrayList<Object[]> episodeTable = new ArrayList<>();
 
-      for (Season season : this.serie.getSeasons()) {
-        System.out.println(season.getEpisodes().size());
-
+      for (Season season : Overview.serie.getSeasons()) {
         for (Episode episode : season.getEpisodes()) {
-          System.out.println(episode.getTitle());
           tableModel.addRow(
               new Object[] {episode.getTitle(), episode.getSeason(), episode.getDuration()});
         }
       }
 
-      episodes.add(table.getTableHeader(), BorderLayout.CENTER);
+      JTableHeader header = table.getTableHeader();
+      header.setForeground(new Color(151, 2, 4));
+      header.setFont(new Font(header.getFont().getName(), Font.BOLD, 12));
+      header.setOpaque(false);
+
+      table.setShowGrid(true);
+      table.setGridColor(Color.LIGHT_GRAY);
+
+      episodes.add(header, BorderLayout.CENTER);
       episodes.add(table, BorderLayout.SOUTH);
 
       inner.add(episodes, SOUTH);

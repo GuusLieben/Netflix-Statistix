@@ -69,14 +69,6 @@ public class ActionListeners {
                     Overview.clearPane(NetflixGUI.mainPanel);
                     NetflixGUI.loggedIn = true;
                     NetflixGUI.loadPanels();
-
-                  } else {
-                    // If it doesn't match, show an error
-                    JOptionPane.showMessageDialog(
-                        NetflixGUI.frame,
-                        "Incorrect credentials, please try again",
-                        null,
-                        JOptionPane.ERROR_MESSAGE);
                   }
                 }));
   }
@@ -99,13 +91,12 @@ public class ActionListeners {
         });
   }
 
-  public static void onEmptyFieldSet(JTextField textField, String s) {
+  public static void updateString(JTextField textField) {
     textField.addKeyListener(
         new KeyListener() {
           @Override
           public void keyTyped(KeyEvent e) {
-            // If the text is "" then add out placeholder
-            if (textField.getText().equals("")) textField.setText(s);
+            // Ignored
           }
 
           public void keyPressed(KeyEvent e) {

@@ -29,8 +29,6 @@ public class DatabaseHandle {
         + PropertyIndex.get("jdbc.password");
   }
 
-  public static void loadFilms() {}
-
   @SuppressWarnings("deprecation")
   public static void loadSampleData() {
     //////////// USER SAMPLE DATA
@@ -68,7 +66,7 @@ public class DatabaseHandle {
 
     Film Avengers =
         new Film(
-            8.3,
+            new AgeRating("NC-17", 18),
             new Genre("Romance"),
             new Language("nl_NL", "Dutch"),
             "The Avengers",
@@ -77,7 +75,7 @@ public class DatabaseHandle {
 
     Film Twilight =
         new Film(
-            8.0,
+            new AgeRating("PG-13", 13),
             new Genre("Romance"),
             new Language("nl_NL", "Dutch"),
             "Twilight",
@@ -86,7 +84,7 @@ public class DatabaseHandle {
 
     Film Narnia =
         new Film(
-            9.0,
+            new AgeRating("R", 17),
             new Genre("Action"),
             new Language("nl_NL", "Dutch"),
             "Narnia",
@@ -110,11 +108,31 @@ public class DatabaseHandle {
     Commons.series.add(Daredevil);
   }
 
-  public static void loadSeries() {}
-
   // Connect to the database with the generated string
   public void connectDatabase() {
     connection.connectDatabase(connectionString());
+  }
+
+  public void loadFilms() {
+    ResultSet filmSet = connection.executeSql("SELECT * FROM Films");
+    try {
+      while (filmSet.next()) {
+        //              Commons.films.add(...)
+      }
+    } catch (SQLException ex) {
+      Commons.exception(ex);
+    }
+  }
+
+  public void loadSeries() {
+    ResultSet serieSet = connection.executeSql("SELECT * FROM Series");
+    try {
+      while (serieSet.next()) {
+        //              Commons.series.add(...)
+      }
+    } catch (SQLException ex) {
+      Commons.exception(ex);
+    }
   }
 
   public void disconnectDatabase() {
