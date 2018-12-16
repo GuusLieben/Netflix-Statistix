@@ -1,8 +1,9 @@
 package com.netflix.gui;
 
+import com.netflix.gui.commons.Common;
+import com.netflix.gui.commons.GradientPanel;
 import com.netflix.gui.listeners.ActionListeners;
-import com.netflix.gui.panes.GradientPanel;
-import com.netflix.gui.panes.Series;
+import com.netflix.gui.views.SerieView;
 import com.raphaellevy.fullscreen.FullScreenException;
 import com.raphaellevy.fullscreen.FullScreenMacOS;
 
@@ -11,7 +12,7 @@ import javax.swing.border.EmptyBorder;
 import java.awt.*;
 
 import static com.netflix.commons.Commons.exception;
-import static com.netflix.gui.Common.logo;
+import static com.netflix.gui.commons.Common.logo;
 import static java.awt.BorderLayout.*;
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
@@ -21,7 +22,7 @@ public class NetflixGUI {
   public static JPanel mainPanel = new JPanel(new BorderLayout());
   public static boolean loggedIn;
   public static JPanel lpane = new JPanel(new BorderLayout());
-  public static JTextField usernameBox = new JTextField("Username...", 20);
+  public static JTextField usernameBox = new JTextField(20);
   public static JPasswordField passwordBox = new JPasswordField(20);
 
   // Basic constructor
@@ -32,9 +33,9 @@ public class NetflixGUI {
 
   public static void loadPanels() {
     // Add to LayeredPane
-    lpane.add(Series.pane());
+    lpane.add(SerieView.pane());
 
-    // Add all panes
+    // Add all views
     mainPanel.add(Common.bottomPane(), SOUTH);
     mainPanel.add(logo(), NORTH);
     mainPanel.add(Common.menu(), WEST);
@@ -128,12 +129,9 @@ public class NetflixGUI {
 
     // If someone presses enter on the passwordBox, simulate a button click
     ActionListeners.simulateClickOnEnter(passwordBox, login);
-
-    // If someone types in the usernameBox
-    ActionListeners.onEmptyFieldSet(usernameBox, "Username...");
-
     ActionListeners.mouseEventUnderline(login);
     ActionListeners.mouseEventUnderline(register);
+    ActionListeners.updateString(usernameBox);
 
     // Lazy spacing method, as the emptyborder added later will be colored
     JPanel spacer = new JPanel();
@@ -143,13 +141,27 @@ public class NetflixGUI {
     loginbox.add(loginTitle, constraints);
 
     constraints.gridy++; // 2
-    loginbox.add(usernameBox, constraints);
+    JPanel usernamePanel = new JPanel(new BorderLayout());
+    JLabel userLabel = new JLabel("Username");
+    userLabel.setForeground(Color.LIGHT_GRAY);
+    usernamePanel.add(userLabel, BorderLayout.NORTH);
+    userLabel.setBorder(new EmptyBorder(3, 6, 3, 3));
+    usernamePanel.add(usernameBox, BorderLayout.CENTER);
+    usernamePanel.setOpaque(false);
+    loginbox.add(usernamePanel, constraints);
 
     constraints.gridy++; // 3
     loginbox.add(spacer, constraints);
 
     constraints.gridy++; // 4
-    loginbox.add(passwordBox, constraints);
+    JPanel passwordPanel = new JPanel(new BorderLayout());
+    JLabel passLabel = new JLabel("Password");
+    passLabel.setForeground(Color.LIGHT_GRAY);
+    passwordPanel.add(passLabel, BorderLayout.NORTH);
+    passLabel.setBorder(new EmptyBorder(3, 6, 3, 3));
+    passwordPanel.add(passwordBox, BorderLayout.CENTER);
+    passwordPanel.setOpaque(false);
+    loginbox.add(passwordPanel, constraints);
 
     constraints.gridy++; // 5
     loginbox.add(buttonFrame, constraints);

@@ -1,7 +1,12 @@
-package com.netflix.gui;
+/*
+ * Copyright © 2018. Guus Lieben.
+ * All rights reserved.
+ */
+
+package com.netflix.gui.commons;
 
 import com.netflix.gui.listeners.ActionListeners;
-import com.netflix.gui.panes.GradientPanel;
+import com.netflix.gui.commons.GradientPanel;
 
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -37,7 +42,7 @@ public class Common {
     return logo;
   }
 
-  static JPanel menu() {
+  public static JPanel menu() {
     // Create and set up the content pane.
     JPanel menu = new GradientPanel().getGradientPanel();
     JPanel wrapper = new GradientPanel().getGradientPanel();
@@ -63,8 +68,8 @@ public class Common {
     panel.setOpaque(false);
 
     // Add buttons with their appropriate location and label
-    addButton("Series", panel, NORTH);
-    addButton("Films", panel, CENTER);
+    addButton("SerieView", panel, NORTH);
+    addButton("FilmView", panel, CENTER);
     addButton("Account", panel, SOUTH);
 
     pane.add(panel);
@@ -82,12 +87,12 @@ public class Common {
     // Grab appropriate image depending on the label, image will be null if it's another label
     Image image = null;
     switch (text) {
-      case "Series":
-        ActionListeners.switchPaneOnClick(button, "Series");
+      case "SerieView":
+        ActionListeners.switchPaneOnClick(button, "SerieView");
         image = new ImageIcon("resources/serie.png").getImage();
         break;
-      case "Films":
-          ActionListeners.switchPaneOnClick(button, "Films");
+      case "FilmView":
+          ActionListeners.switchPaneOnClick(button, "FilmView");
         image = new ImageIcon("resources/film.png").getImage();
         break;
       case "Account":

@@ -1,6 +1,11 @@
+/*
+ * Copyright © 2018. Guus Lieben.
+ * All rights reserved.
+ */
+
 package com.netflix.commons;
 
-import com.netflix.objects.*;
+import com.netflix.entities.*;
 
 import javax.xml.bind.DatatypeConverter;
 import java.security.MessageDigest;

@@ -3,22 +3,20 @@
  * All rights reserved.
  */
 
-package com.netflix.gui.panes;
+package com.netflix.gui.views;
 
-import com.netflix.Netflix;
+import com.netflix.gui.commons.GradientPanel;
 import com.netflix.gui.listeners.ActionListeners;
-import com.netflix.objects.Account;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
-import java.awt.event.ActionEvent;
 
-import static com.netflix.gui.Common.bottomPane;
-import static com.netflix.gui.Common.logo;
+import static com.netflix.gui.commons.Common.bottomPane;
+import static com.netflix.gui.commons.Common.logo;
 import static java.awt.BorderLayout.CENTER;
 
-public class AccountRegister {
+public class RegistrationView {
 
   public static JPanel registerPanel(JFrame frame) {
     frame.setResizable(false);

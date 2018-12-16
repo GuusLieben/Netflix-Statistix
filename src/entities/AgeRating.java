@@ -3,7 +3,7 @@
  * All rights reserved.
  */
 
-package com.netflix.objects;
+package com.netflix.entities;
 
 import com.netflix.commons.Commons;
 

@@ -1,7 +1,7 @@
-package com.netflix.gui.panes;
+package com.netflix.gui.views;
 
 import com.netflix.commons.Commons;
-import com.netflix.objects.Film;
+import com.netflix.entities.Film;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -12,10 +12,10 @@ import static java.awt.BorderLayout.CENTER;
 import static java.awt.BorderLayout.NORTH;
 
 @SuppressWarnings("deprecation")
-public class Films {
+public class FilmView {
 
   private static JComboBox comboBox = new JComboBox<>(Commons.filmTitles.toArray());
-  private static Overview filmView = new Overview();
+  private static MediaView filmView = new MediaView();
 
   public static JPanel pane() {
     // Create panel with 10px padding

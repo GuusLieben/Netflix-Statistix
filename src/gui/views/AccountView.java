@@ -1,9 +1,9 @@
-package com.netflix.gui.panes;
+package com.netflix.gui.views;
 
 import com.netflix.commons.Commons;
 import com.netflix.gui.listeners.ActionListeners;
-import com.netflix.objects.Film;
-import com.netflix.objects.Serie;
+import com.netflix.entities.Film;
+import com.netflix.entities.Serie;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -43,7 +43,7 @@ public class AccountView {
               for (Serie ser : prof.getSeriesWatched()) { // If they have any
                 profileLabel.setText(
                     profileLabel.getText()
-                        + "<br>...Series watched: "
+                        + "<br>...SerieView watched: "
                         + ser.getTitle()); // Show what series they watched lately
               }
               profileLabel.setText(profileLabel.getText() + "<br><br>"); // Add spacing
