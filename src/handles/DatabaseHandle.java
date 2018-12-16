@@ -1,32 +1,36 @@
-package com.netflix.commons;
+/*
+ * Copyright © 2018. Guus Lieben.
+ * All rights reserved.
+ */
 
-import com.netflix.objects.*;
+package com.netflix.handles;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Time;
+import com.netflix.commons.Commons;
+import com.netflix.entities.*;
+
+import java.sql.*;
 
 public class DatabaseHandle {
 
-  private final SqlConnection connection;
+  private Connection connection = null;
 
   public DatabaseHandle() {
-    connection = new SqlConnection();
     connectDatabase();
+    collectData();
   }
 
   // Use the package.properties file to generate a connection string
   private static String connectionString() {
     return "jdbc:sqlserver://"
-        + PropertyIndex.get("jdbc.server")
+        + PropertiesHandle.get("jdbc.server")
         + ":"
-        + PropertyIndex.get("jdbc.port")
+        + PropertiesHandle.get("jdbc.port")
         + ";database="
-        + PropertyIndex.get("jdbc.database")
+        + PropertiesHandle.get("jdbc.database")
         + ";user="
-        + PropertyIndex.get("jdbc.user")
+        + PropertiesHandle.get("jdbc.user")
         + ";password="
-        + PropertyIndex.get("jdbc.password");
+        + PropertiesHandle.get("jdbc.password");
   }
 
   @SuppressWarnings("deprecation")
@@ -108,13 +112,54 @@ public class DatabaseHandle {
     Commons.series.add(Daredevil);
   }
 
-  // Connect to the database with the generated string
-  public void connectDatabase() {
-    connection.connectDatabase(connectionString());
+  private void collectData() {
+    // First load items that do not require others entities
+    loadGenres();
+    loadLangs();
+    loadRatings();
+
+    // Load films
+    loadFilms();
+
+    // Load all serie entities in order
+    loadSeries();
+    loadSeasons();
+    loadEpisodes();
+
+    // Load all users in order
+    loadUsers();
+    loadProfiles();
   }
 
-  public void loadFilms() {
-    ResultSet filmSet = connection.executeSql("SELECT * FROM Films");
+    // Connect to the database with the generated string
+    public boolean connectDatabase() {
+        try {
+            // Use MS Sql server
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+            // Use the connectionUrl to connect (jdbc connection string)
+            connection = DriverManager.getConnection(connectionString());
+            return true;
+
+        } catch (ClassNotFoundException | SQLException e) {
+            Commons.exception(e);
+            connection = null;
+            return false;
+        }
+    }
+
+  private void loadRatings() {
+    ResultSet seasonSet = executeSql("SELECT * FROM Ratings");
+    try {
+      while (seasonSet.next()) {
+        //              Commons.ratings.add(...)
+      }
+    } catch (SQLException ex) {
+      Commons.exception(ex);
+    }
+  }
+
+  private void loadFilms() {
+    ResultSet filmSet = executeSql("SELECT * FROM FilmView");
     try {
       while (filmSet.next()) {
         //              Commons.films.add(...)
@@ -124,8 +169,8 @@ public class DatabaseHandle {
     }
   }
 
-  public void loadSeries() {
-    ResultSet serieSet = connection.executeSql("SELECT * FROM Series");
+  private void loadSeries() {
+    ResultSet serieSet = executeSql("SELECT * FROM SerieView");
     try {
       while (serieSet.next()) {
         //              Commons.series.add(...)
@@ -135,12 +180,8 @@ public class DatabaseHandle {
     }
   }
 
-  public void disconnectDatabase() {
-    connection.disconnectDatabase();
-  }
-
-  public void loadSeasons() {
-    ResultSet seasonSet = connection.executeSql("SELECT * FROM Seasons");
+  private void loadSeasons() {
+    ResultSet seasonSet = executeSql("SELECT * FROM Seasons");
     try {
       while (seasonSet.next()) {
         //              Commons.seasons.add(...)
@@ -150,8 +191,8 @@ public class DatabaseHandle {
     }
   }
 
-  public void loadEpisodes() {
-    ResultSet episodeSet = connection.executeSql("SELECT * FROM Episodes");
+  private void loadEpisodes() {
+    ResultSet episodeSet = executeSql("SELECT * FROM Episodes");
     try {
       while (episodeSet.next()) {
         //              Commons.episodes.add(...)
@@ -161,8 +202,8 @@ public class DatabaseHandle {
     }
   }
 
-  public void loadGenres() {
-    ResultSet genreSet = connection.executeSql("SELECT * FROM Genres");
+  private void loadGenres() {
+    ResultSet genreSet = executeSql("SELECT * FROM Genres");
     try {
       while (genreSet.next()) {
         //              Commons.episodes.add(...)
@@ -172,8 +213,8 @@ public class DatabaseHandle {
     }
   }
 
-  public void loadLangs() {
-    ResultSet langSet = connection.executeSql("SELECT * FROM Languages");
+  private void loadLangs() {
+    ResultSet langSet = executeSql("SELECT * FROM Languages");
     try {
       while (langSet.next()) {
         //              Commons.episodes.add(...)
@@ -183,8 +224,8 @@ public class DatabaseHandle {
     }
   }
 
-  public void loadUsers() {
-    ResultSet userSet = connection.executeSql("SELECT * FROM Users");
+  private void loadUsers() {
+    ResultSet userSet = executeSql("SELECT * FROM Users");
     try {
       while (userSet.next()) {
         //              Commons.episodes.add(...)
@@ -194,8 +235,8 @@ public class DatabaseHandle {
     }
   }
 
-  public void loadProfiles() {
-    ResultSet profileSet = connection.executeSql("SELECT * FROM Profiles");
+  private void loadProfiles() {
+    ResultSet profileSet = executeSql("SELECT * FROM Profiles");
     try {
       while (profileSet.next()) {
         //              Commons.episodes.add(...)
@@ -207,5 +248,38 @@ public class DatabaseHandle {
 
   public void registerAccount(Account account) {
     throw new UnsupportedOperationException();
+  }
+
+  public void disconnectDatabase() {
+    // Check if it isn't already disconnected
+    if (connection != null)
+      try {
+        connection.close();
+      } catch (SQLException e) {
+        Commons.exception(e);
+      }
+    // Set connection to null, if it's already disconnected it'd be the same anyway
+    connection = null;
+  }
+
+  public ResultSet executeSql(String sqlQuery) {
+    ResultSet results = null;
+    try (Statement statement = this.connection.createStatement()) {
+      // Make sure the results are passed
+      results = statement.executeQuery(sqlQuery);
+    } catch (SQLException ex) {
+      Commons.exception(ex);
+    }
+    return results;
+  }
+
+  public boolean executeSqlNoResult(String sqlQuery) {
+    // Return true if the query succeeded, even if it has no resultset
+    try (Statement statement = this.connection.createStatement()) {
+      return statement.execute(sqlQuery);
+    } catch (Exception ex) {
+      Commons.exception(ex);
+    }
+    return false;
   }
 }

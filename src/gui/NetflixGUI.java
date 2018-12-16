@@ -1,8 +1,9 @@
 package com.netflix.gui;
 
+import com.netflix.gui.commons.Common;
+import com.netflix.gui.commons.GradientPanel;
 import com.netflix.gui.listeners.ActionListeners;
-import com.netflix.gui.panes.GradientPanel;
-import com.netflix.gui.panes.Series;
+import com.netflix.gui.views.SerieView;
 import com.raphaellevy.fullscreen.FullScreenException;
 import com.raphaellevy.fullscreen.FullScreenMacOS;
 
@@ -11,7 +12,7 @@ import javax.swing.border.EmptyBorder;
 import java.awt.*;
 
 import static com.netflix.commons.Commons.exception;
-import static com.netflix.gui.Common.logo;
+import static com.netflix.gui.commons.Common.logo;
 import static java.awt.BorderLayout.*;
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
@@ -32,9 +33,9 @@ public class NetflixGUI {
 
   public static void loadPanels() {
     // Add to LayeredPane
-    lpane.add(Series.pane());
+    lpane.add(SerieView.pane());
 
-    // Add all panes
+    // Add all views
     mainPanel.add(Common.bottomPane(), SOUTH);
     mainPanel.add(logo(), NORTH);
     mainPanel.add(Common.menu(), WEST);

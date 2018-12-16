@@ -1,10 +1,10 @@
-package com.netflix.gui.panes;
+package com.netflix.gui.views;
 
 import com.netflix.commons.Commons;
-import com.netflix.objects.Episode;
-import com.netflix.objects.Film;
-import com.netflix.objects.Season;
-import com.netflix.objects.Serie;
+import com.netflix.entities.Episode;
+import com.netflix.entities.Film;
+import com.netflix.entities.Season;
+import com.netflix.entities.Serie;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -15,7 +15,7 @@ import java.util.ArrayList;
 
 import static java.awt.BorderLayout.*;
 
-public class Overview {
+public class MediaView {
 
   public static Serie serie;
   // Default panels
@@ -27,12 +27,12 @@ public class Overview {
   private JLabel title;
   private String description;
 
-  public Overview() {
+  public MediaView() {
     inner.setBorder(new EmptyBorder(10, 10, 10, 10));
   }
 
-  private Overview(Serie serie) {
-    new Overview();
+  private MediaView(Serie serie) {
+    new MediaView();
     title = new JLabel(serie.getTitle());
     description =
         String.format(
@@ -45,8 +45,8 @@ public class Overview {
             serie.getRating());
   }
 
-  private Overview(Film film) {
-    new Overview();
+  private MediaView(Film film) {
+    new MediaView();
     title = new JLabel(film.getTitle()); // Director, duration, rating
     description =
         String.format(
@@ -65,22 +65,22 @@ public class Overview {
   }
 
   void clearOverview() {
-    Overview.clearPane(overviewPanel);
+    MediaView.clearPane(overviewPanel);
   }
 
   JPanel getOverview(Film film, Serie serie) {
 
     // Add sub-panels
-    Overview overview = null;
+    MediaView mediaView = null;
     if ((serie != null) && (film == null)) {
-      Overview.serie = serie;
-      overview = new Overview(serie);
+      MediaView.serie = serie;
+      mediaView = new MediaView(serie);
     } else if ((film != null) && (serie == null)) {
-      Overview.serie = null;
-      overview = new Overview(film);
+      MediaView.serie = null;
+      mediaView = new MediaView(film);
     } else Commons.exception(new Exception("Could not collect series/films"));
 
-    overviewPanel.add(overview.getPanel());
+    overviewPanel.add(mediaView.getPanel());
     overviewPanel.setBackground(Color.WHITE);
 
     return overviewPanel;
@@ -122,7 +122,7 @@ public class Overview {
     mediaDisplay.setPreferredSize(new Dimension(mediaDisplay.getWidth(), mediaDisplay.getHeight()));
     mediaDisplay.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
-    if (Overview.serie != null) {
+    if (MediaView.serie != null) {
       JPanel episodes = new JPanel(new BorderLayout());
       episodes.setOpaque(false);
       episodes.setBorder(new EmptyBorder(10, 10, 10, 10));
@@ -140,7 +140,7 @@ public class Overview {
 
       ArrayList<Object[]> episodeTable = new ArrayList<>();
 
-      for (Season season : Overview.serie.getSeasons()) {
+      for (Season season : MediaView.serie.getSeasons()) {
         for (Episode episode : season.getEpisodes()) {
           tableModel.addRow(
               new Object[] {episode.getTitle(), episode.getSeason(), episode.getDuration()});

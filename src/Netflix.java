@@ -1,13 +1,13 @@
 package com.netflix;
 
-import com.netflix.commons.DatabaseHandle;
-import com.netflix.commons.PropertyIndex;
+import com.netflix.handles.DatabaseHandle;
+import com.netflix.handles.PropertiesHandle;
 import com.netflix.gui.NetflixGUI;
 
 public class Netflix {
 
-  public static final int width = Integer.parseInt(PropertyIndex.get("window.width"));
-  public static final int height = Integer.parseInt(PropertyIndex.get("window.height"));
+  public static final int width = Integer.parseInt(PropertiesHandle.get("window.width"));
+  public static final int height = Integer.parseInt(PropertiesHandle.get("window.height"));
   //  public static DatabaseHandle database = new DatabaseHandle();
   public static NetflixGUI gui;
 

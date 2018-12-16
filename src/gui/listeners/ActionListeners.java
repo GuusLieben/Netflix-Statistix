@@ -8,7 +8,7 @@ package com.netflix.gui.listeners;
 import com.netflix.Netflix;
 import com.netflix.commons.Commons;
 import com.netflix.gui.NetflixGUI;
-import com.netflix.gui.panes.*;
+import com.netflix.gui.views.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -66,7 +66,7 @@ public class ActionListeners {
                             + "'");
                     // Clear the mainPanel (removing login panel), set loggedIn status to true and
                     // load the media panels
-                    Overview.clearPane(NetflixGUI.mainPanel);
+                    MediaView.clearPane(NetflixGUI.mainPanel);
                     NetflixGUI.loggedIn = true;
                     NetflixGUI.loadPanels();
                   }
@@ -113,23 +113,23 @@ public class ActionListeners {
   public static void switchRegisterPane(JButton register) {
     register.addActionListener(
         (ActionEvent e) -> {
-          Overview.clearPane(NetflixGUI.mainPanel);
-          NetflixGUI.mainPanel.add(AccountRegister.registerPanel(NetflixGUI.frame));
+          MediaView.clearPane(NetflixGUI.mainPanel);
+          NetflixGUI.mainPanel.add(RegistrationView.registerPanel(NetflixGUI.frame));
         });
   }
 
   public static void switchPaneOnClick(JButton button, String pane) {
-    // Use lambda to handle button pressing to switch panes
+    // Use lambda to handle button pressing to switch views
     button.addActionListener(
         (ActionEvent e) -> {
-          Overview.clearPane(NetflixGUI.lpane);
+          MediaView.clearPane(NetflixGUI.lpane);
 
           switch (pane) {
-            case "Series":
-              NetflixGUI.lpane.add(Series.pane());
+            case "SerieView":
+              NetflixGUI.lpane.add(SerieView.pane());
               break;
-            case "Films":
-              NetflixGUI.lpane.add(Films.pane());
+            case "FilmView":
+              NetflixGUI.lpane.add(FilmView.pane());
               break;
             case "Account":
               NetflixGUI.lpane.add(AccountView.pane());
@@ -143,7 +143,7 @@ public class ActionListeners {
   public static void logoutClickEvent(JButton logoutButton) {
     logoutButton.addActionListener(
         (ActionEvent e) -> {
-          Overview.clearPane(NetflixGUI.mainPanel);
+          MediaView.clearPane(NetflixGUI.mainPanel);
           NetflixGUI.loggedIn = false;
           NetflixGUI.usernameBox.setText("Username...");
           NetflixGUI.passwordBox.setText("");

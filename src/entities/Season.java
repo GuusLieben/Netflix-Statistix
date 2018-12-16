@@ -1,4 +1,4 @@
-package com.netflix.objects;
+package com.netflix.entities;
 
 import java.util.ArrayList;
 import java.util.List;

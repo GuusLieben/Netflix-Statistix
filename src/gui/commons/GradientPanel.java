@@ -1,4 +1,4 @@
-package com.netflix.gui.panes;
+package com.netflix.gui.commons;
 
 import javax.swing.*;
 import java.awt.*;
