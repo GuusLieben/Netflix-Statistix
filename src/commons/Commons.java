@@ -7,11 +7,13 @@ package com.netflix.commons;
 
 import com.netflix.entities.*;
 
-import javax.xml.bind.DatatypeConverter;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.sql.SQLOutput;
 import java.util.*;
 import java.util.logging.Logger;
+
+import static javax.xml.bind.DatatypeConverter.*;
 
 public class Commons {
 
@@ -35,18 +37,21 @@ public class Commons {
     logger.severe(Arrays.toString(ex.getStackTrace()));
   }
 
-  public static String hashMD5(String string) {
-    MessageDigest md = null;
+  public static String hashMD5(String password) {
+    MessageDigest md;
 
-    String hash = "";
     try {
       md = MessageDigest.getInstance("MD5");
-      md.update(string.getBytes());
-      hash = DatatypeConverter.printHexBinary(md.digest());
+      md.update(password.getBytes());
+//
+//      System.out.println("Le fucking pass : " + password);
+//      System.out.println("Le fucking hash : " + printHexBinary(md.digest()).toLowerCase());
+
+      return printHexBinary(md.digest()).toLowerCase();
     } catch (NoSuchAlgorithmException ex) {
       Commons.exception(ex);
     }
 
-    return hash.toLowerCase();
+    return null;
   }
 }

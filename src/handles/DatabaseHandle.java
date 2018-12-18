@@ -38,12 +38,12 @@ public class DatabaseHandle {
     //////////// USER SAMPLE DATA
 
     // Sample login, will be grabbed from database later
-    Commons.users.put("guuslieben", "d41d8cd98f00b204e9800998ecf8427e");
+    Commons.users.put("guuslieben", "1a1dc91c907325c69271ddf0c944bc72");
 
     // Create a sample account with profile and additional data
     Account account =
         new Account(
-            true, "g.lieben@avans.student.nl", "Steur", 358, "", "Hendrik-Ido-Ambacht", "pass");
+            true, "g.lieben@avans.student.nl", "Steur", 358, "", "Hendrik-Ido-Ambacht", "nonono");
     Profile profile = new Profile(account, "Guus", 18);
     Profile profile2 = new Profile(account, "Sarah", 19);
 
@@ -65,6 +65,14 @@ public class DatabaseHandle {
     Season Season1 = new Season(HouseOfCards, "Season 1", 1);
     Episode episode1 = new Episode(Season1, "Pilot", HouseOfCards, 16.57);
     Episode episode2 = new Episode(Season1, "Pilot Continued", HouseOfCards, 12.35);
+    Episode episode3 = new Episode(Season1, "Pilot Continued", HouseOfCards, 12.35);
+    Episode episode4 = new Episode(Season1, "Pilot Continued", HouseOfCards, 12.35);
+    Episode episode5 = new Episode(Season1, "Pilot Continued", HouseOfCards, 12.35);
+    Episode episode6 = new Episode(Season1, "Pilot Continued", HouseOfCards, 12.35);
+    Episode episode7 = new Episode(Season1, "Pilot Continued", HouseOfCards, 12.35);
+    Episode episode8 = new Episode(Season1, "Pilot Continued", HouseOfCards, 12.35);
+    Episode episode9 = new Episode(Season1, "Pilot Continued", HouseOfCards, 12.35);
+    Episode episode10 = new Episode(Season1, "Pilot Continued", HouseOfCards, 12.35);
 
     // Sample films
 
@@ -131,21 +139,21 @@ public class DatabaseHandle {
     loadProfiles();
   }
 
-    // Connect to the database with the generated string
-    public boolean connectDatabase() {
-        try {
-            // Use MS Sql server
-            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-            // Use the connectionUrl to connect (jdbc connection string)
-            connection = DriverManager.getConnection(connectionString());
-            return true;
+  // Connect to the database with the generated string
+  public boolean connectDatabase() {
+    try {
+      // Use MS Sql server
+      Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+      // Use the connectionUrl to connect (jdbc connection string)
+      connection = DriverManager.getConnection(connectionString());
+      return true;
 
-        } catch (ClassNotFoundException | SQLException e) {
-            Commons.exception(e);
-            connection = null;
-            return false;
-        }
+    } catch (ClassNotFoundException | SQLException e) {
+      Commons.exception(e);
+      connection = null;
+      return false;
     }
+  }
 
   private void loadRatings() {
     ResultSet seasonSet = executeSql("SELECT * FROM Ratings");

@@ -159,6 +159,7 @@ public class NetflixGUI {
     passLabel.setForeground(Color.LIGHT_GRAY);
     passwordPanel.add(passLabel, BorderLayout.NORTH);
     passLabel.setBorder(new EmptyBorder(3, 6, 3, 3));
+    passwordBox.setText("");
     passwordPanel.add(passwordBox, BorderLayout.CENTER);
     passwordPanel.setOpaque(false);
     loginbox.add(passwordPanel, constraints);
