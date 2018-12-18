@@ -1,13 +1,9 @@
-/*
- * Copyright © 2018. Guus Lieben.
- * All rights reserved.
- */
-
 package com.netflix.handles;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.Objects;
+import java.io.InputStreamReader;
+import java.io.Reader;
 import java.util.Properties;
 
 import static com.netflix.commons.Commons.exception;
@@ -19,15 +15,19 @@ public class PropertiesHandle {
 
   public static String get(String property) {
     // Read the properties file
-    inputStream.set(PropertiesHandle.class.getClassLoader().getResourceAsStream("package.properties"));
+    inputStream.set(
+        PropertiesHandle.class.getClassLoader().getResourceAsStream("package.properties"));
 
-    // Make sure we're not reading null
-    Objects.requireNonNull(inputStream);
+    Reader stream = new InputStreamReader(inputStream.get());
 
     // Assume none found if exception throws
+    return parseProperties(stream, property);
+  }
+
+  public static String parseProperties(Reader stream, String property) {
     try {
-      // Load the properties from the file
-      properties.load(inputStream.get());
+      // Load the properties from the stream
+      properties.load(stream);
       // Grab the property requested
       return properties.getProperty(property);
     } catch (IOException e) {

@@ -1,8 +1,3 @@
-/*
- * Copyright © 2018. Guus Lieben.
- * All rights reserved.
- */
-
 package com.netflix.gui.commons;
 
 import com.netflix.gui.listeners.ActionListeners;

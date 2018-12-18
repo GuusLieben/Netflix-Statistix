@@ -1,8 +1,3 @@
-/*
- * Copyright © 2018. Guus Lieben.
- * All rights reserved.
- */
-
 package com.netflix.gui.views;
 
 import com.netflix.gui.commons.GradientPanel;

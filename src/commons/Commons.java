@@ -1,8 +1,3 @@
-/*
- * Copyright © 2018. Guus Lieben.
- * All rights reserved.
- */
-
 package com.netflix.commons;
 
 import com.netflix.entities.*;
@@ -43,9 +38,6 @@ public class Commons {
     try {
       md = MessageDigest.getInstance("MD5");
       md.update(password.getBytes());
-//
-//      System.out.println("Le fucking pass : " + password);
-//      System.out.println("Le fucking hash : " + printHexBinary(md.digest()).toLowerCase());
 
       return printHexBinary(md.digest()).toLowerCase();
     } catch (NoSuchAlgorithmException ex) {
