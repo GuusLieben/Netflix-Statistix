@@ -127,8 +127,8 @@ public class MediaView {
       episodes.setOpaque(false);
       episodes.setBorder(new EmptyBorder(10, 10, 10, 10));
 
-      JLabel episodeAnnouncer = new JLabel("<html><h3>Episodes</h3></html>");
-      episodes.add(episodeAnnouncer, BorderLayout.NORTH);
+//      JLabel episodeAnnouncer = new JLabel("<html><h3>Episodes</h3></html>");
+//      episodes.add(episodeAnnouncer, BorderLayout.NORTH);
 
       JTable table = new JTable();
       DefaultTableModel tableModel = new DefaultTableModel(0, 0);
@@ -155,8 +155,17 @@ public class MediaView {
       table.setShowGrid(true);
       table.setGridColor(Color.LIGHT_GRAY);
 
-      episodes.add(header, BorderLayout.CENTER);
-      episodes.add(table, BorderLayout.SOUTH);
+      JScrollPane tableScroll =
+          new JScrollPane(
+              table,
+              ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED,
+              ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+
+      episodes.add(header, BorderLayout.NORTH);
+      episodes.add(tableScroll, BorderLayout.CENTER);
+
+        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+      tableScroll.setMaximumSize(new Dimension(table.getWidth(), dim.height/2));
 
       inner.add(episodes, SOUTH);
     }

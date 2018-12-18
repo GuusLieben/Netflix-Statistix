@@ -1,8 +1,3 @@
-/*
- * Copyright © 2018. Guus Lieben.
- * All rights reserved.
- */
-
 package com.netflix.gui.listeners;
 
 import com.netflix.Netflix;
@@ -15,10 +10,12 @@ import java.awt.*;
 import java.awt.event.*;
 import java.awt.font.TextAttribute;
 import java.util.HashMap;
+import java.util.Map;
 
 public class ActionListeners {
 
   private static String usernameBoxValue;
+  private static String passwordBoxValue;
 
   public static void mouseEventUnderline(JButton button) {
     // MouseOver effects for the menu (underline and cursor effect)
@@ -53,24 +50,31 @@ public class ActionListeners {
 
   public static void loginClickEvent(JButton login, String passwordMD5) {
     login.addActionListener(
-        (ActionEvent e) ->
-            Commons.users.forEach(
-                (key, value) -> { // Loop through the users
-                  // and check if they match the input
-                  if (usernameBoxValue.equals(key) && Commons.hashMD5(passwordMD5).equals(value)) {
-                    Commons.logger.info(
-                        "Authorized login '"
-                            + usernameBoxValue
-                            + "', '"
-                            + Commons.hashMD5(passwordMD5)
-                            + "'");
-                    // Clear the mainPanel (removing login panel), set loggedIn status to true and
-                    // load the media panels
-                    MediaView.clearPane(NetflixGUI.mainPanel);
-                    NetflixGUI.loggedIn = true;
-                    NetflixGUI.loadPanels();
-                  }
-                }));
+        (ActionEvent e) -> {
+          for (Map.Entry<String, String> entry : Commons.users.entrySet()) {
+
+            String key = entry.getKey();
+            String value = entry.getValue();
+
+            System.out.println("Trying : " + key + " : " + value);
+            System.out.println("Actual : " +
+                usernameBoxValue + " : " + Commons.hashMD5(passwordBoxValue) + " / " + passwordBoxValue);
+
+            if ((usernameBoxValue.equals(key)) && (Commons.hashMD5(passwordBoxValue).equals(value))) {
+              Commons.logger.info(
+                  "Authorized login '"
+                      + usernameBoxValue
+                      + "', '"
+                      + Commons.hashMD5(passwordBoxValue)
+                      + "'");
+              // Clear the mainPanel (removing login panel), set loggedIn status to true and
+              // load the media panels
+              MediaView.clearPane(NetflixGUI.mainPanel);
+              NetflixGUI.loggedIn = true;
+              NetflixGUI.loadPanels();
+            }
+          }
+        });
   }
 
   public static void simulateClickOnEnter(JPasswordField textField, JButton button) {
@@ -86,7 +90,7 @@ public class ActionListeners {
           }
 
           public void keyReleased(KeyEvent e) {
-            // Ignored
+            passwordBoxValue = textField.getText();
           }
         });
   }
@@ -148,6 +152,7 @@ public class ActionListeners {
           NetflixGUI.usernameBox.setText("Username...");
           NetflixGUI.passwordBox.setText("");
           usernameBoxValue = "";
+          passwordBoxValue = "";
 
           Netflix.gui.setFrame(Netflix.width, Netflix.height);
         });
