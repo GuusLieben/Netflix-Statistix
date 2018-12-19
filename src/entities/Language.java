@@ -13,6 +13,11 @@ public class Language {
     Commons.langs.add(this);
   }
 
+  public static Language getLang(String langCode, String langName) {
+    for (Language lang : Commons.langs) if (lang.getLangCode().equals(langCode)) return lang;
+    return new Language(langCode, langName);
+  }
+
   public String getLangCode() {
     return langCode;
   }

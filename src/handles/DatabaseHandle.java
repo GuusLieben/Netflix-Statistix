@@ -38,9 +38,32 @@ public class DatabaseHandle {
     // Create a sample account with profile and additional data
     Account account =
         new Account(
-            true, "g.lieben@avans.student.nl", "Steur", 358, "", "Hendrik-Ido-Ambacht", "nonono");
+            false,
+            "guuslieben",
+            "Steur",
+            358,
+            "",
+            "Hendrik-Ido-Ambacht",
+            "1a1dc91c907325c69271ddf0c944bc72");
     Profile profile = new Profile(account, "Guus", 18);
-    Profile profile2 = new Profile(account, "Sarah", 19);
+    Profile profile2 = new Profile(account, "Niet Guus", 19);
+
+    Account admin =
+        new Account(
+            true, "admin", "Lovensdijkstraat", 63, "", "Breda", "1a1dc91c907325c69271ddf0c944bc72");
+    Profile adminProfile = new Profile(admin, "Guus Lieben", 150);
+
+    Account docent =
+        new Account(
+            true,
+            "docent@avans.nl",
+            "Lovensdijkstraat",
+            65,
+            "",
+            "Breda",
+            "81dc9bdb52d04dc20036dbd8313ed055");
+    Profile ruud = new Profile(docent, "Ruud Hermans", 33);
+    Profile erik = new Profile(docent, "Erik Kuiper", 49);
 
     // Sample series
     Serie HouseOfCards =
@@ -57,17 +80,19 @@ public class DatabaseHandle {
             "Daredevil",
             new AgeRating("NC-17", 18));
 
+    Season DaredevilSeason = new Season(Daredevil, "Season 1", 1);
     Season Season1 = new Season(HouseOfCards, "Season 1", 1);
+    Season Season2 = new Season(HouseOfCards, "Season 2", 2);
     Episode episode1 = new Episode(Season1, "Pilot", HouseOfCards, 16.57);
     Episode episode2 = new Episode(Season1, "Pilot Continued", HouseOfCards, 12.35);
-    Episode episode3 = new Episode(Season1, "Pilot Continued", HouseOfCards, 12.35);
-    Episode episode4 = new Episode(Season1, "Pilot Continued", HouseOfCards, 12.35);
-    Episode episode5 = new Episode(Season1, "Pilot Continued", HouseOfCards, 12.35);
-    Episode episode6 = new Episode(Season1, "Pilot Continued", HouseOfCards, 12.35);
-    Episode episode7 = new Episode(Season1, "Pilot Continued", HouseOfCards, 12.35);
-    Episode episode8 = new Episode(Season1, "Pilot Continued", HouseOfCards, 12.35);
-    Episode episode9 = new Episode(Season1, "Pilot Continued", HouseOfCards, 12.35);
-    Episode episode10 = new Episode(Season1, "Pilot Continued", HouseOfCards, 12.35);
+    Episode episode3 = new Episode(Season1, "Episode 3", HouseOfCards, 12.35);
+    Episode episode4 = new Episode(Season1, "Episode 4", HouseOfCards, 12.35);
+    Episode episode5 = new Episode(Season1, "Episode 5", HouseOfCards, 12.35);
+    Episode episode6 = new Episode(Season2, "Episode 6", HouseOfCards, 12.35);
+    Episode episode7 = new Episode(Season2, "Episode 7", HouseOfCards, 12.35);
+    Episode episode8 = new Episode(Season2, "Episode 8", HouseOfCards, 12.35);
+    Episode episode9 = new Episode(Season2, "Episode 9", HouseOfCards, 12.35);
+    Episode episode10 = new Episode(DaredevilSeason, "Episode 10", Daredevil, 12.35);
 
     // Sample films
 
@@ -102,8 +127,6 @@ public class DatabaseHandle {
     profile2.viewEpisode(episode1);
     profile2.viewEpisode(episode2);
     profile.viewFilm(Avengers);
-
-    Commons.currentUser = profile2;
 
     //////////// FILM SAMPLE DATA
     Commons.films.add(Twilight);

@@ -25,8 +25,7 @@ public class SerieView {
     // Add sub-panels
     mainPanel.add(selectSeries(), NORTH);
 
-    String serieTitle = comboBox.getSelectedItem().toString();
-    Serie serie = Serie.getSerieByName(serieTitle);
+    Serie serie = Serie.getSerieByName(comboBox.getSelectedItem().toString());
 
     mainPanel.add(serieView.getOverview(null, serie), BorderLayout.CENTER);
 

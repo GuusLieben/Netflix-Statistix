@@ -13,6 +13,11 @@ public class AgeRating {
     Commons.ratings.add(this);
   }
 
+  public static AgeRating getRating(String ageCode, int minAge) {
+    for (AgeRating rating : Commons.ratings) if (rating.getAgeCode().equals(ageCode)) return rating;
+    return new AgeRating(ageCode, minAge);
+  }
+
   public String getAgeCode() {
     return ageCode;
   }
@@ -21,8 +26,8 @@ public class AgeRating {
     return minimumAge;
   }
 
-    @Override
-    public String toString() {
-        return getAgeCode() + " (" + getMinimumAge() + " and up)";
-    }
+  @Override
+  public String toString() {
+    return getAgeCode() + " (" + getMinimumAge() + " jaar en ouder)";
+  }
 }

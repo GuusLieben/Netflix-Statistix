@@ -20,7 +20,7 @@ public class Account {
 
   public Account(
       boolean isAdmin, String email, String street, int houseNumber, String addition, String city, String password) {
-    if (emailIsValid(email)) {
+//    if (emailIsValid(email)) {
       this.isAdmin = isAdmin;
       this.email = email;
       this.street = street;
@@ -29,10 +29,11 @@ public class Account {
       this.city = city;
       profiles = new ArrayList<>();
       Commons.users.put(email, password);
-    } else {
-      JOptionPane.showMessageDialog(
-          NetflixGUI.frame, "Invalid email found : " + email, null, JOptionPane.ERROR_MESSAGE);
-    }
+      Commons.accounts.add(this);
+//    } else {
+//      JOptionPane.showMessageDialog(
+//          NetflixGUI.frame, "Invalid email found : " + email, null, JOptionPane.ERROR_MESSAGE);
+//    }
   }
 
   public static boolean emailIsValid(String email) {
@@ -60,4 +61,17 @@ public class Account {
   public String getEmail() {
     return email;
   }
+
+  public static Account getUserByEmail(String email) {
+      for (Account account : Commons.accounts) {
+          if (email.equals(account.getEmail())) {
+              return account;
+          }
+      }
+      return null;
+  }
+
+    public String getLocation() {
+      return street + " " + houseNumber + addition + ", " + city;
+    }
 }

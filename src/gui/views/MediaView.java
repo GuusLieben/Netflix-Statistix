@@ -7,11 +7,11 @@ import com.netflix.entities.Season;
 import com.netflix.entities.Serie;
 
 import javax.swing.*;
-import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 import java.awt.*;
-import java.util.ArrayList;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
 
 import static java.awt.BorderLayout.*;
 
@@ -27,17 +27,14 @@ public class MediaView {
   private JLabel title;
   private String description;
 
-  public MediaView() {
-    inner.setBorder(new EmptyBorder(10, 10, 10, 10));
-  }
+  public MediaView(String title) {}
 
   private MediaView(Serie serie) {
-    new MediaView();
+    new MediaView(serie.getTitle());
     title = new JLabel(serie.getTitle());
     description =
         String.format(
-            "<html>%s is a %s %s tv-show. <br>It has %d seasons and %d episodes. <br>It's rated for %s audiences</html>",
-            serie.getTitle(),
+            "<html>Taal : %s<br>Genre : %s<br>Seizoenen : %d<br>Afleveringen : %d<br>Leeftijdsclassificatie %s</html>",
             serie.getLang().getLanguageName(),
             serie.getGenre(),
             serie.getSeasonCount(),
@@ -46,11 +43,11 @@ public class MediaView {
   }
 
   private MediaView(Film film) {
-    new MediaView();
+    new MediaView(serie.getTitle());
     title = new JLabel(film.getTitle()); // Director, duration, rating
     description =
         String.format(
-            "<html>Genre : %s<br>Language : %s<br>Rating : %s<br>Director : %s<br>Duration : %s</html>",
+            "<html>Genre : %s<br>Taal : %s<br>Leeftijdsclassificatie : %s<br>Regisseur : %s<br>Tijdsduur : %s</html>",
             film.getGenre(),
             film.getLang().getLanguageName(),
             film.getRating(),
@@ -117,28 +114,20 @@ public class MediaView {
     quickView.add(descriptionLabel, SOUTH);
     inner.add(quickView, NORTH);
 
-    JScrollPane mediaDisplay = new JScrollPane(aboutMediaInner);
-    mediaDisplay.setBorder(null);
-    mediaDisplay.setPreferredSize(new Dimension(mediaDisplay.getWidth(), mediaDisplay.getHeight()));
-    mediaDisplay.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-
     if (MediaView.serie != null) {
-      JPanel episodes = new JPanel(new BorderLayout());
-      episodes.setOpaque(false);
-      episodes.setBorder(new EmptyBorder(10, 10, 10, 10));
-
-//      JLabel episodeAnnouncer = new JLabel("<html><h3>Episodes</h3></html>");
-//      episodes.add(episodeAnnouncer, BorderLayout.NORTH);
-
-      JTable table = new JTable();
+      JTable table =
+          new JTable() {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+              return false;
+            }
+          };
       DefaultTableModel tableModel = new DefaultTableModel(0, 0);
 
       String[] columnNames = {"Title", "Season", "Duration"};
 
       tableModel.setColumnIdentifiers(columnNames);
       table.setModel(tableModel);
-
-      ArrayList<Object[]> episodeTable = new ArrayList<>();
 
       for (Season season : MediaView.serie.getSeasons()) {
         for (Episode episode : season.getEpisodes()) {
@@ -161,18 +150,34 @@ public class MediaView {
               ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED,
               ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
+      tableScroll.setPreferredSize(new Dimension(inner.getWidth(), main.getHeight() / 2));
+
+      JPanel episodes = new JPanel(new BorderLayout());
+
+      episodes.addComponentListener(new ResizeListener(tableScroll));
+
+      episodes.setOpaque(false);
       episodes.add(header, BorderLayout.NORTH);
       episodes.add(tableScroll, BorderLayout.CENTER);
-
-        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
-      tableScroll.setMaximumSize(new Dimension(table.getWidth(), dim.height/2));
 
       inner.add(episodes, SOUTH);
     }
 
-    inner.add(mediaDisplay, CENTER);
+    inner.add(aboutMediaInner, CENTER);
     main.add(inner);
 
     return main;
+  }
+
+  class ResizeListener extends ComponentAdapter {
+    private JScrollPane pane;
+
+    ResizeListener(JScrollPane pane) {
+      this.pane = pane;
+    }
+
+    public void componentResized(ComponentEvent e) {
+      pane.setPreferredSize(new Dimension(inner.getWidth(), main.getHeight() / 2));
+    }
   }
 }
