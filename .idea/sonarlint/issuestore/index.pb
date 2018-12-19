@@ -10,8 +10,6 @@ V
 :
 
 .gitignore,a/5/a5cc2925ca8258af241be7e5b0381edf30266302
-B
-src/TestClass.java,e/b/eb091774000607cda4f6773949d0a3a189fb0470
 I
 src/entities/Account.java,0/d/0d9cbb222a89b564042ffdacb1c918a6a84878b1
 K
@@ -48,7 +46,5 @@ O
 src/handles/DatabaseHandle.java,f/8/f8af99bd97c28ee4ce00af2503b39a14d0d478fe
 Q
 !src/handles/PropertiesHandle.java,b/7/b7311cad745a4f6d42fd92ff2d03602f73912e7e
-T
-$tests/com/netflix/TestClassTest.java,f/a/fa62c897d320b7acba5e7dcf64fdf19b2539f6e3
 Y
 )tests/com/netflix/FunctionalityTests.java,f/7/f79b36b49336204e7db23404d9deebc372280de8

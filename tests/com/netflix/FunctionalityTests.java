@@ -12,51 +12,49 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class FunctionalityTests {
 
-    /*
-     All tests are constructed using the AAA format (Arrange, Act, Assert).
-     */
-
   @Test
   void HashPassWithCorrectMD5Hash() {
-    String expectedHash = "1a1dc91c907325c69271ddf0c944bc72"; // MD5 Hash for 'pass'
-    String actualHash = Commons.hashMD5("pass");
-    assertEquals(expectedHash, actualHash);
+    assertEquals(
+        "1a1dc91c907325c69271ddf0c944bc72",
+        Commons.hashMD5("pass"),
+        "Returned md5 hash for 'pass' does not match expected hash");
   }
 
   @Test
   void HashPassWithIncorrectMD5Hash() {
-    String expectedHash = "d41d8cd98f00b204e9800998ecf8427e"; // MD5 Hash for null
-    String actualHash = Commons.hashMD5("pass");
-    assertNotEquals(expectedHash, actualHash);
+    assertNotEquals(
+        "d41d8cd98f00b204e9800998ecf8427e",
+        Commons.hashMD5("pass"),
+        "Returned md5 hash for 'pass' returned hash for null");
   }
 
   @Test
   void testPropertyReadingWithCorrectValue() {
-    String expected = "1";
-    Reader stream = new StringReader("value=1");
+    Reader stream = new StringReader("value=true");
     String actual = PropertiesHandle.parseProperties(stream, "value");
-    assertEquals(expected, actual);
+
+    assertEquals("true", actual, "Returned value does not match expected value");
   }
 
   @Test
   void testPropertyReadingWithIncorrectValue() {
-    String expected = "1";
-    Reader stream = new StringReader("value=2");
+    Reader stream = new StringReader("value=false");
     String actual = PropertiesHandle.parseProperties(stream, "value");
-    assertNotEquals(expected, actual);
+
+    assertNotEquals("true", actual, "Value returned is incorrect");
   }
 
   @Test
   void ProperEmailRegexReturnsTrue() {
-    String email = "bob@example.com";
-    boolean isvalid = Account.emailIsValid(email);
-    assertTrue(isvalid);
+    assertTrue(
+        Account.emailIsValid("bob@example.com"),
+        "Returned boolean marked correct email as invalid");
   }
 
   @Test
   void InproperEmailRegexReturnsFalse() {
-    String email = "bob#example,com";
-    boolean isvalid = Account.emailIsValid(email);
-    assertFalse(isvalid);
+    assertFalse(
+        Account.emailIsValid("bob#example,com"),
+        "Returned boolean marked incorrect email as valid");
   }
 }

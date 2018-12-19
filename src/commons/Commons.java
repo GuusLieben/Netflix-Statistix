@@ -4,11 +4,10 @@ import com.netflix.entities.*;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.sql.SQLOutput;
 import java.util.*;
 import java.util.logging.Logger;
 
-import static javax.xml.bind.DatatypeConverter.*;
+import static javax.xml.bind.DatatypeConverter.printHexBinary;
 
 public class Commons {
 
@@ -21,9 +20,11 @@ public class Commons {
   public static Set<String> serieTitles = new HashSet<>();
   public static Set<Season> seasons = new HashSet<>();
   public static Profile currentUser;
+  public static Account currentAccount;
   public static Set<Episode> episodes = new HashSet<>();
   public static Set<AgeRating> ratings = new HashSet<>();
   public static Set<Genre> genres = new HashSet<>();
+  public static ArrayList<Account> accounts = new ArrayList<>();
 
   // Exception handle
   public static void exception(Exception ex) {

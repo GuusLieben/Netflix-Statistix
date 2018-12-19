@@ -1,7 +1,7 @@
 package com.netflix.gui.commons;
 
+import com.netflix.commons.Commons;
 import com.netflix.gui.listeners.ActionListeners;
-import com.netflix.gui.commons.GradientPanel;
 
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -63,9 +63,15 @@ public class Common {
     panel.setOpaque(false);
 
     // Add buttons with their appropriate location and label
-    addButton("SerieView", panel, NORTH);
-    addButton("FilmView", panel, CENTER);
-    addButton("Account", panel, SOUTH);
+    addButton("Films", panel, NORTH);
+    addButton("Series", panel, CENTER);
+
+    JPanel buttonSet = new JPanel(new BorderLayout());
+    addButton("Account", buttonSet, SOUTH);
+    if (Commons.currentAccount.isAdmin()) addButton("Manager", buttonSet, NORTH);
+
+    panel.add(buttonSet, SOUTH);
+    buttonSet.setOpaque(false);
 
     pane.add(panel);
   }
@@ -81,26 +87,35 @@ public class Common {
 
     // Grab appropriate image depending on the label, image will be null if it's another label
     Image image = null;
+    ImageIcon icon = null;
     switch (text) {
-      case "SerieView":
-        ActionListeners.switchPaneOnClick(button, "SerieView");
+      case "Series":
+        ActionListeners.switchPaneOnClick(button, "Series");
         image = new ImageIcon("resources/serie.png").getImage();
+        // Scale icon to fit labels, then add it to the label
+        icon = new ImageIcon(image.getScaledInstance(12, 12, Image.SCALE_SMOOTH));
+        button.setIcon(icon);
         break;
-      case "FilmView":
-          ActionListeners.switchPaneOnClick(button, "FilmView");
+      case "Films":
+        ActionListeners.switchPaneOnClick(button, "Films");
         image = new ImageIcon("resources/film.png").getImage();
+        // Scale icon to fit labels, then add it to the label
+        icon = new ImageIcon(image.getScaledInstance(12, 12, Image.SCALE_SMOOTH));
+        button.setIcon(icon);
         break;
       case "Account":
-          ActionListeners.switchPaneOnClick(button, "Account");
+        ActionListeners.switchPaneOnClick(button, "Account");
         image = new ImageIcon("resources/account.png").getImage();
+        // Scale icon to fit labels, then add it to the label
+        icon = new ImageIcon(image.getScaledInstance(12, 12, Image.SCALE_SMOOTH));
+        button.setIcon(icon);
+        break;
+      case "Manager":
+        ActionListeners.switchPaneOnClick(button, "Manager");
         break;
       default:
         break;
     }
-
-    // Scale icon to fit labels, then add it to the label
-    ImageIcon icon = new ImageIcon(image.getScaledInstance(12, 12, Image.SCALE_SMOOTH));
-    button.setIcon(icon);
 
     // Add hover effect (underline and cursor)
     ActionListeners.mouseEventUnderline(button);
@@ -120,6 +135,7 @@ public class Common {
 
     // Add all the things
     panel.add(button);
+
     wrapper.add(panel);
     container.add(wrapper, location);
   }

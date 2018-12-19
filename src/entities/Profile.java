@@ -27,11 +27,7 @@ public class Profile {
     } else {
       JOptionPane.showMessageDialog(
           NetflixGUI.frame,
-          "Profile limit reached for account '"
-              + account
-              + "' ("
-              + account.getProfiles().size()
-              + ")",
+          "Dit account heeft al " + account.getProfiles().size() + " profielen",
           null,
           JOptionPane.ERROR_MESSAGE);
       }
