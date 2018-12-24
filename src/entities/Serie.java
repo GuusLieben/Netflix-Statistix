@@ -1,40 +1,33 @@
 package com.netflix.entities;
 
-import com.netflix.commons.Commons;
+import java.util.HashSet;
+import java.util.Set;
 
-import java.util.ArrayList;
-import java.util.List;
+public class Serie extends MediaObject {
 
-public class Serie {
-
-  private String title;
+  public static Set<Serie> series = new HashSet<>();
+  public static Set<String> serieTitles = new HashSet<>();
   private int episodeCount;
-  private Genre genre;
-  private Language lang;
-  private AgeRating rating;
   private int seasonCount;
-  private List<Season> seasons = new ArrayList<>();
+  private Set<Season> seasons = new HashSet<>();
 
   public Serie(Genre genre, Language lang, String title, AgeRating rating) {
-    this.genre = genre;
-    this.lang = lang;
-    this.title = title;
-    this.rating = rating;
+    super.genre = genre;
+    super.lang = lang;
+    super.title = title;
+    super.rating = rating;
+    mediaType = 2;
     this.seasonCount = 0;
     this.episodeCount = 0;
-    Commons.serieTitles.add(title);
-    Commons.series.add(this);
+    serieTitles.add(title);
+    series.add(this);
   }
 
   public static Serie getSerieByName(String title) {
-    return Commons.series
-        .stream()
-        .filter(serie -> serie.getTitle().equals(title))
-        .findFirst()
-        .orElse(null);
+    return series.stream().filter(serie -> serie.getTitle().equals(title)).findFirst().orElse(null);
   }
 
-  public List<Season> getSeasons() {
+  public Set<Season> getSeasons() {
     return seasons;
   }
 

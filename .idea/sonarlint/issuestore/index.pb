@@ -34,17 +34,31 @@ R
 "src/gui/commons/GradientPanel.java,4/7/47cfa7c4524344be35d89deca3027ea4a7e88519
 N
 src/gui/views/AccountView.java,3/3/339193d9691c014c1651e044fad1f9a3d139b98f
-K
-src/gui/views/FilmView.java,5/9/59fd04d7f35ddda1a98acdf80d7e9dbf7413ca2f
 L
 src/gui/views/MediaView.java,4/2/42bb7b6ffd9b09600027da4a50c51fde5ff7a7d6
 S
 #src/gui/views/RegistrationView.java,c/4/c4f40acb971f747d0e8bce1e81eca26bba17d3f0
-L
-src/gui/views/SerieView.java,d/f/df12c5cb67c7b643ee0d4fcb592f5255b904339e
 O
 src/handles/DatabaseHandle.java,f/8/f8af99bd97c28ee4ce00af2503b39a14d0d478fe
 Q
 !src/handles/PropertiesHandle.java,b/7/b7311cad745a4f6d42fd92ff2d03602f73912e7e
 Y
 )tests/com/netflix/FunctionalityTests.java,f/7/f79b36b49336204e7db23404d9deebc372280de8
+L
+src/gui/views/AdminView.java,2/f/2f17701578f5c2ce0d9415e1c9a6364949dc76c3
+L
+src/gui/views/LoginView.java,c/8/c85b0f5c9e6f30a1d6e16ebfbf4455be01d34547
+M
+src/entities/MediaObject.java,4/c/4cbe1080208a64c497a45935a8c6ef05092c3958
+P
+ src/gui/views/FilmMediaView.java,4/6/46e10dc5b1bdb5731be7bf3a88f35d549120d233
+Q
+!src/gui/views/SerieMediaView.java,9/a/9a8ceb12e20d9ab3683c60f75ed7eb4381353c3d
+M
+src/gui/views/ObjectView.java,b/c/bcfe33154f7f3e6935e977b2e68eb9935df1a796
+I
+logs/log-19:20:09.803.log,b/b/bb96aaa2d37354163738351f5814021f5d306068
+I
+logs/log-19:25:25.009.log,f/6/f67aa84b83c7edff8aa6a598c2e2a28b0396d2cb
+I
+logs/log-19:26:05.522.log,c/e/ce0f0272ca10a7f1db5dab1e3cbe9e8d8d32f32a

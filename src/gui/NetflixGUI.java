@@ -1,9 +1,10 @@
 package com.netflix.gui;
 
+import com.netflix.commons.Commons;
 import com.netflix.gui.commons.Common;
-import com.netflix.gui.views.FilmView;
+import com.netflix.gui.views.FilmMediaView;
 import com.netflix.gui.views.LoginView;
-import com.netflix.gui.views.SerieView;
+import com.netflix.handles.PropertiesHandle;
 import com.raphaellevy.fullscreen.FullScreenException;
 import com.raphaellevy.fullscreen.FullScreenMacOS;
 
@@ -24,13 +25,14 @@ public class NetflixGUI {
 
   // Basic constructor
   public NetflixGUI(int width, int height) {
+    Commons.logger.info("Instantiating GUI");
     frame = new JFrame();
     setFrame(width, height);
   }
 
   public static void loadPanels() {
     // Add to LayeredPane
-    lpane.add(FilmView.pane());
+    lpane.add(FilmMediaView.pane());
 
     // Add all views
     mainPanel.add(Common.bottomPane(), SOUTH);
@@ -48,18 +50,20 @@ public class NetflixGUI {
     if (height < 400) height = 400;
 
     // Set sizes for frame
-    frame.setMinimumSize(new Dimension(650, 400));
+    frame.setMinimumSize(
+        new Dimension(
+            Integer.parseInt(PropertiesHandle.get("window.width")),
+            Integer.parseInt(PropertiesHandle.get("window.height"))));
     frame.setSize(width, height);
 
     if (loggedIn) loadPanels();
     else mainPanel.add(LoginView.AccountLogin.login());
-//      else mainPanel.add(LoginView.ProfileLogin.profileSelection());
 
-    // Make sure the application can be used full-screen on MacOS devices
+    // Make sure the application can be used full-screen on MacOS devices. If it's not a MacOS
+    // device, don't do anything
     try {
       if (System.getProperty("os.name").startsWith("Mac"))
         FullScreenMacOS.setFullScreenEnabled(frame, true);
-
     } catch (FullScreenException ex) {
       exception(ex);
     }

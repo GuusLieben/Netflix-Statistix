@@ -13,19 +13,19 @@ import static org.junit.jupiter.api.Assertions.*;
 class FunctionalityTests {
 
   @Test
-  void HashPassWithCorrectMD5Hash() {
+  void HashPassWithCorrectSHA256Hash() {
     assertEquals(
         "1a1dc91c907325c69271ddf0c944bc72",
-        Commons.hashMD5("pass"),
-        "Returned md5 hash for 'pass' does not match expected hash");
+        Commons.hashSHA256("pass"),
+        "Returned SHA256 hash for 'pass' does not match expected hash");
   }
 
   @Test
-  void HashPassWithIncorrectMD5Hash() {
+  void HashPassWithIncorrectSHA256Hash() {
     assertNotEquals(
         "d41d8cd98f00b204e9800998ecf8427e",
-        Commons.hashMD5("pass"),
-        "Returned md5 hash for 'pass' returned hash for null");
+        Commons.hashSHA256("pass"),
+        "Returned SHA256 hash for 'pass' returned hash for null");
   }
 
   @Test

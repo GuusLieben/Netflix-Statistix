@@ -1,6 +1,5 @@
 package com.netflix.gui.views;
 
-import com.netflix.commons.Commons;
 import com.netflix.entities.Film;
 import com.netflix.entities.Profile;
 import com.netflix.entities.Serie;
@@ -25,11 +24,11 @@ public class AccountView {
     // Label for profiles
     JLabel profileLabel = new JLabel("<html>"); // Use html because we can
     // For all profiles
-    for (Profile prof : Commons.currentUser.getAccount().getProfiles()) {
+    for (Profile prof : Profile.currentUser.getAccount().getProfiles()) {
       profileLabel.setText(
           profileLabel.getText() + ".Profiel : " + prof.getName()); // Show the profile name
 
-      if (prof == Commons.currentUser)
+      if (prof == Profile.currentUser)
         profileLabel.setText(profileLabel.getText() + " <b><i>(Huidig)</b></i>");
 
       for (Film film : prof.getFilmsWatched()) { // If they have any
@@ -55,8 +54,8 @@ public class AccountView {
                 String.format(
                     "<html><h1>Account overzicht</h1>"
                         + "<br>Administrator? : %s<br>E-mail : %s<br><br><b>Profielen :</b> <br>%s</html>",
-                    Commons.currentUser.getAccount().isAdmin(),
-                    Commons.currentUser.getAccount().getEmail(),
+                    Profile.currentUser.getAccount().isAdmin(),
+                    Profile.currentUser.getAccount().getEmail(),
                     profileLabel.getText()));
 
     // Add all the things

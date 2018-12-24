@@ -1,5 +1,7 @@
 package com.netflix.handles;
 
+import com.netflix.commons.Commons;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -14,6 +16,8 @@ public class PropertiesHandle {
   private static ThreadLocal<InputStream> inputStream = new ThreadLocal<>();
 
   public static String get(String property) {
+    Commons.logger.config("Requesting property '" + property + "' from package.properties");
+
     // Read the properties file
     inputStream.set(
         PropertiesHandle.class.getClassLoader().getResourceAsStream("package.properties"));

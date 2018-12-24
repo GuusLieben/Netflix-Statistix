@@ -1,3 +1,8 @@
+/*
+ * Copyright © 2018. Guus Lieben.
+ * All rights reserved.
+ */
+
 package com.netflix.handles;
 
 import com.netflix.commons.Commons;
@@ -30,38 +35,22 @@ public class DatabaseHandle {
 
   @SuppressWarnings("deprecation")
   public static void loadSampleData() {
-    //////////// USER SAMPLE DATA
+    Commons.logger.info("Loading sample data");
 
-    // Sample login, will be grabbed from database later
-    Commons.users.put("guuslieben", "1a1dc91c907325c69271ddf0c944bc72");
+    //////////// USER SAMPLE DATA
 
     // Create a sample account with profile and additional data
     Account account =
-        new Account(
-            false,
-            "guuslieben",
-            "Steur",
-            358,
-            "",
-            "Hendrik-Ido-Ambacht",
-            "1a1dc91c907325c69271ddf0c944bc72");
+        new Account(false, "guus@xendox.com", "Steur", 358, "", "Hendrik-Ido-Ambacht", "pass");
     Profile profile = new Profile(account, "Guus", 18);
     Profile profile2 = new Profile(account, "Niet Guus", 19);
 
     Account admin =
-        new Account(
-            true, "admin", "Lovensdijkstraat", 63, "", "Breda", "1a1dc91c907325c69271ddf0c944bc72");
+        new Account(true, "admin@admin.admin", "Lovensdijkstraat", 63, "", "Breda", "admin");
     Profile adminProfile = new Profile(admin, "Guus Lieben", 150);
 
     Account docent =
-        new Account(
-            true,
-            "docent@avans.nl",
-            "Lovensdijkstraat",
-            65,
-            "",
-            "Breda",
-            "81dc9bdb52d04dc20036dbd8313ed055");
+        new Account(true, "docent@avans.nl", "Lovensdijkstraat", 65, "", "Breda", "1234");
     Profile ruud = new Profile(docent, "Ruud Hermans", 33);
     Profile erik = new Profile(docent, "Erik Kuiper", 49);
 
@@ -129,13 +118,13 @@ public class DatabaseHandle {
     profile.viewFilm(Avengers);
 
     //////////// FILM SAMPLE DATA
-    Commons.films.add(Twilight);
-    Commons.films.add(Narnia);
-    Commons.films.add(Avengers);
+    Film.films.add(Twilight);
+    Film.films.add(Narnia);
+    Film.films.add(Avengers);
 
     //////////// SERIE SAMPLE DATA
-    Commons.series.add(HouseOfCards);
-    Commons.series.add(Daredevil);
+    Serie.series.add(HouseOfCards);
+    Serie.series.add(Daredevil);
   }
 
   private void collectData() {
@@ -185,7 +174,7 @@ public class DatabaseHandle {
   }
 
   private void loadFilms() {
-    ResultSet filmSet = executeSql("SELECT * FROM FilmView");
+    ResultSet filmSet = executeSql("SELECT * FROM FilmMediaView");
     try {
       while (filmSet.next()) {
         //              Commons.films.add(...)
@@ -196,7 +185,7 @@ public class DatabaseHandle {
   }
 
   private void loadSeries() {
-    ResultSet serieSet = executeSql("SELECT * FROM SerieView");
+    ResultSet serieSet = executeSql("SELECT * FROM SerieMediaView");
     try {
       while (serieSet.next()) {
         //              Commons.series.add(...)

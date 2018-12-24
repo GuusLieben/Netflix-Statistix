@@ -1,6 +1,6 @@
 package com.netflix.gui.commons;
 
-import com.netflix.commons.Commons;
+import com.netflix.entities.Account;
 import com.netflix.gui.listeners.ActionListeners;
 
 import javax.swing.*;
@@ -66,14 +66,28 @@ public class Common {
     addButton("Films", panel, NORTH);
     addButton("Series", panel, CENTER);
 
+    // Easy method to have two buttons at the bottom, Manager is only visible to the user if they
+    // are an Admin
     JPanel buttonSet = new JPanel(new BorderLayout());
     addButton("Account", buttonSet, SOUTH);
-    if (Commons.currentAccount.isAdmin()) addButton("Manager", buttonSet, NORTH);
+    if (Account.currentAccount.isAdmin()) addButton("Manager", buttonSet, NORTH);
 
+    // Make sure the panel doesn't have a background as it would conflict with the gradient
+    // background of the menu panel
     panel.add(buttonSet, SOUTH);
     buttonSet.setOpaque(false);
 
     pane.add(panel);
+  }
+
+  private static void addIcon(JButton button, String iconLoc, String type) {
+    // Add the listener to switch panes
+    ActionListeners.switchPaneOnClick(button, type);
+    // Get image from file
+    Image image = new ImageIcon("resources/" + iconLoc.toLowerCase() + ".png").getImage();
+    // Scale icon to fit labels, then add it to the label
+    ImageIcon icon = new ImageIcon(image.getScaledInstance(12, 12, Image.SCALE_SMOOTH));
+    button.setIcon(icon);
   }
 
   private static void addButton(String text, Container container, String location) {
@@ -90,27 +104,16 @@ public class Common {
     ImageIcon icon = null;
     switch (text) {
       case "Series":
-        ActionListeners.switchPaneOnClick(button, "Series");
-        image = new ImageIcon("resources/serie.png").getImage();
-        // Scale icon to fit labels, then add it to the label
-        icon = new ImageIcon(image.getScaledInstance(12, 12, Image.SCALE_SMOOTH));
-        button.setIcon(icon);
+        addIcon(button, "serie", "Series");
         break;
       case "Films":
-        ActionListeners.switchPaneOnClick(button, "Films");
-        image = new ImageIcon("resources/film.png").getImage();
-        // Scale icon to fit labels, then add it to the label
-        icon = new ImageIcon(image.getScaledInstance(12, 12, Image.SCALE_SMOOTH));
-        button.setIcon(icon);
+        addIcon(button, "film", "Films");
         break;
       case "Account":
-        ActionListeners.switchPaneOnClick(button, "Account");
-        image = new ImageIcon("resources/account.png").getImage();
-        // Scale icon to fit labels, then add it to the label
-        icon = new ImageIcon(image.getScaledInstance(12, 12, Image.SCALE_SMOOTH));
-        button.setIcon(icon);
+        addIcon(button, "account", "Account");
         break;
       case "Manager":
+        // Doesn't have an icon
         ActionListeners.switchPaneOnClick(button, "Manager");
         break;
       default:

@@ -1,20 +1,23 @@
 package com.netflix.entities;
 
-import com.netflix.commons.Commons;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Language {
 
+  public static Set<Language> langs = new HashSet<>();
   private String langCode;
   private String languageName;
 
   public Language(String langCode, String languageName) {
     this.langCode = langCode;
     this.languageName = languageName;
-    Commons.langs.add(this);
+    langs.add(this);
   }
 
   public static Language getLang(String langCode, String langName) {
-    for (Language lang : Commons.langs) if (lang.getLangCode().equals(langCode)) return lang;
+    // Used for the DatabaseHandle to check if one already exists
+    for (Language lang : langs) if (lang.getLangCode().equals(langCode)) return lang;
     return new Language(langCode, langName);
   }
 

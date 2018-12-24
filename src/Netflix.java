@@ -1,8 +1,12 @@
 package com.netflix;
 
+import com.netflix.commons.Commons;
+import com.netflix.gui.NetflixGUI;
 import com.netflix.handles.DatabaseHandle;
 import com.netflix.handles.PropertiesHandle;
-import com.netflix.gui.NetflixGUI;
+
+import java.io.IOException;
+import java.util.logging.FileHandler;
 
 public class Netflix {
 

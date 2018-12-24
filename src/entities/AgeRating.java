@@ -1,20 +1,23 @@
 package com.netflix.entities;
 
-import com.netflix.commons.Commons;
+import java.util.HashSet;
+import java.util.Set;
 
 public class AgeRating {
 
+  public static Set<AgeRating> ratings = new HashSet<>();
   private String ageCode;
   private int minimumAge;
 
   public AgeRating(String ageCode, int minimumAge) {
     this.ageCode = ageCode;
     this.minimumAge = minimumAge;
-    Commons.ratings.add(this);
+    ratings.add(this);
   }
 
   public static AgeRating getRating(String ageCode, int minAge) {
-    for (AgeRating rating : Commons.ratings) if (rating.getAgeCode().equals(ageCode)) return rating;
+    // Used for the DatabaseHandle to check if one already exists
+    for (AgeRating rating : ratings) if (rating.getAgeCode().equals(ageCode)) return rating;
     return new AgeRating(ageCode, minAge);
   }
 
@@ -28,6 +31,7 @@ public class AgeRating {
 
   @Override
   public String toString() {
+    // Dutch translations
     return getAgeCode() + " (" + getMinimumAge() + " jaar en ouder)";
   }
 }

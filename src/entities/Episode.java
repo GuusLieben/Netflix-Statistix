@@ -1,9 +1,11 @@
 package com.netflix.entities;
 
-import com.netflix.commons.Commons;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Episode {
 
+  public static Set<Episode> episodes = new HashSet<>();
   private Season season;
   private String title;
   private Serie serie;
@@ -15,7 +17,7 @@ public class Episode {
     this.serie = serie;
     this.duration = duration;
     serie.setEpisodeCount(serie.getEpisodeCount() + 1);
-    Commons.episodes.add(this);
+    episodes.add(this);
     season.addEpisode(this);
   }
 
