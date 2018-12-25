@@ -53,9 +53,6 @@ public class LoginView {
 
       buttonFrame.setOpaque(false);
 
-      // Make sure all text in passwordBox is obscured with a specific character
-      passwordBox.setEchoChar('⚬');
-
       // Set minimum sizes for the input boxes, to prevent them from being too small
       usernameBox.setMinimumSize(
           new Dimension(

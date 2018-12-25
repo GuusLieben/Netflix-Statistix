@@ -2,7 +2,6 @@ package com.netflix.gui.views;
 
 import com.netflix.gui.commons.GradientPanel;
 import com.netflix.gui.listeners.ActionListeners;
-import sun.tools.jstat.Alignment;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;

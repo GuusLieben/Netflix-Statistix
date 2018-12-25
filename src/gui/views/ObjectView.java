@@ -31,17 +31,21 @@ public class ObjectView {
     new ObjectView();
     title = new JLabel(object.getTitle());
 
+    int profileCount = Account.accounts.stream().mapToInt(acc -> acc.getProfiles().size()).sum();
+    double percentageWatchedBy = (double) object.getWatchedByAmount() / profileCount * 100;
+
     // If it's a serie
     if (object.getType() == 2) {
       Serie serie = Serie.getSerieByName(object.getTitle());
       description =
           String.format(
-              "<html>Taal : %s<br>Genre : %s<br>Seizoenen : %d<br>Afleveringen : %d<br>Leeftijdsclassificatie %s</html>",
+              "<html>Taal : %s<br>Genre : %s<br>Seizoenen : %d<br>Afleveringen : %d<br>Leeftijdsclassificatie %s<br>Bekeken door %s%% van het totaal aantal gebruikers</html>",
               object.getLang().getLanguageName(),
               object.getGenre(),
               serie.getSeasonCount(),
               serie.getEpisodeCount(),
-              object.getRating());
+              object.getRating(),
+              percentageWatchedBy);
     }
 
     // If it's a film
@@ -49,12 +53,13 @@ public class ObjectView {
       Film film = Film.getFilmByName(object.getTitle());
       description =
           String.format(
-              "<html>Genre : %s<br>Taal : %s<br>Leeftijdsclassificatie : %s<br>Regisseur : %s<br>Tijdsduur : %s</html>",
+              "<html>Genre : %s<br>Taal : %s<br>Leeftijdsclassificatie : %s<br>Regisseur : %s<br>Tijdsduur : %s<br>Bekeken door %s%% van het totaal aantal gebruikers</html>",
               object.getGenre(),
               object.getLang().getLanguageName(),
               object.getRating(),
               film.getDirector(),
-              film.getDuration());
+              film.getDuration(),
+              percentageWatchedBy);
     }
   }
 
@@ -121,7 +126,7 @@ public class ObjectView {
 
     if (ObjectView.serie != null) { // If it's a film this will be null
       // Generate a table
-        JTable table =
+      JTable table =
           new JTable() {
             @Override
             public boolean isCellEditable(int row, int column) {

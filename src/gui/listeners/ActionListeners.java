@@ -79,9 +79,38 @@ public class ActionListeners {
               Account.currentAccount = account;
               NetflixGUI.mainPanel.add(LoginView.ProfileLogin.profileSelection());
               break;
+            } else {
+              flashMyField(
+                  LoginView.passwordBox, new Color(75, 20, 20), new Color(20, 20, 20), 100, 300);
+              LoginView.passwordBox.setText("");
             }
           }
         });
+  }
+
+  public static void flashMyField(
+      final JTextField field,
+      Color flashColor,
+      Color originalColor,
+      final int timerDelay,
+      int totalTime) {
+    final int totalCount = totalTime / timerDelay;
+    javax.swing.Timer timer =
+        new javax.swing.Timer(
+            timerDelay,
+            new ActionListener() {
+              int count = 0;
+
+              public void actionPerformed(ActionEvent evt) {
+                if (count % 2 == 0) field.setBackground(flashColor);
+                else {
+                  field.setBackground(originalColor);
+                  if (count >= totalCount) ((Timer) evt.getSource()).stop();
+                }
+                count++;
+              }
+            });
+    timer.start();
   }
 
   public static void profileSelectionEvent(JButton button, Profile profile) {

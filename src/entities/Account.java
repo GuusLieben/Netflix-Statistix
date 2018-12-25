@@ -77,8 +77,44 @@ public class Account extends Entity {
     return null;
   }
 
+  public String getStreet() {
+    return street;
+  }
+
+  public void setStreet(String street) {
+    this.street = street;
+  }
+
+  public int getHouseNumber() {
+    return houseNumber;
+  }
+
+  public void setHouseNumber(int houseNumber) {
+    this.houseNumber = houseNumber;
+  }
+
+  public String getAddition() {
+    return addition;
+  }
+
+  public void setAddition(String addition) {
+    this.addition = addition;
+  }
+
+  public String getCity() {
+    return city;
+  }
+
+  public void setCity(String city) {
+    this.city = city;
+  }
+
   public boolean isAdmin() {
     return isAdmin;
+  }
+
+  public void setAdmin(boolean admin) {
+    isAdmin = admin;
   }
 
   public Set<Profile> getProfiles() {
@@ -91,6 +127,10 @@ public class Account extends Entity {
 
   public String getEmail() {
     return email;
+  }
+
+  public void setEmail(String email) {
+    this.email = email;
   }
 
   public String getLocation() {

@@ -1,6 +1,7 @@
 package com.netflix.entities;
 
 import com.netflix.entities.abstracts.Entity;
+import com.netflix.entities.abstracts.MediaObject;
 import com.netflix.gui.NetflixGUI;
 
 import javax.swing.*;
@@ -42,9 +43,16 @@ public class Profile extends Entity {
   public Set<Serie> getSeriesWatched() {
     return episodesWatched
         .stream()
-        .map(episode -> episode.getSeason().getSerie())
+        .map(episode -> episode.getSerie())
         .collect(Collectors.toSet());
   }
+
+  public Set<MediaObject> getMediaWatched() {
+      Set<MediaObject> mediaWatched = new HashSet<>();
+      mediaWatched.addAll(filmsWatched);
+      for (Episode epi : episodesWatched) mediaWatched.add(epi.getSerie());
+      return mediaWatched;
+    }
 
   public int getAge() {
     return age;
@@ -63,10 +71,12 @@ public class Profile extends Entity {
   }
 
   public void viewFilm(Film film) {
+    film.setWatchedBy(this);
     filmsWatched.add(film);
   }
 
   public void viewEpisode(Episode episode) {
+    episode.getSerie().setWatchedBy(this);
     episodesWatched.add(episode);
   }
 }

@@ -7,6 +7,9 @@ package com.netflix.entities.abstracts;
 
 import com.netflix.entities.*;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public abstract class MediaObject extends Entity {
 
   public static int type;
@@ -15,6 +18,11 @@ public abstract class MediaObject extends Entity {
   public Genre genre;
   public Language lang;
   public AgeRating rating;
+  private Set<Profile> watchedBy;
+
+  public MediaObject() {
+    watchedBy = new HashSet<>();
+  }
 
   public static MediaObject getObjectByName(String name, int mediaType) {
     switch (mediaType) {
@@ -27,6 +35,14 @@ public abstract class MediaObject extends Entity {
       default:
         return null;
     }
+  }
+
+  public int getWatchedByAmount() {
+    return watchedBy.size();
+  }
+
+  public void setWatchedBy(Profile profile) {
+    watchedBy.add(profile);
   }
 
   public int getType() {
@@ -69,11 +85,11 @@ public abstract class MediaObject extends Entity {
     this.rating = rating;
   }
 
-    public int getMediaType() {
-        return mediaType;
-    }
+  public int getMediaType() {
+    return mediaType;
+  }
 
-    public void setMediaType(int mediaType) {
-        this.mediaType = mediaType;
-    }
+  public void setMediaType(int mediaType) {
+    this.mediaType = mediaType;
+  }
 }

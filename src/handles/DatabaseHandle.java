@@ -61,14 +61,14 @@ public class DatabaseHandle {
     Serie HouseOfCards =
         new Serie(
             new Genre("Drama"),
-            new Language("nl_NL", "Dutch"),
+            new Language("nl_NL", "Nederlands"),
             "House of Cards",
             new AgeRating("PG-13", 13));
 
     Serie Daredevil =
         new Serie(
-            new Genre("Action"),
-            new Language("de_DE", "German"),
+            new Genre("Erotiek"),
+            new Language("de_DE", "Duits"),
             "Daredevil",
             new AgeRating("NC-17", 18));
 
@@ -91,8 +91,8 @@ public class DatabaseHandle {
     Film Avengers =
         new Film(
             new AgeRating("NC-17", 18),
-            new Genre("Romance"),
-            new Language("nl_NL", "Dutch"),
+            new Genre("Romantiek"),
+            new Language("nl_NL", "Nederlands"),
             "The Avengers",
             new Time(1, 57, 38),
             "Bob");
@@ -100,8 +100,8 @@ public class DatabaseHandle {
     Film Twilight =
         new Film(
             new AgeRating("PG-13", 13),
-            new Genre("Romance"),
-            new Language("nl_NL", "Dutch"),
+            new Genre("Sci-fi"),
+            new Language("nl_NL", "Nederlands"),
             "Twilight",
             new Time(0, 57, 38),
             "The Milkman");
@@ -109,8 +109,8 @@ public class DatabaseHandle {
     Film Narnia =
         new Film(
             new AgeRating("R", 17),
-            new Genre("Action"),
-            new Language("nl_NL", "Dutch"),
+            new Genre("Misdaad"),
+            new Language("nl_NL", "Nederlands"),
             "Narnia",
             new Time(0, 57, 38),
             "The Cartoonman");
@@ -118,7 +118,9 @@ public class DatabaseHandle {
     // Sample viewdata
     profile2.viewEpisode(episode1);
     profile2.viewEpisode(episode2);
+    profile2.viewEpisode(episode10);
     profile.viewFilm(Avengers);
+    ruud.viewEpisode(episode10);
 
     //////////// FILM SAMPLE DATA
     Film.films.add(Twilight);
