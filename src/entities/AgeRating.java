@@ -1,9 +1,11 @@
 package com.netflix.entities;
 
+import com.netflix.entities.abstracts.Entity;
+
 import java.util.HashSet;
 import java.util.Set;
 
-public class AgeRating {
+public class AgeRating extends Entity {
 
   public static Set<AgeRating> ratings = new HashSet<>();
   private String ageCode;

@@ -1,9 +1,11 @@
 package com.netflix.entities;
 
+import com.netflix.entities.abstracts.Entity;
+
 import java.util.HashSet;
 import java.util.Set;
 
-public class Season {
+public class Season extends Entity {
 
   public static Set<Season> seasons = new HashSet<>();
   private Serie serie;

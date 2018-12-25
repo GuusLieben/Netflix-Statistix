@@ -1,0 +1,41 @@
+/*
+ * Copyright © 2018. Guus Lieben.
+ * All rights reserved.
+ */
+
+package com.netflix.entities.abstracts;
+
+import java.util.HashSet;
+import java.util.Set;
+
+public abstract class Entity {
+
+  private static Set<Entity> entities = new HashSet<>();
+  public int entityId;
+
+  public Entity() {
+    entityId = getEntityCount() + 1;
+    entities.add(this);
+  }
+
+  public static int getEntityCount() {
+    return entities.size();
+  }
+
+  public static Entity getEntityById(int id) {
+    return entities.stream().filter(entity -> entity.entityId == id).findFirst().orElse(null);
+  }
+
+  public int getEntityId() {
+    return entityId;
+  }
+
+  public void setEntityId(int entityId) {
+    this.entityId = entityId;
+  }
+
+  @Override
+  public String toString() {
+    return "Entity{" + "entityId=" + entityId + '}';
+  }
+}

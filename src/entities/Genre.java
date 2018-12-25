@@ -1,9 +1,11 @@
 package com.netflix.entities;
 
+import com.netflix.entities.abstracts.Entity;
+
 import java.util.HashSet;
 import java.util.Set;
 
-public class Genre {
+public class Genre extends Entity {
 
     public static Set<Genre> genres = new HashSet<>();
     private String genreName;

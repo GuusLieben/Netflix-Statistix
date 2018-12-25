@@ -1,9 +1,11 @@
 package com.netflix.entities;
 
+import com.netflix.entities.abstracts.Entity;
+
 import java.util.HashSet;
 import java.util.Set;
 
-public class Language {
+public class Language extends Entity {
 
   public static Set<Language> langs = new HashSet<>();
   private String langCode;

@@ -56,9 +56,9 @@ Q
 !src/gui/views/SerieMediaView.java,9/a/9a8ceb12e20d9ab3683c60f75ed7eb4381353c3d
 M
 src/gui/views/ObjectView.java,b/c/bcfe33154f7f3e6935e977b2e68eb9935df1a796
-I
-logs/log-19:20:09.803.log,b/b/bb96aaa2d37354163738351f5814021f5d306068
-I
-logs/log-19:25:25.009.log,f/6/f67aa84b83c7edff8aa6a598c2e2a28b0396d2cb
-I
-logs/log-19:26:05.522.log,c/e/ce0f0272ca10a7f1db5dab1e3cbe9e8d8d32f32a
+X
+(logs/log-d.2018-12-24-t.20:16:02.248.log,8/a/8a8278db1610669146014b176199782d24025af7
+X
+(logs/log-d.2018-12-24-t.19:30:31.669.log,a/3/a3546f4a0884fa90447be5ea46fe7364c8f5cfd9
+a
+1src/test/com/netflix/gui/views/MediaViewTest.java,7/8/781591254979fb671394e9bccab851660df0b98f

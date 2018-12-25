@@ -1,6 +1,7 @@
 package com.netflix.entities;
 
 import com.netflix.commons.Commons;
+import com.netflix.entities.abstracts.Entity;
 import com.netflix.gui.NetflixGUI;
 
 import javax.swing.*;
@@ -8,7 +9,7 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.regex.Pattern;
 
-public class Account {
+public class Account extends Entity {
 
   // Stores current account
   public static Account currentAccount;
@@ -48,6 +49,7 @@ public class Account {
       profiles = new HashSet<>();
       // Add it to the Set
       accounts.add(this);
+
     } else {
       // If the email wasn't valid, show a popup and don't create the object
       JOptionPane.showMessageDialog(

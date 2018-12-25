@@ -3,9 +3,11 @@
  * All rights reserved.
  */
 
-package com.netflix.entities;
+package com.netflix.entities.abstracts;
 
-public class MediaObject {
+import com.netflix.entities.*;
+
+public abstract class MediaObject extends Entity {
 
   public static int type;
   public int mediaType;

@@ -15,7 +15,7 @@ class FunctionalityTests {
   @Test
   void HashPassWithCorrectSHA256Hash() {
     assertEquals(
-        "1a1dc91c907325c69271ddf0c944bc72",
+        "d74ff0ee8da3b9806b18c877dbf29bbde50b5bd8e4dad7a3a725000feb82e8f1",
         Commons.hashSHA256("pass"),
         "Returned SHA256 hash for 'pass' does not match expected hash");
   }
@@ -23,7 +23,7 @@ class FunctionalityTests {
   @Test
   void HashPassWithIncorrectSHA256Hash() {
     assertNotEquals(
-        "d41d8cd98f00b204e9800998ecf8427e",
+        "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
         Commons.hashSHA256("pass"),
         "Returned SHA256 hash for 'pass' returned hash for null");
   }

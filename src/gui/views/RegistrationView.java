@@ -141,6 +141,7 @@ public class RegistrationView {
     spacer.setOpaque(false);
     box.add(spacer, constraints);
 
+    // Labels
     JPanel fieldLabel = new JPanel(new BorderLayout());
     JLabel descriptionLabel = new JLabel(description);
     descriptionLabel.setBorder(new EmptyBorder(5, 0, 5, 0));
@@ -150,6 +151,7 @@ public class RegistrationView {
     constraints.gridy++;
     box.add(fieldLabel, constraints);
 
+    // Styling
     component.setForeground(Color.LIGHT_GRAY);
     component.setCaretColor(Color.LIGHT_GRAY);
 

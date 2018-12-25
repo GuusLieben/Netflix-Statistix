@@ -1,9 +1,11 @@
 package com.netflix.entities;
 
+import com.netflix.entities.abstracts.MediaObject;
+
 import java.util.HashSet;
 import java.util.Set;
 
-public class Serie extends MediaObject {
+public class Serie extends MediaObject { // MediaObject extends Entity
 
   public static Set<Serie> series = new HashSet<>();
   public static Set<String> serieTitles = new HashSet<>();
@@ -33,22 +35,6 @@ public class Serie extends MediaObject {
 
   public void addSeason(Season season) {
     seasons.add(season);
-  }
-
-  public Genre getGenre() {
-    return genre;
-  }
-
-  public Language getLang() {
-    return lang;
-  }
-
-  public String getTitle() {
-    return title;
-  }
-
-  public AgeRating getRating() {
-    return rating;
   }
 
   public int getSeasonCount() {

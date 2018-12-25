@@ -6,7 +6,7 @@
 package com.netflix.gui.views;
 
 import com.netflix.commons.Commons;
-import com.netflix.entities.MediaObject;
+import com.netflix.entities.abstracts.MediaObject;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -30,23 +30,28 @@ public class MediaView {
 
     panel.add(selectMedia(), NORTH);
 
+    // Get object using the name and mediaType
     MediaObject media =
         MediaObject.getObjectByName(comboBox.getSelectedItem().toString(), mediaType);
 
     MediaObject.type = media.getMediaType();
 
+    // Log it to the file and console
     Commons.logger.info(
         "Loading new view with type " + media.getType() + "::" + media.getMediaType());
 
+    // Get the overview, add it
     panel.add(objectView.getOverview(media), CENTER);
 
     return panel;
   }
 
   private static JPanel selectMedia() {
+      // Use 'type' (film or serie) in selection label
     JPanel selectMedia = new JPanel();
     JLabel selectLabel = new JLabel("Selecteer een " + type + " : ");
 
+    // Reload panels when a new media object is selected
     comboBox.addActionListener(
         (ActionEvent e) -> {
           objectView.clearOverview();
@@ -56,6 +61,7 @@ public class MediaView {
 
     comboBox.setVisible(true);
 
+    // Add all things
     selectMedia.add(selectLabel);
     selectMedia.add(comboBox);
 

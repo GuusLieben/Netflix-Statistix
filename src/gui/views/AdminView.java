@@ -15,6 +15,8 @@ import java.awt.*;
 
 public class AdminView {
 
+    // TODO : Finish and document this class
+
   public static JPanel panel() {
     JPanel wrapper = new JPanel(new BorderLayout());
     JPanel main = new JPanel(new GridBagLayout());

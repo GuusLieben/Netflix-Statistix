@@ -1,5 +1,6 @@
 package com.netflix.entities;
 
+import com.netflix.entities.abstracts.Entity;
 import com.netflix.gui.NetflixGUI;
 
 import javax.swing.*;
@@ -7,7 +8,7 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-public class Profile {
+public class Profile extends Entity {
 
   public static Profile currentUser;
   private Account account;

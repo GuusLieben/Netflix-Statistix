@@ -2,6 +2,7 @@ package com.netflix.gui.views;
 
 import com.netflix.commons.Commons;
 import com.netflix.entities.*;
+import com.netflix.entities.abstracts.MediaObject;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -30,6 +31,7 @@ public class ObjectView {
     new ObjectView();
     title = new JLabel(object.getTitle());
 
+    // If it's a serie
     if (object.getType() == 2) {
       Serie serie = Serie.getSerieByName(object.getTitle());
       description =
@@ -42,6 +44,7 @@ public class ObjectView {
               object.getRating());
     }
 
+    // If it's a film
     if (object.getType() == 1) {
       Film film = Film.getFilmByName(object.getTitle());
       description =
@@ -66,17 +69,18 @@ public class ObjectView {
     ObjectView objectView = null;
 
     switch (media.getType()) {
-      case 2:
+      case 2: // Serie
         ObjectView.serie = (Serie) media;
-        objectView = new ObjectView(media);
         break;
-      case 1:
+      case 1: // Film, make sure it doesn't check for episodes
         ObjectView.serie = null;
-        objectView = new ObjectView(media);
         break;
       default:
         Commons.exception(new Exception("Could not collect series/films"));
+        break;
     }
+
+    objectView = new ObjectView(media);
 
     overviewPanel.add(objectView.getPanel());
     overviewPanel.setBackground(Color.WHITE);
@@ -116,7 +120,8 @@ public class ObjectView {
     inner.add(quickView, NORTH);
 
     if (ObjectView.serie != null) { // If it's a film this will be null
-      JTable table =
+      // Generate a table
+        JTable table =
           new JTable() {
             @Override
             public boolean isCellEditable(int row, int column) {
@@ -125,11 +130,13 @@ public class ObjectView {
           };
       DefaultTableModel tableModel = new DefaultTableModel(0, 0);
 
+      // Table headers
       String[] columnNames = {"Titel", "Seizoen", "Duratie"};
 
       tableModel.setColumnIdentifiers(columnNames);
       table.setModel(tableModel);
 
+      // Add all episodes in the serie
       for (Season season : ObjectView.serie.getSeasons()) {
         for (Episode episode : season.getEpisodes()) {
           tableModel.addRow(
@@ -145,6 +152,7 @@ public class ObjectView {
       table.setShowGrid(true);
       table.setGridColor(Color.LIGHT_GRAY);
 
+      // Make it scrollable
       JScrollPane tableScroll =
           new JScrollPane(
               table,
@@ -170,6 +178,7 @@ public class ObjectView {
     return main;
   }
 
+  // Resize the scrollpane with the inner panel to make it easily adjustable
   class ResizeListener extends ComponentAdapter {
     private JScrollPane pane;
 
