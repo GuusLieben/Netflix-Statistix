@@ -2,6 +2,7 @@ package com.netflix.gui.views;
 
 import com.netflix.gui.commons.GradientPanel;
 import com.netflix.gui.listeners.ActionListeners;
+import sun.tools.jstat.Alignment;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -15,7 +16,7 @@ public class RegistrationView {
 
   public static JPanel registerPanel(JFrame frame) {
     frame.setResizable(false);
-    frame.setSize(frame.getWidth(), 550);
+    frame.setSize(650, 525);
     Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
     frame.setLocation(
         dim.width / 2 - frame.getSize().width / 2, dim.height / 2 - frame.getSize().height / 2);
@@ -39,13 +40,16 @@ public class RegistrationView {
 
     // Title styling
     JLabel registerTitle = new JLabel("Registreer");
-    JCheckBox isAdminCheck = new JCheckBox("Gebruiker is admin?");
-    isAdminCheck.setForeground(Color.LIGHT_GRAY);
-    isAdminCheck.setBorder(new EmptyBorder(0, 10, 0, 0));
+    JButton backtoLogin = new JButton("< Terug");
+    backtoLogin.setHorizontalAlignment(JLabel.LEFT);
+    backtoLogin.setForeground(Color.LIGHT_GRAY);
+    backtoLogin.setBorder(new EmptyBorder(0, 10, 0, 0));
+    ActionListeners.mouseEventUnderline(backtoLogin);
+    ActionListeners.backtoLogin(backtoLogin);
 
     JPanel titleAndCheck = new JPanel(new BorderLayout());
     titleAndCheck.add(registerTitle, BorderLayout.CENTER);
-    titleAndCheck.add(isAdminCheck, BorderLayout.SOUTH);
+    titleAndCheck.add(backtoLogin, BorderLayout.SOUTH);
 
     registerTitle.setFont(
         new Font(registerTitle.getFont().getName(), registerTitle.getFont().getStyle(), 18));
@@ -75,16 +79,16 @@ public class RegistrationView {
 
     /* If someone presses the button.. */
 
-//    register.addActionListener(
-//        (ActionEvent e) ->
-//            Netflix.database.registerAccount(
-//                new Account(
-//                    isAdminCheck.isSelected(),
-//                    emailBox.getText(),
-//                    streetBox.getText(),
-//                    Integer.parseInt(numberBox.getText()),
-//                    additionBox.getText(),
-//                    cityBox.getText())));
+    //    register.addActionListener(
+    //        (ActionEvent e) ->
+    //            Netflix.database.registerAccount(
+    //                new Account(
+    //                    isAdminCheck.isSelected(),
+    //                    emailBox.getText(),
+    //                    streetBox.getText(),
+    //                    Integer.parseInt(numberBox.getText()),
+    //                    additionBox.getText(),
+    //                    cityBox.getText())));
 
     ActionListeners.mouseEventUnderline(register);
 
@@ -137,6 +141,7 @@ public class RegistrationView {
     spacer.setOpaque(false);
     box.add(spacer, constraints);
 
+    // Labels
     JPanel fieldLabel = new JPanel(new BorderLayout());
     JLabel descriptionLabel = new JLabel(description);
     descriptionLabel.setBorder(new EmptyBorder(5, 0, 5, 0));
@@ -146,6 +151,7 @@ public class RegistrationView {
     constraints.gridy++;
     box.add(fieldLabel, constraints);
 
+    // Styling
     component.setForeground(Color.LIGHT_GRAY);
     component.setCaretColor(Color.LIGHT_GRAY);
 

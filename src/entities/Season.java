@@ -1,15 +1,18 @@
 package com.netflix.entities;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.netflix.entities.abstracts.Entity;
 
-public class Season {
+import java.util.HashSet;
+import java.util.Set;
 
+public class Season extends Entity {
+
+  public static Set<Season> seasons = new HashSet<>();
   private Serie serie;
   private String title;
   private int seaonNumber;
   private int amountOfEpisodes;
-  private List<Episode> episodes = new ArrayList<>();
+  private Set<Episode> episodes = new HashSet<>();
 
   public Season(Serie serie, String title, int seaonNumber) {
     this.serie = serie;
@@ -20,7 +23,7 @@ public class Season {
     serie.addSeason(this);
   }
 
-  public List<Episode> getEpisodes() {
+  public Set<Episode> getEpisodes() {
     return episodes;
   }
 

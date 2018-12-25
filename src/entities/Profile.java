@@ -1,19 +1,20 @@
 package com.netflix.entities;
 
+import com.netflix.entities.abstracts.Entity;
 import com.netflix.gui.NetflixGUI;
 
 import javax.swing.*;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-public class Profile {
+public class Profile extends Entity {
 
+  public static Profile currentUser;
   private Account account;
   private String name;
-  private ArrayList<Episode> episodesWatched;
-  private ArrayList<Film> filmsWatched;
+  private Set<Episode> episodesWatched;
+  private Set<Film> filmsWatched;
   private int age;
 
   public Profile(Account account, String name, int age) {
@@ -21,16 +22,17 @@ public class Profile {
       this.account = account;
       this.name = name;
       this.age = age;
-      episodesWatched = new ArrayList<>();
-      filmsWatched = new ArrayList<>();
+      episodesWatched = new HashSet<>();
+      filmsWatched = new HashSet<>();
       account.addProfile(this);
     } else {
+      // If the account already has 5 (or more) profiles, show a popup
       JOptionPane.showMessageDialog(
           NetflixGUI.frame,
           "Dit account heeft al " + account.getProfiles().size() + " profielen",
           null,
           JOptionPane.ERROR_MESSAGE);
-      }
+    }
   }
 
   public Account getAccount() {
@@ -44,15 +46,19 @@ public class Profile {
         .collect(Collectors.toSet());
   }
 
+  public int getAge() {
+    return age;
+  }
+
   public String getName() {
     return name;
   }
 
-  public List<Episode> getEpisodesWatched() {
+  public Set<Episode> getEpisodesWatched() {
     return episodesWatched;
   }
 
-  public List<Film> getFilmsWatched() {
+  public Set<Film> getFilmsWatched() {
     return filmsWatched;
   }
 

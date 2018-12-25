@@ -5,7 +5,7 @@
 
 package com.netflix.gui.views;
 
-import com.netflix.commons.Commons;
+import com.netflix.entities.Account;
 import com.netflix.entities.Profile;
 import com.netflix.gui.commons.Common;
 import com.netflix.gui.commons.GradientPanel;
@@ -43,11 +43,9 @@ public class LoginView {
       loginTitle.setFont(
           new Font(loginTitle.getFont().getName(), loginTitle.getFont().getStyle(), 18));
 
-      // Basic text boxes
-
-      // Button
-      JButton login = new JButton("Login");
-      JButton register = new JButton("Register");
+      // Buttons
+      JButton login = new JButton("Inloggen");
+      JButton register = new JButton("Registreren");
       JPanel buttonFrame = new JPanel(new BorderLayout());
 
       buttonFrame.add(login, BorderLayout.WEST);
@@ -83,12 +81,14 @@ public class LoginView {
       JPanel spacer = new JPanel();
 
       // Add items in order
+      // Object 1, title
       constraints.gridy = 1;
       loginbox.add(loginTitle, constraints);
 
+      // Object 2, Email box + label
       constraints.gridy++; // 2
       JPanel usernamePanel = new JPanel(new BorderLayout());
-      JLabel userLabel = new JLabel("Username");
+      JLabel userLabel = new JLabel("E-mail");
       userLabel.setForeground(Color.LIGHT_GRAY);
       usernamePanel.add(userLabel, BorderLayout.NORTH);
       userLabel.setBorder(new EmptyBorder(3, 6, 3, 3));
@@ -96,12 +96,14 @@ public class LoginView {
       usernamePanel.setOpaque(false);
       loginbox.add(usernamePanel, constraints);
 
+      // Object 3, spacer
       constraints.gridy++; // 3
       loginbox.add(spacer, constraints);
 
+      // Object 4, Password box + label
       constraints.gridy++; // 4
       JPanel passwordPanel = new JPanel(new BorderLayout());
-      JLabel passLabel = new JLabel("Password");
+      JLabel passLabel = new JLabel("Wachtwoord");
       passLabel.setForeground(Color.LIGHT_GRAY);
       passwordPanel.add(passLabel, BorderLayout.NORTH);
       passLabel.setBorder(new EmptyBorder(3, 6, 3, 3));
@@ -110,11 +112,14 @@ public class LoginView {
       passwordPanel.setOpaque(false);
       loginbox.add(passwordPanel, constraints);
 
+      // Object 5, buttons
       constraints.gridy++; // 5
       loginbox.add(buttonFrame, constraints);
 
-      // Styling
+      // Background, will be a gradient because of the GradientPanel type
       loginbox.setBackground(new Color(43, 43, 43));
+
+      // Lots of foregrounds
       loginTitle.setForeground(Color.LIGHT_GRAY);
       login.setForeground(Color.LIGHT_GRAY);
       register.setForeground(Color.LIGHT_GRAY);
@@ -123,9 +128,11 @@ public class LoginView {
       usernameBox.setCaretColor(Color.LIGHT_GRAY);
       passwordBox.setCaretColor(Color.LIGHT_GRAY);
 
+      // Borders
       usernameBox.setBorder(new EmptyBorder(8, 8, 8, 8));
       passwordBox.setBorder(new EmptyBorder(8, 8, 8, 8));
 
+      // Backgrounds of the boxes, and invisible spacer
       usernameBox.setBackground(new Color(20, 20, 20));
       spacer.setOpaque(false);
       passwordBox.setBackground(new Color(20, 20, 20));
@@ -136,7 +143,7 @@ public class LoginView {
       main.add(Common.bottomPane(), SOUTH);
 
       // If someone presses the button..
-      ActionListeners.loginClickEvent(login, passwordBox.getText());
+      ActionListeners.loginClickEvent(login);
 
       return main;
     }
@@ -153,12 +160,18 @@ public class LoginView {
       GridBagConstraints constraints = new GridBagConstraints();
       constraints.gridx = 0;
 
+      // Use randoms for the profile icons
       Random random = new Random();
       Image image = null;
 
-      for (Profile profile : Commons.currentAccount.getProfiles()) {
-        int randomNum = random.nextInt((7 - 1) + 1) + 1;
+      for (Profile profile :
+          Account.currentAccount
+              .getProfiles()) { // For all profiles, shouldn't be more than 5 unless someone hacked
+                                // an extra profile into the account
 
+        int randomNum =
+            random.nextInt((7 - 1) + 1)
+                + 1; // Random profile picture, can show duplicate icons, intended behavior
         image = new ImageIcon("resources/profiles/profile" + randomNum + ".png").getImage();
         // Scale icon to fit labels, then add it to the label
         ImageIcon icon = new ImageIcon(image.getScaledInstance(100, 100, Image.SCALE_SMOOTH));
@@ -166,27 +179,27 @@ public class LoginView {
         String labelText = profile.getName();
         JButton label = new JButton();
 
-        if (profile.getAccount().isAdmin()) {
-          labelText += " [Admin]";
-          label.setFont(new Font(label.getFont().getName(), Font.BOLD, label.getFont().getSize()));
-        }
+        // If the profile is attached to an Admin account, add a tag
+        if (profile.getAccount().isAdmin()) labelText += " <br><b><sup>[Admin]</sup></b>";
 
-        label.setText(labelText);
+        // Close the html tags
+        label.setText("<html><center>" + labelText + "</center></html>");
 
+        // Set icon and basic styling
         label.setIcon(icon);
         label.setBorder(new EmptyBorder(3, 10, 3, 10));
-
         label.setIconTextGap(5);
         label.setHorizontalTextPosition(JLabel.CENTER);
         label.setVerticalTextPosition(JLabel.BOTTOM);
-
         label.setForeground(Color.LIGHT_GRAY);
-        ActionListeners.mouseEventUnderline(label);
+
+        // Action listener
         ActionListeners.profileSelectionEvent(label, profile);
 
         profileWrapper.add(label);
       }
 
+      // Add all the things
       main.add(Common.logo(), BorderLayout.NORTH);
       main.add(profileWrapper, BorderLayout.CENTER);
       main.add(Common.bottomPane(), BorderLayout.SOUTH);

@@ -1,14 +1,18 @@
 package com.netflix.entities;
 
-import com.netflix.commons.Commons;
+import com.netflix.entities.abstracts.Entity;
 
-public class Genre {
+import java.util.HashSet;
+import java.util.Set;
 
-  private String genreName;
+public class Genre extends Entity {
+
+    public static Set<Genre> genres = new HashSet<>();
+    private String genreName;
 
   public Genre(String genre) {
     this.genreName = genre;
-    Commons.genres.add(this);
+    genres.add(this);
   }
 
   public String getGenre() {

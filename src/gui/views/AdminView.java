@@ -7,78 +7,48 @@ package com.netflix.gui.views;
 
 import com.netflix.commons.Commons;
 import com.netflix.entities.Account;
-import com.netflix.gui.commons.GradientPanel;
+import com.netflix.entities.Profile;
 
 import javax.swing.*;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.table.JTableHeader;
-import javax.swing.table.TableCellRenderer;
-import javax.swing.table.TableColumnModel;
+import javax.swing.border.EmptyBorder;
 import java.awt.*;
 
 public class AdminView {
 
+    // TODO : Finish and document this class
+
   public static JPanel panel() {
+    JPanel wrapper = new JPanel(new BorderLayout());
     JPanel main = new JPanel(new GridBagLayout());
 
-    JPanel accounts = new JPanel(new BorderLayout());
+    Commons.logger.warning("Management view loaded!");
 
-    GridBagConstraints constraints = new GridBagConstraints();
-    constraints.gridy = 0;
+    JScrollPane pane = new JScrollPane();
+    JPanel panel = new JPanel();
+    panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
 
-    main.add(new JLabel("You're an admin, whoo!"), constraints);
+    for (Account account : Account.accounts)
+      for (Profile profile : account.getProfiles()) panel.add(addPanel(profile, main));
+    pane.getViewport().add(panel);
 
-    JTable table = new JTable();
-    DefaultTableModel tableModel = new DefaultTableModel(0, 0);
+    main.add(pane);
+    main.setBorder(new EmptyBorder(0, 0, 0, 0));
 
-    String[] columnNames = {"Email", "Location", "Type"};
+    wrapper.add(main, BorderLayout.WEST);
 
-    tableModel.setColumnIdentifiers(columnNames);
-    table.setModel(tableModel);
+    return wrapper;
+  }
 
-    for (Account account : Commons.accounts) {
-      String type = "User";
-      if (account.isAdmin()) type = "Administrator";
-      tableModel.addRow(new Object[] {account.getEmail(), account.getLocation(), type});
-    }
-
-    JTableHeader header = table.getTableHeader();
-    header.setForeground(new Color(151, 2, 4));
-    header.setFont(new Font(header.getFont().getName(), Font.BOLD, 12));
-    header.setOpaque(false);
-    table.setShowGrid(true);
-    table.setGridColor(Color.LIGHT_GRAY);
-
-    JScrollPane tableScroll =
-        new JScrollPane(
-            table,
-            ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED,
-            ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-
-    accounts.add(header, BorderLayout.NORTH);
-    accounts.add(table, BorderLayout.CENTER);
-
-    Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
-    tableScroll.setMaximumSize(new Dimension(table.getWidth(), dim.height / 2));
-
-    TableColumnModel columnModel = table.getColumnModel();
-
-    for (int column = 0; column < table.getColumnCount(); column++) {
-      int width = 15; // Min width
-      for (int row = 0; row < table.getRowCount(); row++) {
-        TableCellRenderer renderer = table.getCellRenderer(row, column);
-        Component comp = table.prepareRenderer(renderer, row, column);
-        width = Math.max(comp.getPreferredSize().width + 1, width);
-      }
-      columnModel.getColumn(column).setPreferredWidth(width + 10);
-    }
-
-    constraints.gridy++;
-    main.add(accounts, constraints);
-
-    accounts.setOpaque(false);
-    main.setOpaque(false);
-
-    return main;
+  public static JPanel addPanel(Profile profile, JPanel parent) {
+    JPanel panel = new JPanel(new BorderLayout());
+    panel.add(
+        new JLabel(
+            String.format(
+                "Account: %s  ::  Profiel: %s", profile.getAccount().getEmail(), profile.getName())),
+        BorderLayout.NORTH);
+    panel.add(new JButton("Change password"), BorderLayout.WEST);
+    panel.add(new JButton("Change e-mail"), BorderLayout.CENTER);
+    panel.add(new JButton("Change account type"), BorderLayout.EAST);
+    return panel;
   }
 }

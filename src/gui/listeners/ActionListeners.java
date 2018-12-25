@@ -15,8 +15,10 @@ import java.util.HashMap;
 
 public class ActionListeners {
 
-  private static String usernameBoxValue;
-  private static String passwordBoxValue;
+  private static String usernameBoxValue = "";
+  private static String passwordBoxValue = "";
+  private static int width;
+  private static int height;
 
   public static void mouseEventUnderline(JComponent object) {
     // MouseOver effects for the menu (underline and cursor effect)
@@ -49,31 +51,32 @@ public class ActionListeners {
         });
   }
 
-  public static void loginClickEvent(JButton login, String passwordMD5) {
+  public static void loginClickEvent(JButton login) {
     login.addActionListener(
         (ActionEvent e) -> {
-          for (Account account : Commons.accounts) {
+          // For all accounts in the list
+          for (Account account : Account.accounts) {
 
+            // Equal the name and password to the key and value
             String key = account.getEmail();
-            String value = Commons.users.get(account.getEmail());
+            String value = account.getPassword();
 
-            System.out.printf("Trying : %s :: %s%n", key, value);
+            if ((usernameBoxValue.equals(key)) // If it equals, login
+                && (Commons.hashSHA256(passwordBoxValue).equals(value))) {
 
-            if ((usernameBoxValue.equals(key))
-                && (Commons.hashMD5(passwordBoxValue).equals(value))) {
-
-                System.out.printf(
-                        "Actual : %s :: %s [ Accepted ]%n",
-                        usernameBoxValue, Commons.hashMD5(passwordBoxValue));
+              // A wild wizard appears, Easter Egg <3
               Commons.logger.info(
-                  String.format(
-                      "Authorized login %s :: %s",
-                      usernameBoxValue, Commons.hashMD5(passwordBoxValue)));
+                  "\n               ________\n          _,.-Y  |  |  Y-._\n      .-~\"   ||  |  |  |   \"-.\n      I\" \"\"==\"|\" !\"\"! \"|\"[]\"\"|     _____\n      L__  [] |..------|:   _[----I\" .-{\"-.\n     I___|  ..| l______|l_ [__L]_[I_/r(=}=-P\n    [L______L_[________]______j~  '-=c_]/=-^\n     \\_I_j.--.\\==I|I==_/.--L_]\n       [_((==)[`-----\"](==)j\n          I--I\"~~\"\"\"~~\"I--I\n          |[]|         |[]|\n          l__j         l__j\n          |!!|         |!!|\n          |..|         |..|\n          ([])         ([])\n          ]--[         ]--[    !! Authorized login\n          [_L]         [_L]    User : "
+                      + usernameBoxValue
+                      + "\n         /|..|\\       /|..|\\   Password (encoded) :\n        `=}--{='     `=}--{='   "
+                      + Commons.hashSHA256(passwordBoxValue)
+                      + "\n       .-^--r-^-.   .-^--r-^-.\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+
               // Clear the mainPanel (removing login panel), set loggedIn status to true and
               // load the media panels
-              MediaView.clearPane(NetflixGUI.mainPanel);
+              Commons.clearPane(NetflixGUI.mainPanel);
               NetflixGUI.loggedIn = true;
-              Commons.currentAccount = account;
+              Account.currentAccount = account;
               NetflixGUI.mainPanel.add(LoginView.ProfileLogin.profileSelection());
               break;
             }
@@ -84,9 +87,32 @@ public class ActionListeners {
   public static void profileSelectionEvent(JButton button, Profile profile) {
     button.addActionListener(
         (ActionEvent e) -> {
-          MediaView.clearPane(NetflixGUI.mainPanel);
-          Commons.currentUser = profile;
+          // Clear the main panel
+          Commons.clearPane(NetflixGUI.mainPanel);
+          // Set the currentUser
+          Profile.currentUser = profile;
+
+          // Load the panels
           NetflixGUI.loadPanels();
+        });
+  }
+
+  public static void backtoLogin(JButton button) {
+    button.addActionListener(
+        (ActionEvent e) -> {
+          // Clear the main panel
+          Commons.clearPane(NetflixGUI.mainPanel);
+          // Add the login pane
+          NetflixGUI.mainPanel.add(LoginView.AccountLogin.login());
+          // Restore the previous size (defined by switchRegisterPane)
+          NetflixGUI.frame.setSize(width, height);
+          // Make the frame resizable again
+          NetflixGUI.frame.setResizable(true);
+          // Center the frame
+          Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+          NetflixGUI.frame.setLocation(
+              dim.width / 2 - NetflixGUI.frame.getSize().width / 2,
+              dim.height / 2 - NetflixGUI.frame.getSize().height / 2);
         });
   }
 
@@ -95,6 +121,7 @@ public class ActionListeners {
     textField.addKeyListener(
         new KeyListener() {
           @Override
+          // does what it says, clicks a button if you press Enter
           public void keyTyped(KeyEvent e) {
             if (e.getKeyChar() == KeyEvent.VK_ENTER) button.doClick();
           }
@@ -103,6 +130,8 @@ public class ActionListeners {
             // Ignored
           }
 
+          // Stores the password in a String here. Prevents a weird bug where the getText doesn't
+          // pass as a parameter when you use the Enter key rather than the button
           public void keyReleased(KeyEvent e) {
             passwordBoxValue = textField.getText();
           }
@@ -122,6 +151,8 @@ public class ActionListeners {
           }
 
           @Override
+          // Stores the email in a String here. Prevents a weird bug where the getText doesn't
+          // pass as a parameter when you use the Enter key rather than the button
           public void keyReleased(KeyEvent e) {
             usernameBoxValue = textField.getText();
           }
@@ -131,7 +162,14 @@ public class ActionListeners {
   public static void switchRegisterPane(JButton register) {
     register.addActionListener(
         (ActionEvent e) -> {
-          MediaView.clearPane(NetflixGUI.mainPanel);
+          // Clears the main panel
+          Commons.clearPane(NetflixGUI.mainPanel);
+
+          // Stores the current size
+          width = NetflixGUI.frame.getWidth();
+          height = NetflixGUI.frame.getHeight();
+
+          // Adds the registration panel
           NetflixGUI.mainPanel.add(RegistrationView.registerPanel(NetflixGUI.frame));
         });
   }
@@ -140,14 +178,15 @@ public class ActionListeners {
     // Use lambda to handle button pressing to switch views
     button.addActionListener(
         (ActionEvent e) -> {
-          MediaView.clearPane(NetflixGUI.lpane);
+          Commons.clearPane(NetflixGUI.lpane);
 
+          // Switch case
           switch (pane) {
             case "Series":
-              NetflixGUI.lpane.add(SerieView.pane());
+              NetflixGUI.lpane.add(SerieMediaView.pane());
               break;
             case "Films":
-              NetflixGUI.lpane.add(FilmView.pane());
+              NetflixGUI.lpane.add(FilmMediaView.pane());
               break;
             case "Account":
               NetflixGUI.lpane.add(AccountView.pane());
@@ -164,17 +203,19 @@ public class ActionListeners {
   public static void logoutClickEvent(JButton logoutButton) {
     logoutButton.addActionListener(
         (ActionEvent e) -> {
-          MediaView.clearPane(NetflixGUI.mainPanel);
-          MediaView.clearPane(AccountView.pane());
-          MediaView.clearPane(FilmView.pane());
-          MediaView.clearPane(SerieView.pane());
-          MediaView.clearPane(NetflixGUI.lpane);
+          // Clear all the things, to prevent anything from being stored by the session
+          Commons.clearPane(NetflixGUI.mainPanel);
+          Commons.clearPane(AccountView.pane());
+          Commons.clearPane(FilmMediaView.pane());
+          Commons.clearPane(SerieMediaView.pane());
+          Commons.clearPane(NetflixGUI.lpane);
           NetflixGUI.loggedIn = false;
           LoginView.usernameBox.setText("");
           LoginView.passwordBox.setText("");
           usernameBoxValue = "";
           passwordBoxValue = "";
 
+          // Reload everything
           Netflix.gui.setFrame(Netflix.width, Netflix.height);
         });
   }
