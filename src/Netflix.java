@@ -1,25 +1,24 @@
 package com.netflix;
 
 import com.netflix.commons.Commons;
-import com.netflix.commons.DatabaseHandle;
-import com.netflix.commons.PropertyIndex;
 import com.netflix.gui.NetflixGUI;
+import com.netflix.handles.DatabaseHandle;
+import com.netflix.handles.PropertiesHandle;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.io.IOException;
+import java.util.logging.FileHandler;
 
 public class Netflix {
 
-  private static final Logger logger = Logger.getLogger(Commons.class.getName());
+  public static final int width = Integer.parseInt(PropertiesHandle.get("window.width"));
+  public static final int height = Integer.parseInt(PropertiesHandle.get("window.height"));
+//    public static DatabaseHandle database = new DatabaseHandle();
+  public static NetflixGUI gui;
 
+  @SuppressWarnings("deprecation")
   public static void main(String... args) {
-    logger.log(Level.CONFIG, "Connection string : {0}", DatabaseHandle.generateConnectionString());
-
-    final int width = Integer.parseInt(PropertyIndex.get("window.width"));
-    final int height = Integer.parseInt(PropertyIndex.get("window.height"));
-
-    new NetflixGUI(width, height);
-
-    System.out.println(Commons.hashMD5("pass"));
+//        database.connectDatabase();
+    DatabaseHandle.loadSampleData();
+    gui = new NetflixGUI(width, height);
   }
 }

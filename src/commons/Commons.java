@@ -1,48 +1,64 @@
 package com.netflix.commons;
 
-import com.netflix.objects.*;
-
-import javax.xml.bind.DatatypeConverter;
+import java.awt.*;
+import java.io.IOException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.logging.Level;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.util.Arrays;
+import java.util.logging.FileHandler;
 import java.util.logging.Logger;
+
+import static javax.xml.bind.DatatypeConverter.printHexBinary;
 
 public class Commons {
 
-  private static final Logger logger = Logger.getLogger(Commons.class.getName());
+  // Instantiate a logger for the entire project
+  public static final Logger logger = Logger.getLogger("Netflix");
 
-  public static Map<String, String> users = new HashMap<>();
-  protected static List<Episode> episodes = new ArrayList<>();
-  // Holds data from the database
-  protected static List<Serie> series = new ArrayList<>();
-  protected static List<Film> films = new ArrayList<>();
-  protected static List<Season> seasons = new ArrayList<>();
-  protected static List<Genre> genres = new ArrayList<>();
-  protected static List<Language> langs = new ArrayList<>();
+  static {
+    try {
+      String dateTime =
+          String.format("d.%s-t.%s", LocalDate.now().toString(), LocalTime.now().toString());
+      dateTime.replace(" ", ".");
+      FileHandler handler = new FileHandler("logs/log-" + dateTime + ".log", true);
+      Commons.logger.addHandler(handler);
+    } catch (IOException e) {
+      Commons.exception(e);
+    }
+  }
 
   // Exception handle
   public static void exception(Exception ex) {
-    logger.log(Level.SEVERE, ex.getMessage());
-    logger.log(Level.SEVERE, "Suspected cause : {0}", ex.getCause());
+    // Print the error message
+    logger.severe(ex.getMessage());
+    // Print the suspected cause
+    logger.severe("Suspected cause : " + ex.getCause());
+    // Print the stacktrace
+    logger.severe(Arrays.toString(ex.getStackTrace()));
   }
 
-  public static String hashMD5(String string) {
-    MessageDigest md = null;
-
-    String hash = "";
+  public static String hashSHA256(String password) {
     try {
-      md = MessageDigest.getInstance("MD5");
-      md.update(string.getBytes());
-      hash = DatatypeConverter.printHexBinary(md.digest());
+      // Set digest to use SHA-256
+      MessageDigest md = MessageDigest.getInstance("SHA-256");
+      // Set digest to convert given password
+      md.update(password.getBytes());
+
+      // Return it as a string
+      return printHexBinary(md.digest()).toLowerCase();
     } catch (NoSuchAlgorithmException ex) {
+      // In case SHA-256 is somehow not found
       Commons.exception(ex);
     }
+    return null;
+  }
 
-    return hash.toLowerCase();
+  public static void clearPane(Container con) {
+    // Clears a container
+    con.removeAll();
+    con.repaint();
+    con.revalidate();
   }
 }
