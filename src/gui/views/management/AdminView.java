@@ -23,17 +23,26 @@ public class AdminView {
   public static JPanel wrapper = new JPanel(new BorderLayout());
   public static JPanel tablePanel = new JPanel(new BorderLayout());
 
-  public static JPanel panel() {
+  private static JPanel accountListTable() {
     JTable table = new JTable();
     DefaultTableModel tableModel = new DefaultTableModel(0, 0);
-
-    // Table headers
+    TableColumn tc;
     String[] columnNames = {"E-mail", "Straat", "Huisnummer", "Toevoeging", "Woonplaats", "Admin"};
+    JTableHeader header;
+    JPanel tableAccounts;
+    JLabel accounts;
+    JScrollPane tableScroll =
+        new JScrollPane(
+            table,
+            ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED,
+            ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+    JButton createAccount;
+    JPanel panelHead;
 
     tableModel.setColumnIdentifiers(columnNames);
     table.setModel(tableModel);
 
-    // Add all episodes in the serie
+    // Add all tableAccounts in the serie
     for (Account account : Account.accounts) {
 
       tableModel.addRow(
@@ -47,7 +56,7 @@ public class AdminView {
           });
     }
 
-    JTableHeader header = table.getTableHeader();
+    header = table.getTableHeader();
     header.setForeground(new Color(151, 2, 4));
     header.setFont(new Font(header.getFont().getName(), Font.BOLD, 12));
     header.setOpaque(false);
@@ -55,38 +64,39 @@ public class AdminView {
     table.setShowGrid(true);
     table.setGridColor(Color.LIGHT_GRAY);
 
-    // Make it scrollable
-    JScrollPane tableScroll =
-        new JScrollPane(
-            table,
-            ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED,
-            ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-
-    JPanel episodes = new JPanel(new BorderLayout());
-
-    episodes.setOpaque(false);
-
     tablePanel.add(header, BorderLayout.NORTH);
     tablePanel.add(tableScroll, BorderLayout.CENTER);
 
-    JLabel accounts = new JLabel("Accounts");
+    accounts = new JLabel("Accounts");
     accounts.setFont(new Font(accounts.getFont().getName(), accounts.getFont().getStyle(), 14));
     accounts.setBorder(new EmptyBorder(0, 0, 8, 0));
 
-    episodes.add(accounts, BorderLayout.NORTH);
-    episodes.add(tablePanel, BorderLayout.CENTER);
+    createAccount = new JButton("Nieuw account");
 
-    wrapper.add(episodes, BorderLayout.CENTER);
-    wrapper.setBackground(Color.WHITE);
-    wrapper.setBorder(new EmptyBorder(5, 5, 5, 5));
+    panelHead = new JPanel(new BorderLayout());
+    panelHead.add(accounts, BorderLayout.NORTH);
+    panelHead.add(createAccount, BorderLayout.SOUTH);
+    panelHead.setOpaque(false);
+
+    tableAccounts = new JPanel(new BorderLayout());
+    tableAccounts.setOpaque(false);
+    tableAccounts.add(panelHead, BorderLayout.NORTH);
+    tableAccounts.add(tablePanel, BorderLayout.CENTER);
+    tableAccounts.addComponentListener(new ResizeListener(tableScroll));
 
     tableScroll.setBorder(BorderFactory.createEmptyBorder());
 
-    episodes.addComponentListener(new ResizeListener(tableScroll));
-
-    TableColumn tc = table.getColumnModel().getColumn(5);
+    tc = table.getColumnModel().getColumn(5);
     tc.setCellEditor(table.getDefaultEditor(Boolean.class));
     tc.setCellRenderer(table.getDefaultRenderer(Boolean.class));
+
+    return tableAccounts;
+  }
+
+  public static JPanel panel() {
+    wrapper.add(accountListTable(), BorderLayout.CENTER);
+    wrapper.setBackground(Color.WHITE);
+    wrapper.setBorder(new EmptyBorder(5, 5, 5, 5));
 
     JLabel allwatched = new JLabel("<html>");
 
