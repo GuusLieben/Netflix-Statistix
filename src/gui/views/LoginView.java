@@ -5,8 +5,10 @@
 
 package com.netflix.gui.views;
 
+import com.netflix.commons.Commons;
 import com.netflix.entities.Account;
 import com.netflix.entities.Profile;
+import com.netflix.gui.NetflixFrame;
 import com.netflix.gui.commons.Common;
 import com.netflix.gui.commons.GradientPanel;
 import com.netflix.gui.listeners.ActionListeners;
@@ -14,6 +16,7 @@ import com.netflix.gui.listeners.ActionListeners;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
+import java.awt.event.ActionEvent;
 import java.util.Random;
 
 import static com.netflix.gui.commons.Common.logo;
@@ -52,9 +55,6 @@ public class LoginView {
       buttonFrame.add(register, BorderLayout.EAST);
 
       buttonFrame.setOpaque(false);
-
-      // Make sure all text in passwordBox is obscured with a specific character
-      passwordBox.setEchoChar('⚬');
 
       // Set minimum sizes for the input boxes, to prevent them from being too small
       usernameBox.setMinimumSize(
@@ -167,7 +167,7 @@ public class LoginView {
       for (Profile profile :
           Account.currentAccount
               .getProfiles()) { // For all profiles, shouldn't be more than 5 unless someone hacked
-                                // an extra profile into the account
+        // an extra profile into the account
 
         int randomNum =
             random.nextInt((7 - 1) + 1)
@@ -178,9 +178,6 @@ public class LoginView {
 
         String labelText = profile.getName();
         JButton label = new JButton();
-
-        // If the profile is attached to an Admin account, add a tag
-        if (profile.getAccount().isAdmin()) labelText += " <br><b><sup>[Admin]</sup></b>";
 
         // Close the html tags
         label.setText("<html><center>" + labelText + "</center></html>");
@@ -199,9 +196,41 @@ public class LoginView {
         profileWrapper.add(label);
       }
 
+      if (Account.currentAccount.getProfiles().size() <= 4) {
+        JButton addProfileLabel = new JButton("Nieuw profiel");
+        image = new ImageIcon("resources/profiles/addprofile.png").getImage();
+        ImageIcon icon = new ImageIcon(image.getScaledInstance(100, 100, Image.SCALE_SMOOTH));
+
+        addProfileLabel.setIcon(icon);
+        addProfileLabel.setBorder(new EmptyBorder(3, 10, 3, 10));
+        addProfileLabel.setIconTextGap(5);
+        addProfileLabel.setHorizontalTextPosition(JLabel.CENTER);
+        addProfileLabel.setVerticalTextPosition(JLabel.BOTTOM);
+        addProfileLabel.setForeground(Color.LIGHT_GRAY);
+
+        addProfileLabel.addActionListener(
+            (ActionEvent e) -> {
+              Commons.clearPane(NetflixFrame.mainPanel);
+              NetflixFrame.mainPanel.add(createProfileView.panel());
+            });
+
+        profileWrapper.add(addProfileLabel);
+      }
+
+      JPanel centerWrapper = new JPanel(new BorderLayout());
+      JLabel watching = new JLabel("Wie kijkt Netflix Statistix?");
+      watching.setFont(new Font(watching.getFont().getName(), watching.getFont().getStyle(), 18));
+
+      centerWrapper.add(watching, BorderLayout.NORTH);
+      centerWrapper.add(profileWrapper, BorderLayout.CENTER);
+      centerWrapper.setBackground(new Color(34, 34, 34));
+      watching.setHorizontalAlignment(JLabel.CENTER);
+      watching.setBorder(new EmptyBorder(35, 0, 0, 0));
+      watching.setForeground(Color.LIGHT_GRAY);
+
       // Add all the things
       main.add(Common.logo(), BorderLayout.NORTH);
-      main.add(profileWrapper, BorderLayout.CENTER);
+      main.add(centerWrapper, BorderLayout.CENTER);
       main.add(Common.bottomPane(), BorderLayout.SOUTH);
 
       return main;

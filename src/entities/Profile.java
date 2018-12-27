@@ -1,7 +1,8 @@
 package com.netflix.entities;
 
 import com.netflix.entities.abstracts.Entity;
-import com.netflix.gui.NetflixGUI;
+import com.netflix.entities.abstracts.MediaObject;
+import com.netflix.gui.NetflixFrame;
 
 import javax.swing.*;
 import java.util.HashSet;
@@ -28,7 +29,7 @@ public class Profile extends Entity {
     } else {
       // If the account already has 5 (or more) profiles, show a popup
       JOptionPane.showMessageDialog(
-          NetflixGUI.frame,
+          NetflixFrame.frame,
           "Dit account heeft al " + account.getProfiles().size() + " profielen",
           null,
           JOptionPane.ERROR_MESSAGE);
@@ -42,9 +43,16 @@ public class Profile extends Entity {
   public Set<Serie> getSeriesWatched() {
     return episodesWatched
         .stream()
-        .map(episode -> episode.getSeason().getSerie())
+        .map(episode -> episode.getSerie())
         .collect(Collectors.toSet());
   }
+
+  public Set<MediaObject> getMediaWatched() {
+      Set<MediaObject> mediaWatched = new HashSet<>();
+      mediaWatched.addAll(filmsWatched);
+      for (Episode epi : episodesWatched) mediaWatched.add(epi.getSerie());
+      return mediaWatched;
+    }
 
   public int getAge() {
     return age;
@@ -63,10 +71,12 @@ public class Profile extends Entity {
   }
 
   public void viewFilm(Film film) {
+    film.setWatchedBy(this);
     filmsWatched.add(film);
   }
 
   public void viewEpisode(Episode episode) {
+    episode.getSerie().setWatchedBy(this);
     episodesWatched.add(episode);
   }
 }

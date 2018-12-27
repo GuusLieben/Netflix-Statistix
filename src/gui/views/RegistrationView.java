@@ -2,7 +2,6 @@ package com.netflix.gui.views;
 
 import com.netflix.gui.commons.GradientPanel;
 import com.netflix.gui.listeners.ActionListeners;
-import sun.tools.jstat.Alignment;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -39,17 +38,17 @@ public class RegistrationView {
     boxRegister.setBorder(new EmptyBorder(20, 20, 10, 25));
 
     // Title styling
-    JLabel registerTitle = new JLabel("Registreer");
-    JButton backtoLogin = new JButton("< Terug");
-    backtoLogin.setHorizontalAlignment(JLabel.LEFT);
-    backtoLogin.setForeground(Color.LIGHT_GRAY);
-    backtoLogin.setBorder(new EmptyBorder(0, 10, 0, 0));
-    ActionListeners.mouseEventUnderline(backtoLogin);
-    ActionListeners.backtoLogin(backtoLogin);
+    JLabel registerTitle = new JLabel("Nieuw account");
+    JButton backToPrevious = new JButton("< Terug");
+    backToPrevious.setHorizontalAlignment(JLabel.LEFT);
+    backToPrevious.setForeground(Color.LIGHT_GRAY);
+    backToPrevious.setBorder(new EmptyBorder(0, 10, 0, 0));
+    ActionListeners.mouseEventUnderline(backToPrevious);
+    ActionListeners.backtoLogin(backToPrevious);
 
     JPanel titleAndCheck = new JPanel(new BorderLayout());
     titleAndCheck.add(registerTitle, BorderLayout.CENTER);
-    titleAndCheck.add(backtoLogin, BorderLayout.SOUTH);
+    titleAndCheck.add(backToPrevious, BorderLayout.SOUTH);
 
     registerTitle.setFont(
         new Font(registerTitle.getFont().getName(), registerTitle.getFont().getStyle(), 18));

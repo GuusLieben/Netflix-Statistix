@@ -1,6 +1,4 @@
 
-G
-src/gui/NetflixGUI.java,d/d/dd2648400ccb965d2d3b1f5d24692d6063c8928a
 H
 src/commons/Commons.java,2/4/24bd7a9bd7ca6062ff272717043f40d0fd2e0815
 @
@@ -45,11 +43,7 @@ Q
 Y
 )tests/com/netflix/FunctionalityTests.java,f/7/f79b36b49336204e7db23404d9deebc372280de8
 L
-src/gui/views/AdminView.java,2/f/2f17701578f5c2ce0d9415e1c9a6364949dc76c3
-L
 src/gui/views/LoginView.java,c/8/c85b0f5c9e6f30a1d6e16ebfbf4455be01d34547
-M
-src/entities/MediaObject.java,4/c/4cbe1080208a64c497a45935a8c6ef05092c3958
 P
  src/gui/views/FilmMediaView.java,4/6/46e10dc5b1bdb5731be7bf3a88f35d549120d233
 Q
@@ -60,5 +54,15 @@ X
 (logs/log-d.2018-12-24-t.20:16:02.248.log,8/a/8a8278db1610669146014b176199782d24025af7
 X
 (logs/log-d.2018-12-24-t.19:30:31.669.log,a/3/a3546f4a0884fa90447be5ea46fe7364c8f5cfd9
-a
-1src/test/com/netflix/gui/views/MediaViewTest.java,7/8/781591254979fb671394e9bccab851660df0b98f
+R
+"src/entities/abstracts/Entity.java,8/9/89b30b70633387c3b0035418b93446943f137b0f
+W
+'src/entities/abstracts/MediaObject.java,d/7/d78b1a3a4641506deeffdfaef61539a644213f3f
+I
+src/gui/NetflixFrame.java,b/0/b01a0b1f2008b380828975d2b74c6246782bfdfb
+`
+0src/gui/views/management/createAccountFrame.java,b/6/b60d169ec02a910c7d778b4622350b1914ff3bb5
+W
+'src/gui/views/management/AdminView.java,1/9/195a9d63e2d69281db79b167c87808081877c714
+L
+src/gui/views/GraphView.java,e/0/e0604df2fc2cfb4dd536d41c935aad58ab78fe1e

@@ -1,7 +1,10 @@
 package com.netflix.gui.views;
 
 import com.netflix.commons.Commons;
-import com.netflix.entities.*;
+import com.netflix.entities.Episode;
+import com.netflix.entities.Film;
+import com.netflix.entities.Season;
+import com.netflix.entities.Serie;
 import com.netflix.entities.abstracts.MediaObject;
 
 import javax.swing.*;
@@ -36,12 +39,13 @@ public class ObjectView {
       Serie serie = Serie.getSerieByName(object.getTitle());
       description =
           String.format(
-              "<html>Taal : %s<br>Genre : %s<br>Seizoenen : %d<br>Afleveringen : %d<br>Leeftijdsclassificatie %s</html>",
+              "<html>Taal : %s<br>Genre : %s<br>Seizoenen : %d<br>Afleveringen : %d<br>Leeftijdsclassificatie %s<br>Bekeken door %s%% van het totaal aantal gebruikers</html>",
               object.getLang().getLanguageName(),
               object.getGenre(),
               serie.getSeasonCount(),
               serie.getEpisodeCount(),
-              object.getRating());
+              object.getRating(),
+              Commons.percentage(object.getWatchedPercentage()));
     }
 
     // If it's a film
@@ -49,12 +53,13 @@ public class ObjectView {
       Film film = Film.getFilmByName(object.getTitle());
       description =
           String.format(
-              "<html>Genre : %s<br>Taal : %s<br>Leeftijdsclassificatie : %s<br>Regisseur : %s<br>Tijdsduur : %s</html>",
+              "<html>Genre : %s<br>Taal : %s<br>Leeftijdsclassificatie : %s<br>Regisseur : %s<br>Tijdsduur : %s<br>Bekeken door %s%% van het totaal aantal gebruikers</html>",
               object.getGenre(),
               object.getLang().getLanguageName(),
               object.getRating(),
               film.getDirector(),
-              film.getDuration());
+              film.getDuration(),
+              Commons.percentage(object.getWatchedPercentage()));
     }
   }
 
@@ -121,7 +126,7 @@ public class ObjectView {
 
     if (ObjectView.serie != null) { // If it's a film this will be null
       // Generate a table
-        JTable table =
+      JTable table =
           new JTable() {
             @Override
             public boolean isCellEditable(int row, int column) {

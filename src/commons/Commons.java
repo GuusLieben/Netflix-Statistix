@@ -4,6 +4,7 @@ import java.awt.*;
 import java.io.IOException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.text.DecimalFormat;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Arrays;
@@ -27,6 +28,10 @@ public class Commons {
     } catch (IOException e) {
       Commons.exception(e);
     }
+  }
+
+  public static String percentage(double num) {
+    return new DecimalFormat("#.0").format(num);
   }
 
   // Exception handle

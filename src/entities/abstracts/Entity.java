@@ -10,12 +10,13 @@ import java.util.Set;
 
 public abstract class Entity {
 
-  private static Set<Entity> entities = new HashSet<>();
+  public static Set<Entity> entities = new HashSet<>();
   public int entityId;
 
   public Entity() {
     entityId = getEntityCount() + 1;
     entities.add(this);
+    System.out.println("New entity, Id assigned : #" + getEntityId());
   }
 
   public static int getEntityCount() {
