@@ -16,7 +16,7 @@ import java.awt.event.ActionEvent;
 import static java.awt.BorderLayout.CENTER;
 import static java.awt.BorderLayout.NORTH;
 
-public class MediaView {
+public abstract class MediaView {
 
   static JComboBox<Object> comboBox;
   static String type;

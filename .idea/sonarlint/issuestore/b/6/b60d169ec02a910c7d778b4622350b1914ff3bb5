@@ -1,0 +1,4 @@
+
+jsquid:S1223"LRename this method to prevent any misunderstanding or make it a constructor.(‚Š†³8¼°Òş,
+ksquid:S00101"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(›“k8Ã—Òş,
+bsquid:UselessImportCheck"7Remove this unused import 'org.jfree.chart.JFreeChart'.(Õ˜„Ä8è¶íÛş,

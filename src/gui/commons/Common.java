@@ -113,8 +113,7 @@ public class Common {
         addIcon(button, "account", "Account");
         break;
       case "Manager":
-        // Doesn't have an icon
-        ActionListeners.switchPaneOnClick(button, "Manager");
+        addIcon(button, "manager", "Manager");
         break;
       default:
         break;
