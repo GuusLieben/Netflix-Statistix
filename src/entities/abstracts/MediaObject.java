@@ -13,15 +13,19 @@ import java.util.Set;
 public abstract class MediaObject extends Entity {
 
   public static int type;
+  public static Set<MediaObject> objectIds = new HashSet<>();
   public int mediaType;
   public String title;
   public Genre genre;
   public Language lang;
   public AgeRating rating;
+  public int objectId;
   private Set<Profile> watchedBy;
 
   public MediaObject() {
     watchedBy = new HashSet<>();
+    objectId = objectIds.size() + 1;
+    objectIds.add(this);
   }
 
   public static MediaObject getObjectByName(String name, int mediaType) {
@@ -43,6 +47,12 @@ public abstract class MediaObject extends Entity {
 
   public void setWatchedBy(Profile profile) {
     watchedBy.add(profile);
+  }
+
+  public double getWatchedPercentage() {
+    int profileCount = Account.accounts.stream().mapToInt(acc -> acc.getProfiles().size()).sum();
+    double percentageWatchedBy = (double) this.getWatchedByAmount() / profileCount * 100;
+    return percentageWatchedBy;
   }
 
   public int getType() {

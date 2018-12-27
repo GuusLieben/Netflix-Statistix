@@ -1,7 +1,10 @@
 package com.netflix.gui.views;
 
 import com.netflix.commons.Commons;
-import com.netflix.entities.*;
+import com.netflix.entities.Episode;
+import com.netflix.entities.Film;
+import com.netflix.entities.Season;
+import com.netflix.entities.Serie;
 import com.netflix.entities.abstracts.MediaObject;
 
 import javax.swing.*;
@@ -31,9 +34,6 @@ public class ObjectView {
     new ObjectView();
     title = new JLabel(object.getTitle());
 
-    int profileCount = Account.accounts.stream().mapToInt(acc -> acc.getProfiles().size()).sum();
-    double percentageWatchedBy = (double) object.getWatchedByAmount() / profileCount * 100;
-
     // If it's a serie
     if (object.getType() == 2) {
       Serie serie = Serie.getSerieByName(object.getTitle());
@@ -45,7 +45,7 @@ public class ObjectView {
               serie.getSeasonCount(),
               serie.getEpisodeCount(),
               object.getRating(),
-              percentageWatchedBy);
+              Commons.percentage(object.getWatchedPercentage()));
     }
 
     // If it's a film
@@ -59,7 +59,7 @@ public class ObjectView {
               object.getRating(),
               film.getDirector(),
               film.getDuration(),
-              percentageWatchedBy);
+              Commons.percentage(object.getWatchedPercentage()));
     }
   }
 

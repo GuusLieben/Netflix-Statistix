@@ -2,7 +2,7 @@ package com.netflix.entities;
 
 import com.netflix.entities.abstracts.Entity;
 import com.netflix.entities.abstracts.MediaObject;
-import com.netflix.gui.NetflixGUI;
+import com.netflix.gui.NetflixFrame;
 
 import javax.swing.*;
 import java.util.HashSet;
@@ -29,7 +29,7 @@ public class Profile extends Entity {
     } else {
       // If the account already has 5 (or more) profiles, show a popup
       JOptionPane.showMessageDialog(
-          NetflixGUI.frame,
+          NetflixFrame.frame,
           "Dit account heeft al " + account.getProfiles().size() + " profielen",
           null,
           JOptionPane.ERROR_MESSAGE);

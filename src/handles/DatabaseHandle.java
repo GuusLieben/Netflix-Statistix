@@ -7,6 +7,8 @@ package com.netflix.handles;
 
 import com.netflix.commons.Commons;
 import com.netflix.entities.*;
+import com.netflix.entities.abstracts.MediaObject;
+import com.netflix.gui.views.management.watchedMediaGraph;
 
 import java.sql.*;
 
@@ -42,11 +44,9 @@ public class DatabaseHandle {
     // Create a sample account with profile and additional data
     Account account =
         new Account(false, "guus@xendox.com", "Steur", 358, "", "Hendrik-Ido-Ambacht", "pass");
-    System.out.println(account.getEntityId());
+
     Profile profile = new Profile(account, "Guus", 18);
-    System.out.println(profile.getEntityId());
     Profile profile2 = new Profile(account, "Niet Guus", 19);
-    System.out.println(profile2.getEntityId());
 
     Account admin =
         new Account(true, "admin@admin.admin", "Lovensdijkstraat", 63, "", "Breda", "admin");
@@ -56,6 +56,7 @@ public class DatabaseHandle {
         new Account(true, "docent@avans.nl", "Lovensdijkstraat", 65, "", "Breda", "1234");
     Profile ruud = new Profile(docent, "Ruud Hermans", 33);
     Profile erik = new Profile(docent, "Erik Kuiper", 49);
+    Profile bob = new Profile(docent, "Bob Bogger", 49);
 
     // Sample series
     Serie HouseOfCards =
@@ -120,6 +121,8 @@ public class DatabaseHandle {
     profile2.viewEpisode(episode2);
     profile2.viewEpisode(episode10);
     profile.viewFilm(Avengers);
+    bob.viewFilm(Avengers);
+    bob.viewEpisode(episode10);
     ruud.viewEpisode(episode10);
 
     //////////// FILM SAMPLE DATA

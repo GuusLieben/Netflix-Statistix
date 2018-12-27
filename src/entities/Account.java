@@ -2,7 +2,7 @@ package com.netflix.entities;
 
 import com.netflix.commons.Commons;
 import com.netflix.entities.abstracts.Entity;
-import com.netflix.gui.NetflixGUI;
+import com.netflix.gui.NetflixFrame;
 
 import javax.swing.*;
 import java.util.HashSet;
@@ -53,7 +53,7 @@ public class Account extends Entity {
     } else {
       // If the email wasn't valid, show a popup and don't create the object
       JOptionPane.showMessageDialog(
-          NetflixGUI.frame, "E-mail is incorrect : " + email, null, JOptionPane.ERROR_MESSAGE);
+          NetflixFrame.frame, "E-mail is incorrect : " + email, null, JOptionPane.ERROR_MESSAGE);
     }
   }
 

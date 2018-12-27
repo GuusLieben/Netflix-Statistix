@@ -16,7 +16,7 @@ import static com.netflix.gui.commons.Common.logo;
 import static java.awt.BorderLayout.*;
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
-public class NetflixGUI {
+public class NetflixFrame {
 
   public static JFrame frame;
   public static JPanel mainPanel = new JPanel(new BorderLayout());
@@ -24,7 +24,7 @@ public class NetflixGUI {
   public static JPanel lpane = new JPanel(new BorderLayout());
 
   // Basic constructor
-  public NetflixGUI(int width, int height) {
+  public NetflixFrame(int width, int height) {
     Commons.logger.info("Instantiating GUI");
     frame = new JFrame();
     setFrame(width, height);
@@ -70,6 +70,7 @@ public class NetflixGUI {
 
     // Add the mainPanel containing either all media panels or the login panel
     frame.add(mainPanel);
+
 
     // Center frame
     Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
