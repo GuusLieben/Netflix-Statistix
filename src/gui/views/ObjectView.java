@@ -10,9 +10,12 @@ import com.netflix.entities.abstracts.MediaObject;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 import java.awt.*;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
+import java.util.ArrayList;
 
 import static java.awt.BorderLayout.*;
 
@@ -136,7 +139,7 @@ public class ObjectView {
       DefaultTableModel tableModel = new DefaultTableModel(0, 0);
 
       // Table headers
-      String[] columnNames = {"Titel", "Seizoen", "Duratie"};
+      String[] columnNames = {"Aflevering", "Titel", "Seizoen", "Duratie"};
 
       tableModel.setColumnIdentifiers(columnNames);
       table.setModel(tableModel);
@@ -145,7 +148,12 @@ public class ObjectView {
       for (Season season : ObjectView.serie.getSeasons()) {
         for (Episode episode : season.getEpisodes()) {
           tableModel.addRow(
-              new Object[] {episode.getTitle(), episode.getSeason(), episode.getDuration()});
+              new Object[] {
+                episode.getEpisodeNumber(),
+                episode.getTitle(),
+                episode.getSeason(),
+                episode.getDuration()
+              });
         }
       }
 
@@ -156,6 +164,14 @@ public class ObjectView {
 
       table.setShowGrid(true);
       table.setGridColor(Color.LIGHT_GRAY);
+
+      TableRowSorter<TableModel> sorter = new TableRowSorter<>(table.getModel());
+      table.setRowSorter(sorter);
+
+      ArrayList<RowSorter.SortKey> sortKeys = new ArrayList<>(25);
+      sortKeys.add(new RowSorter.SortKey(2, SortOrder.ASCENDING)); // First sort it by season
+      sortKeys.add(new RowSorter.SortKey(0, SortOrder.ASCENDING)); // Then sort it by episode
+      sorter.setSortKeys(sortKeys);
 
       // Make it scrollable
       JScrollPane tableScroll =

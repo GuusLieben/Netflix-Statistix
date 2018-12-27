@@ -25,6 +25,10 @@ public class Episode extends Entity {
     season.addEpisode(this);
   }
 
+  public int getEpisodeNumber() {
+    return episodeNumber;
+  }
+
   public Season getSeason() {
     return season;
   }
