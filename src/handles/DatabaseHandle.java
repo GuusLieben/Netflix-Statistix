@@ -7,8 +7,6 @@ package com.netflix.handles;
 
 import com.netflix.commons.Commons;
 import com.netflix.entities.*;
-import com.netflix.entities.abstracts.MediaObject;
-import com.netflix.gui.views.management.watchedMediaGraph;
 
 import java.sql.*;
 
@@ -137,21 +135,23 @@ public class DatabaseHandle {
 
   private void collectData() {
     // First load items that do not require others entities
-    loadGenres();
-    loadLangs();
-    loadRatings();
+    LoadData data = new LoadData();
+
+    data.loadGenres();
+    data.loadLangs();
+    data.loadRatings();
 
     // Load films
-    loadFilms();
+    data.loadFilms();
 
     // Load all serie entities in order
-    loadSeries();
-    loadSeasons();
-    loadEpisodes();
+    data.loadSeries();
+    data.loadSeasons();
+    data.loadEpisodes();
 
     // Load all users in order
-    loadUsers();
-    loadProfiles();
+    data.loadUsers();
+    data.loadProfiles();
   }
 
   // Connect to the database with the generated string
@@ -167,105 +167,6 @@ public class DatabaseHandle {
       Commons.exception(e);
       connection = null;
       return false;
-    }
-  }
-
-  private void loadRatings() {
-    ResultSet seasonSet = executeSql("SELECT * FROM Ratings");
-    try {
-      while (seasonSet.next()) {
-        //              Commons.ratings.add(...)
-      }
-    } catch (SQLException ex) {
-      Commons.exception(ex);
-    }
-  }
-
-  private void loadFilms() {
-    ResultSet filmSet = executeSql("SELECT * FROM FilmMediaView");
-    try {
-      while (filmSet.next()) {
-        //              Commons.films.add(...)
-      }
-    } catch (SQLException ex) {
-      Commons.exception(ex);
-    }
-  }
-
-  private void loadSeries() {
-    ResultSet serieSet = executeSql("SELECT * FROM SerieMediaView");
-    try {
-      while (serieSet.next()) {
-        //              Commons.series.add(...)
-      }
-    } catch (SQLException ex) {
-      Commons.exception(ex);
-    }
-  }
-
-  private void loadSeasons() {
-    ResultSet seasonSet = executeSql("SELECT * FROM Seasons");
-    try {
-      while (seasonSet.next()) {
-        //              Commons.seasons.add(...)
-      }
-    } catch (SQLException ex) {
-      Commons.exception(ex);
-    }
-  }
-
-  private void loadEpisodes() {
-    ResultSet episodeSet = executeSql("SELECT * FROM Episodes");
-    try {
-      while (episodeSet.next()) {
-        //              Commons.episodes.add(...)
-      }
-    } catch (SQLException ex) {
-      Commons.exception(ex);
-    }
-  }
-
-  private void loadGenres() {
-    ResultSet genreSet = executeSql("SELECT * FROM Genres");
-    try {
-      while (genreSet.next()) {
-        //              Commons.episodes.add(...)
-      }
-    } catch (SQLException ex) {
-      Commons.exception(ex);
-    }
-  }
-
-  private void loadLangs() {
-    ResultSet langSet = executeSql("SELECT * FROM Languages");
-    try {
-      while (langSet.next()) {
-        //              Commons.episodes.add(...)
-      }
-    } catch (SQLException ex) {
-      Commons.exception(ex);
-    }
-  }
-
-  private void loadUsers() {
-    ResultSet userSet = executeSql("SELECT * FROM Users");
-    try {
-      while (userSet.next()) {
-        //              Commons.episodes.add(...)
-      }
-    } catch (SQLException ex) {
-      Commons.exception(ex);
-    }
-  }
-
-  private void loadProfiles() {
-    ResultSet profileSet = executeSql("SELECT * FROM Profiles");
-    try {
-      while (profileSet.next()) {
-        //              Commons.episodes.add(...)
-      }
-    } catch (SQLException ex) {
-      Commons.exception(ex);
     }
   }
 
