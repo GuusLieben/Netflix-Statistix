@@ -16,7 +16,7 @@ public class DatabaseHandle {
 
   public DatabaseHandle() {
     connectDatabase();
-    collectData();
+    loadData();
   }
 
   // Use the package.properties file to generate a connection string
@@ -133,7 +133,7 @@ public class DatabaseHandle {
     Serie.series.add(Daredevil);
   }
 
-  private void collectData() {
+  private void loadData() {
     // First load items that do not require others entities
     LoadData data = new LoadData();
 
@@ -170,10 +170,6 @@ public class DatabaseHandle {
     }
   }
 
-  public void registerAccount(Account account) {
-    throw new UnsupportedOperationException();
-  }
-
   public void disconnectDatabase() {
     // Check if it isn't already disconnected
     if (connection != null)
@@ -197,11 +193,17 @@ public class DatabaseHandle {
     return results;
   }
 
-  public boolean executeSqlNoResult(String sqlQuery) {
+  public boolean executeSqlNoResult(String query, String[] arr) {
     // Return true if the query succeeded, even if it has no resultset
-    try (Statement statement = this.connection.createStatement()) {
-      return statement.execute(sqlQuery);
-    } catch (Exception ex) {
+    // Sample : "SELECT account_balance FROM user_data WHERE user_name = ? "
+
+    try (PreparedStatement statement = connection.prepareStatement(query)) {
+      for (int i = 0; i < arr.length; i++)
+        statement.setString( // Array starts at index 0, query starts at index 1
+            i + 1,
+            arr[i]); // Prevent the possibility of SQL Injections, as this will use user input
+      return statement.execute();
+    } catch (SQLException ex) {
       Commons.exception(ex);
     }
     return false;
