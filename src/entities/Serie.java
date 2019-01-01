@@ -1,12 +1,9 @@
 package com.netflix.entities;
 
 import com.netflix.*;
-import com.netflix.commons.*;
-import com.netflix.entities.abstracts.MediaObject;
+import com.netflix.entities.abstracts.*;
 
-import java.sql.*;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 public class Serie extends MediaObject { // MediaObject extends Entity
 
@@ -62,27 +59,15 @@ public class Serie extends MediaObject { // MediaObject extends Entity
   }
 
   public static void getFromDatabase() {
-    if (Netflix.database.connectDatabase()) {
-      String sqlQuery =
-          "SELECT SerieId, Title, AmountOfSeasons, LijktOp, LanguageCode, Rating FROM Serie";
-      ResultSet results = null;
-      try (Statement statement = Netflix.database.connection.createStatement()) {
-        // Make sure the results are passed
-        results = statement.executeQuery(sqlQuery);
-        System.out.println("Query passed : " + results.toString());
-        while (results.next())
-          new Serie(
-              new Genre("Drama", 1), // TODO : get Genre by ID
-              (Language) Language.getByCode(results.getString("LanguageCode")),
-              results.getString("Title"),
-              (AgeRating) AgeRating.getByAge(results.getInt("Rating")),
-              results.getInt("SerieId"));
-
-      } catch (SQLException ex) {
-        Commons.exception(ex);
-        System.out.println("Query did not pass");
-      }
-      Netflix.database.disconnectDatabase();
+    for (HashMap<String, Object> map :
+        Netflix.database.executeSql(
+            "SELECT SerieId, Title, AmountOfSeasons, LijktOp, LanguageCode, Rating FROM Serie")) {
+      new Serie(
+          Genre.getByName((String) map.get("Genre")),
+          Language.getByCode((String) map.get("Languagecode")),
+          (String) map.get("Title"),
+          AgeRating.getByAge((int) map.get("Rating")),
+          (int) map.get("SerieId"));
     }
   }
 }

@@ -1,12 +1,9 @@
 package com.netflix.entities;
 
 import com.netflix.*;
-import com.netflix.commons.*;
-import com.netflix.entities.abstracts.Entity;
+import com.netflix.entities.abstracts.*;
 
-import java.sql.*;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 public class AgeRating extends Entity {
 
@@ -40,21 +37,9 @@ public class AgeRating extends Entity {
   }
 
   public static void getFromDatabase() {
-    if (Netflix.database.connectDatabase()) {
-      String sqlQuery = "SELECT MPAA, Rating FROM Rating";
-      ResultSet results = null;
-      try (Statement statement = Netflix.database.connection.createStatement()) {
-        // Make sure the results are passed
-        results = statement.executeQuery(sqlQuery);
-        System.out.println("Query passed : " + results.toString());
-        while (results.next())
-          new AgeRating(results.getString("MPAA"), 1); // TODO : Fix minimumAge in database!
-
-      } catch (SQLException ex) {
-        Commons.exception(ex);
-        System.out.println("Query did not pass");
-      }
-      Netflix.database.disconnectDatabase();
+    for (HashMap<String, Object> map :
+        Netflix.database.executeSql("SELECT MPAA, Rating FROM Rating")) {
+      new AgeRating((String) map.get("MPAA"), (int) map.get("Rating"));
     }
   }
 

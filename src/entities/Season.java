@@ -1,12 +1,9 @@
 package com.netflix.entities;
 
 import com.netflix.*;
-import com.netflix.commons.*;
-import com.netflix.entities.abstracts.Entity;
+import com.netflix.entities.abstracts.*;
 
-import java.sql.*;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 public class Season extends Entity {
 
@@ -51,30 +48,18 @@ public class Season extends Entity {
     return amountOfEpisodes;
   }
 
-    public static Season getByDbId(int id) {
-        return seasons.stream().filter(ent -> ent.databaseId == id).findFirst().orElse(null);
-    }
+  public static Season getByDbId(int id) {
+    return seasons.stream().filter(ent -> ent.databaseId == id).findFirst().orElse(null);
+  }
 
   public static void getFromDatabase() {
-    if (Netflix.database.connectDatabase()) {
-      String sqlQuery = "SELECT SeasonId, SerieId, Title, SeasonNumber FROM Season";
-      ResultSet results = null;
-      try (Statement statement = Netflix.database.connection.createStatement()) {
-        // Make sure the results are passed
-        results = statement.executeQuery(sqlQuery);
-        System.out.println("Query passed : " + results.toString());
-        while (results.next())
-          new Season(
-              Serie.getByDbId(results.getInt("SerieId")),
-              results.getString("Title"),
-              results.getInt("SeasonNumber"),
-              results.getInt("SeasonId"));
-
-      } catch (SQLException ex) {
-        Commons.exception(ex);
-        System.out.println("Query did not pass");
-      }
-      Netflix.database.disconnectDatabase();
+    for (HashMap<String, Object> map :
+        Netflix.database.executeSql("SELECT SeasonId, SerieId, Title, SeasonNumber FROM Season")) {
+      new Season(
+          Serie.getByDbId((int) map.get("SerieId")),
+          (String) map.get("Title"),
+          (int) map.get("SeasonNumber"),
+          (int) map.get("SeasonId"));
     }
   }
 

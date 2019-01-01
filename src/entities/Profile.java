@@ -1,16 +1,13 @@
 package com.netflix.entities;
 
 import com.netflix.*;
-import com.netflix.commons.*;
-import com.netflix.entities.abstracts.Entity;
-import com.netflix.entities.abstracts.MediaObject;
-import com.netflix.gui.NetflixFrame;
+import com.netflix.entities.abstracts.*;
+import com.netflix.gui.*;
 
 import javax.swing.*;
-import java.sql.*;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.stream.Collectors;
+import java.time.*;
+import java.util.*;
+import java.util.stream.*;
 
 public class Profile extends Entity {
 
@@ -81,27 +78,19 @@ public class Profile extends Entity {
     episodesWatched.add(episode);
   }
 
+  @SuppressWarnings("deprecation")
   public static void getFromDatabase() {
-    if (Netflix.database.connectDatabase()) {
-      String sqlQuery =
-          "SELECT UserId, AccountId, Name, EpisodesWatched, FilmsWatched, Birthday FROM Users";
-      ResultSet results = null;
-      try (Statement statement = Netflix.database.connection.createStatement()) {
-        // Make sure the results are passed
-        results = statement.executeQuery(sqlQuery);
-        System.out.println("Query passed : " + results.toString());
-        while (results.next())
-          new Profile(
-              (Account) Account.getByDbId(results.getInt("AccountId")),
-              results.getString("Name"),
-              18,
-              results.getInt("UserId")); // TODO : birthdate to replace age int
+    for (HashMap<String, Object> map :
+        Netflix.database.executeSql(
+            "SELECT UserId, AccountId, Name, EpisodesWatched, FilmsWatched, Birthday FROM Users")) {
+      Date birthdate = (Date) map.get("Birthday");
+      LocalDate date = LocalDate.of(birthdate.getYear(), birthdate.getMonth(), birthdate.getDay());
 
-      } catch (SQLException ex) {
-        Commons.exception(ex);
-        System.out.println("Query did not pass");
-      }
-      Netflix.database.disconnectDatabase();
+      new Profile(
+          Account.getByDbId((int) map.get("AccountId")),
+          (String) map.get("Name"),
+          (int) Period.between(date, LocalDate.now()).getYears(),
+          (int) map.get("UserId"));
     }
   }
 }

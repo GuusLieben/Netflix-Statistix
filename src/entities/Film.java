@@ -1,12 +1,10 @@
 package com.netflix.entities;
 
 import com.netflix.*;
-import com.netflix.commons.*;
-import com.netflix.entities.abstracts.MediaObject;
+import com.netflix.entities.abstracts.*;
 
 import java.sql.*;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 @SuppressWarnings("deprecation")
 public class Film extends MediaObject { // MediaObject extends Entity
@@ -49,33 +47,22 @@ public class Film extends MediaObject { // MediaObject extends Entity
     return director;
   }
 
-    public static Film getByDbId(int id) {
-        return films.stream().filter(ent -> ent.databaseId == id).findFirst().orElse(null);
-    }
+  public static Film getByDbId(int id) {
+    return films.stream().filter(ent -> ent.databaseId == id).findFirst().orElse(null);
+  }
 
   public static void getFromDatabase() {
-    if (Netflix.database.connectDatabase()) {
-      String sqlQuery =
-          "SELECT FilmId, Rating, LijktOp, LanguageCode, Title, Duration, Director FROM Film";
-      ResultSet results = null;
-      try (Statement statement = Netflix.database.connection.createStatement()) {
-        // Make sure the results are passed
-        results = statement.executeQuery(sqlQuery);
-        System.out.println("Query passed : " + results.toString());
-        while (results.next())
-          new Film(
-              AgeRating.getByAge(18),
-              Genre.getByName(""),
-              Language.getByCode(results.getString("LanguageCode")),
-              results.getString("Title"),
-              results.getTime("Duration"),
-              results.getString("Director"),
-              results.getInt("FilmId"));
-      } catch (SQLException ex) {
-        Commons.exception(ex);
-        System.out.println("Query did not pass");
-      }
-      Netflix.database.disconnectDatabase();
+    for (HashMap<String, Object> map :
+        Netflix.database.executeSql(
+            "SELECT FilmId, Rating, LijktOp, LanguageCode, Title, Duration, Director FROM Film")) {
+      new Film(
+          AgeRating.getByAge((int) map.get("Rating")),
+          Genre.getByName((String) map.get("Genre")),
+          Language.getByCode((String) map.get("LanguageCode")),
+          (String) map.get("Title"),
+          (Time) map.get("Duration"),
+          (String) map.get("Director"),
+          (int) map.get("FilmId"));
     }
   }
 }

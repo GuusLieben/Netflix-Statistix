@@ -6,7 +6,6 @@ import com.netflix.entities.abstracts.*;
 import com.netflix.gui.*;
 
 import javax.swing.*;
-import java.sql.*;
 import java.util.*;
 import java.util.regex.*;
 
@@ -149,34 +148,18 @@ public class Account extends Entity {
   }
 
   public static void getFromDatabase() {
-    if (Netflix.database.connectDatabase()) {
-      String sqlQuery =
-          "SELECT AccountID, isAdmin, Email, Straatnaam, Huisnummer, Toevoeging, Woonplaats, Wachtwoord FROM Account";
-      ResultSet results = null;
-      try (Statement statement = Netflix.database.connection.createStatement()) {
-        // Make sure the results are passed
-        results = statement.executeQuery(sqlQuery);
-        System.out.println("Query passed : " + results.toString());
-        while (results.next()) {
-          System.out.println(results.getString("AccountID"));
-          new Account(
-              results.getInt("AccountID"),
-              results.getBoolean("isAdmin"),
-              results.getString("Email"),
-              results.getString("Straatnaam"),
-              results.getInt("Huisnummer"),
-              results.getString("Toevoeging"),
-              results.getString("Woonplaats"),
-              results.getString("Wachtwoord"));
-        }
-      } catch (SQLException ex) {
-        Commons.exception(ex);
-        System.out.println("Query did not pass");
-      }
-      Netflix.database.disconnectDatabase();
-      for (Account acc : Account.accounts) {
-        System.out.println(acc);
-      }
+    for (HashMap<String, Object> map :
+        Netflix.database.executeSql(
+            "SELECT AccountID, isAdmin, Email, Straatnaam, Huisnummer, Toevoeging, Woonplaats, Wachtwoord FROM Account")) {
+      new Account(
+          (int) map.get("AccountID"),
+          (boolean) map.get("isAdmin"),
+          (String) map.get("Email"),
+          (String) map.get("Straatnaam"),
+          (int) map.get("Huisnummer"),
+          (String) map.get("Toevoeging"),
+          (String) map.get("Woonplaats"),
+          (String) map.get("Wachtwoord"));
     }
   }
 

@@ -1,12 +1,9 @@
 package com.netflix.entities;
 
 import com.netflix.*;
-import com.netflix.commons.*;
-import com.netflix.entities.abstracts.Entity;
+import com.netflix.entities.abstracts.*;
 
-import java.sql.*;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 public class Language extends Entity {
 
@@ -40,21 +37,9 @@ public class Language extends Entity {
   }
 
   public static void getFromDatabase() {
-    if (Netflix.database.connectDatabase()) {
-      String sqlQuery = "SELECT LanguageCode, Language FROM Language";
-      ResultSet results = null;
-      try (Statement statement = Netflix.database.connection.createStatement()) {
-        // Make sure the results are passed
-        results = statement.executeQuery(sqlQuery);
-        System.out.println("Query passed : " + results.toString());
-        while (results.next())
-          new Language(results.getString("LanguageCode"), results.getString("Language"));
-
-      } catch (SQLException ex) {
-        Commons.exception(ex);
-        System.out.println("Query did not pass");
-      }
-      Netflix.database.disconnectDatabase();
+    for (HashMap<String, Object> map :
+        Netflix.database.executeSql("SELECT LanguageCode, Language FROM Language")) {
+      new Language((String) map.get("LanguageCode"), (String) map.get("Language"));
     }
   }
 }
