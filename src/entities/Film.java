@@ -1,8 +1,10 @@
 package com.netflix.entities;
 
+import com.netflix.*;
+import com.netflix.commons.*;
 import com.netflix.entities.abstracts.MediaObject;
 
-import java.sql.Time;
+import java.sql.*;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -15,7 +17,14 @@ public class Film extends MediaObject { // MediaObject extends Entity
   private String director;
 
   public Film(
-      AgeRating rating, Genre genre, Language lang, String title, Time duration, String director) {
+      AgeRating rating,
+      Genre genre,
+      Language lang,
+      String title,
+      Time duration,
+      String director,
+      int databaseId) {
+    super.databaseId = databaseId;
     super.rating = rating;
     super.genre = genre;
     super.lang = lang;
@@ -38,5 +47,35 @@ public class Film extends MediaObject { // MediaObject extends Entity
 
   public String getDirector() {
     return director;
+  }
+
+    public static Film getByDbId(int id) {
+        return films.stream().filter(ent -> ent.databaseId == id).findFirst().orElse(null);
+    }
+
+  public static void getFromDatabase() {
+    if (Netflix.database.connectDatabase()) {
+      String sqlQuery =
+          "SELECT FilmId, Rating, LijktOp, LanguageCode, Title, Duration, Director FROM Film";
+      ResultSet results = null;
+      try (Statement statement = Netflix.database.connection.createStatement()) {
+        // Make sure the results are passed
+        results = statement.executeQuery(sqlQuery);
+        System.out.println("Query passed : " + results.toString());
+        while (results.next())
+          new Film(
+              AgeRating.getByAge(18),
+              Genre.getByName(""),
+              Language.getByCode(results.getString("LanguageCode")),
+              results.getString("Title"),
+              results.getTime("Duration"),
+              results.getString("Director"),
+              results.getInt("FilmId"));
+      } catch (SQLException ex) {
+        Commons.exception(ex);
+        System.out.println("Query did not pass");
+      }
+      Netflix.database.disconnectDatabase();
+    }
   }
 }

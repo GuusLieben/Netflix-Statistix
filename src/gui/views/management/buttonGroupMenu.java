@@ -5,10 +5,11 @@
 
 package com.netflix.gui.views.management;
 
-import com.netflix.entities.abstracts.MediaObject;
+import com.netflix.entities.abstracts.*;
+import com.netflix.gui.commons.*;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
+import java.awt.event.*;
 
 public class buttonGroupMenu {
 
@@ -49,8 +50,8 @@ public class buttonGroupMenu {
 
     JPanel wrapper = new JPanel();
 
-    JButton mediaGraph = new JButton("Toon media grafiek");
-    JButton watchLogs = new JButton("Toon gebruiker-media statistieken");
+    JButton mediaGraph = new NButton("Toon media grafiek");
+    JButton watchLogs = new NButton("Toon gebruiker-media statistieken");
 
     showGraph(mediaGraph, buttonGroupMenu.mediaGraph);
     showFrame(watchLogs, watchedMediaList.watchedMediaFrame());

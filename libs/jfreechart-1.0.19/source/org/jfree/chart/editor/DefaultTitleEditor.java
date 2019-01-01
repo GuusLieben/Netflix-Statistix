@@ -146,7 +146,7 @@ class DefaultTitleEditor extends JPanel implements ActionListener {
 
         JLabel fontLabel = new JLabel(localizationResources.getString("Font"));
         this.fontfield = new FontDisplayField(this.titleFont);
-        this.selectFontButton = new JButton(
+        this.selectFontButton = new NButton(
             localizationResources.getString("Select...")
         );
         this.selectFontButton.setActionCommand("SelectFont");
@@ -158,7 +158,7 @@ class DefaultTitleEditor extends JPanel implements ActionListener {
         JLabel colorLabel = new JLabel(
             localizationResources.getString("Color")
         );
-        this.selectPaintButton = new JButton(
+        this.selectPaintButton = new NButton(
             localizationResources.getString("Select...")
         );
         this.selectPaintButton.setActionCommand("SelectPaint");

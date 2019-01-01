@@ -1,2 +1,11 @@
 
-<squid:S2119¡"Save and re-use this "Random".(¼ÝÅf8¶îþŒþ,
+¶squid:S1598"’This file "LoginView.java" should be located in "com\netflix\gui\views" directory, not in "C:\Users\Intern\IdeaProjects\NetflixGit\src\gui\views".(Ûìšóøÿÿÿÿ8ÜØÖË€-
+Osquid:S1444"1Make this "public static usernameBox" field final(³¡öÖ8ÜØÖË€-
+isquid:CommentedOutCodeLineK"<This block of commented-out lines of code should be removed.(¶àÒµ8ûšÌ€-
+Osquid:S1444"1Make this "public static passwordBox" field final(¨’§ß8ÜØÖË€-
+Œ"squid:ClassVariableVisibilityCheck"WMake passwordBox a static final constant or non-public and provide accessors if needed.(¨’§ß8ÜØÖË€-
+]squid:S1118":Add a private constructor to hide the implicit public one.(ˆ†óûÿÿÿÿ8ÜØÖË€-
+Xsquid:S1118":Add a private constructor to hide the implicit public one.(ÁÛÏª8ÜØÖË€-
+Ysquid:S1118—":Add a private constructor to hide the implicit public one.(€Ä„ç8ÜØÖË€-
+<squid:S2119£"Save and re-use this "Random".(¼ÝÅf8¶îþŒþ,
+Œ"squid:ClassVariableVisibilityCheck"WMake usernameBox a static final constant or non-public and provide accessors if needed.(³¡öÖ8ÜØÖË€-

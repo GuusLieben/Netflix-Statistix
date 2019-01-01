@@ -1,13 +1,14 @@
 package com.netflix.entities;
 
-import com.netflix.commons.Commons;
-import com.netflix.entities.abstracts.Entity;
-import com.netflix.gui.NetflixFrame;
+import com.netflix.*;
+import com.netflix.commons.*;
+import com.netflix.entities.abstracts.*;
+import com.netflix.gui.*;
 
 import javax.swing.*;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.regex.Pattern;
+import java.sql.*;
+import java.util.*;
+import java.util.regex.*;
 
 public class Account extends Entity {
 
@@ -27,6 +28,7 @@ public class Account extends Entity {
   private String password;
 
   public Account(
+      int databaseId,
       boolean isAdmin,
       String email,
       String street,
@@ -36,6 +38,7 @@ public class Account extends Entity {
       String password) {
     // If the email check is valid, create the object, store the user
     if (emailIsValid(email)) {
+      this.databaseId = databaseId;
       this.isAdmin = isAdmin;
       this.email = email;
       this.street = street;
@@ -139,5 +142,72 @@ public class Account extends Entity {
 
   public String getPassword() {
     return password;
+  }
+
+  public static Account getByDbId(int id) {
+    return accounts.stream().filter(ent -> ent.databaseId == id).findFirst().orElse(null);
+  }
+
+  public static void getFromDatabase() {
+    if (Netflix.database.connectDatabase()) {
+      String sqlQuery =
+          "SELECT AccountID, isAdmin, Email, Straatnaam, Huisnummer, Toevoeging, Woonplaats, Wachtwoord FROM Account";
+      ResultSet results = null;
+      try (Statement statement = Netflix.database.connection.createStatement()) {
+        // Make sure the results are passed
+        results = statement.executeQuery(sqlQuery);
+        System.out.println("Query passed : " + results.toString());
+        while (results.next()) {
+          System.out.println(results.getString("AccountID"));
+          new Account(
+              results.getInt("AccountID"),
+              results.getBoolean("isAdmin"),
+              results.getString("Email"),
+              results.getString("Straatnaam"),
+              results.getInt("Huisnummer"),
+              results.getString("Toevoeging"),
+              results.getString("Woonplaats"),
+              results.getString("Wachtwoord"));
+        }
+      } catch (SQLException ex) {
+        Commons.exception(ex);
+        System.out.println("Query did not pass");
+      }
+      Netflix.database.disconnectDatabase();
+      for (Account acc : Account.accounts) {
+        System.out.println(acc);
+      }
+    }
+  }
+
+  @Override
+  public String toString() {
+    return "Account{"
+        + "databaseId="
+        + databaseId
+        + ", isAdmin="
+        + isAdmin
+        + ", profiles="
+        + profiles
+        + ", email='"
+        + email
+        + '\''
+        + ", street='"
+        + street
+        + '\''
+        + ", houseNumber="
+        + houseNumber
+        + ", addition='"
+        + addition
+        + '\''
+        + ", city='"
+        + city
+        + '\''
+        + ", password='"
+        + password
+        + '\''
+        + ", entityId="
+        + entityId
+        + '}';
   }
 }

@@ -1,10 +1,13 @@
 package com.netflix.entities;
 
+import com.netflix.*;
+import com.netflix.commons.*;
 import com.netflix.entities.abstracts.Entity;
 import com.netflix.entities.abstracts.MediaObject;
 import com.netflix.gui.NetflixFrame;
 
 import javax.swing.*;
+import java.sql.*;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -18,7 +21,8 @@ public class Profile extends Entity {
   private Set<Film> filmsWatched;
   private int age;
 
-  public Profile(Account account, String name, int age) {
+  public Profile(Account account, String name, int age, int databaseId) {
+    super.databaseId = databaseId;
     if (account.getProfiles().size() < 5) { // Make sure there are less than 5 profiles attached
       this.account = account;
       this.name = name;
@@ -41,18 +45,15 @@ public class Profile extends Entity {
   }
 
   public Set<Serie> getSeriesWatched() {
-    return episodesWatched
-        .stream()
-        .map(episode -> episode.getSerie())
-        .collect(Collectors.toSet());
+    return episodesWatched.stream().map(episode -> episode.getSerie()).collect(Collectors.toSet());
   }
 
   public Set<MediaObject> getMediaWatched() {
-      Set<MediaObject> mediaWatched = new HashSet<>();
-      mediaWatched.addAll(filmsWatched);
-      for (Episode epi : episodesWatched) mediaWatched.add(epi.getSerie());
-      return mediaWatched;
-    }
+    Set<MediaObject> mediaWatched = new HashSet<>();
+    mediaWatched.addAll(filmsWatched);
+    for (Episode epi : episodesWatched) mediaWatched.add(epi.getSerie());
+    return mediaWatched;
+  }
 
   public int getAge() {
     return age;
@@ -78,5 +79,29 @@ public class Profile extends Entity {
   public void viewEpisode(Episode episode) {
     episode.getSerie().setWatchedBy(this);
     episodesWatched.add(episode);
+  }
+
+  public static void getFromDatabase() {
+    if (Netflix.database.connectDatabase()) {
+      String sqlQuery =
+          "SELECT UserId, AccountId, Name, EpisodesWatched, FilmsWatched, Birthday FROM Users";
+      ResultSet results = null;
+      try (Statement statement = Netflix.database.connection.createStatement()) {
+        // Make sure the results are passed
+        results = statement.executeQuery(sqlQuery);
+        System.out.println("Query passed : " + results.toString());
+        while (results.next())
+          new Profile(
+              (Account) Account.getByDbId(results.getInt("AccountId")),
+              results.getString("Name"),
+              18,
+              results.getInt("UserId")); // TODO : birthdate to replace age int
+
+      } catch (SQLException ex) {
+        Commons.exception(ex);
+        System.out.println("Query did not pass");
+      }
+      Netflix.database.disconnectDatabase();
+    }
   }
 }
