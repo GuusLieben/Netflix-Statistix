@@ -1,0 +1,13 @@
+
+‘"squid:ClassVariableVisibilityCheck"WMake serieTitles a static final constant or non-public and provide accessors if needed.(öŠ—„ûÿÿÿÿ8ıÏ€-
+esquid:S2095A"GUse try-with-resources or close this "ResultSet" in a "finally" clause.(‘çÂŞ8µ­ıÏ€-
+°squid:S1598"ŒThis file "Serie.java" should be located in "com\netflix\entities" directory, not in "C:\Users\Intern\IdeaProjects\NetflixGit\src\entities".(¾Ø¨ãüÿÿÿÿ8ıÏ€-
+‡"squid:ClassVariableVisibilityCheck"RMake series a static final constant or non-public and provide accessors if needed.(”ä…Ù8ıÏ€-
+;squid:S2386"Make this member "protected".(”ä…Ù8ıÏ€-
+[
+squid:S106B"9Replace this use of System.out or System.err by a logger.(˜¨‘Æûÿÿÿÿ8µ­ıÏ€-
+Tsquid:S1444"1Make this "public static serieTitles" field final(öŠ—„ûÿÿÿÿ8ıÏ€-
+Jsquid:S1444",Make this "public static series" field final(”ä…Ù8ıÏ€-
+V
+squid:S106H"9Replace this use of System.out or System.err by a logger.(œùŠ8µ­ıÏ€-
+@squid:S2386"Make this member "protected".(öŠ—„ûÿÿÿÿ8ıÏ€-

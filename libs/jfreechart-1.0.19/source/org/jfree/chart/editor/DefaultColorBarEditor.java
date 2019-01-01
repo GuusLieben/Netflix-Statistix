@@ -143,7 +143,7 @@ class DefaultColorBarEditor extends DefaultNumberAxisEditor {
             new JLabel(localizationResources.getString("Palette"))
         );
         JButton button
-            = new JButton(localizationResources.getString("Set_palette..."));
+            = new NButton(localizationResources.getString("Set_palette..."));
         button.setActionCommand("PaletteChoice");
         button.addActionListener(this);
         palettePanel.add(this.currentPalette);

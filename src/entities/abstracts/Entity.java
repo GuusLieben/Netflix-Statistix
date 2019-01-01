@@ -5,38 +5,39 @@
 
 package com.netflix.entities.abstracts;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 public abstract class Entity {
 
-  public static Set<Entity> entities = new HashSet<>();
-  public int entityId;
+    public static Set<Entity> entities = new HashSet<>();
+    public int entityId;
 
-  public Entity() {
-    entityId = getEntityCount() + 1;
-    entities.add(this);
-    System.out.println("New entity, Id assigned : #" + getEntityId());
-  }
+    public int databaseId;
 
-  public static int getEntityCount() {
-    return entities.size();
-  }
+    public Entity() {
+        entityId = getEntityCount() + 1;
+        entities.add(this);
+        System.out.println("New entity, Id assigned : #" + getEntityId());
+    }
 
-  public static Entity getEntityById(int id) {
-    return entities.stream().filter(entity -> entity.entityId == id).findFirst().orElse(null);
-  }
+    public static int getEntityCount() {
+        return entities.size();
+    }
 
-  public int getEntityId() {
-    return entityId;
-  }
+    public static Entity getEntityById(int id) {
+        return entities.stream().filter(entity -> entity.entityId == id).findFirst().orElse(null);
+    }
 
-  public void setEntityId(int entityId) {
-    this.entityId = entityId;
-  }
+    public int getEntityId() {
+        return entityId;
+    }
 
-  @Override
-  public String toString() {
-    return "Entity{" + "entityId=" + entityId + '}';
-  }
+    public void setEntityId(int entityId) {
+        this.entityId = entityId;
+    }
+
+    @Override
+    public String toString() {
+        return "Entity{" + "entityId=" + entityId + '}';
+    }
 }

@@ -1,10 +1,10 @@
 package com.netflix.entities;
 
-import com.netflix.entities.abstracts.MediaObject;
+import com.netflix.*;
+import com.netflix.entities.abstracts.*;
 
-import java.sql.Time;
-import java.util.HashSet;
-import java.util.Set;
+import java.sql.*;
+import java.util.*;
 
 @SuppressWarnings("deprecation")
 public class Film extends MediaObject { // MediaObject extends Entity
@@ -15,7 +15,14 @@ public class Film extends MediaObject { // MediaObject extends Entity
   private String director;
 
   public Film(
-      AgeRating rating, Genre genre, Language lang, String title, Time duration, String director) {
+      AgeRating rating,
+      Genre genre,
+      Language lang,
+      String title,
+      Time duration,
+      String director,
+      int databaseId) {
+    super.databaseId = databaseId;
     super.rating = rating;
     super.genre = genre;
     super.lang = lang;
@@ -38,5 +45,24 @@ public class Film extends MediaObject { // MediaObject extends Entity
 
   public String getDirector() {
     return director;
+  }
+
+  public static Film getByDbId(int id) {
+    return films.stream().filter(ent -> ent.databaseId == id).findFirst().orElse(null);
+  }
+
+  public static void getFromDatabase() {
+    for (HashMap<String, Object> map :
+        Netflix.database.executeSql(
+            "SELECT FilmId, Rating, LijktOp, LanguageCode, Title, Duration, Director FROM Film")) {
+      new Film(
+          AgeRating.getByAge((int) map.get("Rating")),
+          Genre.getByName((String) map.get("Genre")),
+          Language.getByCode((String) map.get("LanguageCode")),
+          (String) map.get("Title"),
+          (Time) map.get("Duration"),
+          (String) map.get("Director"),
+          (int) map.get("FilmId"));
+    }
   }
 }

@@ -1,9 +1,9 @@
 package com.netflix.entities;
 
-import com.netflix.entities.abstracts.Entity;
+import com.netflix.*;
+import com.netflix.entities.abstracts.*;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 public class AgeRating extends Entity {
 
@@ -20,7 +20,12 @@ public class AgeRating extends Entity {
   public static AgeRating getRating(String ageCode, int minAge) {
     // Used for the DatabaseHandle to check if one already exists
     for (AgeRating rating : ratings) if (rating.getAgeCode().equals(ageCode)) return rating;
-    return new AgeRating(ageCode, minAge);
+    return null;
+  }
+
+  public static AgeRating getByAge(int age) {
+    for (AgeRating rating : ratings) if (rating.getMinimumAge() == age) return rating;
+    return null;
   }
 
   public String getAgeCode() {
@@ -29,6 +34,13 @@ public class AgeRating extends Entity {
 
   public int getMinimumAge() {
     return minimumAge;
+  }
+
+  public static void getFromDatabase() {
+    for (HashMap<String, Object> map :
+        Netflix.database.executeSql("SELECT MPAA, Rating FROM Rating")) {
+      new AgeRating((String) map.get("MPAA"), (int) map.get("Rating"));
+    }
   }
 
   @Override

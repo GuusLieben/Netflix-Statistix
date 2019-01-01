@@ -1,9 +1,9 @@
 package com.netflix.entities;
 
-import com.netflix.entities.abstracts.MediaObject;
+import com.netflix.*;
+import com.netflix.entities.abstracts.*;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 public class Serie extends MediaObject { // MediaObject extends Entity
 
@@ -13,7 +13,8 @@ public class Serie extends MediaObject { // MediaObject extends Entity
   private int seasonCount;
   private Set<Season> seasons = new HashSet<>();
 
-  public Serie(Genre genre, Language lang, String title, AgeRating rating) {
+  public Serie(Genre genre, Language lang, String title, AgeRating rating, int databaseId) {
+    super.databaseId = databaseId;
     super.genre = genre;
     super.lang = lang;
     super.title = title;
@@ -51,5 +52,22 @@ public class Serie extends MediaObject { // MediaObject extends Entity
 
   public void setEpisodeCount(int episodes) {
     this.episodeCount = episodes;
+  }
+
+  public static Serie getByDbId(int id) {
+    return series.stream().filter(ent -> ent.databaseId == id).findFirst().orElse(null);
+  }
+
+  public static void getFromDatabase() {
+    for (HashMap<String, Object> map :
+        Netflix.database.executeSql(
+            "SELECT SerieId, Title, AmountOfSeasons, LijktOp, LanguageCode, Rating FROM Serie")) {
+      new Serie(
+          Genre.getByName((String) map.get("Genre")),
+          Language.getByCode((String) map.get("Languagecode")),
+          (String) map.get("Title"),
+          AgeRating.getByAge((int) map.get("Rating")),
+          (int) map.get("SerieId"));
+    }
   }
 }

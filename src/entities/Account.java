@@ -1,13 +1,13 @@
 package com.netflix.entities;
 
-import com.netflix.commons.Commons;
-import com.netflix.entities.abstracts.Entity;
-import com.netflix.gui.NetflixFrame;
+import com.netflix.*;
+import com.netflix.commons.*;
+import com.netflix.entities.abstracts.*;
+import com.netflix.gui.*;
 
 import javax.swing.*;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.regex.Pattern;
+import java.util.*;
+import java.util.regex.*;
 
 public class Account extends Entity {
 
@@ -27,6 +27,7 @@ public class Account extends Entity {
   private String password;
 
   public Account(
+      int databaseId,
       boolean isAdmin,
       String email,
       String street,
@@ -36,6 +37,7 @@ public class Account extends Entity {
       String password) {
     // If the email check is valid, create the object, store the user
     if (emailIsValid(email)) {
+      this.databaseId = databaseId;
       this.isAdmin = isAdmin;
       this.email = email;
       this.street = street;
@@ -139,5 +141,56 @@ public class Account extends Entity {
 
   public String getPassword() {
     return password;
+  }
+
+  public static Account getByDbId(int id) {
+    return accounts.stream().filter(ent -> ent.databaseId == id).findFirst().orElse(null);
+  }
+
+  public static void getFromDatabase() {
+    for (HashMap<String, Object> map :
+        Netflix.database.executeSql(
+            "SELECT AccountID, isAdmin, Email, Straatnaam, Huisnummer, Toevoeging, Woonplaats, Wachtwoord FROM Account")) {
+      new Account(
+          (int) map.get("AccountID"),
+          (boolean) map.get("isAdmin"),
+          (String) map.get("Email"),
+          (String) map.get("Straatnaam"),
+          (int) map.get("Huisnummer"),
+          (String) map.get("Toevoeging"),
+          (String) map.get("Woonplaats"),
+          (String) map.get("Wachtwoord"));
+    }
+  }
+
+  @Override
+  public String toString() {
+    return "Account{"
+        + "databaseId="
+        + databaseId
+        + ", isAdmin="
+        + isAdmin
+        + ", profiles="
+        + profiles
+        + ", email='"
+        + email
+        + '\''
+        + ", street='"
+        + street
+        + '\''
+        + ", houseNumber="
+        + houseNumber
+        + ", addition='"
+        + addition
+        + '\''
+        + ", city='"
+        + city
+        + '\''
+        + ", password='"
+        + password
+        + '\''
+        + ", entityId="
+        + entityId
+        + '}';
   }
 }

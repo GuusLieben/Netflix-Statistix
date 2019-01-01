@@ -5,18 +5,15 @@
 
 package com.netflix.gui.views;
 
-import com.netflix.commons.Commons;
-import com.netflix.entities.Account;
-import com.netflix.entities.Profile;
-import com.netflix.gui.NetflixFrame;
-import com.netflix.gui.commons.Common;
-import com.netflix.gui.commons.GradientPanel;
-import com.netflix.gui.listeners.ActionListeners;
+import com.netflix.commons.*;
+import com.netflix.entities.*;
+import com.netflix.gui.*;
+import com.netflix.gui.commons.*;
 
 import javax.swing.*;
-import javax.swing.border.EmptyBorder;
+import javax.swing.border.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
+import java.awt.event.*;
 
 public class createProfileView {
 
@@ -52,8 +49,8 @@ public class createProfileView {
     header.setFont(new Font(header.getFont().getName(), header.getFont().getStyle(), 18));
     header.setBorder(new EmptyBorder(0, 0, 10, 0));
 
-    JButton addProfile = new JButton("Toevoegen");
-    ActionListeners.mouseEventUnderline(addProfile);
+    JButton addProfile = new NButton("Toevoegen");
+//    ActionListeners.mouseEventUnderline(addProfile);
 
     addComponent(header, profileWrapper);
     addComponent(nameLabel, profileWrapper);
@@ -88,7 +85,7 @@ public class createProfileView {
           int age = (Integer) ageField.getValue();
 
           if ((age > 0 && age < 150) && !(name.equals(""))) {
-            Account.currentAccount.addProfile(new Profile(Account.currentAccount, name, age));
+            Account.currentAccount.addProfile(new Profile(Account.currentAccount, name, age, Account.currentAccount.getProfiles().size()+1)); // TODO : add database push
             Commons.clearPane(NetflixFrame.mainPanel);
             NetflixFrame.mainPanel.add(LoginView.ProfileLogin.profileSelection());
           } else {
