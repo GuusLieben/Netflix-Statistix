@@ -16,11 +16,13 @@ public class Genre extends Entity {
     genres.add(this);
   }
 
+  // Find the genre with a specific name
   public static Genre getByName(String name) {
     for (Genre genre : genres) if (genre.getGenre().equals(name)) return genre;
     return null;
   }
 
+  // Getter
   public String getGenre() {
     return genreName;
   }
@@ -30,6 +32,7 @@ public class Genre extends Entity {
     return genreName;
   }
 
+  // Get Genre from database
   public static void getFromDatabase() {
     for (HashMap<String, Object> map :
         Netflix.database.executeSql("SELECT GenreId, Genre FROM Genre")) {

@@ -1,8 +1,3 @@
-/*
- * Copyright © 2018. Guus Lieben.
- * All rights reserved.
- */
-
 package com.netflix.gui.views;
 
 import com.netflix.commons.Commons;
@@ -38,7 +33,7 @@ public abstract class MediaView {
 
     // Log it to the file and console
     Commons.logger.info(
-        "Loading new view with type " + media.getType() + "::" + media.getMediaType());
+        String.format("Loading new view with type %d::%d", media.getType(), media.getMediaType()));
 
     // Get the overview, add it
     panel.add(objectView.getOverview(media), CENTER);
@@ -47,9 +42,9 @@ public abstract class MediaView {
   }
 
   private static JPanel selectMedia() {
-      // Use 'type' (film or serie) in selection label
+    // Use 'type' (film or serie) in selection label
     JPanel selectMedia = new JPanel();
-    JLabel selectLabel = new JLabel("Selecteer een " + type + " : ");
+    JLabel selectLabel = new JLabel(String.format("Selecteer een %s : ", type));
 
     // Reload panels when a new media object is selected
     comboBox.addActionListener(

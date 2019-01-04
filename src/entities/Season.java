@@ -20,16 +20,14 @@ public class Season extends Entity {
     this.title = title;
     this.seaonNumber = seaonNumber;
     amountOfEpisodes = 0;
+    seasons.add(this);
     serie.setSeasonCount(serie.getSeasonCount() + 1);
     serie.addSeason(this);
   }
 
+  // Getters
   public Set<Episode> getEpisodes() {
     return episodes;
-  }
-
-  public void addEpisode(Episode episode) {
-    this.episodes.add(episode);
   }
 
   public Serie getSerie() {
@@ -48,10 +46,17 @@ public class Season extends Entity {
     return amountOfEpisodes;
   }
 
+  // Add an episode to the season
+  public void addEpisode(Episode episode) {
+    this.episodes.add(episode);
+  }
+
+  // Get season by database id
   public static Season getByDbId(int id) {
     return seasons.stream().filter(ent -> ent.databaseId == id).findFirst().orElse(null);
   }
 
+  // Get seasons from database
   public static void getFromDatabase() {
     for (HashMap<String, Object> map :
         Netflix.database.executeSql("SELECT SeasonId, SerieId, Title, SeasonNumber FROM Season")) {

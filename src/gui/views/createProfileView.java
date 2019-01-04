@@ -1,24 +1,26 @@
-/*
- * Copyright © 2018. Guus Lieben.
- * All rights reserved.
- */
-
 package com.netflix.gui.views;
 
+import com.netflix.*;
 import com.netflix.commons.*;
 import com.netflix.entities.*;
 import com.netflix.gui.*;
 import com.netflix.gui.commons.*;
+import com.netflix.handles.*;
+import org.jdesktop.swingx.*;
 
 import javax.swing.*;
 import javax.swing.border.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.sql.Date;
+import java.text.*;
+import java.time.*;
+import java.util.*;
 
 public class createProfileView {
 
   private static JTextField nameField;
-  private static JSpinner ageField;
+  private static JXDatePicker datePicker;
   private static GridBagConstraints constraints = new GridBagConstraints();
 
   public static JPanel panel() {
@@ -35,10 +37,11 @@ public class createProfileView {
 
     JLabel ageLabel = new JLabel("Leeftijd");
     //    JTextField ageField = new JTextField(20);
-    ageField = new JSpinner();
+    datePicker = new JXDatePicker();
+    datePicker.setDate(Calendar.getInstance().getTime());
+    datePicker.setFormats(new SimpleDateFormat("dd.MM.yyyy"));
 
     nameField.setBackground(new Color(20, 20, 20));
-    ageField.setBackground(new Color(20, 20, 20));
 
     nameField.setCaretColor(Color.LIGHT_GRAY);
 
@@ -50,14 +53,13 @@ public class createProfileView {
     header.setBorder(new EmptyBorder(0, 0, 10, 0));
 
     JButton addProfile = new NButton("Toevoegen");
-//    ActionListeners.mouseEventUnderline(addProfile);
 
     addComponent(header, profileWrapper);
     addComponent(nameLabel, profileWrapper);
     addComponent(nameField, profileWrapper);
     addComponent(spacer, profileWrapper);
     addComponent(ageLabel, profileWrapper);
-    addComponent(ageField, profileWrapper);
+    addComponent(datePicker, profileWrapper);
     addComponent(spacer, profileWrapper);
     addComponent(addProfile, profileWrapper);
 
@@ -82,16 +84,27 @@ public class createProfileView {
     button.addActionListener(
         (ActionEvent e) -> {
           String name = nameField.getText();
-          int age = (Integer) ageField.getValue();
+          java.util.Date birthday = datePicker.getDate();
+          java.sql.Date birthdate = new java.sql.Date(birthday.getTime());
 
-          if ((age > 0 && age < 150) && !(name.equals(""))) {
-            Account.currentAccount.addProfile(new Profile(Account.currentAccount, name, age, Account.currentAccount.getProfiles().size()+1)); // TODO : add database push
+          if (birthday.before(
+              Date.from(LocalDate.now().atStartOfDay().toInstant(ZoneOffset.UTC)))) {
+            Account.currentAccount.addProfile(
+                new Profile(
+                    Account.currentAccount,
+                    name,
+                    birthdate,
+                    Account.currentAccount.getProfiles().size() + 1));
+            String qr =
+                "INSERT INTO Users (AccountId, Name, EpisodesWatched, FilmsWatched, Birthday) VALUES (?, ?, ?, ?, ?)";
+
+            Object[] arr = {Account.currentAccount.databaseId, name, 0, 0, birthday};
+
+            if (Netflix.database.executeSqlNoResult(qr, arr) == SQLResults.PASS)
+              JOptionPane.showMessageDialog(NetflixFrame.frame, "Succes!");
+
             Commons.clearPane(NetflixFrame.mainPanel);
             NetflixFrame.mainPanel.add(LoginView.ProfileLogin.profileSelection());
-          } else {
-            System.out.println("Something is not right");
-            System.out.println(name);
-            System.out.println(age);
           }
         });
   }

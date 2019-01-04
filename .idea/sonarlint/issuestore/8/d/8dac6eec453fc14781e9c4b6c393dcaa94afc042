@@ -1,0 +1,8 @@
+
+°squid:S1598"ŒThis file "Genre.java" should be located in "com\netflix\entities" directory, not in "C:\Users\Intern\IdeaProjects\NetflixGit\src\entities".(¾Ø¨ãüÿÿÿÿ8Ğ“ÀĞ€-
+‡"squid:ClassVariableVisibilityCheck
+"RMake genres a static final constant or non-public and provide accessors if needed.(¥ïè£8îÏêÔ€-
+;squid:S2386
+"Make this member "protected".(¥ïè£8îÏêÔ€-
+Jsquid:S1444
+",Make this "public static genres" field final(¥ïè£8îÏêÔ€-

@@ -84,7 +84,7 @@ public class Common {
     // Add the listener to switch panes
     ActionListeners.switchPaneOnClick(button, type);
     // Get image from file
-    Image image = new ImageIcon("resources/" + iconLoc.toLowerCase() + ".png").getImage();
+    Image image = new ImageIcon(String.format("resources/%s.png", iconLoc.toLowerCase())).getImage();
     // Scale icon to fit labels, then add it to the label
     ImageIcon icon = new ImageIcon(image.getScaledInstance(12, 12, Image.SCALE_SMOOTH));
     button.setIcon(icon);
@@ -119,12 +119,10 @@ public class Common {
         break;
     }
 
-    // Add hover effect (underline and cursor)
-//    ActionListeners.mouseEventUnderline(button);
-
     // Style buttons
     button.setOpaque(false);
 
+    // Set a margin around the button
     Border margin = new EmptyBorder(0, 0, 0, 15);
     Border compound = new CompoundBorder(margin, null);
     button.setBorder(compound);

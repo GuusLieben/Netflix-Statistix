@@ -1,8 +1,3 @@
-/*
- * Copyright © 2018. Guus Lieben.
- * All rights reserved.
- */
-
 package com.netflix.handles;
 
 import com.netflix.*;
@@ -15,23 +10,21 @@ import java.util.*;
 public class DatabaseHandle {
 
   public Connection connection = null;
+  private String database;
 
   // Use the package.properties file to generate a connection string
-  private static String connectionString() {
-    //        String connectionUrl =
-    // "jdbc:sqlserver://localhost\\SQLEXPRESS;databaseName=Bibliotheek;integratedSecurity=true;";
+  private String connectionString =
+      "jdbc:sqlserver://"
+          + PropertiesHandle.get("jdbc.server")
+          + "\\SQLEXPRESS:"
+          + PropertiesHandle.get("jdbc.port")
+          + ";databasename="
+          + PropertiesHandle.get("jdbc.database")
+          + ";";
 
-    return "jdbc:sqlserver://"
-        + PropertiesHandle.get("jdbc.server")
-        + "\\SQLEXPRESS:"
-        + PropertiesHandle.get("jdbc.port")
-        + ";databasename="
-        + PropertiesHandle.get("jdbc.database")
-        + ";user="
-        + PropertiesHandle.get("jdbc.user")
-        + ";password="
-        + PropertiesHandle.get("jdbc.password")
-        + ";";
+  {
+    if (PropertiesHandle.get("jdbc.user").contains("\\"))
+      connectionString += "integratedSecurity=true;";
   }
 
   public void collectData() {
@@ -51,28 +44,34 @@ public class DatabaseHandle {
     // Load all users in order
     Account.getFromDatabase();
     Profile.getFromDatabase();
+
+    // Load all view data
+    Episode.getViewData();
+    Film.getViewData();
   }
 
   // Connect to the database with the generated string
-  public boolean connectDatabase() {
+  public SQLResults connectDatabase() {
     try {
       // Use MS Sql server
       Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
       // Use the connectionUrl to connect (jdbc connection string)
-      connection = DriverManager.getConnection(connectionString());
-      System.out.println("Connected to database '" + PropertiesHandle.get("jdbc.server") + "'");
-      return true;
+      connection =
+          DriverManager.getConnection(
+              connectionString,
+              PropertiesHandle.get("jdbc.user"),
+              PropertiesHandle.get("jdbc.password")); // Could also be stored in the connection String
+      database = connection.getCatalog();
+      Commons.logger.info(String.format("Connected to database '%s'", database));
+
+      return SQLResults.PASS;
     } catch (ClassNotFoundException | SQLException e) {
       Commons.exception(e);
       connection = null;
-      System.out.println(
-          "Failed to connect to database '" + PropertiesHandle.get("jdbc.server") + "'");
-      return false;
-    }
-  }
+      Commons.logger.warning("Failed to connect to database");
 
-  public void registerAccount(Account account) {
-    throw new UnsupportedOperationException();
+      return SQLResults.PASS;
+    }
   }
 
   public void disconnectDatabase() {
@@ -80,34 +79,44 @@ public class DatabaseHandle {
     if (connection != null)
       try {
         connection.close();
-        System.out.println(
-            "Disconnected from database '" + PropertiesHandle.get("jdbc.server") + "'");
+        Commons.logger.info(String.format("Disconnected from database '%s'", database));
       } catch (SQLException e) {
         Commons.exception(e);
-        System.out.println(
-            "Failed to disconnect from database '" + PropertiesHandle.get("jdbc.server") + "'");
+        Commons.logger.warning(String.format("Failed to disconnect from database '%s'", database));
       }
     // Set connection to null, if it's already disconnected it'd be the same anyway
     connection = null;
   }
 
-  public boolean executeSqlNoResult(String sqlQuery) {
-    // Return true if the query succeeded, even if it has no resultset
-    try (Statement statement = this.connection.createStatement()) {
-      return statement.execute(sqlQuery);
-    } catch (Exception ex) {
-      Commons.exception(ex);
+  public SQLResults executeSqlNoResult(String sqlQuery, Object[] arr) {
+    if (Netflix.database.connectDatabase() == SQLResults.PASS) {
+      try (PreparedStatement statement = connection.prepareStatement(sqlQuery)) {
+        for (int i = 0; i < arr.length; i++)
+          if (arr[i].equals(""))
+            statement.setNull(
+                i + 1, Types.NULL); // If it's an empty String, set the cell to SQL type null
+          else statement.setObject(i + 1, arr[i]);
+        statement.execute();
+        Commons.logger.info(String.format("Query passed %s)", sqlQuery.replace("?", "$obscured")));
+        return SQLResults.PASS;
+      } catch (SQLException ex) {
+        Commons.exception(ex);
+        Commons.logger.warning("Query did not pass");
+      }
     }
-    return false;
+    return SQLResults.FAIL;
   }
 
   public List<HashMap<String, Object>> executeSql(String sqlQuery) {
-    if (Netflix.database.connectDatabase()) {
+    if (Netflix.database.connectDatabase() == SQLResults.PASS) {
       ResultSet results = null;
       try (Statement statement = Netflix.database.connection.createStatement()) {
         // Make sure the results are passed
         results = statement.executeQuery(sqlQuery);
-        System.out.println("Query passed : " + results.toString() + " (" + sqlQuery + ")");
+        Commons.logger.info(
+            String.format(
+                // Safe modification of data, don't show cell content in the logs
+                "Query passed : %s (%s)", results.toString(), sqlQuery.replace("?", "$obscured")));
 
         ResultSetMetaData md = results.getMetaData();
         int columns = md.getColumnCount();
@@ -115,7 +124,11 @@ public class DatabaseHandle {
 
         while (results.next()) {
           HashMap<String, Object> row = new HashMap<>(columns);
-          for (int i = 1; i <= columns; ++i) row.put(md.getColumnName(i), results.getObject(i));
+
+          for (int i = 1; i <= columns; ++i) {
+            row.put(md.getColumnName(i), results.getObject(i));
+          }
+
           list.add(row);
         }
 
@@ -123,7 +136,7 @@ public class DatabaseHandle {
 
       } catch (SQLException ex) {
         Commons.exception(ex);
-        System.out.println("Query did not pass");
+        Commons.logger.warning("Query did not pass");
       } finally {
         Netflix.database.disconnectDatabase();
       }

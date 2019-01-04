@@ -1,21 +1,16 @@
 package com.netflix.gui.views;
 
-import com.netflix.commons.Commons;
-import com.netflix.entities.Episode;
-import com.netflix.entities.Film;
-import com.netflix.entities.Season;
-import com.netflix.entities.Serie;
-import com.netflix.entities.abstracts.MediaObject;
+import com.netflix.*;
+import com.netflix.commons.*;
+import com.netflix.entities.*;
+import com.netflix.entities.abstracts.*;
 
 import javax.swing.*;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.table.JTableHeader;
-import javax.swing.table.TableModel;
-import javax.swing.table.TableRowSorter;
+import javax.swing.event.*;
+import javax.swing.table.*;
 import java.awt.*;
-import java.awt.event.ComponentAdapter;
-import java.awt.event.ComponentEvent;
-import java.util.ArrayList;
+import java.awt.event.*;
+import java.util.*;
 
 import static java.awt.BorderLayout.*;
 
@@ -30,11 +25,14 @@ public class ObjectView {
   // Common stuff
   private JLabel title;
   private String description;
+  public static JTable table;
+  public JLabel descriptionLabel;
+  public MediaObject obj;
 
   public ObjectView() {}
 
   private ObjectView(MediaObject object) {
-    new ObjectView();
+    obj = object;
     title = new JLabel(object.getTitle());
 
     // If it's a serie
@@ -42,13 +40,15 @@ public class ObjectView {
       Serie serie = Serie.getSerieByName(object.getTitle());
       description =
           String.format(
-              "<html>Taal : %s<br>Genre : %s<br>Seizoenen : %d<br>Afleveringen : %d<br>Leeftijdsclassificatie %s<br>Bekeken door %s%% van het totaal aantal gebruikers</html>",
+              "<html>Taal : %s<br>Genre : %s<br>Seizoenen : %d<br>Afleveringen : %d<br>Leeftijdsclassificatie %s<br>Bekeken door %s%% van het totaal aantal gebruikers<br><br>Vergelijkbaar : %s (%s%%)</html>",
               object.getLang().getLanguageName(),
               object.getGenre(),
               serie.getSeasonCount(),
               serie.getEpisodeCount(),
               object.getRating(),
-              Commons.percentage(object.getWatchedPercentage()));
+              Commons.percentage(object.getWatchedPercentage()),
+              serie.getSimilarObject().getTitle(),
+              serie.getSimilarObject().getWatchedPercentage());
     }
 
     // If it's a film
@@ -56,13 +56,15 @@ public class ObjectView {
       Film film = Film.getFilmByName(object.getTitle());
       description =
           String.format(
-              "<html>Genre : %s<br>Taal : %s<br>Leeftijdsclassificatie : %s<br>Regisseur : %s<br>Tijdsduur : %s<br>Bekeken door %s%% van het totaal aantal gebruikers</html>",
+              "<html>Genre : %s<br>Taal : %s<br>Leeftijdsclassificatie : %s<br>Regisseur : %s<br>Tijdsduur : %s<br>Bekeken door %s%% van het totaal aantal gebruikers<br><br>Vergelijkbaar : %s (%s%%)</html>",
               object.getGenre(),
               object.getLang().getLanguageName(),
               object.getRating(),
               film.getDirector(),
               film.getDuration(),
-              Commons.percentage(object.getWatchedPercentage()));
+              Commons.percentage(object.getWatchedPercentage()),
+              film.getSimilarObject().getTitle(),
+              film.getSimilarObject().getWatchedPercentage());
     }
   }
 
@@ -103,7 +105,7 @@ public class ObjectView {
 
     title.setFont(new Font(title.getFont().getFontName(), Font.BOLD, 18));
 
-    JLabel descriptionLabel = new JLabel();
+    descriptionLabel = new JLabel();
     descriptionLabel.setText(description);
     descriptionLabel.setFont(
         new Font(
@@ -122,27 +124,81 @@ public class ObjectView {
     main.setBackground(Color.WHITE);
 
     // Add all the things!
-    aboutMediaInner.add(descriptionLabel, NORTH);
+    aboutMediaInner.add(descriptionLabel, CENTER);
+
+    if (obj.type == 1) {
+      JCheckBox cb = new JCheckBox("Bekeken");
+
+      if (Profile.currentUser.getFilmsWatched().contains(obj)) cb.setSelected(true);
+
+      cb.addItemListener(
+          e -> {
+            if (cb.isSelected()) {
+              Profile.currentUser.viewFilmNoDB(Film.getByDbId(obj.databaseId));
+              String qr =
+                  "INSERT INTO WatchedFilms (FilmId, UserId, FilmsWatched) VALUES (?, ?, ?)";
+              Object[] arr = {
+                obj.databaseId,
+                Profile.currentUser.databaseId,
+                Profile.currentUser.getFilmsWatched().size()
+              };
+
+              Netflix.database.executeSqlNoResult(qr, arr);
+
+            } else {
+              Profile.currentUser.unviewFilm(Film.getByDbId(obj.databaseId));
+              String qr = "DELETE FROM WatchedFilms WHERE UserId=? AND FilmId=?";
+              Object[] arr = {Profile.currentUser.databaseId, obj.databaseId};
+
+              Netflix.database.executeSqlNoResult(qr, arr);
+            }
+
+            // If it's a film
+            Film film = Film.getFilmByName(obj.getTitle());
+            descriptionLabel.setText(
+                String.format(
+                    "<html>Genre : %s<br>Taal : %s<br>Leeftijdsclassificatie : %s<br>Regisseur : %s<br>Tijdsduur : %s<br>Bekeken door %s%% van het totaal aantal gebruikers<br><br>Vergelijkbaar : %s (%s%%)</html>",
+                    obj.getGenre(),
+                    obj.getLang().getLanguageName(),
+                    obj.getRating(),
+                    film.getDirector(),
+                    film.getDuration(),
+                    Commons.percentage(obj.getWatchedPercentage()),
+                    film.getSimilarObject().getTitle(),
+                    film.getSimilarObject().getWatchedPercentage()));
+          });
+      aboutMediaInner.add(cb, BorderLayout.SOUTH);
+    }
+
     quickView.add(title, NORTH);
     quickView.add(descriptionLabel, SOUTH);
     inner.add(quickView, NORTH);
 
     if (ObjectView.serie != null) { // If it's a film this will be null
       // Generate a table
-      JTable table =
+      table =
           new JTable() {
             @Override
             public boolean isCellEditable(int row, int column) {
-              return false;
+              return column == 4;
             }
           };
+
       DefaultTableModel tableModel = new DefaultTableModel(0, 0);
+      CheckBoxModelListener cml = new CheckBoxModelListener();
+      cml.lable = descriptionLabel;
+      cml.obj = obj;
+      tableModel.addTableModelListener(cml);
 
       // Table headers
-      String[] columnNames = {"Aflevering", "Titel", "Seizoen", "Duratie"};
+      String[] columnNames = {"Aflevering", "Titel", "Seizoen", "Duratie", "Bekeken", "DatabaseId"};
 
       tableModel.setColumnIdentifiers(columnNames);
       table.setModel(tableModel);
+
+      TableColumnModel tcm = table.getColumnModel();
+      tcm.removeColumn(
+          tcm.getColumn(5)); // Hide DatabaseId from user, but store the data in the table
 
       // Add all episodes in the serie
       for (Season season : ObjectView.serie.getSeasons()) {
@@ -152,10 +208,16 @@ public class ObjectView {
                 episode.getEpisodeNumber(),
                 episode.getTitle(),
                 episode.getSeason(),
-                episode.getDuration()
+                episode.getDuration(),
+                episode.watchedByProfile(),
+                episode.databaseId
               });
         }
       }
+
+      TableColumn tc = table.getColumnModel().getColumn(4);
+      tc.setCellEditor(table.getDefaultEditor(Boolean.class));
+      tc.setCellRenderer(table.getDefaultRenderer(Boolean.class));
 
       JTableHeader header = table.getTableHeader();
       header.setForeground(new Color(151, 2, 4));
@@ -209,6 +271,59 @@ public class ObjectView {
 
     public void componentResized(ComponentEvent e) {
       pane.setPreferredSize(new Dimension(inner.getWidth(), main.getHeight() / 2));
+    }
+  }
+
+  public class CheckBoxModelListener implements TableModelListener {
+    JLabel lable;
+    MediaObject obj;
+
+    @Override
+    public void tableChanged(TableModelEvent e) {
+      int row = e.getFirstRow();
+      int column = e.getColumn();
+
+      episodeTableUpdate(row, column, e); // Series
+    }
+
+    private void episodeTableUpdate(int row, int column, TableModelEvent e) {
+      if (column == 4) {
+        TableModel model = (TableModel) e.getSource();
+        Boolean checked = (Boolean) model.getValueAt(row, column);
+        int dbID = (int) ObjectView.table.getModel().getValueAt(row, column + 1);
+        if (checked) {
+          Profile.currentUser.viewEpisodeNoDB(Episode.getByDbId(dbID));
+
+          String qr =
+              "INSERT INTO WatchedEpisodes (EpisodesWatched, UserId, EpisodeId) VALUES (?, ?, ?)";
+          Object[] arr = {
+            Profile.currentUser.getEpisodesWatched().size(), Profile.currentUser.databaseId, dbID
+          };
+
+          Netflix.database.executeSqlNoResult(qr, arr);
+
+        } else {
+          Profile.currentUser.unviewEpisode(Episode.getByDbId(dbID));
+
+          String qr = "DELETE FROM WatchedEpisodes WHERE UserId=? AND EpisodeId=?";
+          Object[] arr = {Profile.currentUser.databaseId, dbID};
+
+          Netflix.database.executeSqlNoResult(qr, arr);
+        }
+
+        Serie serie = Serie.getSerieByName(obj.getTitle());
+        lable.setText(
+            String.format(
+                "<html>Taal : %s<br>Genre : %s<br>Seizoenen : %d<br>Afleveringen : %d<br>Leeftijdsclassificatie %s<br>Bekeken door %s%% van het totaal aantal gebruikers<br><br>Vergelijkbaar : %s (%s%%)</html>",
+                obj.getLang().getLanguageName(),
+                obj.getGenre(),
+                serie.getSeasonCount(),
+                serie.getEpisodeCount(),
+                obj.getRating(),
+                Commons.percentage(obj.getWatchedPercentage()),
+                serie.getSimilarObject().getTitle(),
+                serie.getSimilarObject().getWatchedPercentage()));
+      }
     }
   }
 }

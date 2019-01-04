@@ -1,7 +1,5 @@
 
-Asquid:S2201"+The return value of "replace" must be used.(Ğß“E
+Hsquid:S2201"+The return value of "replace" must be used.(Ğß“E8±¿ªš-
 Vsquid:S1118":Add a private constructor to hide the implicit public one.(Ô‹ÈŸÿÿÿÿÿ
-Gsquid:S2629&"$Invoke method(s) only conditionally.(ã¯·­ûÿÿÿÿ8•ìéÌ€-
-tsquid:S3457&"Q%n should be used in place of \n to produce the platform-specific line separator.(ã¯·­ûÿÿÿÿ8•ìéÌ€-
 ©squid:S1598"ŒThis file "Commons.java" should be located in "com\netflix\commons" directory, not in "C:\Users\Intern\IdeaProjects\NetflixGit\src\commons".(òò×õúÿÿÿÿ
-?squid:S1643$"Use a StringBuilder instead.(è‹©¸øÿÿÿÿ8İëñÌ€-
+?squid:S1643-"Use a StringBuilder instead.(è‹©¸øÿÿÿÿ8±¿ªš-

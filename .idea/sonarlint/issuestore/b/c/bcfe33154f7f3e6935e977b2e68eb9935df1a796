@@ -1,3 +1,15 @@
 
-asquid:HiddenFieldCheck'"9Rename "serie" which hides the field declared at line 18.(“­×l8­ÑÖ¯ş,
-^squid:S1161Â":Add the "@Override" annotation above this method signature(ÃÅñÛüÿÿÿÿ8Ûİ¿§ş,
+·squid:S1598"“This file "ObjectView.java" should be located in "com\netflix\gui\views" directory, not in "C:\Users\Intern\IdeaProjects\NetflixGit\src\gui\views".(Ûìšóøÿÿÿÿ8ş±ôĞ€-
+Usquid:S2696³"6Make the enclosing method "static" or remove this set.(Ö„ï8âÇô€-
+asquid:HiddenFieldCheck("9Rename "serie" which hides the field declared at line 19.(“­×l8õ£¯ó€-
+hsquid:HiddenFieldCheckº"9Rename "serie" which hides the field declared at line 19.(İõª¶ùÿÿÿÿ8±ıéô€-
+Ysquid:S2696S"6Make the enclosing method "static" or remove this set.(£ïÅ°ıÿÿÿÿ8õ£¯ó€-
+Isquid:S1444"+Make this "public static table" field final(ÎÈ‚ä8¤öò€-
+†"squid:ClassVariableVisibilityCheck"QMake table a static final constant or non-public and provide accessors if needed.(ÎÈ‚ä8¤öò€-
+^squid:S1161":Add the "@Override" annotation above this method signature(ÃÅñÛüÿÿÿÿ8âÇô€-
+Hsquid:S1444"+Make this "public static serie" field final(ÊéM8ş±ôĞ€-
+–"squid:ClassVariableVisibilityCheck"\Make descriptionLabel a static final constant or non-public and provide accessors if needed.(ËÖÃ¯øÿÿÿÿ8î³¤ó€-
+Tsquid:S2209"5Change this instance-reference to a static reference.(ë¢™ 8±şÆô€-
+Tsquid:S2696V"6Make the enclosing method "static" or remove this set.(‰ºÖÊ8õ£¯ó€-
+…"squid:ClassVariableVisibilityCheck"QMake serie a static final constant or non-public and provide accessors if needed.(ÊéM8ş±ôĞ€-
+‰"squid:ClassVariableVisibilityCheck"OMake obj a static final constant or non-public and provide accessors if needed.(æã üÿÿÿÿ8ÜÌ¬ó€-

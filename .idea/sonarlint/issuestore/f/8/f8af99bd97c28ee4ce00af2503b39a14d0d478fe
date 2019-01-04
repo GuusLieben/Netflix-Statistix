@@ -1,49 +1,3 @@
 
-[squid:CallToDeprecatedMethod^",Remove this use of "Time"; it is deprecated.(é∫∞·8ÚÂ≠ÃÄ-
-isquid:S00117j"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(®ö…Õ
-isquid:CommentedOutCodeLine*"<This block of commented-out lines of code should be removed.(∑”Úã8à∂¬ÕÄ-
-Ksquid:S1481R"-Remove this unused "episode8" local variable.(∂È‰ß8ÚÂ≠ÃÄ-
-`squid:CallToDeprecatedMethodp",Remove this use of "Time"; it is deprecated.(®©ïú˘ˇˇˇˇ8ÚÂ≠ÃÄ-
-nsquid:S1192="KDefine a constant instead of duplicating this literal "Nederlands" 4 times.(≥˚ÅÑˇˇˇˇˇ8ÚÂ≠ÃÄ-
-`squid:S1854T"=Remove this useless assignment to local variable "episode10".(ÌÉ◊Ì¯ˇˇˇˇ8‚÷¬ÕÄ-
-isquid:S00117X"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ãı…≈
-isquid:CommentedOutCodeLinet"<This block of commented-out lines of code should be removed.(†°™Ä8‚÷¬ÕÄ-
-Psquid:S1481L"-Remove this unused "episode2" local variable.(¿ÑË√˛ˇˇˇˇ8‚÷¬ÕÄ-
-_squid:S1854L"<Remove this useless assignment to local variable "episode2".(¿ÑË√˛ˇˇˇˇ8‚÷¬ÕÄ-
-Ksquid:S1481P"-Remove this unused "episode6" local variable.(ùë¡å8ÚÂ≠ÃÄ-
-W
-squid:S106†"9Replace this use of System.out or System.err by a logger.(¸ÆÇµ8ÌµïÕÄ-
-Ksquid:S1481Q"-Remove this unused "episode7" local variable.(∑Ÿ‡Ò8ÚÂ≠ÃÄ-
-_squid:S1854K"<Remove this useless assignment to local variable "episode1".(≈·ã…˛ˇˇˇˇ8‚÷¬ÕÄ-
-\
-squid:S106ò"9Replace this use of System.out or System.err by a logger.(ò®ë∆˚ˇˇˇˇ8ˇèÿÃÄ-
-nsquid:S00117H"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ô˜–÷˝ˇˇˇˇ
-]squid:UnusedPrivateMethodÜ"0Remove this unused private "collectData" method.(ÚÎ®8ÖıπÃÄ-
-Zsquid:S1854P"<Remove this useless assignment to local variable "episode6".(ùë¡å8ÚÂ≠ÃÄ-
-nsquid:S00117A"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ü√˚‹˚ˇˇˇˇ
-Zsquid:S1854S"<Remove this useless assignment to local variable "episode9".(ëˇ‚±8ÚÂ≠ÃÄ-
-W
-squid:S106ú"9Replace this use of System.out or System.err by a logger.(ú˘éä8ñ–üÕÄ-
-ã"squid:ClassVariableVisibilityCheck"VMake connection a static final constant or non-public and provide accessors if needed.(´∏úı8‚ô“ÕÄ-
-Zsquid:S1854R"<Remove this useless assignment to local variable "episode8".(∂È‰ß8ÚÂ≠ÃÄ-
-Zsquid:S1854Q"<Remove this useless assignment to local variable "episode7".(∑Ÿ‡Ò8ÚÂ≠ÃÄ-
-∑squid:S1598"ìThis file "DatabaseHandle.java" should be located in "com\netflix\handles" directory, not in "C:\Users\Intern\IdeaProjects\NetflixGit\src\handles".(√´¢Ÿ˚ˇˇˇˇ8ÚÂ≠ÃÄ-
-_squid:S1854O"<Remove this useless assignment to local variable "episode5".(¶™ï¨¯ˇˇˇˇ8ÚÂ≠ÃÄ-
-nsquid:CommentedOutCodeLine0"<This block of commented-out lines of code should be removed.(æ∫¥¯˚ˇˇˇˇ8à∂¬ÕÄ-
-Psquid:S1481O"-Remove this unused "episode5" local variable.(¶™ï¨¯ˇˇˇˇ8ÚÂ≠ÃÄ-
-`squid:CallToDeprecatedMethodg",Remove this use of "Time"; it is deprecated.(®©ïú˘ˇˇˇˇ8ÚÂ≠ÃÄ-
-isquid:S00117:"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(©ü¡¨
-nsquid:S00117I"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(úß√Å¸ˇˇˇˇ
-Psquid:S1481M"-Remove this unused "episode3" local variable.(´ƒç≥˙ˇˇˇˇ8ÚÂ≠ÃÄ-
-psquid:S00117J"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ö™ùè8ÚÂ≠ÃÄ-
-isquid:S1192="FDefine a constant instead of duplicating this literal "nl_NL" 4 times.(≥˚ÅÑˇˇˇˇˇ8ÚÂ≠ÃÄ-
-Psquid:S1481K"-Remove this unused "episode1" local variable.(≈·ã…˛ˇˇˇˇ8‚÷¬ÕÄ-
-hsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(ﬂò„P8âÕÑÕÄ-
-_squid:S1854N"<Remove this useless assignment to local variable "episode4".(ÀŸƒÁˇˇˇˇˇ8ÚÂ≠ÃÄ-
-Qsquid:S1481T".Remove this unused "episode10" local variable.(ÌÉ◊Ì¯ˇˇˇˇ8‚÷¬ÕÄ-
-Psquid:S1481N"-Remove this unused "episode4" local variable.(ÀŸƒÁˇˇˇˇˇ8ÚÂ≠ÃÄ-
-_squid:S1854M"<Remove this useless assignment to local variable "episode3".(´ƒç≥˙ˇˇˇˇ8ÚÂ≠ÃÄ-
-Ksquid:S1481S"-Remove this unused "episode9" local variable.(ëˇ‚±8ÚÂ≠ÃÄ-
-nsquid:CommentedOutCodeLine,"<This block of commented-out lines of code should be removed.(∞ã∑¬˙ˇˇˇˇ8à∂¬ÕÄ-
-isquid:CommentedOutCodeLine4"<This block of commented-out lines of code should be removed.(˛ô¶â8à∂¬ÕÄ-
-isquid:S00117a"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(í©ï˛
+ã"squid:ClassVariableVisibilityCheck"VMake connection a static final constant or non-public and provide accessors if needed.(´∏úı8πìáòÅ-
+∑squid:S1598"ìThis file "DatabaseHandle.java" should be located in "com\netflix\handles" directory, not in "C:\Users\Intern\IdeaProjects\NetflixGit\src\handles".(√´¢Ÿ˚ˇˇˇˇ8∫¢ÔÓÄ-

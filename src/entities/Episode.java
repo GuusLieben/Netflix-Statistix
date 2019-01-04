@@ -28,6 +28,7 @@ public class Episode extends Entity {
     season.addEpisode(this);
   }
 
+  // Getters
   public int getEpisodeNumber() {
     return episodeNumber;
   }
@@ -48,10 +49,12 @@ public class Episode extends Entity {
     return duration;
   }
 
+  // Get episode by database ID
   public static Episode getByDbId(int id) {
     return episodes.stream().filter(ent -> ent.databaseId == id).findFirst().orElse(null);
   }
 
+  // Get all episodes from database
   public static void getFromDatabase() {
     for (HashMap<String, Object> map :
         Netflix.database.executeSql(
@@ -64,5 +67,20 @@ public class Episode extends Entity {
           (int) map.get("EpisodeNumber"),
           (int) map.get("EpisodeId"));
     }
+  }
+
+  // Get all watched episodes and the profile that watched it
+  public static void getViewData() {
+    for (HashMap<String, Object> map :
+        Netflix.database.executeSql("SELECT UserId, EpisodeId FROM WatchedEpisodes")) {
+      Profile prof = Profile.getByDbId((int) map.get("UserId")); // Breaks
+      Episode epi = Episode.getByDbId((int) map.get("EpisodeId"));
+      prof.viewEpisodeNoDB(epi);
+    }
+  }
+
+  // Use the Stream API to find out if the current profile watched this episode
+  public Boolean watchedByProfile() {
+    return Profile.currentUser.getEpisodesWatched().stream().anyMatch(epi -> epi == this);
   }
 }

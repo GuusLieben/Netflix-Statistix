@@ -25,7 +25,7 @@ public class AccountView {
     // For all profiles
     for (Profile prof : Profile.currentUser.getAccount().getProfiles()) {
       profileLabel.setText(
-          profileLabel.getText() + ".Profiel : " + prof.getName()); // Show the profile name
+              String.format("%s.Profiel : %s", profileLabel.getText(), prof.getName())); // Show the profile name
 
       if (prof == Profile.currentUser)
         profileLabel.setText(profileLabel.getText() + " <b><i>(Huidig)</b></i>");

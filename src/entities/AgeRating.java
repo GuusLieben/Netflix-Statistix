@@ -17,17 +17,13 @@ public class AgeRating extends Entity {
     ratings.add(this);
   }
 
-  public static AgeRating getRating(String ageCode, int minAge) {
-    // Used for the DatabaseHandle to check if one already exists
-    for (AgeRating rating : ratings) if (rating.getAgeCode().equals(ageCode)) return rating;
-    return null;
-  }
-
+  // Get a rating by the age, used in Database handles
   public static AgeRating getByAge(int age) {
     for (AgeRating rating : ratings) if (rating.getMinimumAge() == age) return rating;
     return null;
   }
 
+  // Getters
   public String getAgeCode() {
     return ageCode;
   }
@@ -36,6 +32,7 @@ public class AgeRating extends Entity {
     return minimumAge;
   }
 
+  // Get all ratings from the database
   public static void getFromDatabase() {
     for (HashMap<String, Object> map :
         Netflix.database.executeSql("SELECT MPAA, Rating FROM Rating")) {
@@ -43,9 +40,10 @@ public class AgeRating extends Entity {
     }
   }
 
+  // toString used for the MediaObject ObjectView
   @Override
   public String toString() {
     // Dutch translations
-    return getAgeCode() + " (" + getMinimumAge() + " jaar en ouder)";
+    return String.format("%s (%d jaar en ouder)", getAgeCode(), getMinimumAge());
   }
 }

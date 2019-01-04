@@ -1,0 +1,11 @@
+
+Lsquid:S1444".Make this "public static loggedIn" field final(€¢åÔ8ƒ¬Éó€-
+‹"squid:ClassVariableVisibilityCheck"QMake frame a static final constant or non-public and provide accessors if needed.(¹å‘şøÿÿÿÿ8ƒ¬Éó€-
+Esquid:S3010""Remove this assignment of "frame".(ŞËÎ²ÿÿÿÿÿ8ƒ¬Éó€-
+Isquid:S1444"+Make this "public static lpane" field final(½ê“Î8ƒ¬Éó€-
+­squid:S1598"‰This file "NetflixFrame.java" should be located in "com\netflix\gui" directory, not in "C:\Users\Intern\IdeaProjects\NetflixGit\src\gui".(¤ÿ¿ÿıÿÿÿÿ8ƒ¬Éó€-
+Nsquid:S1444"+Make this "public static frame" field final(¹å‘şøÿÿÿÿ8ƒ¬Éó€-
+‰"squid:ClassVariableVisibilityCheck"TMake loggedIn a static final constant or non-public and provide accessors if needed.(€¢åÔ8ƒ¬Éó€-
+†"squid:ClassVariableVisibilityCheck"QMake lpane a static final constant or non-public and provide accessors if needed.(½ê“Î8ƒ¬Éó€-
+Rsquid:S1444"/Make this "public static mainPanel" field final(”­ÿÿÿÿÿ8ƒ¬Éó€-
+"squid:ClassVariableVisibilityCheck"UMake mainPanel a static final constant or non-public and provide accessors if needed.(”­ÿÿÿÿÿ8ƒ¬Éó€-

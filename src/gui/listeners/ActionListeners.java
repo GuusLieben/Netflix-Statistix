@@ -29,9 +29,12 @@ public class ActionListeners {
             String value = account.getPassword();
 
             if ((usernameBoxValue.equals(key)) // If it equals, login
-                && (Commons.hashSHA256(passwordBoxValue).equals(value))) {
+                && (Commons.hashSHA256(passwordBoxValue)
+                    .equals(
+                        value))) { // Only check the hashes, don't compare plain text (we don't have
+                                   // it anyway)
 
-              // A wild wizard appears, Easter Egg <3
+              // A strange artefact appears, Easter Egg <3
               Commons.logger.info(
                   String.format(
                       "\n\n   .----.\n"
@@ -40,8 +43,7 @@ public class ActionListeners {
                           + "|  ______--|\n"
                           + "`-/.::::.\\-'   %s logged in\n"
                           + " `--------'     Hash %s\n",
-                      usernameBoxValue,
-                      Commons.hashSHA256(passwordBoxValue)));
+                      usernameBoxValue, Commons.hashSHA256(passwordBoxValue)));
 
               // Clear the mainPanel (removing login panel), set loggedIn status to true and
               // load the media panels

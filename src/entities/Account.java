@@ -55,7 +55,10 @@ public class Account extends Entity {
     } else {
       // If the email wasn't valid, show a popup and don't create the object
       JOptionPane.showMessageDialog(
-          NetflixFrame.frame, "E-mail is incorrect : " + email, null, JOptionPane.ERROR_MESSAGE);
+          NetflixFrame.frame,
+          String.format("E-mail is incorrect : %s", email),
+          null,
+          JOptionPane.ERROR_MESSAGE);
     }
   }
 
@@ -79,6 +82,9 @@ public class Account extends Entity {
     return null;
   }
 
+  /*
+   * Getters and setters for all used attributes
+   */
   public String getStreet() {
     return street;
   }
@@ -119,14 +125,6 @@ public class Account extends Entity {
     isAdmin = admin;
   }
 
-  public Set<Profile> getProfiles() {
-    return profiles;
-  }
-
-  public void addProfile(Profile profile) {
-    profiles.add(profile);
-  }
-
   public String getEmail() {
     return email;
   }
@@ -136,17 +134,28 @@ public class Account extends Entity {
   }
 
   public String getLocation() {
-    return street + " " + houseNumber + addition + ", " + city;
+    return String.format("%s %d%s, %s", street, houseNumber, addition, city);
   }
 
   public String getPassword() {
     return password;
   }
 
+  public Set<Profile> getProfiles() {
+    return profiles;
+  }
+
+  // Add a profile to the account, the >5 check is in the profile constructor
+  public void addProfile(Profile profile) {
+    profiles.add(profile);
+  }
+
+  // Get an account by its Database ID, this is always unique
   public static Account getByDbId(int id) {
     return accounts.stream().filter(ent -> ent.databaseId == id).findFirst().orElse(null);
   }
 
+  // Get all accounts from the database
   public static void getFromDatabase() {
     for (HashMap<String, Object> map :
         Netflix.database.executeSql(
@@ -161,36 +170,5 @@ public class Account extends Entity {
           (String) map.get("Woonplaats"),
           (String) map.get("Wachtwoord"));
     }
-  }
-
-  @Override
-  public String toString() {
-    return "Account{"
-        + "databaseId="
-        + databaseId
-        + ", isAdmin="
-        + isAdmin
-        + ", profiles="
-        + profiles
-        + ", email='"
-        + email
-        + '\''
-        + ", street='"
-        + street
-        + '\''
-        + ", houseNumber="
-        + houseNumber
-        + ", addition='"
-        + addition
-        + '\''
-        + ", city='"
-        + city
-        + '\''
-        + ", password='"
-        + password
-        + '\''
-        + ", entityId="
-        + entityId
-        + '}';
   }
 }

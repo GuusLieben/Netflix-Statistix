@@ -1,7 +1,3 @@
-/*
- * Copyright © 2018. Guus Lieben.
- * All rights reserved.
- */
 
 package com.netflix.gui.views;
 
@@ -171,7 +167,7 @@ public class LoginView {
         int randomNum =
             random.nextInt((7 - 1) + 1)
                 + 1; // Random profile picture, can show duplicate icons, intended behavior
-        image = new ImageIcon("resources/profiles/profile" + randomNum + ".png").getImage();
+        image = new ImageIcon(String.format("resources/profiles/profile%d.png", randomNum)).getImage();
         // Scale icon to fit labels, then add it to the label
         ImageIcon icon = new ImageIcon(image.getScaledInstance(100, 100, Image.SCALE_SMOOTH));
 
@@ -179,7 +175,7 @@ public class LoginView {
         JButton label = new NButton();
 
         // Close the html tags
-        label.setText("<html><center>" + labelText + "</center></html>");
+        label.setText(String.format("<html><center>%s</center></html>", labelText));
 
         // Set icon and basic styling
         label.setIcon(icon);

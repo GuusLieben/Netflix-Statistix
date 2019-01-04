@@ -1,6 +1,6 @@
 
-nsquid:CommentedOutCodeLine-"<This block of commented-out lines of code should be removed.(Ì‘»³ýÿÿÿÿ8¸ÀÌ€-
-nsquid:CommentedOutCodeLineY"<This block of commented-out lines of code should be removed.(¦èÂÐúÿÿÿÿ8€èæáú,
-½squid:S1598"™This file "RegistrationView.java" should be located in "com\netflix\gui\views" directory, not in "C:\Users\Intern\IdeaProjects\NetflixGit\src\gui\views".(Ûìšóøÿÿÿÿ8Ëª€Ì€-
-]squid:S1118":Add a private constructor to hide the implicit public one.(Âè¾Ãÿÿÿÿÿ8Ëª€Ì€-
 nsquid:CommentedOutCodeLine["<This block of commented-out lines of code should be removed.(‚ÄŸ…ûÿÿÿÿ8“éÌ€-
+½squid:S1598"™This file "RegistrationView.java" should be located in "com\netflix\gui\views" directory, not in "C:\Users\Intern\IdeaProjects\NetflixGit\src\gui\views".(Ûìšóøÿÿÿÿ8Ëª€Ì€-
+nsquid:CommentedOutCodeLineY"<This block of commented-out lines of code should be removed.(¦èÂÐúÿÿÿÿ8€èæáú,
+nsquid:CommentedOutCodeLine-"<This block of commented-out lines of code should be removed.(Ì‘»³ýÿÿÿÿ8¸ÀÌ€-
+]squid:S1118":Add a private constructor to hide the implicit public one.(Âè¾Ãÿÿÿÿÿ8Ëª€Ì€-

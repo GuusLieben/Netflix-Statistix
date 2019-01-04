@@ -46,8 +46,8 @@ public class NetflixFrame {
     frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
 
     // Make sure the given sizes don't exceed the minimum frame size
-    if (width < 650) width = 650;
-    if (height < 400) height = 400;
+    if (width < 700) width = 700;
+    if (height < 450) height = 450;
 
     // Set sizes for frame
     frame.setMinimumSize(

@@ -1,10 +1,10 @@
 
-fsquid:S1192I"HDefine a constant instead of duplicating this literal "Manager" 3 times.(ÿûÕñ8ßÀÕË€-
-]squid:S1118":Add a private constructor to hide the implicit public one.(âŠ°ÿÿÿÿÿ8ßÀÕË€-
-esquid:S1192C"GDefine a constant instead of duplicating this literal "Series" 3 times.(Œ‰š·8ßÀÕË€-
-dsquid:S1192B"FDefine a constant instead of duplicating this literal "Films" 3 times.(­Ã¬´8ßÀÕË€-
 Lsquid:S1481h")Remove this unused "icon" local variable.(Å´³ùÿÿÿÿ8ßÀÕË€-
+nsquid:CommentedOutCodeLine{"<This block of commented-out lines of code should be removed.(´Ÿ‡½ÿÿÿÿÿ8ï†ŒÌ€-
 ²squid:S1598"“This file "Common.java" should be located in "com\netflix\gui\commons" directory, not in "C:\Users\Intern\IdeaProjects\NetflixGit\src\gui\commons".(í©²‡8ßÀÕË€-
 fsquid:S1192H"HDefine a constant instead of duplicating this literal "Account" 3 times.(€¥û—8ßÀÕË€-
 Msquid:S1481g"*Remove this unused "image" local variable.(®æâÅıÿÿÿÿ8ßÀÕË€-
-nsquid:CommentedOutCodeLine{"<This block of commented-out lines of code should be removed.(´Ÿ‡½ÿÿÿÿÿ8ï†ŒÌ€-
+]squid:S1118":Add a private constructor to hide the implicit public one.(âŠ°ÿÿÿÿÿ8ßÀÕË€-
+dsquid:S1192B"FDefine a constant instead of duplicating this literal "Films" 3 times.(­Ã¬´8ßÀÕË€-
+esquid:S1192C"GDefine a constant instead of duplicating this literal "Series" 3 times.(Œ‰š·8ßÀÕË€-
+fsquid:S1192I"HDefine a constant instead of duplicating this literal "Manager" 3 times.(ÿûÕñ8ßÀÕË€-
