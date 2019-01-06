@@ -60,7 +60,8 @@ public class DatabaseHandle {
           DriverManager.getConnection(
               connectionString,
               PropertiesHandle.get("jdbc.user"),
-              PropertiesHandle.get("jdbc.password")); // Could also be stored in the connection String
+              PropertiesHandle.get(
+                  "jdbc.password")); // Could also be stored in the connection String
       database = connection.getCatalog();
       Commons.logger.info(String.format("Connected to database '%s'", database));
 
@@ -108,11 +109,18 @@ public class DatabaseHandle {
   }
 
   public List<HashMap<String, Object>> executeSql(String sqlQuery) {
+    Object[] arr = {};
+    return executeSql(sqlQuery, arr);
+  }
+
+  public List<HashMap<String, Object>> executeSql(String sqlQuery, Object[] arr) {
     if (Netflix.database.connectDatabase() == SQLResults.PASS) {
       ResultSet results = null;
-      try (Statement statement = Netflix.database.connection.createStatement()) {
+      try (PreparedStatement statement = Netflix.database.connection.prepareStatement(sqlQuery)) {
         // Make sure the results are passed
-        results = statement.executeQuery(sqlQuery);
+        for (int i = 0; i < arr.length; i++) statement.setObject(i + 1, arr[i]);
+
+        results = statement.executeQuery();
         Commons.logger.info(
             String.format(
                 // Safe modification of data, don't show cell content in the logs

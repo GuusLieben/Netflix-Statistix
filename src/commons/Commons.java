@@ -20,9 +20,8 @@ public class Commons {
       // Get the date and time in format d.[date]-t.[time]
       String dateTime =
           String.format("d.%s-t.%s", LocalDate.now().toString(), LocalTime.now().toString())
-              .replace(":", "-");
-      // Replace spaces in the string, it's a file after all
-      dateTime.replace(" ", ".");
+              .replace(":", "-")
+              .replace(" ", ".");
 
       // Set the log file format to log-[dateTime].log, always append what is logged rather than
       // replacing existing content
@@ -41,11 +40,12 @@ public class Commons {
 
   // Exception handle
   public static void exception(Exception ex) {
-    String stack = "";
-    for (StackTraceElement el : ex.getStackTrace()) stack += el.toString() + "\n";
+    StringBuilder stack = new StringBuilder();
+    for (StackTraceElement el : ex.getStackTrace()) stack.append(el.toString()).append("\n");
     // Print the suspected cause
     logger.severe(
-        String.format("%s%nSuspected cause : %s%n%s", ex.getMessage(), ex.getCause(), stack));
+        String.format(
+            "%s%nSuspected cause : %s%n%s", ex.getMessage(), ex.getCause(), stack.toString()));
   }
 
   public static String hashSHA256(String password) {

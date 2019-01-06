@@ -1,0 +1,14 @@
+
+ysquid:S41442"[Update this method so that its implementation is not identical to "createSerie" on line 40.(‘“û8Ô¼¤‚-
+ysquid:S4144F"[Update this method so that its implementation is not identical to "createSerie" on line 40.(º§ûü8Ô¼¤‚-
+Ksquid:S1481J"(Remove this unused "map" local variable.(ê­ ²ûÿÿÿÿ8Ô¼¤‚-
+Msquid:S00108J")Either remove or fill this block of code.(ê­ ²ûÿÿÿÿ8Ô¼¤‚-
+Msquid:S00108@")Either remove or fill this block of code.(ê­ ²ûÿÿÿÿ8Ô¼¤‚-
+Ksquid:S1481@"(Remove this unused "map" local variable.(ê­ ²ûÿÿÿÿ8Ô¼¤‚-
+Ksquid:S1481,"(Remove this unused "map" local variable.(ê­ ²ûÿÿÿÿ8Ô¼¤‚-
+ysquid:S4144<"[Update this method so that its implementation is not identical to "createSerie" on line 40.(£•û”8Ô¼¤‚-
+Ksquid:S14816"(Remove this unused "map" local variable.(ê­ ²ûÿÿÿÿ8Ô¼¤‚-
+ãsquid:S1598"¿This file "EntityCreation.java" should be located in "com\netflix\gui\views\management\creation" directory, not in "C:\Users\Intern\IdeaProjects\NetflixGit\src\gui\views\management\creation".(¨îßÊùÿÿÿÿ8Ğÿğ§‚-
+Msquid:S00108,")Either remove or fill this block of code.(ê­ ²ûÿÿÿÿ8Ô¼¤‚-
+Msquid:S001086")Either remove or fill this block of code.(ê­ ²ûÿÿÿÿ8Ô¼¤‚-
+‹squid:S1192,"hDefine a constant instead of duplicating this literal "SELECT id FROM entity WHERE something=?" 4 times.(ê­ ²ûÿÿÿÿ8Ô¼¤‚-

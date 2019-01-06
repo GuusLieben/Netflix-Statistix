@@ -80,3 +80,13 @@ X
 (logs/log-d.2019-01-03-t.10-34-55.196.log,d\e\dea8a1ffa341ddf2b1e016312934c7e65580f01b
 X
 (logs/log-d.2019-01-03-t.13-19-44.854.xml,a\d\ad30d94165d5bde1c2fa1106b595eda7334b9465
+\
+,src/gui/views/management/EntityCreation.java,a\6\a6e38e205368bc51763c3be8bdd7b8affcf36055
+e
+5src/gui/views/management/creation/EntityCreation.java,5\0\50c957b6dfc81c1467ffa95dfc93b10a7c311488
+d
+4src/gui/views/management/creation/AccountFrame2.java,3\5\3542e6039f2decd56197a991ea572c21452b9f5f
+d
+4src/gui/views/management/creation/CreationFrame.java,5\3\53fb1efed873f2d5bb939a987a80717fe8a50888
+c
+3src/gui/views/management/creation/AccountFrame.java,3\e\3eebb15b358198a98a3d502eb9c828b3b737262e

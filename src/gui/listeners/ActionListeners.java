@@ -8,8 +8,10 @@ import com.netflix.gui.views.*;
 import com.netflix.gui.views.management.*;
 
 import javax.swing.*;
+import javax.swing.Timer;
 import java.awt.*;
 import java.awt.event.*;
+import java.util.*;
 
 public class ActionListeners {
 
@@ -21,42 +23,41 @@ public class ActionListeners {
   public static void loginClickEvent(JButton login) {
     login.addActionListener(
         (ActionEvent e) -> {
-          // For all accounts in the list
-          for (Account account : Account.accounts) {
+          // Equal the name and password to the key and value
+          String value = "";
 
-            // Equal the name and password to the key and value
-            String key = account.getEmail();
-            String value = account.getPassword();
+          for (HashMap<String, Object> map :
+              Netflix.database.executeSql(
+                  "SELECT Wachtwoord FROM Account WHERE email=?",
+                  new Object[] {usernameBoxValue})) {
+            value = Commons.hashSHA256((String) map.get("Wachtwoord"));
+          }
 
-            if ((usernameBoxValue.equals(key)) // If it equals, login
-                && (Commons.hashSHA256(passwordBoxValue)
-                    .equals(
-                        value))) { // Only check the hashes, don't compare plain text (we don't have
-                                   // it anyway)
+          if (Commons.hashSHA256(passwordBoxValue)
+              .equals(value)) { // Only check the hashes, don't compare plain text (we don't have
+            // it anyway)
 
-              // A strange artefact appears, Easter Egg <3
-              Commons.logger.info(
-                  String.format(
-                      "\n\n   .----.\n"
-                          + "   |C>_ |\n"
-                          + " __|____|__\n"
-                          + "|  ______--|\n"
-                          + "`-/.::::.\\-'   %s logged in\n"
-                          + " `--------'     Hash %s\n",
-                      usernameBoxValue, Commons.hashSHA256(passwordBoxValue)));
+            // A strange artefact appears, Easter Egg <3
+            Commons.logger.info(
+                String.format(
+                    "\n\n   .----.\n"
+                        + "   |C>_ |\n"
+                        + " __|____|__\n"
+                        + "|  ______--|\n"
+                        + "`-/.::::.\\-'   %s logged in\n"
+                        + " `--------'     Hash %s\n",
+                    usernameBoxValue, Commons.hashSHA256(passwordBoxValue)));
 
-              // Clear the mainPanel (removing login panel), set loggedIn status to true and
-              // load the media panels
-              Commons.clearPane(NetflixFrame.mainPanel);
-              NetflixFrame.loggedIn = true;
-              Account.currentAccount = account;
-              NetflixFrame.mainPanel.add(LoginView.ProfileLogin.profileSelection());
-              break;
-            } else {
-              flashMyField(
-                  LoginView.passwordBox, new Color(75, 20, 20), new Color(20, 20, 20), 100, 300);
-              LoginView.passwordBox.setText("");
-            }
+            // Clear the mainPanel (removing login panel), set loggedIn status to true and
+            // load the media panels
+            Commons.clearPane(NetflixFrame.mainPanel);
+            NetflixFrame.loggedIn = true;
+            Account.currentAccount = Account.getUserByEmail(usernameBoxValue);
+            NetflixFrame.mainPanel.add(LoginView.ProfileLogin.profileSelection());
+          } else {
+            flashMyField(
+                LoginView.passwordBox, new Color(75, 20, 20), new Color(20, 20, 20), 100, 300);
+            LoginView.passwordBox.setText("");
           }
         });
   }

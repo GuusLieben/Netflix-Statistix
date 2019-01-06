@@ -4,6 +4,7 @@ import com.netflix.*;
 import com.netflix.entities.*;
 import com.netflix.gui.commons.*;
 import com.netflix.gui.listeners.*;
+import com.netflix.gui.views.management.creation.*;
 
 import javax.swing.*;
 import javax.swing.border.*;
@@ -80,7 +81,7 @@ public class accountListTable {
     buttonSplit.setLayout(new BorderLayout());
 
     createAccount = new NButton("Nieuw account");
-    ActionListeners.showFrame(createAccount, createAccountFrame.createAccountFrame());
+    ActionListeners.showFrame(createAccount, new AccountFrame());
 
     buttonSplit.add(createAccount, BorderLayout.NORTH);
     buttonSplit.add(new NButton("Nieuwe aflevering"), BorderLayout.WEST);

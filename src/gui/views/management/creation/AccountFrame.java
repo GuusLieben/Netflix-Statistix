@@ -1,17 +1,22 @@
 
-package com.netflix.gui.views.management;
+package com.netflix.gui.views.management.creation;
 
 import com.netflix.commons.*;
-import com.netflix.entities.*;
 import com.netflix.gui.*;
 import com.netflix.gui.commons.*;
+import com.netflix.gui.views.management.*;
 
 import javax.swing.*;
 import javax.swing.border.*;
 import java.awt.*;
 import java.awt.event.*;
 
-public class createAccountFrame {
+import static java.awt.BorderLayout.*;
+import static java.awt.Color.*;
+import static java.awt.event.WindowEvent.*;
+import static javax.swing.JOptionPane.*;
+
+public class AccountFrame extends JFrame {
 
   private static JPanel main;
   private static GridBagConstraints constraints;
@@ -23,16 +28,13 @@ public class createAccountFrame {
   private static JTextField houseNumber = new JTextField(20);
   private static JTextField addition = new JTextField(20);
   private static JTextField city = new JTextField(20);
-  private static JFrame frame;
 
-  public static JFrame createAccountFrame() {
-    frame = new JFrame();
-
-    frame.setSize(300, 500);
-    frame.setMinimumSize(new Dimension(300, 500));
+  public AccountFrame() {
+    setSize(300, 500);
+    setMinimumSize(new Dimension(300, 500));
     Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
-    frame.setLocation(
-        dim.width / 2 - frame.getSize().width / 2, dim.height / 2 - frame.getSize().height / 2);
+    setLocation(
+        dim.width / 2 - getSize().width / 2, dim.height / 2 - getSize().height / 2);
 
     main = new GradientPanel().getGradientPanel();
     main.setLayout(new GridBagLayout());
@@ -41,14 +43,14 @@ public class createAccountFrame {
     constraints.gridy = 0;
     main.setBorder(new EmptyBorder(10, 10, 10, 10));
 
-    email.setCaretColor(Color.LIGHT_GRAY);
-    confirmEmail.setCaretColor(Color.LIGHT_GRAY);
-    password.setCaretColor(Color.LIGHT_GRAY);
-    confirmEmail.setCaretColor(Color.LIGHT_GRAY);
-    street.setCaretColor(Color.LIGHT_GRAY);
-    houseNumber.setCaretColor(Color.LIGHT_GRAY);
-    addition.setCaretColor(Color.LIGHT_GRAY);
-    city.setCaretColor(Color.LIGHT_GRAY);
+    email.setCaretColor(LIGHT_GRAY);
+    confirmEmail.setCaretColor(LIGHT_GRAY);
+    password.setCaretColor(LIGHT_GRAY);
+    confirmEmail.setCaretColor(LIGHT_GRAY);
+    street.setCaretColor(LIGHT_GRAY);
+    houseNumber.setCaretColor(LIGHT_GRAY);
+    addition.setCaretColor(LIGHT_GRAY);
+    city.setCaretColor(LIGHT_GRAY);
 
     addComponent(new JLabel("<htmL><h3>Nieuw account</h3></html>"));
     addComponent(spacer());
@@ -82,31 +84,29 @@ public class createAccountFrame {
     addAcount(addAccount);
     addComponent(addAccount);
 
-    frame.add(Common.logo(), BorderLayout.NORTH);
-    frame.add(main, BorderLayout.CENTER);
+    add(Common.logo(), NORTH);
+    add(main, CENTER);
 
-    // Make the frame visible
-    frame.pack();
-
-    return frame;
+    // Make the visible
+    pack();
   }
 
-  private static JPanel spacer() {
+  private JPanel spacer() {
     JPanel spacer = new JPanel();
     spacer.setMinimumSize(new Dimension(20, 5));
     spacer.setOpaque(false);
     return spacer;
   }
 
-  private static void addComponent(JComponent component) {
-    component.setForeground(Color.LIGHT_GRAY);
+  private void addComponent(JComponent component) {
+    component.setForeground(LIGHT_GRAY);
     component.setBorder(new EmptyBorder(5, 5, 5, 5));
     component.setBackground(new Color(20, 20, 20));
     main.add(component, constraints);
     constraints.gridy++;
   }
 
-  private static void addAcount(JButton button) {
+  private void addAcount(JButton button) {
     button.addActionListener(
         (ActionEvent e) -> {
           boolean validEmail = false;
@@ -132,25 +132,23 @@ public class createAccountFrame {
             validLocation = true;
 
           if (validEmail && validPassword && validLocation) {
-            Account newAccount =
-                new Account(1,
+            new EntityCreation().createAccount(
                     false, emailStr, streetStr, houseNumberInt, additionStr, cityStr, passwordStr);
 
-            // Close the frame, saves us from having to clear all fields and hiding it
-            frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
+            // Close the  saves us from having to clear all fields and hiding it
+            dispatchEvent(new WindowEvent( this, WINDOW_CLOSING));
 
-            // Refreshes the management frame to load newest data
+            // Refreshes the management to load newest data
             Commons.clearPane(NetflixFrame.lpane);
             Commons.clearPane(accountListTable.tablePanel);
             Commons.clearPane(AdminView.panel());
             NetflixFrame.lpane.add(AdminView.panel());
 
           } else {
-            JOptionPane.showMessageDialog(
-                frame,
+            showMessageDialog(this,
                 "Entered information was invalid",
                 "Invalid input",
-                JOptionPane.WARNING_MESSAGE);
+                WARNING_MESSAGE);
           }
         });
   }
