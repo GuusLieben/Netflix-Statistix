@@ -1,0 +1,9 @@
+
+‹"squid:ClassVariableVisibilityCheck"VMake filmTitles a static final constant or non-public and provide accessors if needed.(ÞÆš¤8‹™¿Ð€-
+`squid:S00107"AConstructor has 8 parameters, which is greater than 7 authorized.(ãýµµ8Ñž÷ó€-
+Nsquid:S1444"+Make this "public static films" field final(ŽÙžâüÿÿÿÿ8‹™¿Ð€-
+@squid:S2386"Make this member "protected".(ŽÙžâüÿÿÿÿ8‹™¿Ð€-
+;squid:S2386"Make this member "protected".(ÞÆš¤8‹™¿Ð€-
+Nsquid:S1444"0Make this "public static filmTitles" field final(ÞÆš¤8‹™¿Ð€-
+‹"squid:ClassVariableVisibilityCheck"QMake films a static final constant or non-public and provide accessors if needed.(ŽÙžâüÿÿÿÿ8‹™¿Ð€-
+¯squid:S1598"‹This file "Film.java" should be located in "com\netflix\entities" directory, not in "C:\Users\Intern\IdeaProjects\NetflixGit\src\entities".(¾Ø¨ãüÿÿÿÿ8‹™¿Ð€-

@@ -1,16 +1,9 @@
-/*
- * Copyright © 2018. Guus Lieben.
- * All rights reserved.
- */
-
 package com.netflix.gui.views.management;
 
-import com.netflix.commons.Commons;
-import com.netflix.entities.Account;
-import com.netflix.entities.Profile;
-import com.netflix.entities.abstracts.MediaObject;
-import com.netflix.gui.commons.Common;
-import com.netflix.handles.DatabaseHandle;
+import com.netflix.commons.*;
+import com.netflix.entities.*;
+import com.netflix.entities.abstracts.*;
+import com.netflix.gui.commons.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -50,7 +43,8 @@ public class watchedMediaList {
     JLabel allwatched = new JLabel("<html>");
 
     for (Account acc : Account.accounts) {
-      allwatched.setText(allwatched.getText() + "<br><b>Account : " + acc.getEmail() + "</b>");
+      allwatched.setText(
+          String.format("%s<br><b>Account : %s</b>", allwatched.getText(), acc.getEmail()));
 
       for (Profile prof : acc.getProfiles()) {
         allwatched.setText(

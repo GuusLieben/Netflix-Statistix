@@ -1,9 +1,9 @@
 package com.netflix.entities;
 
-import com.netflix.entities.abstracts.Entity;
+import com.netflix.*;
+import com.netflix.entities.abstracts.*;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 public class Language extends Entity {
 
@@ -17,17 +17,26 @@ public class Language extends Entity {
     langs.add(this);
   }
 
-  public static Language getLang(String langCode, String langName) {
-    // Used for the DatabaseHandle to check if one already exists
-    for (Language lang : langs) if (lang.getLangCode().equals(langCode)) return lang;
-    return new Language(langCode, langName);
+  // get a specific language by the langCode
+  public static Language getByCode(String languageCode) {
+    for (Language lang : langs) if (lang.getLangCode().equals(languageCode)) return lang;
+    return null;
   }
 
+  // Getters
   public String getLangCode() {
     return langCode;
   }
 
   public String getLanguageName() {
     return languageName;
+  }
+
+  // Get languages from database
+  public static void getFromDatabase() {
+    for (HashMap<String, Object> map :
+        Netflix.database.executeSql("SELECT LanguageCode, Language FROM Language")) {
+      new Language((String) map.get("LanguageCode"), (String) map.get("Language"));
+    }
   }
 }

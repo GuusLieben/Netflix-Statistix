@@ -1,12 +1,11 @@
 package com.netflix.gui.views;
 
-import com.netflix.entities.Film;
-import com.netflix.entities.Profile;
-import com.netflix.entities.Serie;
-import com.netflix.gui.listeners.ActionListeners;
+import com.netflix.entities.*;
+import com.netflix.gui.commons.*;
+import com.netflix.gui.listeners.*;
 
 import javax.swing.*;
-import javax.swing.border.EmptyBorder;
+import javax.swing.border.*;
 import java.awt.*;
 
 @SuppressWarnings("deprecation")
@@ -26,7 +25,7 @@ public class AccountView {
     // For all profiles
     for (Profile prof : Profile.currentUser.getAccount().getProfiles()) {
       profileLabel.setText(
-          profileLabel.getText() + ".Profiel : " + prof.getName()); // Show the profile name
+              String.format("%s.Profiel : %s", profileLabel.getText(), prof.getName())); // Show the profile name
 
       if (prof == Profile.currentUser)
         profileLabel.setText(profileLabel.getText() + " <b><i>(Huidig)</b></i>");
@@ -62,7 +61,7 @@ public class AccountView {
     constraints.gridy++;
     inner.add(accountLabel, constraints);
 
-    JButton logoutButton = new JButton("Uitloggen");
+    JButton logoutButton = new NButton("Uitloggen");
 
     constraints.gridy++;
     inner.add(logoutButton, constraints);

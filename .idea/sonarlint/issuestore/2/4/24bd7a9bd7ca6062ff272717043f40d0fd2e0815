@@ -1,2 +1,3 @@
 
-Asquid:S2201"+The return value of "replace" must be used.(Ðß“E
+©squid:S1598"ŒThis file "Commons.java" should be located in "com\netflix\commons" directory, not in "C:\Users\Intern\IdeaProjects\NetflixGit\src\commons".(òò×õúÿÿÿÿ
+Vsquid:S1118":Add a private constructor to hide the implicit public one.(Ô‹ÈŸÿÿÿÿÿ

@@ -1,7 +1,3 @@
-/*
- * Copyright © 2018. Guus Lieben.
- * All rights reserved.
- */
 
 package com.netflix.gui.views;
 
@@ -9,8 +5,7 @@ import com.netflix.commons.Commons;
 import com.netflix.entities.Account;
 import com.netflix.entities.Profile;
 import com.netflix.gui.NetflixFrame;
-import com.netflix.gui.commons.Common;
-import com.netflix.gui.commons.GradientPanel;
+import com.netflix.gui.commons.*;
 import com.netflix.gui.listeners.ActionListeners;
 
 import javax.swing.*;
@@ -47,8 +42,8 @@ public class LoginView {
           new Font(loginTitle.getFont().getName(), loginTitle.getFont().getStyle(), 18));
 
       // Buttons
-      JButton login = new JButton("Inloggen");
-      JButton register = new JButton("Registreren");
+      JButton login = new NButton("Inloggen");
+      JButton register = new NButton("Registreren");
       JPanel buttonFrame = new JPanel(new BorderLayout());
 
       buttonFrame.add(login, BorderLayout.WEST);
@@ -73,8 +68,8 @@ public class LoginView {
 
       // If someone presses enter on the passwordBox, simulate a button click
       ActionListeners.simulateClickOnEnter(passwordBox, login);
-      ActionListeners.mouseEventUnderline(login);
-      ActionListeners.mouseEventUnderline(register);
+//      ActionListeners.mouseEventUnderline(login);
+//      ActionListeners.mouseEventUnderline(register);
       ActionListeners.updateString(usernameBox);
 
       // Lazy spacing method, as the emptyborder added later will be colored
@@ -172,15 +167,15 @@ public class LoginView {
         int randomNum =
             random.nextInt((7 - 1) + 1)
                 + 1; // Random profile picture, can show duplicate icons, intended behavior
-        image = new ImageIcon("resources/profiles/profile" + randomNum + ".png").getImage();
+        image = new ImageIcon(String.format("resources/profiles/profile%d.png", randomNum)).getImage();
         // Scale icon to fit labels, then add it to the label
         ImageIcon icon = new ImageIcon(image.getScaledInstance(100, 100, Image.SCALE_SMOOTH));
 
         String labelText = profile.getName();
-        JButton label = new JButton();
+        JButton label = new NButton();
 
         // Close the html tags
-        label.setText("<html><center>" + labelText + "</center></html>");
+        label.setText(String.format("<html><center>%s</center></html>", labelText));
 
         // Set icon and basic styling
         label.setIcon(icon);
@@ -197,7 +192,7 @@ public class LoginView {
       }
 
       if (Account.currentAccount.getProfiles().size() <= 4) {
-        JButton addProfileLabel = new JButton("Nieuw profiel");
+        JButton addProfileLabel = new NButton("Nieuw profiel");
         image = new ImageIcon("resources/profiles/addprofile.png").getImage();
         ImageIcon icon = new ImageIcon(image.getScaledInstance(100, 100, Image.SCALE_SMOOTH));
 

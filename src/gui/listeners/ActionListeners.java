@@ -1,19 +1,17 @@
 package com.netflix.gui.listeners;
 
-import com.netflix.Netflix;
-import com.netflix.commons.Commons;
-import com.netflix.entities.Account;
-import com.netflix.entities.Profile;
-import com.netflix.gui.NetflixFrame;
+import com.netflix.*;
+import com.netflix.commons.*;
+import com.netflix.entities.*;
+import com.netflix.gui.*;
 import com.netflix.gui.views.*;
-import com.netflix.gui.views.management.AdminView;
-import com.netflix.gui.views.management.accountListTable;
+import com.netflix.gui.views.management.*;
 
 import javax.swing.*;
+import javax.swing.Timer;
 import java.awt.*;
 import java.awt.event.*;
-import java.awt.font.TextAttribute;
-import java.util.HashMap;
+import java.util.*;
 
 public class ActionListeners {
 
@@ -22,74 +20,44 @@ public class ActionListeners {
   private static int width;
   private static int height;
 
-  public static void mouseEventUnderline(JComponent object) {
-    // MouseOver effects for the menu (underline and cursor effect)
-    HashMap<TextAttribute, Object> textAttrMap = new HashMap<>();
-
-    // Listens for mouse events
-    object.addMouseListener(
-        new MouseAdapter() {
-          // If you hover it ...
-          @Override
-          public void mouseEntered(MouseEvent evt) {
-            // Underline the text...
-            textAttrMap.put(TextAttribute.UNDERLINE, TextAttribute.UNDERLINE_LOW_GRAY);
-            object.setFont(object.getFont().deriveFont(textAttrMap));
-            // And change the cursor
-            Cursor hoverCursor = new Cursor(Cursor.HAND_CURSOR);
-            object.setCursor(hoverCursor);
-          }
-
-          // If you are no longer hovering it ...
-          @Override
-          public void mouseExited(MouseEvent evt) {
-            // Remove the underline effect ...
-            textAttrMap.put(TextAttribute.UNDERLINE, null);
-            object.setFont(object.getFont().deriveFont(textAttrMap));
-            // And reset the cursor ...
-            Cursor normalCursor = new Cursor(Cursor.DEFAULT_CURSOR);
-            object.setCursor(normalCursor);
-          }
-        });
-  }
-
   public static void loginClickEvent(JButton login) {
     login.addActionListener(
         (ActionEvent e) -> {
-          // For all accounts in the list
-          for (Account account : Account.accounts) {
+          // Equal the name and password to the key and value
+          String value = "";
 
-            // Equal the name and password to the key and value
-            String key = account.getEmail();
-            String value = account.getPassword();
+          for (HashMap<String, Object> map :
+              Netflix.database.executeSql(
+                  "SELECT Wachtwoord FROM Account WHERE email=?",
+                  new Object[] {usernameBoxValue})) {
+            value = Commons.hashSHA256((String) map.get("Wachtwoord"));
+          }
 
-            if ((usernameBoxValue.equals(key)) // If it equals, login
-                && (Commons.hashSHA256(passwordBoxValue).equals(value))) {
+          if (Commons.hashSHA256(passwordBoxValue)
+              .equals(value)) { // Only check the hashes, don't compare plain text (we don't have
+            // it anyway)
 
-              // A wild wizard appears, Easter Egg <3
-              Commons.logger.info(
-                  String.format(
-                      "\n\n   .----.\n"
-                          + "   |C>_ |\n"
-                          + " __|____|__\n"
-                          + "|  ______--|\n"
-                          + "`-/.::::.\\-'   %s logged in\n"
-                          + " `--------'     Hash %s\n",
-                      usernameBoxValue,
-                      Commons.hashSHA256(passwordBoxValue)));
+            // A strange artefact appears, Easter Egg <3
+            Commons.logger.info(
+                String.format(
+                    "\n\n   .----.\n"
+                        + "   |C>_ |\n"
+                        + " __|____|__\n"
+                        + "|  ______--|\n"
+                        + "`-/.::::.\\-'   %s logged in\n"
+                        + " `--------'     Hash %s\n",
+                    usernameBoxValue, Commons.hashSHA256(passwordBoxValue)));
 
-              // Clear the mainPanel (removing login panel), set loggedIn status to true and
-              // load the media panels
-              Commons.clearPane(NetflixFrame.mainPanel);
-              NetflixFrame.loggedIn = true;
-              Account.currentAccount = account;
-              NetflixFrame.mainPanel.add(LoginView.ProfileLogin.profileSelection());
-              break;
-            } else {
-              flashMyField(
-                  LoginView.passwordBox, new Color(75, 20, 20), new Color(20, 20, 20), 100, 300);
-              LoginView.passwordBox.setText("");
-            }
+            // Clear the mainPanel (removing login panel), set loggedIn status to true and
+            // load the media panels
+            Commons.clearPane(NetflixFrame.mainPanel);
+            NetflixFrame.loggedIn = true;
+            Account.currentAccount = Account.getUserByEmail(usernameBoxValue);
+            NetflixFrame.mainPanel.add(LoginView.ProfileLogin.profileSelection());
+          } else {
+            flashMyField(
+                LoginView.passwordBox, new Color(75, 20, 20), new Color(20, 20, 20), 100, 300);
+            LoginView.passwordBox.setText("");
           }
         });
   }

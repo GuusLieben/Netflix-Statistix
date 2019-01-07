@@ -1,8 +1,3 @@
-/*
- * Copyright © 2018. Guus Lieben.
- * All rights reserved.
- */
-
 package com.netflix.entities.abstracts;
 
 import com.netflix.entities.*;
@@ -21,6 +16,7 @@ public abstract class MediaObject extends Entity {
   public AgeRating rating;
   public int objectId;
   private Set<Profile> watchedBy;
+  public String similarMedia;
 
   public MediaObject() {
     watchedBy = new HashSet<>();
@@ -28,6 +24,7 @@ public abstract class MediaObject extends Entity {
     objectIds.add(this);
   }
 
+  // Get Object by name, works for films and series
   public static MediaObject getObjectByName(String name, int mediaType) {
     switch (mediaType) {
       case 2:
@@ -41,8 +38,13 @@ public abstract class MediaObject extends Entity {
     }
   }
 
+  // Watched by statistics
   public int getWatchedByAmount() {
     return watchedBy.size();
+  }
+
+  public void removeWatchedBy(Profile profile) {
+    watchedBy.remove(profile);
   }
 
   public void setWatchedBy(Profile profile) {
@@ -55,6 +57,7 @@ public abstract class MediaObject extends Entity {
     return percentageWatchedBy;
   }
 
+  // Getters and setters
   public int getType() {
     return type;
   }
