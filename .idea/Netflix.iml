@@ -26,5 +26,7 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="library" name="a-javabeans-1.0.4" level="project" />
+    <orderEntry type="library" name="swingx-1.6.1" level="project" />
   </component>
 </module>

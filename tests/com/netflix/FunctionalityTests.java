@@ -57,4 +57,6 @@ class FunctionalityTests {
         Account.emailIsValid("bob#example,com"),
         "Returned boolean marked incorrect email as valid");
   }
+
+  // TODO : Account creation test (qr,arr CREATE + qr SELECT
 }

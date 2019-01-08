@@ -1,7 +1,8 @@
 package com.netflix;
 
-import com.netflix.gui.*;
-import com.netflix.handles.*;
+import com.netflix.gui.NetflixFrame;
+import com.netflix.handles.DatabaseHandle;
+import com.netflix.handles.PropertiesHandle;
 
 public class Netflix {
 
@@ -12,9 +13,7 @@ public class Netflix {
 
   @SuppressWarnings("deprecation")
   public static void main(String... args) {
-        database.collectData();
-//    Account.getFromDatabase();
-//    DatabaseHandle.loadSampleData();
+    database.collectData();
     gui = new NetflixFrame(width, height);
   }
 }

@@ -13,7 +13,7 @@ public class CreationFrame extends JFrame {
 
   JPanel wrapper;
   GridBagConstraints constraints;
-  HashMap<JTextField, String> values;
+  HashMap<String, JTextField> values;
 
   public CreationFrame(String title) {
     Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
@@ -36,7 +36,7 @@ public class CreationFrame extends JFrame {
     defaultStyling(field);
     field.setCaretColor(LIGHT_GRAY);
 
-    values.put(field, str);
+    values.put(str, field);
 
     wrapper.add(label(str), constraints);
     constraints.gridy++;

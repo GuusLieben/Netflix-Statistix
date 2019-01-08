@@ -3,9 +3,9 @@
 
 .gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
 L
-src/gui/views/GraphView.java,e\0\e0604df2fc2cfb4dd536d41c935aad58ab78fe1e
+src/gui/views/GraphView.java,e/0/e0604df2fc2cfb4dd536d41c935aad58ab78fe1e
 Y
-)tests/com/netflix/FunctionalityTests.java,f\7\f79b36b49336204e7db23404d9deebc372280de8
+)tests/com/netflix/FunctionalityTests.java,f/7/f79b36b49336204e7db23404d9deebc372280de8
 N
 src/gui/views/AccountView.java,3\3\339193d9691c014c1651e044fad1f9a3d139b98f
 ]
@@ -17,7 +17,7 @@ W
 K
 src/gui/commons/Common.java,9\5\95d5c1e0a11253e7346f5f95ae63859ebebae63c
 T
-$src/gui/views/createProfileView.java,3\a\3a50c461431317d48e24c70f93cb9d1367a06cab
+$src/gui/views/createProfileView.java,3/a/3a50c461431317d48e24c70f93cb9d1367a06cab
 S
 #src/gui/views/RegistrationView.java,c\4\c4f40acb971f747d0e8bce1e81eca26bba17d3f0
 V
@@ -31,19 +31,17 @@ Q
 L
 src/gui/commons/NButton.java,0\2\0283807968b65f5c38a09984ca5333982987833a
 @
-src/Netflix.java,4\2\428233252712fd288d6c3b1c988539f1713b9201
+src/Netflix.java,4/2/428233252712fd288d6c3b1c988539f1713b9201
 O
-src/handles/DatabaseHandle.java,f\8\f8af99bd97c28ee4ce00af2503b39a14d0d478fe
+src/handles/DatabaseHandle.java,f/8/f8af99bd97c28ee4ce00af2503b39a14d0d478fe
 R
 "src/entities/abstracts/Entity.java,8\9\89b30b70633387c3b0035418b93446943f137b0f
 I
-src/entities/Account.java,0\d\0d9cbb222a89b564042ffdacb1c918a6a84878b1
+src/entities/Account.java,0/d/0d9cbb222a89b564042ffdacb1c918a6a84878b1
 I
 src/entities/Profile.java,d\a\da7aab768648652a65fddcd422aa647e119efe72
-`
-0src/gui/views/management/createAccountFrame.java,b\6\b60d169ec02a910c7d778b4622350b1914ff3bb5
 I
-src/entities/Episode.java,5\3\53a06c0fcba85c19b94c05df7224cb25b26b25ea
+src/entities/Episode.java,5/3/53a06c0fcba85c19b94c05df7224cb25b26b25ea
 J
 src/entities/Language.java,2\4\24660df09c0abcaba3e65984639154c377f6f1bc
 K
@@ -73,20 +71,14 @@ P
 _
 /src/gui/views/management/watchedMediaGraph.java,5\5\55310d5480fbf11954d4102053fc238a448fa90f
 K
-src/handles/SQLResults.java,3\f\3fb2b8509995575ba8634daef39765244581480f
+src/handles/SQLResults.java,3/f/3fb2b8509995575ba8634daef39765244581480f
 ^
 .src/gui/views/management/watchedMediaList.java,1\3\13dfd87b120570587b399c38e10b1905f1b0940e
-X
-(logs/log-d.2019-01-03-t.10-34-55.196.log,d\e\dea8a1ffa341ddf2b1e016312934c7e65580f01b
-X
-(logs/log-d.2019-01-03-t.13-19-44.854.xml,a\d\ad30d94165d5bde1c2fa1106b595eda7334b9465
-\
-,src/gui/views/management/EntityCreation.java,a\6\a6e38e205368bc51763c3be8bdd7b8affcf36055
 e
-5src/gui/views/management/creation/EntityCreation.java,5\0\50c957b6dfc81c1467ffa95dfc93b10a7c311488
+5src/gui/views/management/creation/EntityCreation.java,5/0/50c957b6dfc81c1467ffa95dfc93b10a7c311488
 d
-4src/gui/views/management/creation/AccountFrame2.java,3\5\3542e6039f2decd56197a991ea572c21452b9f5f
+4src/gui/views/management/creation/AccountFrame2.java,3/5/3542e6039f2decd56197a991ea572c21452b9f5f
 d
-4src/gui/views/management/creation/CreationFrame.java,5\3\53fb1efed873f2d5bb939a987a80717fe8a50888
+4src/gui/views/management/creation/CreationFrame.java,5/3/53fb1efed873f2d5bb939a987a80717fe8a50888
 c
-3src/gui/views/management/creation/AccountFrame.java,3\e\3eebb15b358198a98a3d502eb9c828b3b737262e
+3src/gui/views/management/creation/AccountFrame.java,3/e/3eebb15b358198a98a3d502eb9c828b3b737262e

@@ -81,7 +81,7 @@ public class accountListTable {
     buttonSplit.setLayout(new BorderLayout());
 
     createAccount = new NButton("Nieuw account");
-    ActionListeners.showFrame(createAccount, new AccountFrame());
+    ActionListeners.showFrame(createAccount, new AccountFrame2());
 
     buttonSplit.add(createAccount, BorderLayout.NORTH);
     buttonSplit.add(new NButton("Nieuwe aflevering"), BorderLayout.WEST);
