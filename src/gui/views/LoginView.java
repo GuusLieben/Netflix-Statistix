@@ -1,11 +1,12 @@
-
 package com.netflix.gui.views;
 
 import com.netflix.commons.Commons;
 import com.netflix.entities.Account;
 import com.netflix.entities.Profile;
 import com.netflix.gui.NetflixFrame;
-import com.netflix.gui.commons.*;
+import com.netflix.gui.commons.Common;
+import com.netflix.gui.commons.GradientPanel;
+import com.netflix.gui.commons.NButton;
 import com.netflix.gui.listeners.ActionListeners;
 
 import javax.swing.*;
@@ -21,9 +22,9 @@ public class LoginView {
 
   public static JTextField usernameBox = new JTextField(20);
   public static JPasswordField passwordBox = new JPasswordField(20);
+  private static Random random = new Random();
 
   public static class AccountLogin {
-    @SuppressWarnings("deprecation")
     public static JPanel login() {
       // Background gradient
       GradientPanel gradientPanel = new GradientPanel();
@@ -68,8 +69,6 @@ public class LoginView {
 
       // If someone presses enter on the passwordBox, simulate a button click
       ActionListeners.simulateClickOnEnter(passwordBox, login);
-//      ActionListeners.mouseEventUnderline(login);
-//      ActionListeners.mouseEventUnderline(register);
       ActionListeners.updateString(usernameBox);
 
       // Lazy spacing method, as the emptyborder added later will be colored
@@ -156,7 +155,6 @@ public class LoginView {
       constraints.gridx = 0;
 
       // Use randoms for the profile icons
-      Random random = new Random();
       Image image = null;
 
       for (Profile profile :
@@ -167,7 +165,8 @@ public class LoginView {
         int randomNum =
             random.nextInt((7 - 1) + 1)
                 + 1; // Random profile picture, can show duplicate icons, intended behavior
-        image = new ImageIcon(String.format("resources/profiles/profile%d.png", randomNum)).getImage();
+        image =
+            new ImageIcon(String.format("resources/profiles/profile%d.png", randomNum)).getImage();
         // Scale icon to fit labels, then add it to the label
         ImageIcon icon = new ImageIcon(image.getScaledInstance(100, 100, Image.SCALE_SMOOTH));
 

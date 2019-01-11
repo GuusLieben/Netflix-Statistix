@@ -1,10 +1,13 @@
 package com.netflix.entities;
 
-import com.netflix.*;
-import com.netflix.entities.abstracts.*;
+import com.netflix.entities.abstracts.Entity;
 
-import java.sql.*;
-import java.util.*;
+import java.sql.Time;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Set;
+
+import static com.netflix.Netflix.database;
 
 public class Episode extends Entity {
 
@@ -28,6 +31,36 @@ public class Episode extends Entity {
     season.addEpisode(this);
   }
 
+  // Get episode by database ID
+  public static Episode getByDbId(int id) {
+    return episodes.stream().filter(ent -> ent.databaseId == id).findFirst().orElse(null);
+  }
+
+  // Get all episodes from database
+  public static void getFromDatabase() {
+    for (HashMap<String, Object> map :
+        database.executeSql(
+            "SELECT EpisodeId, SeasonId, Title, Duration, EpisodeNumber FROM Episode")) {
+      new Episode(
+          Season.getByDbId((int) map.get("SeasonId")),
+          (String) map.get("Title"),
+          Season.getByDbId((int) map.get("SeasonId")).getSerie(),
+          (Time) map.get("Duration"),
+          (int) map.get("EpisodeNumber"),
+          (int) map.get("EpisodeId"));
+    }
+  }
+
+  // Get all watched episodes and the profile that watched it
+  public static void getViewData() {
+    for (HashMap<String, Object> map :
+        database.executeSql("SELECT UserId, EpisodeId FROM WatchedEpisodes")) {
+      Profile prof = Profile.getByDbId((int) map.get("UserId")); // Breaks
+      Episode epi = Episode.getByDbId((int) map.get("EpisodeId"));
+      prof.viewEpisodeNoDB(epi);
+    }
+  }
+
   // Getters
   public int getEpisodeNumber() {
     return episodeNumber;
@@ -47,36 +80,6 @@ public class Episode extends Entity {
 
   public Time getDuration() {
     return duration;
-  }
-
-  // Get episode by database ID
-  public static Episode getByDbId(int id) {
-    return episodes.stream().filter(ent -> ent.databaseId == id).findFirst().orElse(null);
-  }
-
-  // Get all episodes from database
-  public static void getFromDatabase() {
-    for (HashMap<String, Object> map :
-        Netflix.database.executeSql(
-            "SELECT EpisodeId, SeasonId, Title, Duration, EpisodeNumber FROM Episode")) {
-      new Episode(
-          Season.getByDbId((int) map.get("SeasonId")),
-          (String) map.get("Title"),
-          Season.getByDbId((int) map.get("SeasonId")).getSerie(),
-          (Time) map.get("Duration"),
-          (int) map.get("EpisodeNumber"),
-          (int) map.get("EpisodeId"));
-    }
-  }
-
-  // Get all watched episodes and the profile that watched it
-  public static void getViewData() {
-    for (HashMap<String, Object> map :
-        Netflix.database.executeSql("SELECT UserId, EpisodeId FROM WatchedEpisodes")) {
-      Profile prof = Profile.getByDbId((int) map.get("UserId")); // Breaks
-      Episode epi = Episode.getByDbId((int) map.get("EpisodeId"));
-      prof.viewEpisodeNoDB(epi);
-    }
   }
 
   // Use the Stream API to find out if the current profile watched this episode

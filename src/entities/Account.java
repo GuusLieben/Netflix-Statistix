@@ -1,13 +1,16 @@
 package com.netflix.entities;
 
-import com.netflix.*;
-import com.netflix.commons.*;
-import com.netflix.entities.abstracts.*;
-import com.netflix.gui.*;
+import com.netflix.commons.Commons;
+import com.netflix.entities.abstracts.Entity;
+import com.netflix.gui.NetflixFrame;
 
-import javax.swing.*;
-import java.util.*;
-import java.util.regex.*;
+import javax.swing.JOptionPane;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.regex.Pattern;
+
+import static com.netflix.Netflix.database;
 
 public class Account extends Entity {
 
@@ -44,8 +47,7 @@ public class Account extends Entity {
       this.houseNumber = houseNumber;
       this.addition = addition;
       this.city = city;
-      // Make sure to hash the password before storing it. Not the most secure method, but at least
-      // it isn't plain text
+      // Password is hashed here
       this.password = Commons.hashSHA256(password);
       // HashSet so each profile is unique
       profiles = new HashSet<>();
@@ -158,7 +160,7 @@ public class Account extends Entity {
   // Get all accounts from the database
   public static void getFromDatabase() {
     for (HashMap<String, Object> map :
-        Netflix.database.executeSql(
+        database.executeSql(
             "SELECT AccountID, isAdmin, Email, Straatnaam, Huisnummer, Toevoeging, Woonplaats, Wachtwoord FROM Account")) {
       new Account(
           (int) map.get("AccountID"),

@@ -2,9 +2,9 @@ package com.netflix.gui.views;
 
 import com.netflix.entities.Film;
 
-import javax.swing.*;
+import javax.swing.JComboBox;
+import javax.swing.JPanel;
 
-@SuppressWarnings("deprecation")
 public class FilmMediaView extends MediaView {
 
   public static JPanel pane() {

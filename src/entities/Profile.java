@@ -1,15 +1,21 @@
 package com.netflix.entities;
 
-import com.netflix.*;
-import com.netflix.entities.abstracts.*;
-import com.netflix.gui.*;
-import com.netflix.handles.*;
+import com.netflix.entities.abstracts.Entity;
+import com.netflix.entities.abstracts.MediaObject;
+import com.netflix.gui.NetflixFrame;
+import com.netflix.handles.SQLResults;
 
 import javax.swing.*;
 import java.sql.Date;
-import java.time.*;
-import java.util.*;
-import java.util.stream.*;
+import java.time.LocalDate;
+import java.time.Period;
+import java.util.Calendar;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.stream.Collectors;
+
+import static com.netflix.Netflix.database;
 
 public class Profile extends Entity {
 
@@ -41,13 +47,33 @@ public class Profile extends Entity {
     }
   }
 
+  // Get profile by database id
+  public static Profile getByDbId(int id) {
+    return profiles.stream().filter(ent -> ent.databaseId == id).findFirst().orElse(null);
+  }
+
+  // Get profiles from database
+  @SuppressWarnings("deprecation")
+  public static void getFromDatabase() {
+    for (HashMap<String, Object> map :
+        database.executeSql(
+            "SELECT UserId, AccountId, Name, EpisodesWatched, FilmsWatched, Birthday FROM Users")) {
+
+      new Profile(
+          Account.getByDbId((int) map.get("AccountId")),
+          (String) map.get("Name"),
+          (Date) map.get("Birthday"),
+          (int) map.get("UserId"));
+    }
+  }
+
   // Getters
   public Account getAccount() {
     return account;
   }
 
   public Set<Serie> getSeriesWatched() {
-    return episodesWatched.stream().map(episode -> episode.getSerie()).collect(Collectors.toSet());
+    return episodesWatched.stream().map(Episode::getSerie).collect(Collectors.toSet());
   }
 
   public Set<MediaObject> getMediaWatched() {
@@ -90,7 +116,7 @@ public class Profile extends Entity {
     String qr = "INSERT INTO WatchedFilms (FilmId, UserId, FilmsWatched) VALUES (?, ?, ?)";
     Object[] arr = {film.databaseId, databaseId, filmsWatched.size()};
 
-    if (Netflix.database.executeSqlNoResult(qr, arr) == SQLResults.PASS)
+    if (database.executeSqlNoResult(qr, arr) == SQLResults.PASS)
       JOptionPane.showMessageDialog(NetflixFrame.frame, "Succes!");
   }
 
@@ -103,28 +129,8 @@ public class Profile extends Entity {
 
     Object[] arr = {episode.databaseId, databaseId, episodesWatched.size()};
 
-    if (Netflix.database.executeSqlNoResult(qr, arr) == SQLResults.PASS)
+    if (database.executeSqlNoResult(qr, arr) == SQLResults.PASS)
       JOptionPane.showMessageDialog(NetflixFrame.frame, "Succes!");
-  }
-
-  // Get profile by database id
-  public static Profile getByDbId(int id) {
-    return profiles.stream().filter(ent -> ent.databaseId == id).findFirst().orElse(null);
-  }
-
-  // Get profiles from database
-  @SuppressWarnings("deprecation")
-  public static void getFromDatabase() {
-    for (HashMap<String, Object> map :
-        Netflix.database.executeSql(
-            "SELECT UserId, AccountId, Name, EpisodesWatched, FilmsWatched, Birthday FROM Users")) {
-
-      new Profile(
-          Account.getByDbId((int) map.get("AccountId")),
-          (String) map.get("Name"),
-          (Date) map.get("Birthday"),
-          (int) map.get("UserId"));
-    }
   }
 
   // View media episode

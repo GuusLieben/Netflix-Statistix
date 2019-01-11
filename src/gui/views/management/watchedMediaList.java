@@ -1,16 +1,22 @@
 package com.netflix.gui.views.management;
 
-import com.netflix.commons.*;
-import com.netflix.entities.*;
-import com.netflix.entities.abstracts.*;
-import com.netflix.gui.commons.*;
+import com.netflix.commons.Commons;
+import com.netflix.entities.Account;
+import com.netflix.entities.Profile;
+import com.netflix.entities.abstracts.MediaObject;
+import com.netflix.gui.commons.Common;
 
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.ScrollPaneConstants;
+import java.awt.BorderLayout;
+import java.awt.Dimension;
 
-public class watchedMediaList {
+class watchedMediaList {
 
-  public static JFrame watchedMediaFrame() {
+  static JFrame watchedMediaFrame() {
     JFrame frame = new JFrame();
     frame.add(watchedMediaPanel());
 
@@ -23,7 +29,7 @@ public class watchedMediaList {
     return frame;
   }
 
-  public static JPanel watchedMediaPanel() {
+  private static JPanel watchedMediaPanel() {
     JPanel wrapper = new JPanel(new BorderLayout());
 
     JScrollPane scrollPane =
@@ -39,7 +45,7 @@ public class watchedMediaList {
     return wrapper;
   }
 
-  public static JLabel watchedMediaList() {
+  private static JLabel watchedMediaList() {
     JLabel allwatched = new JLabel("<html>");
 
     for (Account acc : Account.accounts) {

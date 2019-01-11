@@ -1,12 +1,14 @@
 package com.netflix.entities;
 
-import com.netflix.*;
-import com.netflix.entities.abstracts.*;
+import com.netflix.entities.abstracts.MediaObject;
 
-import java.sql.*;
-import java.util.*;
+import java.sql.Time;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Set;
 
-@SuppressWarnings("deprecation")
+import static com.netflix.Netflix.database;
+
 public class Film extends MediaObject { // MediaObject extends Entity
 
   public static Set<Film> films = new HashSet<>();
@@ -42,20 +44,6 @@ public class Film extends MediaObject { // MediaObject extends Entity
     return films.stream().filter(film -> film.getTitle().equals(title)).findFirst().orElse(null);
   }
 
-  // Get the movie object from the similarMedia title
-  public Film getSimilarObject() {
-    return Film.getFilmByName(similarMedia);
-  }
-
-  // Getters
-  public String getDuration() {
-    return duration.toString();
-  }
-
-  public String getDirector() {
-    return director;
-  }
-
   // Get film from database ID
   public static Film getByDbId(int id) {
     return films.stream().filter(ent -> ent.databaseId == id).findFirst().orElse(null);
@@ -64,7 +52,7 @@ public class Film extends MediaObject { // MediaObject extends Entity
   // Get all films from the database
   public static void getFromDatabase() {
     for (HashMap<String, Object> map :
-        Netflix.database.executeSql(
+        database.executeSql(
             "SELECT Film.FilmId, Rating, LijktOp, LanguageCode, Title, Duration, Director, Genre FROM Film JOIN Koppeltabel_GenreId_Film ON Film.FilmId = Koppeltabel_GenreId_Film.FilmId JOIN Genre ON Koppeltabel_GenreId_Film.GenreId = Genre.GenreId")) {
 
       new Film(
@@ -82,10 +70,24 @@ public class Film extends MediaObject { // MediaObject extends Entity
   // Get all watched films and the profile that watched it
   public static void getViewData() {
     for (HashMap<String, Object> map :
-        Netflix.database.executeSql("SELECT UserId, FilmId FROM WatchedFilms")) {
+        database.executeSql("SELECT UserId, FilmId FROM WatchedFilms")) {
       Profile prof = Profile.getByDbId((int) map.get("UserId")); // Breaks
       Film film = Film.getByDbId((int) map.get("FilmId"));
       prof.viewFilmNoDB(film);
     }
+  }
+
+  // Get the movie object from the similarMedia title
+  public Film getSimilarObject() {
+    return Film.getFilmByName(similarMedia);
+  }
+
+  // Getters
+  public String getDuration() {
+    return duration.toString();
+  }
+
+  public String getDirector() {
+    return director;
   }
 }

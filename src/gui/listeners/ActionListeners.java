@@ -1,17 +1,34 @@
 package com.netflix.gui.listeners;
 
-import com.netflix.*;
-import com.netflix.commons.*;
-import com.netflix.entities.*;
-import com.netflix.gui.*;
-import com.netflix.gui.views.*;
-import com.netflix.gui.views.management.*;
+import com.netflix.Netflix;
+import com.netflix.commons.Commons;
+import com.netflix.entities.Account;
+import com.netflix.entities.Profile;
+import com.netflix.gui.NetflixFrame;
+import com.netflix.gui.views.AccountView;
+import com.netflix.gui.views.FilmMediaView;
+import com.netflix.gui.views.LoginView;
+import com.netflix.gui.views.RegistrationView;
+import com.netflix.gui.views.SerieMediaView;
+import com.netflix.gui.views.management.AdminView;
+import com.netflix.gui.views.management.accountListTable;
 
-import javax.swing.*;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
 import javax.swing.Timer;
-import java.awt.*;
-import java.awt.event.*;
-import java.util.*;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.util.HashMap;
+
+import static com.netflix.Netflix.database;
+import static com.netflix.Netflix.gui;
 
 public class ActionListeners {
 
@@ -27,10 +44,10 @@ public class ActionListeners {
           String value = "";
 
           for (HashMap<String, Object> map :
-              Netflix.database.executeSql(
+              database.executeSql(
                   "SELECT Wachtwoord FROM Account WHERE email=?",
                   new Object[] {usernameBoxValue})) {
-            value = Commons.hashSHA256((String) map.get("Wachtwoord"));
+            value = (String) map.get("Wachtwoord");
           }
 
           if (Commons.hashSHA256(passwordBoxValue)
@@ -220,14 +237,12 @@ public class ActionListeners {
           passwordBoxValue = "";
 
           // Reload everything
-          Netflix.gui.setFrame(Netflix.width, Netflix.height);
+          gui.setFrame(Netflix.width, Netflix.height);
         });
   }
 
   public static void showFrame(JButton button, JFrame frame) {
     button.addActionListener(
-        (ActionEvent e) -> {
-          frame.setVisible(true);
-        });
+        (ActionEvent e) -> frame.setVisible(true));
   }
 }

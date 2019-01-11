@@ -1,20 +1,35 @@
 
 package com.netflix.gui.views.management.creation;
 
-import com.netflix.commons.*;
-import com.netflix.gui.*;
-import com.netflix.gui.commons.*;
-import com.netflix.gui.views.management.*;
+import com.netflix.commons.Commons;
+import com.netflix.gui.NetflixFrame;
+import com.netflix.gui.commons.Common;
+import com.netflix.gui.commons.GradientPanel;
+import com.netflix.gui.commons.NButton;
+import com.netflix.gui.views.management.AdminView;
+import com.netflix.gui.views.management.accountListTable;
 
-import javax.swing.*;
-import javax.swing.border.*;
-import java.awt.*;
-import java.awt.event.*;
+import javax.swing.JButton;
+import javax.swing.JComponent;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.border.EmptyBorder;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.WindowEvent;
 
-import static java.awt.BorderLayout.*;
-import static java.awt.Color.*;
-import static java.awt.event.WindowEvent.*;
-import static javax.swing.JOptionPane.*;
+import static java.awt.BorderLayout.CENTER;
+import static java.awt.BorderLayout.NORTH;
+import static java.awt.Color.LIGHT_GRAY;
+import static java.awt.event.WindowEvent.WINDOW_CLOSING;
+import static javax.swing.JOptionPane.WARNING_MESSAGE;
+import static javax.swing.JOptionPane.showMessageDialog;
 
 public class AccountFrame extends JFrame {
 
@@ -80,7 +95,6 @@ public class AccountFrame extends JFrame {
     addComponent(spacer());
 
     JButton addAccount = new NButton("Toevoegen");
-//    ActionListeners.mouseEventUnderline(addAccount);
     addAcount(addAccount);
     addComponent(addAccount);
 

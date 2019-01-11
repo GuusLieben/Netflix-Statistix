@@ -1,9 +1,12 @@
 package com.netflix.entities;
 
-import com.netflix.*;
-import com.netflix.entities.abstracts.*;
+import com.netflix.entities.abstracts.Entity;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Set;
+
+import static com.netflix.Netflix.database;
 
 public class Season extends Entity {
 
@@ -23,6 +26,23 @@ public class Season extends Entity {
     seasons.add(this);
     serie.setSeasonCount(serie.getSeasonCount() + 1);
     serie.addSeason(this);
+  }
+
+  // Get season by database id
+  public static Season getByDbId(int id) {
+    return seasons.stream().filter(ent -> ent.databaseId == id).findFirst().orElse(null);
+  }
+
+  // Get seasons from database
+  public static void getFromDatabase() {
+    for (HashMap<String, Object> map :
+        database.executeSql("SELECT SeasonId, SerieId, Title, SeasonNumber FROM Season")) {
+      new Season(
+          Serie.getByDbId((int) map.get("SerieId")),
+          (String) map.get("Title"),
+          (int) map.get("SeasonNumber"),
+          (int) map.get("SeasonId"));
+    }
   }
 
   // Getters
@@ -49,23 +69,6 @@ public class Season extends Entity {
   // Add an episode to the season
   public void addEpisode(Episode episode) {
     this.episodes.add(episode);
-  }
-
-  // Get season by database id
-  public static Season getByDbId(int id) {
-    return seasons.stream().filter(ent -> ent.databaseId == id).findFirst().orElse(null);
-  }
-
-  // Get seasons from database
-  public static void getFromDatabase() {
-    for (HashMap<String, Object> map :
-        Netflix.database.executeSql("SELECT SeasonId, SerieId, Title, SeasonNumber FROM Season")) {
-      new Season(
-          Serie.getByDbId((int) map.get("SerieId")),
-          (String) map.get("Title"),
-          (int) map.get("SeasonNumber"),
-          (int) map.get("SeasonId"));
-    }
   }
 
   @Override

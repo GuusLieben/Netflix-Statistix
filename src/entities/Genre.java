@@ -1,9 +1,12 @@
 package com.netflix.entities;
 
-import com.netflix.*;
-import com.netflix.entities.abstracts.*;
+import com.netflix.entities.abstracts.Entity;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Set;
+
+import static com.netflix.Netflix.database;
 
 public class Genre extends Entity {
 
@@ -22,6 +25,13 @@ public class Genre extends Entity {
     return null;
   }
 
+  // Get Genre from database
+  public static void getFromDatabase() {
+    for (HashMap<String, Object> map : database.executeSql("SELECT GenreId, Genre FROM Genre")) {
+      new Genre((String) map.get("Genre"), (int) map.get("GenreId"));
+    }
+  }
+
   // Getter
   public String getGenre() {
     return genreName;
@@ -30,13 +40,5 @@ public class Genre extends Entity {
   @Override
   public String toString() {
     return genreName;
-  }
-
-  // Get Genre from database
-  public static void getFromDatabase() {
-    for (HashMap<String, Object> map :
-        Netflix.database.executeSql("SELECT GenreId, Genre FROM Genre")) {
-      new Genre((String) map.get("Genre"), (int) map.get("GenreId"));
-    }
   }
 }

@@ -3,9 +3,12 @@ package com.netflix.gui.views;
 import com.netflix.commons.Commons;
 import com.netflix.entities.abstracts.MediaObject;
 
-import javax.swing.*;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import java.awt.*;
+import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 
 import static java.awt.BorderLayout.CENTER;

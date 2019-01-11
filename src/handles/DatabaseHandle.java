@@ -1,15 +1,31 @@
 package com.netflix.handles;
 
-import com.netflix.*;
-import com.netflix.commons.*;
-import com.netflix.entities.*;
+import com.netflix.Netflix;
+import com.netflix.commons.Commons;
+import com.netflix.entities.Account;
+import com.netflix.entities.AgeRating;
+import com.netflix.entities.Episode;
+import com.netflix.entities.Film;
+import com.netflix.entities.Genre;
+import com.netflix.entities.Language;
+import com.netflix.entities.Profile;
+import com.netflix.entities.Season;
+import com.netflix.entities.Serie;
 
-import java.sql.*;
-import java.util.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
+import java.sql.Types;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 public class DatabaseHandle {
 
-  public Connection connection = null;
+  private Connection connection = null;
   private String database;
 
   // Use the package.properties file to generate a connection string
@@ -22,7 +38,7 @@ public class DatabaseHandle {
           + PropertiesHandle.get("jdbc.database")
           + ";";
 
-  {
+  public DatabaseHandle() {
     if (PropertiesHandle.get("jdbc.user").contains("\\"))
       connectionString += "integratedSecurity=true;";
   }
@@ -51,7 +67,7 @@ public class DatabaseHandle {
   }
 
   // Connect to the database with the generated string
-  public SQLResults connectDatabase() {
+  private SQLResults connectDatabase() {
     try {
       // Use MS Sql server
       Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
@@ -75,7 +91,7 @@ public class DatabaseHandle {
     }
   }
 
-  public void disconnectDatabase() {
+  private void disconnectDatabase() {
     // Check if it isn't already disconnected
     if (connection != null)
       try {

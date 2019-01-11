@@ -1,14 +1,28 @@
 package com.netflix.gui.views;
 
-import com.netflix.gui.commons.*;
-import com.netflix.gui.listeners.*;
+import com.netflix.gui.commons.GradientPanel;
+import com.netflix.gui.commons.NButton;
+import com.netflix.gui.listeners.ActionListeners;
 
-import javax.swing.*;
-import javax.swing.border.*;
-import java.awt.*;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+import javax.swing.border.EmptyBorder;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Toolkit;
 
-import static com.netflix.gui.commons.Common.*;
-import static java.awt.BorderLayout.*;
+import static com.netflix.gui.commons.Common.bottomPane;
+import static com.netflix.gui.commons.Common.logo;
+import static java.awt.BorderLayout.CENTER;
 
 public class RegistrationView {
 
@@ -42,7 +56,6 @@ public class RegistrationView {
     backToPrevious.setHorizontalAlignment(JLabel.LEFT);
     backToPrevious.setForeground(Color.LIGHT_GRAY);
     backToPrevious.setBorder(new EmptyBorder(0, 10, 0, 0));
-//    ActionListeners.mouseEventUnderline(backToPrevious);
     ActionListeners.backtoLogin(backToPrevious);
 
     JPanel titleAndCheck = new JPanel(new BorderLayout());
@@ -77,18 +90,6 @@ public class RegistrationView {
 
     /* If someone presses the button.. */
 
-    //    register.addActionListener(
-    //        (ActionEvent e) ->
-    //            Netflix.database.registerAccount(
-    //                new Account(
-    //                    isAdminCheck.isSelected(),
-    //                    emailBox.getText(),
-    //                    streetBox.getText(),
-    //                    Integer.parseInt(numberBox.getText()),
-    //                    additionBox.getText(),
-    //                    cityBox.getText())));
-
-//    ActionListeners.mouseEventUnderline(register);
 
     // Add items in order
     constraints.gridy = 1;

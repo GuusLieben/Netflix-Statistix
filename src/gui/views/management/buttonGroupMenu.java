@@ -1,19 +1,21 @@
 
 package com.netflix.gui.views.management;
 
-import com.netflix.entities.abstracts.*;
-import com.netflix.gui.commons.*;
+import com.netflix.entities.abstracts.MediaObject;
+import com.netflix.gui.commons.NButton;
 
-import javax.swing.*;
-import java.awt.event.*;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import java.awt.event.ActionEvent;
 
-public class buttonGroupMenu {
+class buttonGroupMenu {
 
-  public static watchedMediaGraph mediaGraph =
+  private static watchedMediaGraph mediaGraph =
       new watchedMediaGraph(
           "Media Object Id", "Percentage", "Gemiddelde kijkcijfers over totaal aantal profielen");
 
-  public static void showGraph(JButton button, watchedMediaGraph graph) {
+  private static void showGraph(JButton button, watchedMediaGraph graph) {
     button.addActionListener(
         (ActionEvent e) -> {
           if (graph.frame.isVisible()) {
@@ -26,7 +28,7 @@ public class buttonGroupMenu {
         });
   }
 
-  public static void showFrame(JButton button, JFrame frame) {
+  private static void showFrame(JButton button, JFrame frame) {
     button.addActionListener(
         (ActionEvent e) -> {
           if (frame.isVisible()) {
@@ -39,7 +41,7 @@ public class buttonGroupMenu {
         });
   }
 
-  public static JPanel buttonGroup() {
+  static JPanel buttonGroup() {
     for (MediaObject object : MediaObject.objectIds) {
       mediaGraph.addNumber(object.objectId, object.getWatchedPercentage());
     }

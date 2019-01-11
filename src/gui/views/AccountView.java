@@ -1,14 +1,20 @@
 package com.netflix.gui.views;
 
-import com.netflix.entities.*;
-import com.netflix.gui.commons.*;
-import com.netflix.gui.listeners.*;
+import com.netflix.entities.Film;
+import com.netflix.entities.Profile;
+import com.netflix.entities.Serie;
+import com.netflix.gui.commons.NButton;
+import com.netflix.gui.listeners.ActionListeners;
 
-import javax.swing.*;
-import javax.swing.border.*;
-import java.awt.*;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import java.awt.Color;
+import java.awt.FlowLayout;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 
-@SuppressWarnings("deprecation")
 public class AccountView {
 
   public static JPanel pane() {

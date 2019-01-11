@@ -1,9 +1,12 @@
 package com.netflix.entities;
 
-import com.netflix.*;
-import com.netflix.entities.abstracts.*;
+import com.netflix.entities.abstracts.Entity;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Set;
+
+import static com.netflix.Netflix.database;
 
 public class Language extends Entity {
 
@@ -23,6 +26,14 @@ public class Language extends Entity {
     return null;
   }
 
+  // Get languages from database
+  public static void getFromDatabase() {
+    for (HashMap<String, Object> map :
+        database.executeSql("SELECT LanguageCode, Language FROM Language")) {
+      new Language((String) map.get("LanguageCode"), (String) map.get("Language"));
+    }
+  }
+
   // Getters
   public String getLangCode() {
     return langCode;
@@ -30,13 +41,5 @@ public class Language extends Entity {
 
   public String getLanguageName() {
     return languageName;
-  }
-
-  // Get languages from database
-  public static void getFromDatabase() {
-    for (HashMap<String, Object> map :
-        Netflix.database.executeSql("SELECT LanguageCode, Language FROM Language")) {
-      new Language((String) map.get("LanguageCode"), (String) map.get("Language"));
-    }
   }
 }

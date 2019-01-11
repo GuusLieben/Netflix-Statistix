@@ -13,15 +13,21 @@ import org.jfree.data.xy.XYDataset;
 import org.jfree.data.xy.XYSeries;
 import org.jfree.data.xy.XYSeriesCollection;
 
-import javax.swing.*;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import java.awt.*;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.Toolkit;
 
 public abstract class GraphView {
 
   public static GraphView instance;
   public JFrame frame;
-  public XYSeries series;
+  private XYSeries series;
   private JFreeChart chart;
   private Plot plot;
   private XYDataset data;

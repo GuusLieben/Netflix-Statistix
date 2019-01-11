@@ -5,7 +5,9 @@ import com.netflix.gui.NetflixFrame;
 import com.netflix.gui.views.management.AdminView;
 import com.netflix.gui.views.management.accountListTable;
 
-import javax.swing.*;
+import javax.swing.JButton;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 import java.awt.event.ActionEvent;
 import java.awt.event.WindowEvent;
 import java.util.Map;
@@ -15,7 +17,7 @@ import static javax.swing.JOptionPane.showMessageDialog;
 
 public class AccountFrame2 extends CreationFrame {
 
-  public AccountFrame2() {
+    public AccountFrame2() {
     super("Nieuw account");
 
     String[] fields = {
@@ -32,13 +34,14 @@ public class AccountFrame2 extends CreationFrame {
     for (String str : fields) addTextField(str);
 
     JButton addAccount = new JButton("Toevoegen");
+    actionListenerAccountPress(addAccount);
 
     constraints.gridy++;
     wrapper.add(addAccount);
   }
 
   private void actionListenerAccountPress(JButton button) {
-    button.addActionListener(
+      button.addActionListener(
         (ActionEvent e) -> {
           boolean matchingEmail = false;
           boolean matchingPassword = false;

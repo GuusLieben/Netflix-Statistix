@@ -1,17 +1,19 @@
 package com.netflix.gui.views;
 
-import com.netflix.*;
-import com.netflix.commons.*;
+import com.netflix.commons.Commons;
 import com.netflix.entities.*;
-import com.netflix.entities.abstracts.*;
+import com.netflix.entities.abstracts.MediaObject;
 
 import javax.swing.*;
-import javax.swing.event.*;
+import javax.swing.event.TableModelEvent;
+import javax.swing.event.TableModelListener;
 import javax.swing.table.*;
 import java.awt.*;
-import java.awt.event.*;
-import java.util.*;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
+import java.util.ArrayList;
 
+import static com.netflix.Netflix.database;
 import static java.awt.BorderLayout.*;
 
 public class ObjectView {
@@ -22,14 +24,14 @@ public class ObjectView {
   private static JPanel inner = new JPanel(new BorderLayout());
   private static JPanel aboutMediaInner = new JPanel(new BorderLayout());
   private static JPanel overviewPanel = new JPanel(new BorderLayout());
+  private static JTable table;
   // Common stuff
   private JLabel title;
   private String description;
-  public static JTable table;
-  public JLabel descriptionLabel;
-  public MediaObject obj;
+  private JLabel descriptionLabel;
+  private MediaObject obj;
 
-  public ObjectView() {}
+  ObjectView() {}
 
   private ObjectView(MediaObject object) {
     obj = object;
@@ -76,7 +78,7 @@ public class ObjectView {
   JPanel getOverview(MediaObject media) {
 
     // Add sub-panels
-    ObjectView objectView = null;
+    ObjectView objectView;
 
     switch (media.getType()) {
       case 2: // Serie
@@ -126,7 +128,7 @@ public class ObjectView {
     // Add all the things!
     aboutMediaInner.add(descriptionLabel, CENTER);
 
-    if (obj.type == 1) {
+    if (MediaObject.type == 1) {
       JCheckBox cb = new JCheckBox("Bekeken");
 
       if (Profile.currentUser.getFilmsWatched().contains(obj)) cb.setSelected(true);
@@ -143,14 +145,14 @@ public class ObjectView {
                 Profile.currentUser.getFilmsWatched().size()
               };
 
-              Netflix.database.executeSqlNoResult(qr, arr);
+              database.executeSqlNoResult(qr, arr);
 
             } else {
               Profile.currentUser.unviewFilm(Film.getByDbId(obj.databaseId));
               String qr = "DELETE FROM WatchedFilms WHERE UserId=? AND FilmId=?";
               Object[] arr = {Profile.currentUser.databaseId, obj.databaseId};
 
-              Netflix.database.executeSqlNoResult(qr, arr);
+              database.executeSqlNoResult(qr, arr);
             }
 
             // If it's a film
@@ -269,6 +271,7 @@ public class ObjectView {
       this.pane = pane;
     }
 
+    @Override
     public void componentResized(ComponentEvent e) {
       pane.setPreferredSize(new Dimension(inner.getWidth(), main.getHeight() / 2));
     }
@@ -300,7 +303,7 @@ public class ObjectView {
             Profile.currentUser.getEpisodesWatched().size(), Profile.currentUser.databaseId, dbID
           };
 
-          Netflix.database.executeSqlNoResult(qr, arr);
+          database.executeSqlNoResult(qr, arr);
 
         } else {
           Profile.currentUser.unviewEpisode(Episode.getByDbId(dbID));
@@ -308,7 +311,7 @@ public class ObjectView {
           String qr = "DELETE FROM WatchedEpisodes WHERE UserId=? AND EpisodeId=?";
           Object[] arr = {Profile.currentUser.databaseId, dbID};
 
-          Netflix.database.executeSqlNoResult(qr, arr);
+          database.executeSqlNoResult(qr, arr);
         }
 
         Serie serie = Serie.getSerieByName(obj.getTitle());

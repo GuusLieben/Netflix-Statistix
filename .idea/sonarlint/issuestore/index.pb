@@ -13,7 +13,7 @@ N
 W
 'src/gui/views/management/AdminView.java,1\9\195a9d63e2d69281db79b167c87808081877c714
 ^
-.src/gui/views/management/accountListTable.java,2\5\25673ffec3d5961bba30ddf8e7a01d977de78893
+.src/gui/views/management/accountListTable.java,2/5/25673ffec3d5961bba30ddf8e7a01d977de78893
 K
 src/gui/commons/Common.java,9\5\95d5c1e0a11253e7346f5f95ae63859ebebae63c
 T
@@ -25,7 +25,7 @@ V
 L
 src/gui/views/LoginView.java,c\8\c85b0f5c9e6f30a1d6e16ebfbf4455be01d34547
 H
-src/commons/Commons.java,2\4\24bd7a9bd7ca6062ff272717043f40d0fd2e0815
+src/commons/Commons.java,2/4/24bd7a9bd7ca6062ff272717043f40d0fd2e0815
 Q
 !src/handles/PropertiesHandle.java,b\7\b7311cad745a4f6d42fd92ff2d03602f73912e7e
 L

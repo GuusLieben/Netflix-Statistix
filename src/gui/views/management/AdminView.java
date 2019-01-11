@@ -1,12 +1,12 @@
 
 package com.netflix.gui.views.management;
 
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.JPanel;
+import java.awt.BorderLayout;
 
 public class AdminView {
 
-  public static JPanel wrapper = new JPanel(new BorderLayout());
+  private static JPanel wrapper = new JPanel(new BorderLayout());
 
   public static JPanel panel() {
     wrapper.add(buttonGroupMenu.buttonGroup(), BorderLayout.NORTH);

@@ -8,12 +8,18 @@ import com.netflix.handles.PropertiesHandle;
 import com.raphaellevy.fullscreen.FullScreenException;
 import com.raphaellevy.fullscreen.FullScreenMacOS;
 
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import java.awt.BorderLayout;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 
 import static com.netflix.commons.Commons.exception;
 import static com.netflix.gui.commons.Common.logo;
-import static java.awt.BorderLayout.*;
+import static java.awt.BorderLayout.CENTER;
+import static java.awt.BorderLayout.NORTH;
+import static java.awt.BorderLayout.SOUTH;
+import static java.awt.BorderLayout.WEST;
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
 public class NetflixFrame {

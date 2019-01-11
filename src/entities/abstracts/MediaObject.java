@@ -1,6 +1,12 @@
 package com.netflix.entities.abstracts;
 
-import com.netflix.entities.*;
+import com.netflix.entities.Account;
+import com.netflix.entities.AgeRating;
+import com.netflix.entities.Film;
+import com.netflix.entities.Genre;
+import com.netflix.entities.Language;
+import com.netflix.entities.Profile;
+import com.netflix.entities.Serie;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -9,16 +15,16 @@ public abstract class MediaObject extends Entity {
 
   public static int type;
   public static Set<MediaObject> objectIds = new HashSet<>();
-  public int mediaType;
+  protected int mediaType;
   public String title;
-  public Genre genre;
-  public Language lang;
-  public AgeRating rating;
+  protected Genre genre;
+  protected Language lang;
+  protected AgeRating rating;
   public int objectId;
   private Set<Profile> watchedBy;
-  public String similarMedia;
+  protected String similarMedia;
 
-  public MediaObject() {
+  protected MediaObject() {
     watchedBy = new HashSet<>();
     objectId = objectIds.size() + 1;
     objectIds.add(this);
@@ -39,7 +45,7 @@ public abstract class MediaObject extends Entity {
   }
 
   // Watched by statistics
-  public int getWatchedByAmount() {
+  private int getWatchedByAmount() {
     return watchedBy.size();
   }
 
@@ -53,8 +59,7 @@ public abstract class MediaObject extends Entity {
 
   public double getWatchedPercentage() {
     int profileCount = Account.accounts.stream().mapToInt(acc -> acc.getProfiles().size()).sum();
-    double percentageWatchedBy = (double) this.getWatchedByAmount() / profileCount * 100;
-    return percentageWatchedBy;
+      return (double) this.getWatchedByAmount() / profileCount * 100;
   }
 
   // Getters and setters

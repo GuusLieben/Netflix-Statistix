@@ -1,8 +1,9 @@
 package com.netflix.entities.abstracts;
 
-import com.netflix.commons.*;
+import com.netflix.commons.Commons;
 
-import java.util.*;
+import java.util.HashSet;
+import java.util.Set;
 
 public abstract class Entity {
 
@@ -15,5 +16,9 @@ public abstract class Entity {
     entities.add(this);
     Commons.logger.info(
         String.format("New entity, Id assigned : #%d ::%d", entityId, entities.size()));
+  }
+
+  public int getEntityId() {
+    return entityId;
   }
 }

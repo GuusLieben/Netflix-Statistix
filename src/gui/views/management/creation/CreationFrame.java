@@ -1,11 +1,20 @@
 package com.netflix.gui.views.management.creation;
 
-import com.netflix.gui.commons.*;
+import com.netflix.gui.commons.GradientPanel;
 
-import javax.swing.*;
-import javax.swing.border.*;
-import java.awt.*;
-import java.util.*;
+import javax.swing.JComponent;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.border.EmptyBorder;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Toolkit;
+import java.util.HashMap;
+import java.util.Set;
 
 import static java.awt.Color.LIGHT_GRAY;
 
@@ -15,7 +24,7 @@ public class CreationFrame extends JFrame {
   GridBagConstraints constraints;
   HashMap<String, JTextField> values;
 
-  public CreationFrame(String title) {
+  CreationFrame(String title) {
     Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
     setLocation(dim.width / 2 - getSize().width, dim.height / 2 - getSize().height / 2);
 
@@ -31,7 +40,7 @@ public class CreationFrame extends JFrame {
     values = new HashMap<>();
   }
 
-  public void addTextField(String str) {
+  void addTextField(String str) {
     JTextField field = new JTextField();
     defaultStyling(field);
     field.setCaretColor(LIGHT_GRAY);

@@ -1,21 +1,26 @@
 package com.netflix.gui.views;
 
-import com.netflix.*;
-import com.netflix.commons.*;
-import com.netflix.entities.*;
-import com.netflix.gui.*;
-import com.netflix.gui.commons.*;
-import com.netflix.handles.*;
-import org.jdesktop.swingx.*;
+import com.netflix.commons.Commons;
+import com.netflix.entities.Account;
+import com.netflix.entities.Profile;
+import com.netflix.gui.NetflixFrame;
+import com.netflix.gui.commons.Common;
+import com.netflix.gui.commons.GradientPanel;
+import com.netflix.gui.commons.NButton;
+import com.netflix.handles.SQLResults;
+import org.jdesktop.swingx.JXDatePicker;
 
 import javax.swing.*;
-import javax.swing.border.*;
+import javax.swing.border.EmptyBorder;
 import java.awt.*;
-import java.awt.event.*;
+import java.awt.event.ActionEvent;
 import java.sql.Date;
-import java.text.*;
-import java.time.*;
-import java.util.*;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.ZoneOffset;
+import java.util.Calendar;
+
+import static com.netflix.Netflix.database;
 
 public class createProfileView {
 
@@ -36,7 +41,6 @@ public class createProfileView {
     nameField = new JTextField(20);
 
     JLabel ageLabel = new JLabel("Leeftijd");
-    //    JTextField ageField = new JTextField(20);
     datePicker = new JXDatePicker();
     datePicker.setDate(Calendar.getInstance().getTime());
     datePicker.setFormats(new SimpleDateFormat("dd.MM.yyyy"));
@@ -100,7 +104,7 @@ public class createProfileView {
 
             Object[] arr = {Account.currentAccount.databaseId, name, 0, 0, birthday};
 
-            if (Netflix.database.executeSqlNoResult(qr, arr) == SQLResults.PASS)
+            if (database.executeSqlNoResult(qr, arr) == SQLResults.PASS)
               JOptionPane.showMessageDialog(NetflixFrame.frame, "Succes!");
 
             Commons.clearPane(NetflixFrame.mainPanel);

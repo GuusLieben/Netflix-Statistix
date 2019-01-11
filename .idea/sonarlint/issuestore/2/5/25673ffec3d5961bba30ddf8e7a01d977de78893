@@ -1,8 +1,4 @@
 
-isquid:S1223"LRename this method to prevent any misunderstanding or make it a constructor.(”ĞÉ8‡Ñ«ö€-
-Wsquid:S1118":Add a private constructor to hide the implicit public one.(åÏ—@8Ò•¼ö€-
-Ssquid:S1444"0Make this "public static tablePanel" field final(ÎÉŞ¦øÿÿÿÿ8‡Ñ«ö€-
-Gsquid:S1172‡"(Remove this unused method parameter "e".(ê´àù8âÙø™-
 ksquid:S00101"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(åÏ—@8‡Ñ«ö€-
-Îsquid:S1598"¯This file "accountListTable.java" should be located in "com\netflix\gui\views\management" directory, not in "C:\Users\Intern\IdeaProjects\NetflixGit\src\gui\views\management".(ÂÀçì8‡Ñ«ö€-
-"squid:ClassVariableVisibilityCheck"VMake tablePanel a static final constant or non-public and provide accessors if needed.(ÎÉŞ¦øÿÿÿÿ8‡Ñ«ö€-
+Gsquid:S1172‡"(Remove this unused method parameter "e".(ê´àù8âÙø™-
+isquid:S1223"LRename this method to prevent any misunderstanding or make it a constructor.(”ĞÉ8‡Ñ«ö€-
