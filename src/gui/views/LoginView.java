@@ -2,20 +2,16 @@ package com.netflix.gui.views;
 
 import com.netflix.commons.Commons;
 import com.netflix.entities.Account;
-import com.netflix.entities.Profile;
 import com.netflix.gui.NetflixFrame;
-import com.netflix.gui.commons.Common;
-import com.netflix.gui.commons.GradientPanel;
-import com.netflix.gui.commons.NButton;
+import com.netflix.gui.Common;
 import com.netflix.gui.listeners.ActionListeners;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
-import java.awt.event.ActionEvent;
 import java.util.Random;
 
-import static com.netflix.gui.commons.Common.logo;
+import static com.netflix.gui.Common.logo;
 import static java.awt.BorderLayout.SOUTH;
 
 public class LoginView {
@@ -27,7 +23,7 @@ public class LoginView {
   public static class AccountLogin {
     public static JPanel login() {
       // Background gradient
-      GradientPanel gradientPanel = new GradientPanel();
+      Common.GradientPanel gradientPanel = new Common.GradientPanel();
 
       // Set panels
       JPanel main = new JPanel(new BorderLayout());
@@ -43,8 +39,8 @@ public class LoginView {
           new Font(loginTitle.getFont().getName(), loginTitle.getFont().getStyle(), 18));
 
       // Buttons
-      JButton login = new NButton("Inloggen");
-      JButton register = new NButton("Registreren");
+      JButton login = new Common.NButton("Inloggen");
+      JButton register = new Common.NButton("Registreren");
       JPanel buttonFrame = new JPanel(new BorderLayout());
 
       buttonFrame.add(login, BorderLayout.WEST);
@@ -147,7 +143,7 @@ public class LoginView {
     public static JPanel profileSelection() {
       JPanel main = new JPanel(new BorderLayout());
 
-      JPanel profileWrapper = new GradientPanel().getGradientPanel();
+      JPanel profileWrapper = new Common.GradientPanel().getGradientPanel();
       profileWrapper.setLayout(new GridBagLayout());
       profileWrapper.setBackground(new Color(34, 34, 34));
 
@@ -157,7 +153,7 @@ public class LoginView {
       // Use randoms for the profile icons
       Image image = null;
 
-      for (Profile profile :
+      for (Account.Profile profile :
           Account.currentAccount
               .getProfiles()) { // For all profiles, shouldn't be more than 5 unless someone hacked
         // an extra profile into the account
@@ -171,7 +167,7 @@ public class LoginView {
         ImageIcon icon = new ImageIcon(image.getScaledInstance(100, 100, Image.SCALE_SMOOTH));
 
         String labelText = profile.getName();
-        JButton label = new NButton();
+        JButton label = new Common.NButton();
 
         // Close the html tags
         label.setText(String.format("<html><center>%s</center></html>", labelText));
@@ -191,7 +187,7 @@ public class LoginView {
       }
 
       if (Account.currentAccount.getProfiles().size() <= 4) {
-        JButton addProfileLabel = new NButton("Nieuw profiel");
+        JButton addProfileLabel = new Common.NButton("Nieuw profiel");
         image = new ImageIcon("resources/profiles/addprofile.png").getImage();
         ImageIcon icon = new ImageIcon(image.getScaledInstance(100, 100, Image.SCALE_SMOOTH));
 
@@ -203,9 +199,9 @@ public class LoginView {
         addProfileLabel.setForeground(Color.LIGHT_GRAY);
 
         addProfileLabel.addActionListener(
-            (ActionEvent e) -> {
+            e -> {
               Commons.clearPane(NetflixFrame.mainPanel);
-              NetflixFrame.mainPanel.add(createProfileView.panel());
+              NetflixFrame.mainPanel.add(ProfileCreationPanel.panel());
             });
 
         profileWrapper.add(addProfileLabel);

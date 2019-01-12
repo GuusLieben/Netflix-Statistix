@@ -1,5 +1,6 @@
 package com.netflix.commons;
 
+import javax.swing.*;
 import java.awt.Container;
 import java.io.IOException;
 import java.security.MessageDigest;
@@ -72,5 +73,9 @@ public class Commons {
     con.removeAll();
     con.repaint();
     con.revalidate();
+  }
+
+  public static void showError(String message) {
+    JOptionPane.showMessageDialog(new JOptionPane(), message);
   }
 }

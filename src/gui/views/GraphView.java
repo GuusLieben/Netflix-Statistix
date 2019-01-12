@@ -1,6 +1,6 @@
 package com.netflix.gui.views;
 
-import com.netflix.gui.commons.Common;
+import com.netflix.gui.Common;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.axis.NumberAxis;

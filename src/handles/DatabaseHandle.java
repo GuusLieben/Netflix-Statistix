@@ -2,15 +2,7 @@ package com.netflix.handles;
 
 import com.netflix.Netflix;
 import com.netflix.commons.Commons;
-import com.netflix.entities.Account;
-import com.netflix.entities.AgeRating;
-import com.netflix.entities.Episode;
-import com.netflix.entities.Film;
-import com.netflix.entities.Genre;
-import com.netflix.entities.Language;
-import com.netflix.entities.Profile;
-import com.netflix.entities.Season;
-import com.netflix.entities.Serie;
+import com.netflix.entities.*;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -45,24 +37,24 @@ public class DatabaseHandle {
 
   public void collectData() {
     // First load items that do not require others entities
-    Genre.getFromDatabase();
-    Language.getFromDatabase();
-    AgeRating.getFromDatabase();
+    MediaCommons.Genre.getFromDatabase();
+    MediaCommons.Language.getFromDatabase();
+    MediaCommons.AgeRating.getFromDatabase();
 
     // Load films
     Film.getFromDatabase();
 
     // Load all serie entities in order
     Serie.getFromDatabase();
-    Season.getFromDatabase();
-    Episode.getFromDatabase();
+    Serie.Season.getFromDatabase();
+    Serie.Episode.getFromDatabase();
 
     // Load all users in order
     Account.getFromDatabase();
-    Profile.getFromDatabase();
+    Account.Profile.getFromDatabase();
 
     // Load all view data
-    Episode.getViewData();
+    Serie.Episode.getViewData();
     Film.getViewData();
   }
 

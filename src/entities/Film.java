@@ -1,25 +1,21 @@
 package com.netflix.entities;
 
-import com.netflix.entities.abstracts.MediaObject;
-
 import java.sql.Time;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 import static com.netflix.Netflix.database;
 
 public class Film extends MediaObject { // MediaObject extends Entity
 
-  public static Set<Film> films = new HashSet<>();
-  public static Set<String> filmTitles = new HashSet<>();
+  public static final Set<Film> films = new HashSet<>();
+  public static List<String> filmTitles = new ArrayList<>();
   private Time duration;
   private String director;
 
   public Film(
-      AgeRating rating,
-      Genre genre,
-      Language lang,
+      MediaCommons.AgeRating rating,
+      MediaCommons.Genre genre,
+      MediaCommons.Language lang,
       String title,
       Time duration,
       String director,
@@ -56,9 +52,9 @@ public class Film extends MediaObject { // MediaObject extends Entity
             "SELECT Film.FilmId, Rating, LijktOp, LanguageCode, Title, Duration, Director, Genre FROM Film JOIN Koppeltabel_GenreId_Film ON Film.FilmId = Koppeltabel_GenreId_Film.FilmId JOIN Genre ON Koppeltabel_GenreId_Film.GenreId = Genre.GenreId")) {
 
       new Film(
-          AgeRating.getByAge((int) map.get("Rating")),
-          Genre.getByName((String) map.get("Genre")),
-          Language.getByCode((String) map.get("LanguageCode")),
+          MediaCommons.AgeRating.getByAge((int) map.get("Rating")),
+          MediaCommons.Genre.getByName((String) map.get("Genre")),
+          MediaCommons.Language.getByCode((String) map.get("LanguageCode")),
           (String) map.get("Title"),
           (Time) map.get("Duration"),
           (String) map.get("Director"),
@@ -71,7 +67,7 @@ public class Film extends MediaObject { // MediaObject extends Entity
   public static void getViewData() {
     for (HashMap<String, Object> map :
         database.executeSql("SELECT UserId, FilmId FROM WatchedFilms")) {
-      Profile prof = Profile.getByDbId((int) map.get("UserId")); // Breaks
+      Account.Profile prof = Account.Profile.getByDbId((int) map.get("UserId")); // Breaks
       Film film = Film.getByDbId((int) map.get("FilmId"));
       prof.viewFilmNoDB(film);
     }

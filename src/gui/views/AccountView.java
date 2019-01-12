@@ -1,9 +1,7 @@
 package com.netflix.gui.views;
 
-import com.netflix.entities.Film;
-import com.netflix.entities.Profile;
-import com.netflix.entities.Serie;
-import com.netflix.gui.commons.NButton;
+import com.netflix.entities.*;
+import com.netflix.gui.*;
 import com.netflix.gui.listeners.ActionListeners;
 
 import javax.swing.JButton;
@@ -29,11 +27,11 @@ public class AccountView {
     // Label for profiles
     JLabel profileLabel = new JLabel("<html>"); // Use html because we can
     // For all profiles
-    for (Profile prof : Profile.currentUser.getAccount().getProfiles()) {
+    for (Account.Profile prof : Account.Profile.currentUser.getAccount().getProfiles()) {
       profileLabel.setText(
               String.format("%s.Profiel : %s", profileLabel.getText(), prof.getName())); // Show the profile name
 
-      if (prof == Profile.currentUser)
+      if (prof == Account.Profile.currentUser)
         profileLabel.setText(profileLabel.getText() + " <b><i>(Huidig)</b></i>");
 
       for (Film film : prof.getFilmsWatched()) { // If they have any
@@ -59,15 +57,15 @@ public class AccountView {
                 String.format(
                     "<html><h1>Account overzicht</h1>"
                         + "<br>Administrator? : %s<br>E-mail : %s<br><br><b>Profielen :</b> <br>%s</html>",
-                    Profile.currentUser.getAccount().isAdmin(),
-                    Profile.currentUser.getAccount().getEmail(),
+                    Account.Profile.currentUser.getAccount().isAdmin(),
+                    Account.Profile.currentUser.getAccount().getEmail(),
                     profileLabel.getText()));
 
     // Add all the things
     constraints.gridy++;
     inner.add(accountLabel, constraints);
 
-    JButton logoutButton = new NButton("Uitloggen");
+    JButton logoutButton = new Common.NButton("Uitloggen");
 
     constraints.gridy++;
     inner.add(logoutButton, constraints);

@@ -3,18 +3,15 @@ package com.netflix.gui.listeners;
 import com.netflix.Netflix;
 import com.netflix.commons.Commons;
 import com.netflix.entities.Account;
-import com.netflix.entities.Profile;
 import com.netflix.gui.NetflixFrame;
 import com.netflix.gui.views.AccountView;
-import com.netflix.gui.views.FilmMediaView;
+import com.netflix.gui.views.FilmReadPanel;
 import com.netflix.gui.views.LoginView;
-import com.netflix.gui.views.RegistrationView;
-import com.netflix.gui.views.SerieMediaView;
+import com.netflix.gui.views.RegistrationPanel;
+import com.netflix.gui.views.SerieReadPanel;
 import com.netflix.gui.views.management.AdminView;
-import com.netflix.gui.views.management.accountListTable;
 
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.Timer;
@@ -39,7 +36,7 @@ public class ActionListeners {
 
   public static void loginClickEvent(JButton login) {
     login.addActionListener(
-        (ActionEvent e) -> {
+        e -> {
           // Equal the name and password to the key and value
           String value = "";
 
@@ -104,13 +101,13 @@ public class ActionListeners {
     timer.start();
   }
 
-  public static void profileSelectionEvent(JButton button, Profile profile) {
+  public static void profileSelectionEvent(JButton button, Account.Profile profile) {
     button.addActionListener(
-        (ActionEvent e) -> {
+        e -> {
           // Clear the main panel
           Commons.clearPane(NetflixFrame.mainPanel);
           // Set the currentUser
-          Profile.currentUser = profile;
+          Account.Profile.currentUser = profile;
 
           // Load the panels
           NetflixFrame.loadPanels();
@@ -119,7 +116,7 @@ public class ActionListeners {
 
   public static void backtoLogin(JButton button) {
     button.addActionListener(
-        (ActionEvent e) -> {
+        e -> {
           // Clear the main panel
           Commons.clearPane(NetflixFrame.mainPanel);
           // Add the login pane
@@ -180,7 +177,7 @@ public class ActionListeners {
 
   public static void switchRegisterPane(JButton register) {
     register.addActionListener(
-        (ActionEvent e) -> {
+        e -> {
           // Clears the main panel
           Commons.clearPane(NetflixFrame.mainPanel);
 
@@ -189,29 +186,29 @@ public class ActionListeners {
           height = NetflixFrame.frame.getHeight();
 
           // Adds the registration panel
-          NetflixFrame.mainPanel.add(RegistrationView.registerPanel(NetflixFrame.frame));
+          NetflixFrame.mainPanel.add(RegistrationPanel.registerPanel(NetflixFrame.frame));
         });
   }
 
   public static void switchPaneOnClick(JButton button, String pane) {
     // Use lambda to handle button pressing to switch views
     button.addActionListener(
-        (ActionEvent e) -> {
+        e -> {
           Commons.clearPane(NetflixFrame.lpane);
 
           // Switch case
           switch (pane) {
             case "Series":
-              NetflixFrame.lpane.add(SerieMediaView.pane());
+              NetflixFrame.lpane.add(SerieReadPanel.pane());
               break;
             case "Films":
-              NetflixFrame.lpane.add(FilmMediaView.pane());
+              NetflixFrame.lpane.add(FilmReadPanel.pane());
               break;
             case "Account":
               NetflixFrame.lpane.add(AccountView.pane());
               break;
             case "Manager":
-              Commons.clearPane(accountListTable.tablePanel);
+              Commons.clearPane(AdminView.accountListTable.tablePanel);
               Commons.clearPane(AdminView.panel());
               NetflixFrame.lpane.add(AdminView.panel());
               break;
@@ -223,12 +220,12 @@ public class ActionListeners {
 
   public static void logoutClickEvent(JButton logoutButton) {
     logoutButton.addActionListener(
-        (ActionEvent e) -> {
+        e -> {
           // Clear all the things, to prevent anything from being stored by the session
           Commons.clearPane(NetflixFrame.mainPanel);
           Commons.clearPane(AccountView.pane());
-          Commons.clearPane(FilmMediaView.pane());
-          Commons.clearPane(SerieMediaView.pane());
+          Commons.clearPane(FilmReadPanel.pane());
+          Commons.clearPane(SerieReadPanel.pane());
           Commons.clearPane(NetflixFrame.lpane);
           NetflixFrame.loggedIn = false;
           LoginView.usernameBox.setText("");
@@ -239,10 +236,5 @@ public class ActionListeners {
           // Reload everything
           gui.setFrame(Netflix.width, Netflix.height);
         });
-  }
-
-  public static void showFrame(JButton button, JFrame frame) {
-    button.addActionListener(
-        (ActionEvent e) -> frame.setVisible(true));
   }
 }

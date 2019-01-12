@@ -1,8 +1,7 @@
 package com.netflix.gui;
 
 import com.netflix.commons.Commons;
-import com.netflix.gui.commons.Common;
-import com.netflix.gui.views.FilmMediaView;
+import com.netflix.gui.views.FilmReadPanel;
 import com.netflix.gui.views.LoginView;
 import com.netflix.handles.PropertiesHandle;
 import com.raphaellevy.fullscreen.FullScreenException;
@@ -15,7 +14,7 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 
 import static com.netflix.commons.Commons.exception;
-import static com.netflix.gui.commons.Common.logo;
+import static com.netflix.gui.Common.logo;
 import static java.awt.BorderLayout.CENTER;
 import static java.awt.BorderLayout.NORTH;
 import static java.awt.BorderLayout.SOUTH;
@@ -38,7 +37,7 @@ public class NetflixFrame {
 
   public static void loadPanels() {
     // Add to LayeredPane
-    lpane.add(FilmMediaView.pane());
+    lpane.add(FilmReadPanel.pane());
 
     // Add all views
     mainPanel.add(Common.bottomPane(), SOUTH);
@@ -76,7 +75,6 @@ public class NetflixFrame {
 
     // Add the mainPanel containing either all media panels or the login panel
     frame.add(mainPanel);
-
 
     // Center frame
     Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
