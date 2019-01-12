@@ -1,17 +1,0 @@
-
-Tsquid:S1444“"0Make this "public static tablePanel" field final(ÎÉŞ¦øÿÿÿÿ8×³“‘„-
-lsquid:S00101S"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(™¯¯8×³“‘„-
-Vsquid:S1481®"2Remove this unused "createAccount" local variable.(İ³÷ûÿÿÿÿÿ8È­‘„-
-Ysquid:S1118‘":Add a private constructor to hide the implicit public one.(ÿÛİà8×³“‘„-
-ksquid:S1223•"LRename this method to prevent any misunderstanding or make it a constructor.(à‡Á8×³“‘„-
-ksquid:S00101"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(ÛŞ·t8×³“‘„-
-jsquid:S1223r"LRename this method to prevent any misunderstanding or make it a constructor.(ç˜èÙ8×³“‘„-
-jsquid:S1301›"KReplace this "switch" statement by "if" statements to increase readability.(äªÁ‡8×³“‘„-
-Xsquid:S1118S":Add a private constructor to hide the implicit public one.(™¯¯8×³“‘„-
-ksquid:S1192)"HDefine a constant instead of duplicating this literal "Verberg" 4 times.(ª»ã°ÿÿÿÿÿ8×³“‘„-
-‘"squid:ClassVariableVisibilityCheck“"VMake tablePanel a static final constant or non-public and provide accessors if needed.(ÎÉŞ¦øÿÿÿÿ8×³“‘„-
-Çsquid:S1598"¨This file "AdminView.java" should be located in "com\netflix\gui\views\management" directory, not in "C:\Users\Intern\IdeaProjects\NetflixGit\src\gui\views\management".(ÂÀçì8×³“‘„-
-msquid:S00101‘"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(ÿÛİà8×³“‘„-
-Xsquid:S1118":Add a private constructor to hide the implicit public one.(¨Ã­ø8×³“‘„-
-Tsquid:S1481¯"0Remove this unused "createSerie" local variable.(§¿ÑÅûÿÿÿÿ8È­‘„-
-Wsquid:S1118":Add a private constructor to hide the implicit public one.(ÛŞ·t8×³“‘„-

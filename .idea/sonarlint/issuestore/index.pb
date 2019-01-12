@@ -3,7 +3,7 @@
 
 .gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
 L
-src/gui/views/GraphView.java,e/0/e0604df2fc2cfb4dd536d41c935aad58ab78fe1e
+src/gui/views/GraphView.java,e\0\e0604df2fc2cfb4dd536d41c935aad58ab78fe1e
 Y
 )tests/com/netflix/FunctionalityTests.java,f\7\f79b36b49336204e7db23404d9deebc372280de8
 N
@@ -19,13 +19,13 @@ H
 Q
 !src/handles/PropertiesHandle.java,b\7\b7311cad745a4f6d42fd92ff2d03602f73912e7e
 @
-src/Netflix.java,4/2/428233252712fd288d6c3b1c988539f1713b9201
+src/Netflix.java,4\2\428233252712fd288d6c3b1c988539f1713b9201
 O
 src/handles/DatabaseHandle.java,f\8\f8af99bd97c28ee4ce00af2503b39a14d0d478fe
 R
 "src/entities/abstracts/Entity.java,8\9\89b30b70633387c3b0035418b93446943f137b0f
 I
-src/entities/Account.java,0/d/0d9cbb222a89b564042ffdacb1c918a6a84878b1
+src/entities/Account.java,0\d\0d9cbb222a89b564042ffdacb1c918a6a84878b1
 I
 src/entities/Profile.java,d\a\da7aab768648652a65fddcd422aa647e119efe72
 I
@@ -49,7 +49,7 @@ I
 _
 /src/gui/views/management/watchedMediaGraph.java,5\5\55310d5480fbf11954d4102053fc238a448fa90f
 K
-src/handles/SQLResults.java,3/f/3fb2b8509995575ba8634daef39765244581480f
+src/handles/SQLResults.java,3\f\3fb2b8509995575ba8634daef39765244581480f
 d
 4src/gui/views/management/creation/CreationFrame.java,5\3\53fb1efed873f2d5bb939a987a80717fe8a50888
 C
@@ -64,3 +64,15 @@ T
 $src/gui/views/RegistrationPanel.java,0\8\08c06b26fbbeb4061fd0ab2c0383b9b622f4dfc5
 b
 2src/gui/views/management/creation/ChildFrames.java,0\a\0aada07ebb3e3ad2626722d13bfee0b47dfea076
+H
+src/entities/Entity.java,7\7\77408e3b0917e084a14145fce18d7cd2f7eccc2d
+M
+src/entities/MediaObject.java,4\c\4cbe1080208a64c497a45935a8c6ef05092c3958
+N
+src/entities/MediaCommons.java,2\8\284e4591c3ee3fd86740fe39abe1c97793a5579d
+L
+src/gui/views/ReadPanel.java,d\4\d4fccd0d86c9fa05aa7b8b195a8337b0c6188619
+P
+ src/gui/views/FilmReadPanel.java,6\7\679a6c811af1681384b29e0191e99ca1f79209eb
+Q
+!src/gui/views/SerieReadPanel.java,7\b\7b1d71bd4c1c76e54c14e5927bb84171132ee1aa
