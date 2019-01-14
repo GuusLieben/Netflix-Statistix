@@ -4,7 +4,7 @@ import com.netflix.commons.Commons;
 import com.netflix.entities.Account;
 import com.netflix.gui.NetflixFrame;
 import com.netflix.gui.Common;
-import com.netflix.gui.listeners.ActionListeners;
+import com.netflix.commons.ActionListeners;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;

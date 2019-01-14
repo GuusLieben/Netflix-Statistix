@@ -1,7 +1,7 @@
 package com.netflix.gui;
 
 import com.netflix.entities.Account;
-import com.netflix.gui.listeners.ActionListeners;
+import com.netflix.commons.ActionListeners;
 
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;

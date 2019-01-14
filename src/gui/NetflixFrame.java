@@ -1,9 +1,8 @@
 package com.netflix.gui;
 
-import com.netflix.commons.Commons;
+import com.netflix.commons.*;
 import com.netflix.gui.views.FilmReadPanel;
 import com.netflix.gui.views.LoginView;
-import com.netflix.handles.PropertiesHandle;
 import com.raphaellevy.fullscreen.FullScreenException;
 import com.raphaellevy.fullscreen.FullScreenMacOS;
 
@@ -57,8 +56,8 @@ public class NetflixFrame {
     // Set sizes for frame
     frame.setMinimumSize(
         new Dimension(
-            Integer.parseInt(PropertiesHandle.get("window.width")),
-            Integer.parseInt(PropertiesHandle.get("window.height"))));
+            Integer.parseInt(DataHandle.get("window.width")),
+            Integer.parseInt(DataHandle.get("window.height"))));
     frame.setSize(width, height);
 
     if (loggedIn) loadPanels();

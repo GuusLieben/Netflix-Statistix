@@ -1,8 +1,7 @@
 package com.netflix;
 
-import com.netflix.commons.Commons;
+import com.netflix.commons.*;
 import com.netflix.entities.Account;
-import com.netflix.handles.PropertiesHandle;
 import org.junit.jupiter.api.Test;
 
 import java.io.Reader;
@@ -31,7 +30,7 @@ class FunctionalityTests {
   @Test
   void testPropertyReadingWithCorrectValue() {
     Reader stream = new StringReader("value=true");
-    String actual = PropertiesHandle.parseProperties(stream, "value");
+    String actual = DataHandle.parseProperties(stream, "value");
 
     assertEquals("true", actual, "Returned value does not match expected value");
   }
@@ -39,7 +38,7 @@ class FunctionalityTests {
   @Test
   void testPropertyReadingWithIncorrectValue() {
     Reader stream = new StringReader("value=false");
-    String actual = PropertiesHandle.parseProperties(stream, "value");
+    String actual = DataHandle.parseProperties(stream, "value");
 
     assertNotEquals("true", actual, "Value returned is incorrect");
   }

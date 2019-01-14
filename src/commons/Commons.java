@@ -2,14 +2,14 @@ package com.netflix.commons;
 
 import javax.swing.*;
 import java.awt.Container;
-import java.io.IOException;
+import java.io.*;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.text.DecimalFormat;
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.logging.FileHandler;
-import java.util.logging.Logger;
+import java.util.*;
+import java.util.logging.*;
 
 import static javax.xml.bind.DatatypeConverter.*;
 
@@ -21,6 +21,7 @@ public class Commons {
   // This will always execute
   static {
     try {
+      purgeLogs();
       // Get the date and time in format d.[date]-t.[time]
       String dateTime =
           String.format("d.%s-t.%s", LocalDate.now().toString(), LocalTime.now().toString())
@@ -29,12 +30,31 @@ public class Commons {
 
       // Set the log file format to log-[dateTime].log, always append what is logged rather than
       // replacing existing content
-      FileHandler handler = new FileHandler(String.format("logs/log-%s.xml", dateTime), true);
+      FileHandler handler = new FileHandler(String.format("logs/log-%s.log", dateTime), true);
 
       // Add file handle to logger
       Commons.logger.addHandler(handler);
+
+      SimpleFormatter format = new SimpleFormatter();
+      handler.setFormatter(format);
     } catch (IOException e) {
       Commons.exception(e);
+    }
+  }
+
+  public static void purgeLogs() {
+    long numDays = 1;
+    File directory = new File("logs/");
+    File[] files = directory.listFiles();
+
+    if (files != null) {
+      for (File file : files) {
+        if (file.isFile() && file.getName().contains(".log")) {
+          long diff = new Date().getTime() - file.lastModified();
+          long cutoff = (numDays * (24 * 60 * 60 * 1000));
+          if (diff > cutoff) file.delete();
+        }
+      }
     }
   }
 

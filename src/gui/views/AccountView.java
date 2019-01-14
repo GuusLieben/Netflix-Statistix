@@ -2,7 +2,7 @@ package com.netflix.gui.views;
 
 import com.netflix.entities.*;
 import com.netflix.gui.*;
-import com.netflix.gui.listeners.ActionListeners;
+import com.netflix.commons.ActionListeners;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;

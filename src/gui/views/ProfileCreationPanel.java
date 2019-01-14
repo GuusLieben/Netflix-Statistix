@@ -1,10 +1,9 @@
 package com.netflix.gui.views;
 
-import com.netflix.commons.Commons;
+import com.netflix.commons.*;
 import com.netflix.entities.Account;
 import com.netflix.gui.NetflixFrame;
 import com.netflix.gui.Common;
-import com.netflix.handles.SQLResults;
 import org.jdesktop.swingx.JXDatePicker;
 
 import javax.swing.*;
@@ -100,7 +99,7 @@ public class ProfileCreationPanel {
 
             Object[] arr = {Account.currentAccount.databaseId, name, 0, 0, birthday};
 
-            if (database.executeSqlNoResult(qr, arr) == SQLResults.PASS)
+            if (database.executeSqlNoResult(qr, arr) == DataHandle.SQLResults.PASS)
               JOptionPane.showMessageDialog(NetflixFrame.frame, "Succes!");
 
             Commons.clearPane(NetflixFrame.mainPanel);

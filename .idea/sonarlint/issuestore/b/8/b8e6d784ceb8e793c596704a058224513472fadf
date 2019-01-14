@@ -1,0 +1,7 @@
+
+vsquid:S1450"_Remove the "descriptionLabel" field and declare it as a local variable in the relevant methods.(Óõ‘å
+Rsquid:S2696U"6Make the enclosing method "static" or remove this set.(œ ûÿÿÿÿ
+Msquid:S2696X"6Make the enclosing method "static" or remove this set.(±–š¥
+Nsquid:S2696µ"6Make the enclosing method "static" or remove this set.(Ö„ï
+Zsquid:HiddenFieldCheck*"9Rename "serie" which hides the field declared at line 21.(“­×l
+asquid:HiddenFieldCheck½"9Rename "serie" which hides the field declared at line 21.(İõª¶ùÿÿÿÿ

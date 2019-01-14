@@ -1,6 +1,7 @@
 package com.netflix.gui.views;
 
 import com.netflix.entities.Film;
+import com.netflix.gui.views.subpanels.*;
 
 import javax.swing.JComboBox;
 import javax.swing.JPanel;

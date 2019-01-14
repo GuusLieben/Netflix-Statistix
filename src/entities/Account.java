@@ -1,8 +1,7 @@
 package com.netflix.entities;
 
-import com.netflix.commons.Commons;
+import com.netflix.commons.*;
 import com.netflix.gui.NetflixFrame;
-import com.netflix.handles.*;
 
 import javax.swing.JOptionPane;
 import java.sql.Date;
@@ -274,7 +273,7 @@ public class Account extends Entity {
         String qr = "INSERT INTO WatchedFilms (FilmId, UserId, FilmsWatched) VALUES (?, ?, ?)";
         Object[] arr = {film.databaseId, databaseId, filmsWatched.size()};
 
-        if (database.executeSqlNoResult(qr, arr) == SQLResults.PASS)
+        if (database.executeSqlNoResult(qr, arr) == DataHandle.SQLResults.PASS)
           JOptionPane.showMessageDialog(NetflixFrame.frame, "Succes!");
       }
 
@@ -287,7 +286,7 @@ public class Account extends Entity {
 
         Object[] arr = {episode.databaseId, databaseId, episodesWatched.size()};
 
-        if (database.executeSqlNoResult(qr, arr) == SQLResults.PASS)
+        if (database.executeSqlNoResult(qr, arr) == DataHandle.SQLResults.PASS)
           JOptionPane.showMessageDialog(NetflixFrame.frame, "Succes!");
       }
 
