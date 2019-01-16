@@ -235,7 +235,7 @@ class DefaultPlotEditor extends JPanel implements ActionListener {
         interior.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
 
 //        interior.add(new JLabel(localizationResources.getString("Insets")));
-//        JButton button = new JButton(
+//        JButton button = new NButton(
 //            localizationResources.getString("Edit...")
 //        );
 //        button.setActionCommand("Insets");
@@ -248,7 +248,7 @@ class DefaultPlotEditor extends JPanel implements ActionListener {
 
         interior.add(new JLabel(localizationResources.getString(
                 "Outline_stroke")));
-        JButton button = new JButton(localizationResources.getString(
+        JButton button = new NButton(localizationResources.getString(
                 "Select..."));
         button.setActionCommand("OutlineStroke");
         button.addActionListener(this);
@@ -257,7 +257,7 @@ class DefaultPlotEditor extends JPanel implements ActionListener {
 
         interior.add(new JLabel(localizationResources.getString(
                 "Outline_Paint")));
-        button = new JButton(localizationResources.getString("Select..."));
+        button = new NButton(localizationResources.getString("Select..."));
         button.setActionCommand("OutlinePaint");
         button.addActionListener(this);
         interior.add(this.outlinePaintSample);
@@ -265,7 +265,7 @@ class DefaultPlotEditor extends JPanel implements ActionListener {
 
         interior.add(new JLabel(localizationResources.getString(
                 "Background_paint")));
-        button = new JButton(localizationResources.getString("Select..."));
+        button = new NButton(localizationResources.getString("Select..."));
         button.setActionCommand("BackgroundPaint");
         button.addActionListener(this);
         interior.add(this.backgroundPaintSample);

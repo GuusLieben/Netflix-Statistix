@@ -92,7 +92,7 @@ public class Common {
 
   private static void addButton(String text, Container container, String location) {
     // Add button with text, align left
-    JButton button = new JButton(text);
+    JButton button = new NButton(text);
     button.setForeground(Color.WHITE);
     JPanel wrapper = new JPanel(new FlowLayout(FlowLayout.LEFT));
 
@@ -120,7 +120,7 @@ public class Common {
     }
 
     // Add hover effect (underline and cursor)
-    ActionListeners.mouseEventUnderline(button);
+//    ActionListeners.mouseEventUnderline(button);
 
     // Style buttons
     button.setOpaque(false);

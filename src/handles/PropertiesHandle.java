@@ -16,7 +16,7 @@ public class PropertiesHandle {
   private static ThreadLocal<InputStream> inputStream = new ThreadLocal<>();
 
   public static String get(String property) {
-    Commons.logger.config("Requesting property '" + property + "' from package.properties");
+    Commons.logger.config(String.format("Requesting property '%s' from package.properties", property));
 
     // Read the properties file
     inputStream.set(

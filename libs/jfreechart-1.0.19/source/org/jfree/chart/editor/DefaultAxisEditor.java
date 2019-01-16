@@ -206,14 +206,14 @@ class DefaultAxisEditor extends JPanel implements ActionListener {
         interior.add(new JLabel(localizationResources.getString("Font")));
         this.labelFontField = new FontDisplayField(this.labelFont);
         interior.add(this.labelFontField);
-        JButton b = new JButton(localizationResources.getString("Select..."));
+        JButton b = new NButton(localizationResources.getString("Select..."));
         b.setActionCommand("SelectLabelFont");
         b.addActionListener(this);
         interior.add(b);
 
         interior.add(new JLabel(localizationResources.getString("Paint")));
         interior.add(this.labelPaintSample);
-        b = new JButton(localizationResources.getString("Select..."));
+        b = new NButton(localizationResources.getString("Select..."));
         b.setActionCommand("SelectLabelPaint");
         b.addActionListener(this);
         interior.add(b);
@@ -221,7 +221,7 @@ class DefaultAxisEditor extends JPanel implements ActionListener {
 //        interior.add(
 //            new JLabel(localizationResources.getString("Label_Insets"))
 //        );
-//        b = new JButton(localizationResources.getString("Edit..."));
+//        b = new NButton(localizationResources.getString("Edit..."));
 //        b.setActionCommand("LabelInsets");
 //        b.addActionListener(this);
 //        this.labelInsetsTextField = new InsetsTextField(this.labelInsets);
@@ -231,7 +231,7 @@ class DefaultAxisEditor extends JPanel implements ActionListener {
 //        interior.add(
 //            new JLabel(localizationResources.getString("Tick_Label_Insets"))
 //        );
-//        b = new JButton(localizationResources.getString("Edit..."));
+//        b = new NButton(localizationResources.getString("Edit..."));
 //        b.setActionCommand("TickLabelInsets");
 //        b.addActionListener(this);
 //        this.tickLabelInsetsTextField
@@ -269,7 +269,7 @@ class DefaultAxisEditor extends JPanel implements ActionListener {
         );
         this.tickLabelFontField = new FontDisplayField(this.tickLabelFont);
         ticks.add(this.tickLabelFontField);
-        b = new JButton(localizationResources.getString("Select..."));
+        b = new NButton(localizationResources.getString("Select..."));
         b.setActionCommand("SelectTickLabelFont");
         b.addActionListener(this);
         ticks.add(b);

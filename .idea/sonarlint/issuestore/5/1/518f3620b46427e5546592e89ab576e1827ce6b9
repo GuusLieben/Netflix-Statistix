@@ -1,0 +1,11 @@
+
+esquid:S20950"GUse try-with-resources or close this "ResultSet" in a "finally" clause.(‘çÂŞ8úçâÏ€-
+"squid:ClassVariableVisibilityCheck"SMake ratings a static final constant or non-public and provide accessors if needed.(Ñ·Å¤ûÿÿÿÿ8’½âÏ€-
+[
+squid:S1061"9Replace this use of System.out or System.err by a logger.(˜¨‘Æûÿÿÿÿ8úçâÏ€-
+Psquid:S1444"-Make this "public static ratings" field final(Ñ·Å¤ûÿÿÿÿ8’½âÏ€-
+V
+squid:S1067"9Replace this use of System.out or System.err by a logger.(œùŠ8úçâÏ€-
+´squid:S1598"This file "AgeRating.java" should be located in "com\netflix\entities" directory, not in "C:\Users\Intern\IdeaProjects\NetflixGit\src\entities".(¾Ø¨ãüÿÿÿÿ8’½âÏ€-
+@squid:S2386"Make this member "protected".(Ñ·Å¤ûÿÿÿÿ8’½âÏ€-
+Psquid:S11353"2Complete the task associated to this TODO comment.(Ãÿ½¼8õ¦öÏ€-

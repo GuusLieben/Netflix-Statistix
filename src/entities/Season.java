@@ -1,9 +1,9 @@
 package com.netflix.entities;
 
-import com.netflix.entities.abstracts.Entity;
+import com.netflix.*;
+import com.netflix.entities.abstracts.*;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 public class Season extends Entity {
 
@@ -14,7 +14,8 @@ public class Season extends Entity {
   private int amountOfEpisodes;
   private Set<Episode> episodes = new HashSet<>();
 
-  public Season(Serie serie, String title, int seaonNumber) {
+  public Season(Serie serie, String title, int seaonNumber, int databaseId) {
+    super.databaseId = databaseId;
     this.serie = serie;
     this.title = title;
     this.seaonNumber = seaonNumber;
@@ -45,6 +46,21 @@ public class Season extends Entity {
 
   public int getAmountOfEpisodes() {
     return amountOfEpisodes;
+  }
+
+  public static Season getByDbId(int id) {
+    return seasons.stream().filter(ent -> ent.databaseId == id).findFirst().orElse(null);
+  }
+
+  public static void getFromDatabase() {
+    for (HashMap<String, Object> map :
+        Netflix.database.executeSql("SELECT SeasonId, SerieId, Title, SeasonNumber FROM Season")) {
+      new Season(
+          Serie.getByDbId((int) map.get("SerieId")),
+          (String) map.get("Title"),
+          (int) map.get("SeasonNumber"),
+          (int) map.get("SeasonId"));
+    }
   }
 
   @Override

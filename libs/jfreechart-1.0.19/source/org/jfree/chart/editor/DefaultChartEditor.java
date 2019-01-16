@@ -123,7 +123,7 @@ class DefaultChartEditor extends JPanel implements ActionListener, ChartEditor {
                 "Background_paint")));
         this.background = new PaintSample(chart.getBackgroundPaint());
         interior.add(this.background);
-        JButton button = new JButton(localizationResources.getString(
+        JButton button = new NButton(localizationResources.getString(
                 "Select..."));
         button.setActionCommand("BackgroundPaint");
         button.addActionListener(this);
@@ -135,7 +135,7 @@ class DefaultChartEditor extends JPanel implements ActionListener, ChartEditor {
                 "No_editor_implemented"));
         info.setEnabled(false);
         interior.add(info);
-        button = new JButton(localizationResources.getString("Edit..."));
+        button = new NButton(localizationResources.getString("Edit..."));
         button.setEnabled(false);
         interior.add(button);
 
@@ -145,7 +145,7 @@ class DefaultChartEditor extends JPanel implements ActionListener, ChartEditor {
                 "No_editor_implemented"));
         info.setEnabled(false);
         interior.add(info);
-        button = new JButton(localizationResources.getString("Edit..."));
+        button = new NButton(localizationResources.getString("Edit..."));
         button.setEnabled(false);
         interior.add(button);
 
@@ -155,7 +155,7 @@ class DefaultChartEditor extends JPanel implements ActionListener, ChartEditor {
                 "No_editor_implemented"));
         info.setEnabled(false);
         interior.add(info);
-        button = new JButton(localizationResources.getString("Edit..."));
+        button = new NButton(localizationResources.getString("Edit..."));
         button.setEnabled(false);
         interior.add(button);
 
@@ -165,7 +165,7 @@ class DefaultChartEditor extends JPanel implements ActionListener, ChartEditor {
                 "No_editor_implemented"));
         info.setEnabled(false);
         interior.add(info);
-        button = new JButton(localizationResources.getString("Edit..."));
+        button = new NButton(localizationResources.getString("Edit..."));
         button.setEnabled(false);
         interior.add(button);
 

@@ -5,18 +5,15 @@
 
 package com.netflix.gui.views.management;
 
-import com.netflix.commons.Commons;
-import com.netflix.entities.Account;
-import com.netflix.gui.NetflixFrame;
-import com.netflix.gui.commons.Common;
-import com.netflix.gui.commons.GradientPanel;
-import com.netflix.gui.listeners.ActionListeners;
+import com.netflix.commons.*;
+import com.netflix.entities.*;
+import com.netflix.gui.*;
+import com.netflix.gui.commons.*;
 
 import javax.swing.*;
-import javax.swing.border.EmptyBorder;
+import javax.swing.border.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.WindowEvent;
+import java.awt.event.*;
 
 public class createAccountFrame {
 
@@ -84,8 +81,8 @@ public class createAccountFrame {
     addComponent(city);
     addComponent(spacer());
 
-    JButton addAccount = new JButton("Toevoegen");
-    ActionListeners.mouseEventUnderline(addAccount);
+    JButton addAccount = new NButton("Toevoegen");
+//    ActionListeners.mouseEventUnderline(addAccount);
     addAcount(addAccount);
     addComponent(addAccount);
 
@@ -140,7 +137,7 @@ public class createAccountFrame {
 
           if (validEmail && validPassword && validLocation) {
             Account newAccount =
-                new Account(
+                new Account(1,
                     false, emailStr, streetStr, houseNumberInt, additionStr, cityStr, passwordStr);
 
             // Close the frame, saves us from having to clear all fields and hiding it

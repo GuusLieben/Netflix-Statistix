@@ -1,13 +1,13 @@
 package com.netflix.entities;
 
-import com.netflix.entities.abstracts.Entity;
-import com.netflix.entities.abstracts.MediaObject;
-import com.netflix.gui.NetflixFrame;
+import com.netflix.*;
+import com.netflix.entities.abstracts.*;
+import com.netflix.gui.*;
 
 import javax.swing.*;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.stream.Collectors;
+import java.time.*;
+import java.util.*;
+import java.util.stream.*;
 
 public class Profile extends Entity {
 
@@ -18,7 +18,8 @@ public class Profile extends Entity {
   private Set<Film> filmsWatched;
   private int age;
 
-  public Profile(Account account, String name, int age) {
+  public Profile(Account account, String name, int age, int databaseId) {
+    super.databaseId = databaseId;
     if (account.getProfiles().size() < 5) { // Make sure there are less than 5 profiles attached
       this.account = account;
       this.name = name;
@@ -41,18 +42,15 @@ public class Profile extends Entity {
   }
 
   public Set<Serie> getSeriesWatched() {
-    return episodesWatched
-        .stream()
-        .map(episode -> episode.getSerie())
-        .collect(Collectors.toSet());
+    return episodesWatched.stream().map(episode -> episode.getSerie()).collect(Collectors.toSet());
   }
 
   public Set<MediaObject> getMediaWatched() {
-      Set<MediaObject> mediaWatched = new HashSet<>();
-      mediaWatched.addAll(filmsWatched);
-      for (Episode epi : episodesWatched) mediaWatched.add(epi.getSerie());
-      return mediaWatched;
-    }
+    Set<MediaObject> mediaWatched = new HashSet<>();
+    mediaWatched.addAll(filmsWatched);
+    for (Episode epi : episodesWatched) mediaWatched.add(epi.getSerie());
+    return mediaWatched;
+  }
 
   public int getAge() {
     return age;
@@ -78,5 +76,21 @@ public class Profile extends Entity {
   public void viewEpisode(Episode episode) {
     episode.getSerie().setWatchedBy(this);
     episodesWatched.add(episode);
+  }
+
+  @SuppressWarnings("deprecation")
+  public static void getFromDatabase() {
+    for (HashMap<String, Object> map :
+        Netflix.database.executeSql(
+            "SELECT UserId, AccountId, Name, EpisodesWatched, FilmsWatched, Birthday FROM Users")) {
+      Date birthdate = (Date) map.get("Birthday");
+      LocalDate date = LocalDate.of(birthdate.getYear(), birthdate.getMonth(), birthdate.getDay());
+
+      new Profile(
+          Account.getByDbId((int) map.get("AccountId")),
+          (String) map.get("Name"),
+          (int) Period.between(date, LocalDate.now()).getYears(),
+          (int) map.get("UserId"));
+    }
   }
 }

@@ -1,0 +1,9 @@
+
+‰"squid:ClassVariableVisibilityCheck"VMake tablePanel a static final constant or non-public and provide accessors if needed.(ÎÉÞ¦øÿÿÿÿ
+bsquid:S1223"LRename this method to prevent any misunderstanding or make it a constructor.(”ÐÉ
+Lsquid:S1444"0Make this "public static tablePanel" field final(ÎÉÞ¦øÿÿÿÿ
+Isquid:S1481"-Remove this unused "accounts" local variable.(ˆóáÿþÿÿÿÿ
+Psquid:S1118":Add a private constructor to hide the implicit public one.(åÏ—@
+dsquid:S00101"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(åÏ—@
+Jsquid:S1481$".Remove this unused "panelHead" local variable.(¨Ž’€ÿÿÿÿÿ
+Çsquid:S1598"¯This file "accountListTable.java" should be located in "com\netflix\gui\views\management" directory, not in "C:\Users\Intern\IdeaProjects\NetflixGit\src\gui\views\management".(ÂÀçì

@@ -1,2 +1,11 @@
 
-Jsquid:S1612.",Replace this lambda with a method reference.(—§»8õïÆ¯ş,
+[
+squid:S106]"9Replace this use of System.out or System.err by a logger.(˜¨‘Æûÿÿÿÿ8Ëó‹Î€-
+²squid:S1598"This file "Profile.java" should be located in "com\netflix\entities" directory, not in "C:\Users\Intern\IdeaProjects\NetflixGit\src\entities".(¾Ø¨ãüÿÿÿÿ8Á»‹Î€-
+‘"squid:ClassVariableVisibilityCheck"WMake currentUser a static final constant or non-public and provide accessors if needed.(î¾Ğ‚úÿÿÿÿ8Á»‹Î€-
+Tsquid:S1444"1Make this "public static currentUser" field final(î¾Ğ‚úÿÿÿÿ8Á»‹Î€-
+V
+squid:S106c"9Replace this use of System.out or System.err by a logger.(œùŠ8Ëó‹Î€-
+esquid:S2095\"GUse try-with-resources or close this "ResultSet" in a "finally" clause.(‘çÂŞ8Ëó‹Î€-
+Jsquid:S16121",Replace this lambda with a method reference.(—§»8õïÆ¯ş,
+Psquid:S1135_"2Complete the task associated to this TODO comment.(÷Ğî 8“¶ûÏ€-

@@ -5,18 +5,15 @@
 
 package com.netflix.gui.views.management;
 
-import com.netflix.entities.Account;
-import com.netflix.gui.commons.GradientPanel;
-import com.netflix.gui.listeners.ActionListeners;
+import com.netflix.entities.*;
+import com.netflix.gui.commons.*;
+import com.netflix.gui.listeners.*;
 
 import javax.swing.*;
-import javax.swing.border.EmptyBorder;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.table.JTableHeader;
-import javax.swing.table.TableColumn;
+import javax.swing.border.*;
+import javax.swing.table.*;
 import java.awt.*;
-import java.awt.event.ComponentAdapter;
-import java.awt.event.ComponentEvent;
+import java.awt.event.*;
 
 public class accountListTable {
 
@@ -72,14 +69,14 @@ public class accountListTable {
     JPanel buttonSplit = new GradientPanel().getGradientPanel();
     buttonSplit.setLayout(new BorderLayout());
 
-    createAccount = new JButton("Nieuw account");
+    createAccount = new NButton("Nieuw account");
     ActionListeners.showFrame(createAccount, createAccountFrame.createAccountFrame());
 
     buttonSplit.add(createAccount, BorderLayout.NORTH);
-    buttonSplit.add(new JButton("Nieuwe aflevering"), BorderLayout.WEST);
-    buttonSplit.add(new JButton("Nieuwe serie"), BorderLayout.CENTER);
-    buttonSplit.add(new JButton("Nieuw seizoen"), BorderLayout.EAST);
-    buttonSplit.add(new JButton("Nieuwe film"), BorderLayout.SOUTH);
+    buttonSplit.add(new NButton("Nieuwe aflevering"), BorderLayout.WEST);
+    buttonSplit.add(new NButton("Nieuwe serie"), BorderLayout.CENTER);
+    buttonSplit.add(new NButton("Nieuw seizoen"), BorderLayout.EAST);
+    buttonSplit.add(new NButton("Nieuwe film"), BorderLayout.SOUTH);
     buttonSplit.setBackground(new Color(151, 2, 4));
     buttonSplit.setBorder(new EmptyBorder(10, 10, 10, 10));
 

@@ -1,15 +1,14 @@
 package com.netflix.gui.views;
 
-import com.netflix.gui.commons.GradientPanel;
-import com.netflix.gui.listeners.ActionListeners;
+import com.netflix.gui.commons.*;
+import com.netflix.gui.listeners.*;
 
 import javax.swing.*;
-import javax.swing.border.EmptyBorder;
+import javax.swing.border.*;
 import java.awt.*;
 
-import static com.netflix.gui.commons.Common.bottomPane;
-import static com.netflix.gui.commons.Common.logo;
-import static java.awt.BorderLayout.CENTER;
+import static com.netflix.gui.commons.Common.*;
+import static java.awt.BorderLayout.*;
 
 public class RegistrationView {
 
@@ -39,11 +38,11 @@ public class RegistrationView {
 
     // Title styling
     JLabel registerTitle = new JLabel("Nieuw account");
-    JButton backToPrevious = new JButton("< Terug");
+    JButton backToPrevious = new NButton("< Terug");
     backToPrevious.setHorizontalAlignment(JLabel.LEFT);
     backToPrevious.setForeground(Color.LIGHT_GRAY);
     backToPrevious.setBorder(new EmptyBorder(0, 10, 0, 0));
-    ActionListeners.mouseEventUnderline(backToPrevious);
+//    ActionListeners.mouseEventUnderline(backToPrevious);
     ActionListeners.backtoLogin(backToPrevious);
 
     JPanel titleAndCheck = new JPanel(new BorderLayout());
@@ -64,7 +63,7 @@ public class RegistrationView {
     JTextField cityBox = new JTextField(15);
 
     // Button
-    JButton register = new JButton("Registreren");
+    JButton register = new NButton("Registreren");
 
     // Set minimum sizes for the input boxes, to prevent them from being too small
     emailBox.setMinimumSize(
@@ -89,7 +88,7 @@ public class RegistrationView {
     //                    additionBox.getText(),
     //                    cityBox.getText())));
 
-    ActionListeners.mouseEventUnderline(register);
+//    ActionListeners.mouseEventUnderline(register);
 
     // Add items in order
     constraints.gridy = 1;
