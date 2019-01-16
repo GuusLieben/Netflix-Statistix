@@ -1,6 +1,7 @@
 package com.netflix.gui.views.subpanels;
 
 import com.netflix.gui.*;
+import lu.tudor.santec.jtimechooser.*;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -54,6 +55,22 @@ public abstract class CreationFrame extends JFrame {
 
     addElement(str, field);
     setSize(500, getHeight() + 62);
+  }
+
+  protected JTimeChooser addTimePicker(String str) {
+      JTimeChooser timepicker = new JTimeChooser();
+      defaultStyling(timepicker);
+      addElement(str, timepicker);
+      setSize(500, getHeight() + 62);
+      return timepicker;
+  }
+
+  protected JSpinner addSpinner(String str) {
+      JSpinner spinner = new JSpinner();
+      defaultStyling(spinner);
+      addElement(str, spinner);
+      setSize(500, getHeight() + 62);
+      return spinner;
   }
 
   protected JComboBox<String> generateDropDown(String str, List<String> list) {

@@ -12,6 +12,7 @@ public class MediaCommons {
     private String languageName;
 
     public Language(String langCode, String languageName) {
+      super(langCode, languageName);
       this.langCode = langCode;
       this.languageName = languageName;
       langs.add(this);
@@ -47,6 +48,7 @@ public class MediaCommons {
     private String genreName;
 
     public Genre(String genre, int databaseId) {
+      super(genre, null);
       this.genreName = genre;
       this.databaseId = databaseId;
       genres.add(this);
@@ -83,6 +85,7 @@ public class MediaCommons {
     private int minimumAge;
 
     public AgeRating(String ageCode, int minimumAge) {
+      super(ageCode, minimumAge);
       this.ageCode = ageCode;
       this.minimumAge = minimumAge;
       ratings.add(this);
@@ -102,8 +105,8 @@ public class MediaCommons {
     }
 
     public static AgeRating getByCode(String code) {
-        for (AgeRating rating : ratings) if (rating.getAgeCode().equals(code)) return rating;
-        return null;
+      for (AgeRating rating : ratings) if (rating.getAgeCode().equals(code)) return rating;
+      return null;
     }
 
     // Getters

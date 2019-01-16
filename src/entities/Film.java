@@ -21,6 +21,7 @@ public class Film extends MediaObject { // MediaObject extends Entity
       String director,
       int databaseId,
       String similarMedia) {
+      super(title, null);
     super.similarMedia = similarMedia;
     super.databaseId = databaseId;
     super.rating = rating;
@@ -50,7 +51,6 @@ public class Film extends MediaObject { // MediaObject extends Entity
     for (HashMap<String, Object> map :
         database.executeSql(
             "SELECT Film.FilmId, Rating, LijktOp, LanguageCode, Title, Duration, Director, Genre FROM Film JOIN Koppeltabel_GenreId_Film ON Film.FilmId = Koppeltabel_GenreId_Film.FilmId JOIN Genre ON Koppeltabel_GenreId_Film.GenreId = Genre.GenreId")) {
-
       new Film(
           MediaCommons.AgeRating.getByAge((int) map.get("Rating")),
           MediaCommons.Genre.getByName((String) map.get("Genre")),

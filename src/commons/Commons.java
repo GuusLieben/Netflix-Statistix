@@ -3,6 +3,7 @@ package com.netflix.commons;
 import javax.swing.*;
 import java.awt.Container;
 import java.io.*;
+import java.nio.file.*;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.text.DecimalFormat;
@@ -21,7 +22,6 @@ public class Commons {
   // This will always execute
   static {
     try {
-      purgeLogs();
       // Get the date and time in format d.[date]-t.[time]
       String dateTime =
           String.format("d.%s-t.%s", LocalDate.now().toString(), LocalTime.now().toString())
@@ -37,22 +37,31 @@ public class Commons {
 
       SimpleFormatter format = new SimpleFormatter();
       handler.setFormatter(format);
+      purgeLogs();
     } catch (IOException e) {
       Commons.exception(e);
     }
   }
 
   public static void purgeLogs() {
-    long numDays = 1;
-    File directory = new File("logs/");
-    File[] files = directory.listFiles();
+    // Get the user set amount of days
+    long numDays = Long.parseLong(DataHandle.get("logs.purgeDays"));
+    // Hold all files in the directory 'logs'
+    File[] files = new File("logs/").listFiles();
 
+    // Make sure we even have any files
     if (files != null) {
       for (File file : files) {
+        // Only delete it if it's a file and contains .log
         if (file.isFile() && file.getName().contains(".log")) {
-          long diff = new Date().getTime() - file.lastModified();
-          long cutoff = (numDays * (24 * 60 * 60 * 1000));
-          if (diff > cutoff) file.delete();
+          long difference = new Date().getTime() - file.lastModified();
+          long purgeTime = (numDays * (24 * 60 * 60 * 1000));
+
+          // Check the difference, then log whether or not we succeeded
+          if (difference > purgeTime || file.getName().contains(".lck"))
+            if (file.delete())
+              logger.info(String.format("Deleted old log file '%s'", file.getName()));
+            else logger.severe(String.format("Failed to delete old log file '%s'", file.getName()));
         }
       }
     }

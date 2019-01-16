@@ -1,8 +1,8 @@
 package com.netflix.commons;
 
-import com.netflix.commons.*;
 import com.netflix.entities.*;
 
+import java.sql.*;
 import java.util.HashMap;
 
 import static com.netflix.Netflix.database;
@@ -53,7 +53,9 @@ public class CreateOnDatabase {
 
     if (database.executeSqlNoResult(qr, arr) == DataHandle.SQLResults.PASS) {
       for (HashMap<String, Object> map :
-          database.executeSql("SELECT SerieId FROM Serie WHERE Title=? AND AmountOfSeasons=0")) {
+          database.executeSql(
+              "SELECT SerieId FROM Serie WHERE Title=? AND AmountOfSeasons=0",
+              new Object[] {title})) {
 
         new Serie(genre, lang, title, rating, (int) map.get("SerieId"), similarMedia);
 
@@ -65,68 +67,101 @@ public class CreateOnDatabase {
     }
   }
 
-  public void createSeason() {
-    String qr = "";
-    Object[] arr = {};
+  public void createSeason(String serie, String title, int seasonNumber) {
+    int serieId = Serie.getSerieByName(serie).databaseId;
+
+    String qr = "INSERT INTO Season (SerieId, Title, SeasonNumber) VALUES (?, ?, ?)";
+    Object[] arr = {serieId, title, seasonNumber};
 
     if (database.executeSqlNoResult(qr, arr) == DataHandle.SQLResults.PASS) {
       for (HashMap<String, Object> map :
-          database.executeSql("SELECT id FROM entity WHERE something=?", new Object[] {})) {}
-    }
-  }
-
-  public void createEpisode() {
-    String qr = "";
-    Object[] arr = {};
-    if (database.executeSqlNoResult(qr, arr) == DataHandle.SQLResults.PASS) {
-      for (HashMap<String, Object> map :
-          database.executeSql("SELECT id FROM entity WHERE something=?", new Object[] {})) {
-        throw new IllegalAccessError("3");
+          database.executeSql(
+              "SELECT SeasonId FROM Season WHERE SerieId=? AND SeasonNumber=?",
+              new Object[] {serieId, seasonNumber})) {
+        new Serie.Season(
+            Serie.getSerieByName(serie), title, seasonNumber, (int) map.get("SeasonId"));
       }
     }
   }
 
-  public void createMovie() {
-    String qr = "";
-    Object[] arr = {};
+  public void createEpisode(
+      String title, String serie, String season, Time duration, int episodeNumber) {
+
+    int SeasonId = Serie.Season.getSeason(Serie.getSerieByName(serie), season).databaseId;
+
+    String qr =
+        "INSERT INTO Episode (SeasonId, Title, Duration, EpisodeNumber) VALUES (?, ?, ?, ?)";
+    Object[] arr = {SeasonId, title, duration, episodeNumber};
+
     if (database.executeSqlNoResult(qr, arr) == DataHandle.SQLResults.PASS) {
       for (HashMap<String, Object> map :
-          database.executeSql("SELECT id FROM entity WHERE something=?", new Object[] {})) {
-        throw new IllegalAccessError("4");
+          database.executeSql(
+              "SELECT EpisodeId FROM Episode WHERE SeasonId=? AND EpisodeNumber=?",
+              new Object[] {SeasonId, episodeNumber})) {
+        new Serie.Episode(
+            Serie.Season.getSeason(Serie.getSerieByName(serie), season),
+            title,
+            Serie.getSerieByName(serie),
+            duration,
+            episodeNumber,
+            (int) map.get("EpisodeId"));
       }
     }
   }
 
-  public void createGenre() {
-    String qr = "";
-    Object[] arr = {};
+  public void createFilm(
+      String title,
+      Time duration,
+      String director,
+      MediaCommons.Genre genre,
+      MediaCommons.Language lang,
+      MediaCommons.AgeRating rating,
+      String similarMedia) {
+    String qr =
+        "INSERT INTO Film (Rating, LijktOp, LanguageCode, Title, Duration, Director) VALUES (?, ?, ?, ?, ?, ?)";
+    Object[] arr = {
+      rating.getMinimumAge(), similarMedia, lang.getLangCode(), title, duration, director
+    };
     if (database.executeSqlNoResult(qr, arr) == DataHandle.SQLResults.PASS) {
       for (HashMap<String, Object> map :
-          database.executeSql("SELECT id FROM entity WHERE something=?", new Object[] {})) {
-        throw new IllegalAccessError("4");
+          database.executeSql(
+              "SELECT FilmId FROM Film WHERE Title=? AND Director=?",
+              new Object[] {title, director})) {
+        new Film(
+            rating, genre, lang, title, duration, director, (int) map.get("FilmId"), similarMedia);
+
+        String qr2 = "INSERT INTO Koppeltabel_GenreId_Film (FilmId, GenreId) VALUES (?, ?)";
+        Object[] arr2 = {map.get("FilmId"), genre.databaseId};
+
+        database.executeSqlNoResult(qr2, arr2);
       }
     }
   }
 
-  public void createLanguage() {
-    String qr = "";
-    Object[] arr = {};
+  public void createGenre(String name) {
+    String qr = "INSERT INTO Genre (Genre) VALUES (?)";
+    Object[] arr = {name};
     if (database.executeSqlNoResult(qr, arr) == DataHandle.SQLResults.PASS) {
       for (HashMap<String, Object> map :
-          database.executeSql("SELECT id FROM entity WHERE something=?", new Object[] {})) {
-        throw new IllegalAccessError("4");
+          database.executeSql("SELECT GenreId FROM Genre WHERE Genre=?", new Object[] {name})) {
+        new MediaCommons.Genre(name, (int) map.get("GenreId"));
       }
     }
   }
 
-  public void createRating() {
-    String qr = "";
-    Object[] arr = {};
+  public void createLanguage(String language, String langCode) {
+    String qr = "INSERT INTO Language (LanguageCode, Language) VALUES (?, ?)";
+    Object[] arr = {langCode, language};
     if (database.executeSqlNoResult(qr, arr) == DataHandle.SQLResults.PASS) {
-      for (HashMap<String, Object> map :
-          database.executeSql("SELECT id FROM entity WHERE something=?", new Object[] {})) {
-        throw new IllegalAccessError("4");
-      }
+      new MediaCommons.Language(langCode, language);
+    }
+  }
+
+  public void createRating(String code, int age) {
+    String qr = "INSERT INTO Rating (MPAA, Rating) VALUES (?, ?)";
+    Object[] arr = {code, age};
+    if (database.executeSqlNoResult(qr, arr) == DataHandle.SQLResults.PASS) {
+      new MediaCommons.AgeRating(code, age);
     }
   }
 }

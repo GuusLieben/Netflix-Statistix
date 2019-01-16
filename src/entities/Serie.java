@@ -21,6 +21,7 @@ public class Serie extends MediaObject { // MediaObject extends Entity
       MediaCommons.AgeRating rating,
       int databaseId,
       String similarMedia) {
+    super(title, null);
     super.similarMedia = similarMedia;
     super.databaseId = databaseId;
     super.genre = genre;
@@ -93,151 +94,169 @@ public class Serie extends MediaObject { // MediaObject extends Entity
     seasons.add(season);
   }
 
-    public static class Season extends Entity {
+  public void removeSeason(Season season) {
+    seasons.remove(season);
+  }
 
-      protected static final List<Season> seasons = new ArrayList<>();
-      private Serie serie;
-      private String title;
-      private int seaonNumber;
-      private int amountOfEpisodes;
-      private Set<Episode> episodes = new HashSet<>();
+  public static class Season extends Entity {
 
-      public Season(Serie serie, String title, int seaonNumber, int databaseId) {
-        super.databaseId = databaseId;
-        this.serie = serie;
-        this.title = title;
-        this.seaonNumber = seaonNumber;
-        amountOfEpisodes = 0;
-        seasons.add(this);
-        serie.setSeasonCount(serie.getSeasonCount() + 1);
-        serie.addSeason(this);
-      }
+    protected static final List<Season> seasons = new ArrayList<>();
+    private Serie serie;
+    private String title;
+    private int seasonNumber;
+    private int amountOfEpisodes;
+    private Set<Episode> episodes = new HashSet<>();
 
-      // Get season by database id
-      public static Season getByDbId(int id) {
-        return seasons.stream().filter(ent -> ent.databaseId == id).findFirst().orElse(null);
-      }
+    public Season(Serie serie, String title, int seasonNumber, int databaseId) {
+      super(title, serie.getTitle());
+      super.databaseId = databaseId;
+      this.serie = serie;
+      this.title = title;
+      this.seasonNumber = seasonNumber;
+      amountOfEpisodes = 0;
+      seasons.add(this);
+      serie.setSeasonCount(serie.getSeasonCount() + 1);
+      serie.addSeason(this);
+    }
 
-      // Get seasons from database
-      public static void getFromDatabase() {
-        for (HashMap<String, Object> map :
-            database.executeSql("SELECT SeasonId, SerieId, Title, SeasonNumber FROM Season")) {
-          new Season(
-              Serie.getByDbId((int) map.get("SerieId")),
-              (String) map.get("Title"),
-              (int) map.get("SeasonNumber"),
-              (int) map.get("SeasonId"));
-        }
-      }
+    // Get season by database id
+    public static Season getByDbId(int id) {
+      return seasons.stream().filter(ent -> ent.databaseId == id).findFirst().orElse(null);
+    }
 
-      // Getters
-      public Set<Episode> getEpisodes() {
-        return episodes;
-      }
-
-      public Serie getSerie() {
-        return serie;
-      }
-
-      public String getTitle() {
-        return title;
-      }
-
-      public int getSeaonNumber() {
-        return seaonNumber;
-      }
-
-      public int getAmountOfEpisodes() {
-        return amountOfEpisodes;
-      }
-
-      // Add an episode to the season
-      public void addEpisode(Episode episode) {
-        this.episodes.add(episode);
-      }
-
-      @Override
-      public String toString() {
-        return title;
+    // Get seasons from database
+    public static void getFromDatabase() {
+      for (HashMap<String, Object> map :
+          database.executeSql("SELECT SeasonId, SerieId, Title, SeasonNumber FROM Season")) {
+        new Season(
+            Serie.getByDbId((int) map.get("SerieId")),
+            (String) map.get("Title"),
+            (int) map.get("SeasonNumber"),
+            (int) map.get("SeasonId"));
       }
     }
 
-    public static class Episode extends Entity {
+    // Getters
+    public Set<Episode> getEpisodes() {
+      return episodes;
+    }
 
-      public static final Set<Episode> episodes = new HashSet<>();
-      private Season season;
-      private String title;
-      private Serie serie;
-      private Time duration;
-      private int episodeNumber;
+    public static Season getSeason(Serie serie, String seasonName) {
+      return seasons.stream()
+          .filter(season -> season.serie == serie && season.title.equals(seasonName))
+          .findFirst()
+          .orElse(null);
+    }
 
-      public Episode(
-              Season season, String title, Serie serie, Time duration, int episodeNumber, int databaseId) {
-        super.databaseId = databaseId;
-        this.season = season;
-        this.title = title;
-        this.serie = serie;
-        this.duration = duration;
-        this.episodeNumber = episodeNumber;
-        serie.setEpisodeCount(serie.getEpisodeCount() + 1);
-        episodes.add(this);
-        season.addEpisode(this);
-      }
+    public Serie getSerie() {
+      return serie;
+    }
 
-      // Get episode by database ID
-      public static Episode getByDbId(int id) {
-        return episodes.stream().filter(ent -> ent.databaseId == id).findFirst().orElse(null);
-      }
+    public String getTitle() {
+      return title;
+    }
 
-      // Get all episodes from database
-      public static void getFromDatabase() {
-        for (HashMap<String, Object> map :
-            database.executeSql(
-                "SELECT EpisodeId, SeasonId, Title, Duration, EpisodeNumber FROM Episode")) {
-          new Episode(
-              Season.getByDbId((int) map.get("SeasonId")),
-              (String) map.get("Title"),
-              Season.getByDbId((int) map.get("SeasonId")).getSerie(),
-              (Time) map.get("Duration"),
-              (int) map.get("EpisodeNumber"),
-              (int) map.get("EpisodeId"));
-        }
-      }
+    public int getseasonNumber() {
+      return seasonNumber;
+    }
 
-      // Get all watched episodes and the profile that watched it
-      public static void getViewData() {
-        for (HashMap<String, Object> map :
-            database.executeSql("SELECT UserId, EpisodeId FROM WatchedEpisodes")) {
-          Account.Profile prof = Account.Profile.getByDbId((int) map.get("UserId")); // Breaks
-          Episode epi = Episode.getByDbId((int) map.get("EpisodeId"));
-          prof.viewEpisodeNoDB(epi);
-        }
-      }
+    public int getAmountOfEpisodes() {
+      return amountOfEpisodes;
+    }
 
-      // Getters
-      public int getEpisodeNumber() {
-        return episodeNumber;
-      }
+    // Add an episode to the season
+    public void addEpisode(Episode episode) {
+      this.episodes.add(episode);
+    }
 
-      public Season getSeason() {
-        return season;
-      }
+    @Override
+    public String toString() {
+      return title;
+    }
+  }
 
-      public String getTitle() {
-        return title;
-      }
+  public static class Episode extends Entity {
 
-      public Serie getSerie() {
-        return serie;
-      }
+    public static final Set<Episode> episodes = new HashSet<>();
+    private Season season;
+    private String title;
+    private Serie serie;
+    private Time duration;
+    private int episodeNumber;
 
-      public Time getDuration() {
-        return duration;
-      }
+    public Episode(
+        Season season,
+        String title,
+        Serie serie,
+        Time duration,
+        int episodeNumber,
+        int databaseId) {
+      super(title, season.getSerie().getTitle());
+      super.databaseId = databaseId;
+      this.season = season;
+      this.title = title;
+      this.serie = serie;
+      this.duration = duration;
+      this.episodeNumber = episodeNumber;
+      serie.setEpisodeCount(serie.getEpisodeCount() + 1);
+      episodes.add(this);
+      season.addEpisode(this);
+    }
 
-      // Use the Stream API to find out if the current profile watched this episode
-      public Boolean watchedByProfile() {
-        return Account.Profile.currentUser.getEpisodesWatched().stream().anyMatch(epi -> epi == this);
+    // Get episode by database ID
+    public static Episode getByDbId(int id) {
+      return episodes.stream().filter(ent -> ent.databaseId == id).findFirst().orElse(null);
+    }
+
+    // Get all episodes from database
+    public static void getFromDatabase() {
+      for (HashMap<String, Object> map :
+          database.executeSql(
+              "SELECT EpisodeId, SeasonId, Title, Duration, EpisodeNumber FROM Episode")) {
+        new Episode(
+            Season.getByDbId((int) map.get("SeasonId")),
+            (String) map.get("Title"),
+            Season.getByDbId((int) map.get("SeasonId")).getSerie(),
+            (Time) map.get("Duration"),
+            (int) map.get("EpisodeNumber"),
+            (int) map.get("EpisodeId"));
       }
     }
+
+    // Get all watched episodes and the profile that watched it
+    public static void getViewData() {
+      for (HashMap<String, Object> map :
+          database.executeSql("SELECT UserId, EpisodeId FROM WatchedEpisodes")) {
+        Account.Profile prof = Account.Profile.getByDbId((int) map.get("UserId")); // Breaks
+        Episode epi = Episode.getByDbId((int) map.get("EpisodeId"));
+        prof.viewEpisodeNoDB(epi);
+      }
+    }
+
+    // Getters
+    public int getEpisodeNumber() {
+      return episodeNumber;
+    }
+
+    public Season getSeason() {
+      return season;
+    }
+
+    public String getTitle() {
+      return title;
+    }
+
+    public Serie getSerie() {
+      return serie;
+    }
+
+    public Time getDuration() {
+      return duration;
+    }
+
+    // Use the Stream API to find out if the current profile watched this episode
+    public Boolean watchedByProfile() {
+      return Account.Profile.currentUser.getEpisodesWatched().stream().anyMatch(epi -> epi == this);
+    }
+  }
 }

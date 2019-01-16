@@ -4,22 +4,204 @@ import com.netflix.commons.*;
 import com.netflix.entities.*;
 import com.netflix.gui.*;
 import com.netflix.gui.views.subpanels.*;
+import lu.tudor.santec.jtimechooser.*;
 
 import javax.swing.*;
 import java.awt.event.*;
+import java.sql.*;
+import java.time.*;
 import java.util.*;
 import java.util.stream.*;
 
 public class ChildFrames {
-  public static class EpisodeCreation extends CreationFrame {
-    public EpisodeCreation() {
+
+  static class RatingCreation extends CreationFrame {
+    RatingCreation() {
+      super("Nieuwe classificatie");
+      addTextField("Code"); // [A-Z]{1,2}[0-9]{1,2}
+      JSpinner age = addSpinner("Minimum leeftijd"); // [0-9]{1,2}
+      Common.NButton addEntity = new Common.NButton("Toevoegen");
+      addButton(addEntity);
+    }
+
+    private void actionListenerRatingPress(JButton button, JSpinner ageSpinner) {
+      button.addActionListener(
+          e -> {
+            String code = values.get("Code").getText();
+            int age = (int) ageSpinner.getValue();
+
+            if (!code.equals("") && age > 3) new CreateOnDatabase().createRating(code, age);
+          });
+    }
+  }
+
+  // DONE //
+
+  static class GenreCreation extends CreationFrame {
+
+    GenreCreation() {
+      super("Nieuw genre");
+      addTextField("Naam");
+      Common.NButton addEntity = new Common.NButton("Toevoegen");
+      addButton(addEntity);
+      actionListenerGenrePress(addEntity);
+    }
+
+    private void actionListenerGenrePress(JButton button) {
+      button.addActionListener(
+          e -> {
+            String name = values.get("Naam").getText();
+
+            if (!name.equals("")) new CreateOnDatabase().createGenre(name);
+
+            GenreCreation.this.dispatchEvent(
+                new WindowEvent(GenreCreation.this, WindowEvent.WINDOW_CLOSING));
+          });
+    }
+  }
+
+  static class LanguageCreation extends CreationFrame {
+    LanguageCreation() {
+      super("Nieuwe taal");
+      addTextField("Taal");
+      addTextField("Code (ISO)");
+      Common.NButton addEntity = new Common.NButton("Toevoegen");
+      addButton(addEntity);
+      actionListenerLanguagePress(addEntity);
+    }
+
+    private void actionListenerLanguagePress(JButton button) {
+      button.addActionListener(
+          e -> {
+            String language = values.get("Taal").getText();
+            String langCode = values.get("Code (ISO)").getText();
+
+            if (!language.equals("")
+                && !langCode.equals("")
+                && langCode.matches("[a-z]{2}[_]{1}[A-Z]{2}"))
+              new CreateOnDatabase().createLanguage(language, langCode);
+
+            LanguageCreation.this.dispatchEvent(
+                new WindowEvent(LanguageCreation.this, WindowEvent.WINDOW_CLOSING));
+          });
+    }
+  }
+
+  private static Object[] getMediaCommons(Map<String, JComboBox> map) {
+    String[] langs = map.get("Taal").getSelectedItem().toString().split(" ");
+
+    MediaCommons.Genre genre =
+        MediaCommons.Genre.getByName(map.get("Genre").getSelectedItem().toString());
+    MediaCommons.Language lang =
+        MediaCommons.Language.getByCode(
+            langs[langs.length - 1]); // Keep in mind languages can have spaces in them as well, so
+    // only select the last part of the String which is always the
+    // code
+    MediaCommons.AgeRating rating =
+        MediaCommons.AgeRating.getByCode(map.get("Classificatie").getSelectedItem().toString());
+
+    return new Object[] {genre, lang, rating};
+  }
+
+  static class FilmCreation extends CreationFrame {
+    FilmCreation() {
+      super("Nieuwe film");
+
+      addTextField("Titel");
+      JTimeChooser durationPicker = addTimePicker("Duratie");
+      addTextField("Regisseur");
+
+      mediaDropdowns(this);
+
+      List<String> titles = Film.filmTitles;
+      generateDropDown("Vergelijkbaar", titles);
+
+      Common.NButton addEntity = new Common.NButton("Toevoegen");
+      addButton(addEntity);
+      actionListenerFilmPress(addEntity, durationPicker);
+    }
+
+    private void actionListenerFilmPress(JButton button, JTimeChooser durationPicker) {
+      button.addActionListener(
+          e -> {
+            boolean originalName = true;
+            boolean similarExists = false;
+
+            String title = values.get("Titel").getText();
+            Time duration =
+                Time.valueOf(
+                    LocalTime.of(
+                        durationPicker.getHours(),
+                        durationPicker.getMinutes(),
+                        durationPicker.getSeconds()));
+            String director = values.get("Regisseur").getText();
+
+            Object[] mediaCommons = getMediaCommons(comboValues);
+
+            MediaCommons.Genre genre = (MediaCommons.Genre) mediaCommons[0];
+            MediaCommons.Language lang = (MediaCommons.Language) mediaCommons[1];
+            MediaCommons.AgeRating rating = (MediaCommons.AgeRating) mediaCommons[2];
+
+            String similarMedia = comboValues.get("Vergelijkbaar").getSelectedItem().toString();
+
+            for (String filmTitle : Film.filmTitles) {
+              if (title.equals(filmTitle)) originalName = false;
+              if (similarMedia.equals(filmTitle)) similarExists = true;
+            }
+            if (!title.equals("")
+                && director.matches("^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$")
+                && similarExists
+                && originalName) {
+              new CreateOnDatabase()
+                  .createFilm(title, duration, director, genre, lang, rating, similarMedia);
+            }
+
+            FilmCreation.this.dispatchEvent(
+                new WindowEvent(FilmCreation.this, WindowEvent.WINDOW_CLOSING));
+          });
+    }
+  }
+
+  static class SeasonCreation extends CreationFrame {
+    SeasonCreation() {
+      super("Nieuw seizoen");
+
+      generateDropDown("Serie", Serie.serieTitles);
+
+      addTextField("Titel");
+      JSpinner seasonNum = addSpinner("Seizoensnummer"); // [0-9]*
+      Common.NButton addEntity = new Common.NButton("Toevoegen");
+      addButton(addEntity);
+      actionListenerSeasonPress(addEntity, seasonNum);
+    }
+
+    private void actionListenerSeasonPress(JButton button, JSpinner seasonNum) {
+      button.addActionListener(
+          e -> {
+            String serie = comboValues.get("Serie").getSelectedItem().toString();
+            String title = values.get("Titel").getText();
+            int seasonNumber = (int) seasonNum.getValue();
+
+            if (!title.equals("") && seasonNumber > 0) {
+              new CreateOnDatabase().createSeason(serie, title, seasonNumber);
+            }
+
+            SeasonCreation.this.dispatchEvent(
+                new WindowEvent(SeasonCreation.this, WindowEvent.WINDOW_CLOSING));
+          });
+    }
+  }
+
+  static class EpisodeCreation extends CreationFrame {
+    EpisodeCreation() {
       super("Nieuwe aflevering");
 
       addTextField("Titel");
 
       JComboBox serieBox = generateDropDown("Serie", Serie.serieTitles);
 
-      String[] arr = new String[Serie.getSerieByName(serieBox.getSelectedItem().toString()).getSeasonCount()];
+      String[] arr =
+          new String[Serie.getSerieByName(serieBox.getSelectedItem().toString()).getSeasonCount()];
       for (int i = 0;
           i < Serie.getSerieByName(serieBox.getSelectedItem().toString()).getSeasonCount();
           i++)
@@ -30,11 +212,12 @@ public class ChildFrames {
                 .getTitle();
       JComboBox seasonBox = addDropDown("Seizoen", arr);
 
-      addTextField("Duratie");
-      addTextField("Afleveringsnummer");
+      JTimeChooser timePicker = addTimePicker("Duratie");
+      JSpinner episodeNumber = addSpinner("Afleveringsnummer");
 
       Common.NButton addEntity = new Common.NButton("Toevoegen");
       addButton(addEntity);
+      actionListenerEpisodePress(addEntity, timePicker, episodeNumber);
 
       serieBox.addActionListener(
           e -> {
@@ -49,72 +232,47 @@ public class ChildFrames {
                       .getTitle());
           });
     }
-  }
 
-  public static class LanguageCreation extends CreationFrame {
-    public LanguageCreation() {
-      super("Nieuwe taal");
-      addTextField("Taal");
-      addTextField("Code (ISO)"); // [a-z]{2}[_]{1}[A-Z]{2}
-      Common.NButton addEntity = new Common.NButton("Toevoegen");
-      addButton(addEntity);
+    private void actionListenerEpisodePress(
+        JButton button, JTimeChooser timePicker, JSpinner episodeNumber) {
+      button.addActionListener(
+          e -> {
+            Map<String, JTextField> map = values;
+            boolean validNumber = false;
+            try {
+              String title = map.get("Titel").getText();
+              String serie = comboValues.get("Serie").getSelectedItem().toString();
+              String season = comboValues.get("Seizoen").getSelectedItem().toString();
+              Time duration =
+                  Time.valueOf(
+                      LocalTime.of(
+                          timePicker.getHours(), timePicker.getMinutes(), timePicker.getSeconds()));
+              int episodeNum = (int) episodeNumber.getValue();
+
+              for (Serie.Episode epi :
+                  Serie.Season.getSeason(Serie.getSerieByName(serie), season).getEpisodes())
+                if (episodeNum == epi.getEpisodeNumber())
+                  Commons.showError("Er bestaat al een aflevering met dit nummer.");
+                else validNumber = true;
+
+              if (validNumber && !title.equals("")) {
+                new CreateOnDatabase().createEpisode(title, serie, season, duration, episodeNum);
+              }
+
+              EpisodeCreation.this.dispatchEvent(
+                  new WindowEvent(EpisodeCreation.this, WindowEvent.WINDOW_CLOSING));
+
+            } catch (Exception ex) {
+              Commons.exception(ex);
+              Commons.showError("Incorrecte gegevens");
+            }
+          });
     }
   }
 
-  public static class SeasonCreation extends CreationFrame {
-    public SeasonCreation() {
-      super("Nieuw seizoen");
+  static class SerieCreation extends CreationFrame {
 
-      generateDropDown("Serie", Serie.serieTitles);
-
-      addTextField("Titel");
-      addTextField("Seizoensnummer"); // [0-9]*
-      Common.NButton addEntity = new Common.NButton("Toevoegen");
-      addButton(addEntity);
-    }
-  }
-
-  public static class RatingCreation extends CreationFrame {
-    public RatingCreation() {
-      super("Nieuwe classificatie");
-      addTextField("Code"); // [A-Z]{1,2}[0-9]{1,2}
-      addTextField("Minimum leeftijd"); // [0-9]{1,2}
-      Common.NButton addEntity = new Common.NButton("Toevoegen");
-      addButton(addEntity);
-    }
-  }
-
-  public static class FilmCreation extends CreationFrame {
-    public FilmCreation() {
-      super("Nieuwe film");
-
-      addTextField("Titel");
-      addTextField("Duratie");
-      addTextField("Regisseur");
-
-      mediaDropdowns(this);
-
-      List<String> titles = Film.filmTitles;
-      generateDropDown("Vergelijkbaar", titles);
-
-      Common.NButton addEntity = new Common.NButton("Toevoegen");
-      addButton(addEntity);
-    }
-  }
-
-  public static class GenreCreation extends CreationFrame {
-
-    public GenreCreation() {
-      super("Nieuw genre");
-      addTextField("Naam");
-      Common.NButton addEntity = new Common.NButton("Toevoegen");
-      addButton(addEntity);
-    }
-  }
-
-  public static class SerieCreation extends CreationFrame {
-
-    public SerieCreation() {
+    SerieCreation() {
       super("Nieuwe serie");
 
       addTextField("Titel");
@@ -135,26 +293,21 @@ public class ChildFrames {
             Map<String, JTextField> map = values;
 
             try {
-              String[] langs = map.get("Taal").getText().split(" ");
-
               String title = map.get("Titel").getText();
-              MediaCommons.Genre genre = MediaCommons.Genre.getByName(map.get("Genre").getText());
-              MediaCommons.Language lang =
-                  MediaCommons.Language.getByCode(
-                      langs[
-                          langs.length
-                              - 1]); // Keep in mind languages can have spaces in them as well, so
-              // only select the last part of the String which is always the
-              // code
-              MediaCommons.AgeRating rating =
-                  MediaCommons.AgeRating.getByCode(
-                      comboValues.get("Classificatie").getSelectedItem().toString());
+              Object[] mediaCommons = getMediaCommons(comboValues);
+
+              MediaCommons.Language lang = (MediaCommons.Language) mediaCommons[1];
+              MediaCommons.Genre genre = (MediaCommons.Genre) mediaCommons[0];
+              MediaCommons.AgeRating rating = (MediaCommons.AgeRating) mediaCommons[2];
 
               String similarMedia = map.get("Vergelijkbaar").getText();
 
               if (!title.equals("")) {
                 new CreateOnDatabase().createSerie(genre, lang, title, rating, similarMedia);
               }
+
+              SerieCreation.this.dispatchEvent(
+                  new WindowEvent(SerieCreation.this, WindowEvent.WINDOW_CLOSING));
 
             } catch (NullPointerException ex) {
               Commons.exception(ex);
@@ -185,9 +338,9 @@ public class ChildFrames {
     cf.addDropDown("Classificatie", ratings);
   }
 
-  public static class AccountCreation extends CreationFrame {
+  static class AccountCreation extends CreationFrame {
 
-    public AccountCreation() {
+    AccountCreation() {
       super("Nieuw account");
 
       String[] fields = {

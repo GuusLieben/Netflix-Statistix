@@ -62,16 +62,19 @@ public class AdminView {
         mediaGraph.addNumber(object.objectId, object.getWatchedPercentage());
       }
 
-      JPanel wrapper = new JPanel(new GridLayout(1, 2, 0, 25));
+      JPanel wrapper = new JPanel(new GridLayout(1, 3, 0, 25));
 
       JButton mediaGraph = new JButton("Toon media grafiek");
-      JButton watchLogs = new JButton("Toon gebruiker-media statistieken");
+      JButton watchLogs = new JButton("Toon gebruiker statistieken");
+      JButton viewEnts = new JButton("Bekijk entiteiten");
 
+      showFrame(viewEnts, DeleteFrame.frame());
       showGraph(mediaGraph, buttonGroupMenu.mediaGraph);
       showFrame(watchLogs, watchedMediaList.watchedMediaFrame());
 
       wrapper.add(mediaGraph);
       wrapper.add(watchLogs);
+      wrapper.add(viewEnts);
       wrapper.setOpaque(false);
 
       return wrapper;

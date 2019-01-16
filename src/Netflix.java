@@ -1,5 +1,6 @@
 package com.netflix;
 
+import com.netflix.entities.*;
 import com.netflix.gui.NetflixFrame;
 import com.netflix.commons.DataHandle;
 

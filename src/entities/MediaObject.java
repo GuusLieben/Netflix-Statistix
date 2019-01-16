@@ -16,7 +16,8 @@ public abstract class MediaObject extends Entity {
   private Set<Account.Profile> watchedBy;
   protected String similarMedia;
 
-  protected MediaObject() {
+  protected MediaObject(Object primaryId, Object secondaryId) {
+    super(primaryId, secondaryId);
     watchedBy = new HashSet<>();
     objectId = objectIds.size() + 1;
     objectIds.add(this);

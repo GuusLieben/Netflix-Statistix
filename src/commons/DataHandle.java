@@ -109,8 +109,9 @@ public class DataHandle {
             statement.setNull(
                 i + 1, Types.NULL); // If it's an empty String, set the cell to SQL type null
           else statement.setObject(i + 1, arr[i]);
+        Commons.logger.info("Attempting to execute new query");
         statement.execute();
-        Commons.logger.info(String.format("Query passed %s)", sqlQuery.replace("?", "$obscured")));
+        Commons.logger.info(String.format("Query passed (%s)", sqlQuery));
         return SQLResults.PASS;
       } catch (SQLException ex) {
         Commons.exception(ex);
@@ -132,11 +133,9 @@ public class DataHandle {
         // Make sure the results are passed
         for (int i = 0; i < arr.length; i++) statement.setObject(i + 1, arr[i]);
 
+        Commons.logger.info("Attempting to execute new query");
         results = statement.executeQuery();
-        Commons.logger.info(
-            String.format(
-                // Safe modification of data, don't show cell content in the logs
-                "Query passed : %s (%s)", results.toString(), sqlQuery.replace("?", "$obscured")));
+        Commons.logger.info(String.format("Query passed (%s)", sqlQuery));
 
         ResultSetMetaData md = results.getMetaData();
         int columns = md.getColumnCount();
@@ -168,8 +167,7 @@ public class DataHandle {
   private static ThreadLocal<InputStream> inputStream = new ThreadLocal<>();
 
   public static String get(String property) {
-    Commons.logger.info(
-        String.format("Requesting property '%s' from package.properties", property));
+    Commons.logger.info(String.format("Requesting property '%s'", property));
 
     // Read the properties file
     inputStream.set(DataHandle.class.getClassLoader().getResourceAsStream("package.properties"));
