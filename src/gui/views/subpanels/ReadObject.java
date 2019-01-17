@@ -11,7 +11,9 @@ import javax.swing.table.*;
 import java.awt.*;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
-import java.util.ArrayList;
+import java.sql.*;
+import java.time.*;
+import java.util.*;
 
 import static com.netflix.Netflix.database;
 import static java.awt.BorderLayout.*;
@@ -40,33 +42,61 @@ public class ReadObject {
     // If it's a serie
     if (object.getType() == 2) {
       Serie serie = Serie.getSerieByName(object.getTitle());
+      Serie similar = serie.getSimilarObject();
+
+      String similarTitle;
+      String similarPercentage;
+      if (similar == null) {
+        similarTitle = "Geen";
+        similarPercentage = "0.00%";
+      } else {
+        similarTitle = similar.getTitle();
+        similarPercentage = Commons.percentage(similar.getWatchedPercentage());
+      }
+
       description =
           String.format(
-              "<html>Taal : %s<br>Genre : %s<br>Seizoenen : %d<br>Afleveringen : %d<br>Leeftijdsclassificatie %s<br>Bekeken door %s%% van het totaal aantal gebruikers<br><br>Vergelijkbaar : %s (%s%%)</html>",
+              "<html>Taal : %s<br>Genre : %s<br>Seizoenen : %d<br>Afleveringen : %d<br>Leeftijdsclassificatie %s<br>Bekeken door %d personen (%s%% van het totaal aantal gebruikers)<br><br>Vergelijkbaar : %s (%s%%)</html>",
               object.getLang().getLanguageName(),
               object.getGenre(),
               serie.getSeasonCount(),
               serie.getEpisodeCount(),
               object.getRating(),
+              object.getWatchedByAmount(),
               Commons.percentage(object.getWatchedPercentage()),
-              serie.getSimilarObject().getTitle(),
-              serie.getSimilarObject().getWatchedPercentage());
+              similarTitle,
+              similarPercentage);
     }
 
     // If it's a film
     if (object.getType() == 1) {
       Film film = Film.getFilmByName(object.getTitle());
+
+      Film similar = film.getSimilarObject();
+
+      String similarTitle;
+      String similarPercentage;
+      if (similar == null) {
+        similarTitle = "Geen";
+        similarPercentage = "0.00%";
+      } else {
+        similarTitle = similar.getTitle();
+        similarPercentage = Commons.percentage(similar.getWatchedPercentage());
+      }
+
       description =
           String.format(
-              "<html>Genre : %s<br>Taal : %s<br>Leeftijdsclassificatie : %s<br>Regisseur : %s<br>Tijdsduur : %s<br>Bekeken door %s%% van het totaal aantal gebruikers<br><br>Vergelijkbaar : %s (%s%%)</html>",
+              "<html>Genre : %s<br>Taal : %s<br>Leeftijdsclassificatie : %s<br>Regisseur : %s<br>Tijdsduur : %s, gemiddeld %s%% bekeken<br>Bekeken door %d personen (%s%% van het totaal aantal gebruikers)<br><br>Vergelijkbaar : %s (%s%%)</html>",
               object.getGenre(),
               object.getLang().getLanguageName(),
               object.getRating(),
               film.getDirector(),
               film.getDuration(),
+              Commons.percentage(film.getAverageWatchedTime()),
+              object.getWatchedByAmount(),
               Commons.percentage(object.getWatchedPercentage()),
-              film.getSimilarObject().getTitle(),
-              film.getSimilarObject().getWatchedPercentage());
+              similarTitle,
+              similarPercentage);
     }
   }
 
@@ -136,13 +166,29 @@ public class ReadObject {
       cb.addItemListener(
           e -> {
             if (cb.isSelected()) {
-              Account.Profile.currentUser.viewFilmNoDB(Film.getByDbId(obj.databaseId));
+
+              Random random = new Random();
+
+              Film film = Film.getByDbId(obj.databaseId);
+              Time duration = film.getDuration();
+              int hours = duration.getHours();
+              int minutes = duration.getMinutes();
+              int seconds = duration.getMinutes();
+
+              int watchedHours = random.nextInt(hours);
+              int watchedMinutes = random.nextInt(minutes);
+              int watchedSeconds = random.nextInt(seconds);
+
+              Account.Profile.currentUser.viewFilmNoDB(
+                  Film.getByDbId(obj.databaseId),
+                  Time.valueOf(LocalTime.of(watchedHours, watchedMinutes, watchedSeconds)));
               String qr =
-                  "INSERT INTO WatchedFilms (FilmId, UserId, FilmsWatched) VALUES (?, ?, ?)";
+                  "INSERT INTO WatchedFilms (FilmId, UserId, FilmsWatched, TimeWatched) VALUES (?, ?, ?, ?)";
               Object[] arr = {
                 obj.databaseId,
                 Account.Profile.currentUser.databaseId,
-                Account.Profile.currentUser.getFilmsWatched().size()
+                Account.Profile.currentUser.getFilmsWatched().size(),
+                Time.valueOf(LocalTime.of(watchedHours, watchedMinutes, watchedSeconds))
               };
 
               database.executeSqlNoResult(qr, arr);
@@ -159,12 +205,14 @@ public class ReadObject {
             Film film = Film.getFilmByName(obj.getTitle());
             descriptionLabel.setText(
                 String.format(
-                    "<html>Genre : %s<br>Taal : %s<br>Leeftijdsclassificatie : %s<br>Regisseur : %s<br>Tijdsduur : %s<br>Bekeken door %s%% van het totaal aantal gebruikers<br><br>Vergelijkbaar : %s (%s%%)</html>",
+                    "<html>Genre : %s<br>Taal : %s<br>Leeftijdsclassificatie : %s<br>Regisseur : %s<br>Tijdsduur : %s, gemiddeld %s minuten bekeken<br>Bekeken door %d personen (%s%% van het totaal aantal gebruikers)<br><br>Vergelijkbaar : %s (%s%%)</html>",
                     obj.getGenre(),
                     obj.getLang().getLanguageName(),
                     obj.getRating(),
                     film.getDirector(),
                     film.getDuration(),
+                    Commons.percentage(film.getAverageWatchedTime()),
+                    obj.getWatchedByAmount(),
                     Commons.percentage(obj.getWatchedPercentage()),
                     film.getSimilarObject().getTitle(),
                     film.getSimilarObject().getWatchedPercentage()));
@@ -182,7 +230,7 @@ public class ReadObject {
           new JTable() {
             @Override
             public boolean isCellEditable(int row, int column) {
-              return column == 4;
+              return column == 6;
             }
           };
 
@@ -193,14 +241,23 @@ public class ReadObject {
       tableModel.addTableModelListener(cml);
 
       // Table headers
-      String[] columnNames = {"Aflevering", "Titel", "Seizoen", "Duratie", "Bekeken", "DatabaseId"};
+      String[] columnNames = {
+        "Aflevering",
+        "Titel",
+        "Seizoen",
+        "Duratie",
+        "Gemiddeld bekeken",
+        "Door jou bekeken",
+        "Bekeken",
+        "DatabaseId"
+      };
 
       tableModel.setColumnIdentifiers(columnNames);
       table.setModel(tableModel);
 
       TableColumnModel tcm = table.getColumnModel();
       tcm.removeColumn(
-          tcm.getColumn(5)); // Hide DatabaseId from user, but store the data in the table
+          tcm.getColumn(7)); // Hide DatabaseId from user, but store the data in the table
 
       // Add all episodes in the serie
       for (Serie.Season season : ReadObject.serie.getSeasons()) {
@@ -211,13 +268,15 @@ public class ReadObject {
                 episode.getTitle(),
                 episode.getSeason(),
                 episode.getDuration(),
-                episode.watchedByProfile(),
+                Commons.percentage(episode.getAverageWatchedTime()) + "%",
+                episode.getWatchedAmountBy(Account.Profile.currentUser),
+                episode.watchedByCurrentProfile(),
                 episode.databaseId
               });
         }
       }
 
-      TableColumn tc = table.getColumnModel().getColumn(4);
+      TableColumn tc = table.getColumnModel().getColumn(6);
       tc.setCellEditor(table.getDefaultEditor(Boolean.class));
       tc.setCellRenderer(table.getDefaultRenderer(Boolean.class));
 
@@ -290,20 +349,48 @@ public class ReadObject {
     }
 
     private void episodeTableUpdate(int row, int column, TableModelEvent e) {
-      if (column == 4) {
+      if (column == 6) {
         TableModel model = (TableModel) e.getSource();
         Boolean checked = (Boolean) model.getValueAt(row, column);
         int dbID = (int) ReadObject.table.getModel().getValueAt(row, column + 1);
         if (checked) {
-          Account.Profile.currentUser.viewEpisodeNoDB(Serie.Episode.getByDbId(dbID));
+
+          Random random = new Random();
+
+          Serie.Episode epi = Serie.Episode.getByDbId(dbID);
+          Time duration = epi.getDuration();
+          int hours = duration.getHours();
+          int minutes = duration.getMinutes();
+          int seconds = duration.getMinutes();
+
+          int watchedHours = random.nextInt(hours);
+          int watchedMinutes = random.nextInt(minutes);
+          int watchedSeconds = random.nextInt(seconds);
+
+          Account.Profile.currentUser.viewEpisodeNoDB(
+              Serie.Episode.getByDbId(dbID),
+              Time.valueOf(LocalTime.of(watchedHours, watchedMinutes, watchedSeconds)));
 
           String qr =
-              "INSERT INTO WatchedEpisodes (EpisodesWatched, UserId, EpisodeId) VALUES (?, ?, ?)";
+              "INSERT INTO WatchedEpisodes (EpisodesWatched, UserId, EpisodeId, TimeWatched) VALUES (?, ?, ?, ?)";
           Object[] arr = {
-            Account.Profile.currentUser.getEpisodesWatched().size(), Account.Profile.currentUser.databaseId, dbID
+            Account.Profile.currentUser.getEpisodesWatched().size(),
+            Account.Profile.currentUser.databaseId,
+            dbID,
+            Time.valueOf(LocalTime.of(watchedHours, watchedMinutes, watchedSeconds))
           };
 
           database.executeSqlNoResult(qr, arr);
+
+          table.setValueAt(
+              Commons.percentage(Serie.Episode.getByDbId(dbID).getAverageWatchedTime()) + "%",
+              table.getSelectedRow(),
+              4);
+
+          table.setValueAt(
+              LocalTime.of(watchedHours, watchedMinutes, watchedSeconds),
+              table.getSelectedRow(),
+              5);
 
         } else {
           Account.Profile.currentUser.unviewEpisode(Serie.Episode.getByDbId(dbID));
@@ -312,17 +399,22 @@ public class ReadObject {
           Object[] arr = {Account.Profile.currentUser.databaseId, dbID};
 
           database.executeSqlNoResult(qr, arr);
+
+          table.setValueAt("0.00%", table.getSelectedRow(), 4);
+
+          table.setValueAt("00:00:00", table.getSelectedRow(), 5);
         }
 
         Serie serie = Serie.getSerieByName(obj.getTitle());
         lable.setText(
             String.format(
-                "<html>Taal : %s<br>Genre : %s<br>Seizoenen : %d<br>Afleveringen : %d<br>Leeftijdsclassificatie %s<br>Bekeken door %s%% van het totaal aantal gebruikers<br><br>Vergelijkbaar : %s (%s%%)</html>",
+                "<html>Taal : %s<br>Genre : %s<br>Seizoenen : %d<br>Afleveringen : %d<br>Leeftijdsclassificatie %s<br>Bekeken door %d personen (%s%% van het totaal aantal gebruikers)<br><br>Vergelijkbaar : %s (%s%%)</html>",
                 obj.getLang().getLanguageName(),
                 obj.getGenre(),
                 serie.getSeasonCount(),
                 serie.getEpisodeCount(),
                 obj.getRating(),
+                obj.getWatchedByAmount(),
                 Commons.percentage(obj.getWatchedPercentage()),
                 serie.getSimilarObject().getTitle(),
                 serie.getSimilarObject().getWatchedPercentage()));

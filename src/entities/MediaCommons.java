@@ -19,8 +19,10 @@ public class MediaCommons {
     }
 
     // get a specific language by the langCode
-    public static Language getByCode(String languageCode) {
-      for (Language lang : langs) if (lang.getLangCode().equals(languageCode)) return lang;
+    public static Language getByCode(Object languageCode) {
+      if (languageCode == null) languageCode = "nu_LL";
+      for (Language lang : langs)
+        if (lang.getLangCode().equals(languageCode.toString())) return lang;
       return null;
     }
 
@@ -55,7 +57,8 @@ public class MediaCommons {
     }
 
     // Find the genre with a specific name
-    public static Genre getByName(String name) {
+    public static Genre getByName(Object name) {
+        if (name == null) name = "Geen";
       for (Genre genre : genres) if (genre.getGenre().equals(name)) return genre;
       return null;
     }
@@ -92,8 +95,9 @@ public class MediaCommons {
     }
 
     // Get a rating by the age, used in Database handles
-    public static AgeRating getByAge(int age) {
-      for (AgeRating rating : ratings) if (rating.getMinimumAge() == age) return rating;
+    public static AgeRating getByAge(Object age) {
+      if (age == null) age = 0;
+      for (AgeRating rating : ratings) if (rating.getMinimumAge() == (int) age) return rating;
       return null;
     }
 

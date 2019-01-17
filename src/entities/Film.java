@@ -21,7 +21,7 @@ public class Film extends MediaObject { // MediaObject extends Entity
       String director,
       int databaseId,
       String similarMedia) {
-      super(title, null);
+    super(title, null);
     super.similarMedia = similarMedia;
     super.databaseId = databaseId;
     super.rating = rating;
@@ -52,9 +52,9 @@ public class Film extends MediaObject { // MediaObject extends Entity
         database.executeSql(
             "SELECT Film.FilmId, Rating, LijktOp, LanguageCode, Title, Duration, Director, Genre FROM Film JOIN Koppeltabel_GenreId_Film ON Film.FilmId = Koppeltabel_GenreId_Film.FilmId JOIN Genre ON Koppeltabel_GenreId_Film.GenreId = Genre.GenreId")) {
       new Film(
-          MediaCommons.AgeRating.getByAge((int) map.get("Rating")),
+          MediaCommons.AgeRating.getByAge(map.get("Rating")),
           MediaCommons.Genre.getByName((String) map.get("Genre")),
-          MediaCommons.Language.getByCode((String) map.get("LanguageCode")),
+          MediaCommons.Language.getByCode(map.get("LanguageCode")),
           (String) map.get("Title"),
           (Time) map.get("Duration"),
           (String) map.get("Director"),
@@ -66,10 +66,11 @@ public class Film extends MediaObject { // MediaObject extends Entity
   // Get all watched films and the profile that watched it
   public static void getViewData() {
     for (HashMap<String, Object> map :
-        database.executeSql("SELECT UserId, FilmId FROM WatchedFilms")) {
+        database.executeSql("SELECT UserId, FilmId, TimeWatched FROM WatchedFilms")) {
       Account.Profile prof = Account.Profile.getByDbId((int) map.get("UserId")); // Breaks
       Film film = Film.getByDbId((int) map.get("FilmId"));
-      prof.viewFilmNoDB(film);
+      Time time = (Time) map.get("TimeWatched");
+      prof.viewFilmNoDB(film, time);
     }
   }
 
@@ -79,8 +80,30 @@ public class Film extends MediaObject { // MediaObject extends Entity
   }
 
   // Getters
-  public String getDuration() {
-    return duration.toString();
+  public Time getDuration() {
+    return duration;
+  }
+
+  public double getAverageWatchedTime() {
+    double totalSeconds = 0;
+
+    if (getWatchedBy().size() > 0) {
+
+      for (Map.Entry<Account.Profile, Time> entry : getWatchedBy().entrySet()) {
+        totalSeconds +=
+            ((entry.getValue().getHours() * 3600)
+                + (entry.getValue().getMinutes() * 60)
+                + entry.getValue().getSeconds());
+      }
+
+      double averageSeconds = totalSeconds / getWatchedByAmount();
+
+      double totalDuration =
+          (duration.getHours() * 3600) + (duration.getMinutes() * 60) + duration.getSeconds();
+
+      return averageSeconds / totalDuration * 100;
+    }
+    return 0;
   }
 
   public String getDirector() {

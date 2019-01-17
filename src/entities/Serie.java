@@ -1,6 +1,7 @@
 package com.netflix.entities;
 
 import java.sql.*;
+import java.time.*;
 import java.util.*;
 
 import static com.netflix.Netflix.database;
@@ -49,12 +50,12 @@ public class Serie extends MediaObject { // MediaObject extends Entity
   public static void getFromDatabase() {
     for (HashMap<String, Object> map :
         database.executeSql(
-            "SELECT Serie.SerieId, Title, AmountOfSeasons, LijktOp, LanguageCode, Rating, Genre FROM Serie JOIN Koppeltabel_Serie_Genre ON Serie.SerieId = Koppeltabel_Serie_Genre.SerieId JOIN Genre ON Koppeltabel_Serie_Genre.GenreId = Genre.GenreId")) {
+            "SELECT Serie.SerieId, Title, AmountOfSeasons, LijktOp, LanguageCode, Rating, Genre FROM Serie JOIN Koppeltabel_Serie_Genre ON Serie.SerieId = Koppeltabel_Serie_Genre.SerieId LEFT OUTER JOIN Genre ON Koppeltabel_Serie_Genre.GenreId = Genre.GenreId")) {
       new Serie(
-          MediaCommons.Genre.getByName((String) map.get("Genre")),
-          MediaCommons.Language.getByCode((String) map.get("LanguageCode")),
+          MediaCommons.Genre.getByName(map.get("Genre")),
+          MediaCommons.Language.getByCode(map.get("LanguageCode")),
           (String) map.get("Title"),
-          MediaCommons.AgeRating.getByAge((int) map.get("Rating")),
+          MediaCommons.AgeRating.getByAge(map.get("Rating")),
           (int) map.get("SerieId"),
           (String) map.get("LijktOp"));
     }
@@ -128,6 +129,8 @@ public class Serie extends MediaObject { // MediaObject extends Entity
     public static void getFromDatabase() {
       for (HashMap<String, Object> map :
           database.executeSql("SELECT SeasonId, SerieId, Title, SeasonNumber FROM Season")) {
+        System.out.println(map);
+        System.out.println(Serie.series);
         new Season(
             Serie.getByDbId((int) map.get("SerieId")),
             (String) map.get("Title"),
@@ -146,6 +149,10 @@ public class Serie extends MediaObject { // MediaObject extends Entity
           .filter(season -> season.serie == serie && season.title.equals(seasonName))
           .findFirst()
           .orElse(null);
+    }
+
+    public void removeEpisode(Episode epi) {
+      episodes.remove(epi);
     }
 
     public Serie getSerie() {
@@ -183,6 +190,7 @@ public class Serie extends MediaObject { // MediaObject extends Entity
     private Serie serie;
     private Time duration;
     private int episodeNumber;
+    private Map<Account.Profile, Time> watchedBy;
 
     public Episode(
         Season season,
@@ -201,6 +209,7 @@ public class Serie extends MediaObject { // MediaObject extends Entity
       serie.setEpisodeCount(serie.getEpisodeCount() + 1);
       episodes.add(this);
       season.addEpisode(this);
+      watchedBy = new HashMap<>();
     }
 
     // Get episode by database ID
@@ -226,10 +235,11 @@ public class Serie extends MediaObject { // MediaObject extends Entity
     // Get all watched episodes and the profile that watched it
     public static void getViewData() {
       for (HashMap<String, Object> map :
-          database.executeSql("SELECT UserId, EpisodeId FROM WatchedEpisodes")) {
+          database.executeSql("SELECT UserId, EpisodeId, TimeWatched FROM WatchedEpisodes")) {
         Account.Profile prof = Account.Profile.getByDbId((int) map.get("UserId")); // Breaks
         Episode epi = Episode.getByDbId((int) map.get("EpisodeId"));
-        prof.viewEpisodeNoDB(epi);
+        Time time = (Time) map.get("TimeWatched");
+        prof.viewEpisodeNoDB(epi, time);
       }
     }
 
@@ -255,8 +265,56 @@ public class Serie extends MediaObject { // MediaObject extends Entity
     }
 
     // Use the Stream API to find out if the current profile watched this episode
-    public Boolean watchedByProfile() {
-      return Account.Profile.currentUser.getEpisodesWatched().stream().anyMatch(epi -> epi == this);
+    public Boolean watchedByCurrentProfile() {
+      return watchedByProfile(Account.Profile.currentUser);
+    }
+
+    public Boolean watchedByProfile(Account.Profile profile) {
+
+      return profile.getEpisodesWatched().entrySet().stream().anyMatch(epi -> epi.getKey() == this);
+    }
+
+    public double getAverageWatchedTime() {
+      double totalSeconds = 0;
+
+      if (getWatchedBy().size() > 0) {
+
+        for (Map.Entry<Account.Profile, Time> entry : getWatchedBy().entrySet()) {
+          totalSeconds +=
+              ((entry.getValue().getHours() * 3600)
+                  + (entry.getValue().getMinutes() * 60)
+                  + entry.getValue().getSeconds());
+        }
+
+        double averageSeconds = totalSeconds / getWatchedByAmount();
+
+        double totalDuration =
+            (duration.getHours() * 3600) + (duration.getMinutes() * 60) + duration.getSeconds();
+
+        return averageSeconds / totalDuration * 100;
+      }
+      return 0;
+    }
+
+    public void setWatchedBy(Account.Profile profile, Time time) {
+      watchedBy.put(profile, time);
+    }
+
+    public Map<Account.Profile, Time> getWatchedBy() {
+      return watchedBy;
+    }
+
+    public double getWatchedByAmount() {
+      return watchedBy.size();
+    }
+
+    public Time getWatchedAmountBy(Account.Profile currentUser) {
+      return Optional.ofNullable(getWatchedBy().get(currentUser))
+          .orElseGet(() -> Time.valueOf(LocalTime.of(0, 0, 0)));
+    }
+
+    public void removeWatchedBy(Account.Profile profile) {
+      watchedBy.remove(profile);
     }
   }
 }

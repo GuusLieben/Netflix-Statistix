@@ -36,7 +36,8 @@ public abstract class Entity {
 
     Commons.logger.info(
         String.format(
-            "New entity with instance '%s' \t(%d)", this.getClass().getSimpleName(), entityId));
+            "New entity with instance '%s' \t(%d)\t#1 : %s\t#2 : %s",
+            this.getClass().getSimpleName(), entityId, primaryId, secondaryId));
     try {
       instances.add(Class.forName(this.getClass().getName()));
     } catch (ClassNotFoundException ex) {

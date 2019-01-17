@@ -4,6 +4,7 @@ import com.netflix.commons.*;
 import com.netflix.gui.NetflixFrame;
 
 import javax.swing.JOptionPane;
+import java.sql.*;
 import java.sql.Date;
 import java.time.*;
 import java.util.*;
@@ -46,7 +47,8 @@ public class Account extends Entity {
       this.email = email;
       this.street = street;
       this.houseNumber = houseNumber;
-      this.addition = addition;
+      if (addition == null) this.addition = "";
+      else this.addition = addition;
       this.city = city;
       // Password is hashed here
       this.password = Commons.hashSHA256(password);
@@ -181,18 +183,18 @@ public class Account extends Entity {
     private static Set<Profile> profiles = new HashSet<>();
     private Account account;
     private String name;
-    private Set<Serie.Episode> episodesWatched;
+    private Map<Serie.Episode, Time> episodesWatched;
     private Set<Film> filmsWatched;
     private Date birthdate;
 
     public Profile(Account account, String name, Date birthday, int databaseId) {
-        super(name, account.getEmail());
+      super(name, account.getEmail());
       super.databaseId = databaseId;
       if (account.getProfiles().size() < 5) { // Make sure there are less than 5 profiles attached
         this.account = account;
         this.name = name;
         this.birthdate = birthday;
-        episodesWatched = new HashSet<>();
+        episodesWatched = new HashMap<>();
         filmsWatched = new HashSet<>();
         account.addProfile(this);
         profiles.add(this);
@@ -232,13 +234,16 @@ public class Account extends Entity {
     }
 
     public Set<Serie> getSeriesWatched() {
-      return episodesWatched.stream().map(Serie.Episode::getSerie).collect(Collectors.toSet());
+      Set<Serie> series = new HashSet<>();
+      episodesWatched.forEach((key, value) -> series.add(key.getSerie()));
+      return series;
     }
 
     public Set<MediaObject> getMediaWatched() {
       Set<MediaObject> mediaWatched = new HashSet<>();
       mediaWatched.addAll(filmsWatched);
-      for (Serie.Episode epi : episodesWatched) mediaWatched.add(epi.getSerie());
+      for (Map.Entry<Serie.Episode, Time> epi : episodesWatched.entrySet())
+        mediaWatched.add(epi.getKey().getSerie());
       return mediaWatched;
     }
 
@@ -259,7 +264,7 @@ public class Account extends Entity {
       return name;
     }
 
-    public Set<Serie.Episode> getEpisodesWatched() {
+    public Map<Serie.Episode, Time> getEpisodesWatched() {
       return episodesWatched;
     }
 
@@ -268,11 +273,12 @@ public class Account extends Entity {
     }
 
     // View media Film
-    public void viewFilm(Film film) {
+    public void viewFilm(Film film, Time time) {
       // Seperate method as viewfilm is also invoked when pulling from the database
-      viewFilmNoDB(film);
+      viewFilmNoDB(film, time);
 
-      String qr = "INSERT INTO WatchedFilms (FilmId, UserId, FilmsWatched) VALUES (?, ?, ?)";
+      String qr =
+          "INSERT INTO WatchedFilms (FilmId, UserId, FilmsWatched, TimeWatched) VALUES (?, ?, ?, ?)";
       Object[] arr = {film.databaseId, databaseId, filmsWatched.size()};
 
       if (database.executeSqlNoResult(qr, arr) == DataHandle.SQLResults.PASS)
@@ -280,12 +286,12 @@ public class Account extends Entity {
     }
 
     // View media episode
-    public void viewEpisode(Serie.Episode episode) {
+    public void viewEpisode(Serie.Episode episode, Time time) {
       // Seperate method as viewepisode is also invoked when pulling from the database
-      viewEpisodeNoDB(episode);
+      viewEpisodeNoDB(episode, time);
 
       String qr =
-          "INSERT INTO WatchedEpisodes (EpisodeId, UserId, EpisodesWatched) VALUES (?, ?, ?)";
+          "INSERT INTO WatchedEpisodes (EpisodeId, UserId, EpisodesWatched, TimeWatched) VALUES (?, ?, ?, ?)";
 
       Object[] arr = {episode.databaseId, databaseId, episodesWatched.size()};
 
@@ -294,18 +300,19 @@ public class Account extends Entity {
     }
 
     // View media episode
-    public void viewEpisodeNoDB(Serie.Episode epi) {
+    public void viewEpisodeNoDB(Serie.Episode epi, Time time) {
       // Statistics for the parent Serie
-      epi.getSerie().setWatchedBy(this);
+      epi.getSerie().setWatchedBy(this, time);
+      epi.setWatchedBy(this, time);
       epi.getSerie().watchedEpisodes++;
       // Statistics for the profile
-      episodesWatched.add(epi);
+      episodesWatched.put(epi, time);
     }
 
     // View media film
-    public void viewFilmNoDB(Film film) {
+    public void viewFilmNoDB(Film film, Time time) {
       // Statistics for the film
-      film.setWatchedBy(this);
+      film.setWatchedBy(this, time);
       // Statistics for the profile
       filmsWatched.add(film);
     }
@@ -314,6 +321,7 @@ public class Account extends Entity {
     public void unviewEpisode(Serie.Episode epi) {
       if (epi.getSerie().watchedEpisodes == 1) epi.getSerie().removeWatchedBy(this);
       epi.getSerie().watchedEpisodes--;
+      epi.getWatchedBy().remove(this);
       episodesWatched.remove(epi);
     }
 

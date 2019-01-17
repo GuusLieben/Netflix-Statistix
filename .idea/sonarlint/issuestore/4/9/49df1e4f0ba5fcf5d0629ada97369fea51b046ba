@@ -1,2 +1,6 @@
 
-gsquid:S2259È"HA "NullPointerException" could be thrown; "getByDbId()" can return null.(Òý¿õ8©º™—„-
+gsquid:S2259Ý"HA "NullPointerException" could be thrown; "getByDbId()" can return null.(Òý¿õ8èù§¶…-
+W
+squid:S106„"9Replace this use of System.out or System.err by a logger.(‰Ì°å8×Š€Â…-
+W
+squid:S106ƒ"9Replace this use of System.out or System.err by a logger.(µˆœÑ8ÇÍ÷Á…-

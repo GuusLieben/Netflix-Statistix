@@ -7,17 +7,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="234d0243-9dea-46f1-ab80-3e6e9971e668" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/NetflixGit.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/NetflixGit.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/b/1bb8c3016383a162d2c2d3b3001f4dcd8bd996b6" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/b/1bb8c3016383a162d2c2d3b3001f4dcd8bd996b6" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/4/24bd7a9bd7ca6062ff272717043f40d0fd2e0815" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/4/24bd7a9bd7ca6062ff272717043f40d0fd2e0815" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/4/348258810a604f4ac546b7e80bafd26207de874b" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/4/348258810a604f4ac546b7e80bafd26207de874b" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/2/428233252712fd288d6c3b1c988539f1713b9201" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/2/428233252712fd288d6c3b1c988539f1713b9201" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/f/2f17701578f5c2ce0d9415e1c9a6364949dc76c3" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/f/2f17701578f5c2ce0d9415e1c9a6364949dc76c3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/9/49df1e4f0ba5fcf5d0629ada97369fea51b046ba" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/9/49df1e4f0ba5fcf5d0629ada97369fea51b046ba" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/c/4cbe1080208a64c497a45935a8c6ef05092c3958" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/c/4cbe1080208a64c497a45935a8c6ef05092c3958" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/7/77408e3b0917e084a14145fce18d7cd2f7eccc2d" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/7/77408e3b0917e084a14145fce18d7cd2f7eccc2d" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/3/b3053c1437a4eaab2d4dc7bd78d35f8390ce66ed" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/3/b3053c1437a4eaab2d4dc7bd78d35f8390ce66ed" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/6/b68590abafdf438baf2b0e36103b14f4af26b5d9" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/6/b68590abafdf438baf2b0e36103b14f4af26b5d9" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/8/b8e6d784ceb8e793c596704a058224513472fadf" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/8/b8e6d784ceb8e793c596704a058224513472fadf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/c/fcb0470a901b48f2b92628bfab11d53d9ca79da5" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/c/fcb0470a901b48f2b92628bfab11d53d9ca79da5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/package.properties" beforeDir="false" afterPath="$PROJECT_DIR$/resources/package.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Netflix.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Netflix.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/commons/Commons.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/commons/Commons.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/commons/CreateOnDatabase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/commons/CreateOnDatabase.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/commons/DataHandle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/commons/DataHandle.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/entities/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/Account.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/entities/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/Entity.java" afterDir="false" />
@@ -25,9 +26,11 @@
       <change beforePath="$PROJECT_DIR$/src/entities/MediaCommons.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/MediaCommons.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/entities/MediaObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/MediaObject.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/entities/Serie.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/Serie.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gui/views/AccountView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/views/AccountView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/gui/views/AdminView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/views/AdminView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gui/views/ChildFrames.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/views/ChildFrames.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gui/views/subpanels/CreationFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/views/subpanels/CreationFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gui/views/subpanels/DeleteFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/views/subpanels/DeleteFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gui/views/subpanels/ReadObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/views/subpanels/ReadObject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gui/views/subpanels/ReadPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/views/subpanels/ReadPanel.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -68,128 +71,33 @@
     <select />
   </component>
   <component name="ExportTestResults" outputFolder="$PROJECT_DIR$/testresults" openResultsInEditor="true" userTempatePath="" />
+  <component name="FavoritesManager">
+    <favorites_list name="NetflixGit" />
+  </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/gui/views/subpanels/ReadObject.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="305">
+              <caret line="272" column="24" selection-start-line="272" selection-start-column="24" selection-end-line="272" selection-end-column="24" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="class#ResizeListener#0;class#ReadObject#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/gui/views/subpanels/DeleteFrame.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="190">
-              <caret line="122" column="40" selection-start-line="122" selection-start-column="40" selection-end-line="122" selection-end-column="40" />
+            <state relative-caret-position="549">
+              <caret line="233" column="40" selection-start-line="233" selection-start-column="40" selection-end-line="233" selection-end-column="40" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="method#removeSeason#0;class#DeleteFrame#0" />
-                <element signature="method#removeSerie#0;class#DeleteFrame#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/gui/views/AdminView.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1978">
-              <caret line="154" column="21" selection-start-line="154" selection-start-column="21" selection-end-line="154" selection-end-column="21" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/entities/Entity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="512">
-              <caret line="34" column="38" selection-start-line="34" selection-start-column="38" selection-end-line="34" selection-end-column="38" />
-              <folding>
-                <element signature="e#437#438#0" expanded="true" />
-                <element signature="e#471#472#0" expanded="true" />
-                <element signature="e#515#516#0" expanded="true" />
-                <element signature="e#551#552#0" expanded="true" />
-                <element signature="e#355#356#0" expanded="true" />
-                <element signature="e#381#382#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/gui/views/ChildFrames.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="379" selection-start-line="379" selection-end-line="379" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="method#getMediaCommons#0;class#ChildFrames#0" />
-                <element signature="class#FilmCreation#0;class#ChildFrames#0" />
-                <element signature="class#SeasonCreation#0;class#ChildFrames#0" />
-                <element signature="class#EpisodeCreation#0;class#ChildFrames#0" />
-                <element signature="method#mediaDropdowns#0;class#ChildFrames#0" />
-                <element signature="method#AccountCreation#0;class#AccountCreation#0;class#ChildFrames#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/entities/Account.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="816">
-              <caret line="188" column="40" selection-start-line="188" selection-start-column="40" selection-end-line="188" selection-end-column="40" />
-              <folding>
-                <element signature="e#2639#2640#0" expanded="true" />
-                <element signature="e#2662#2663#0" expanded="true" />
-                <element signature="e#2704#2705#0" expanded="true" />
-                <element signature="e#2734#2735#0" expanded="true" />
-                <element signature="e#2767#2768#0" expanded="true" />
-                <element signature="e#2795#2796#0" expanded="true" />
-                <element signature="e#2844#2845#0" expanded="true" />
-                <element signature="e#2884#2885#0" expanded="true" />
-                <element signature="e#2917#2918#0" expanded="true" />
-                <element signature="e#2942#2943#0" expanded="true" />
-                <element signature="e#2988#2989#0" expanded="true" />
-                <element signature="e#3022#3023#0" expanded="true" />
-                <element signature="e#3051#3052#0" expanded="true" />
-                <element signature="e#3072#3073#0" expanded="true" />
-                <element signature="e#3110#3111#0" expanded="true" />
-                <element signature="e#3136#3137#0" expanded="true" />
-                <element signature="e#3166#3167#0" expanded="true" />
-                <element signature="e#3190#3191#0" expanded="true" />
-                <element signature="e#3231#3232#0" expanded="true" />
-                <element signature="e#3256#3257#0" expanded="true" />
-                <element signature="e#3286#3287#0" expanded="true" />
-                <element signature="e#3308#3309#0" expanded="true" />
-                <element signature="e#3348#3349#0" expanded="true" />
-                <element signature="e#3376#3377#0" expanded="true" />
-                <element signature="e#3409#3410#0" expanded="true" />
-                <element signature="e#3491#3492#0" expanded="true" />
-                <element signature="e#3524#3525#0" expanded="true" />
-                <element signature="e#3549#3550#0" expanded="true" />
-                <element signature="e#3588#3589#0" expanded="true" />
-                <element signature="e#3613#3614#0" expanded="true" />
-                <element signature="e#3736#3737#0" expanded="true" />
-                <element signature="e#3767#3768#0" expanded="true" />
-                <element signature="e#5912#5944#0" expanded="true" />
-                <element signature="e#6422#6423#0" expanded="true" />
-                <element signature="e#6450#6451#0" expanded="true" />
-                <element signature="e#7256#7257#0" expanded="true" />
-                <element signature="e#7281#7282#0" expanded="true" />
-                <element signature="e#7335#7336#0" expanded="true" />
-                <element signature="e#7371#7372#0" expanded="true" />
-                <element signature="e#7413#7414#0" expanded="true" />
-                <element signature="e#7446#7447#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/gui/views/subpanels/CreationFrame.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="212">
-              <caret line="107" column="37" selection-start-line="107" selection-start-column="37" selection-end-line="107" selection-end-column="37" />
-              <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="e#863#1008#0" expanded="true" />
+                <element signature="e#1007#1008#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -198,8 +106,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/commons/DataHandle.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="123" column="43" selection-start-line="123" selection-start-column="43" selection-end-line="123" selection-end-column="43" />
+            <state relative-caret-position="401">
+              <caret line="48" column="36" selection-start-line="48" selection-start-column="31" selection-end-line="48" selection-end-column="36" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -208,20 +116,13 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/entities/MediaCommons.java">
+        <entry file="file://$PROJECT_DIR$/src/entities/Account.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="29" column="19" selection-start-line="29" selection-start-column="19" selection-end-line="29" selection-end-column="19" />
+            <state relative-caret-position="472">
+              <caret line="313" column="32" lean-forward="true" selection-start-line="313" selection-start-column="32" selection-end-line="313" selection-end-column="32" />
               <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1068#1069#0" expanded="true" />
-                <element signature="e#1097#1098#0" expanded="true" />
-                <element signature="e#1136#1137#0" expanded="true" />
-                <element signature="e#1169#1170#0" expanded="true" />
-                <element signature="e#1987#1988#0" expanded="true" />
-                <element signature="e#2017#2018#0" expanded="true" />
-                <element signature="e#2063#2064#0" expanded="true" />
-                <element signature="e#2093#2094#0" expanded="true" />
+                <element signature="e#7427#7428#0" expanded="true" />
+                <element signature="e#7463#7464#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -230,28 +131,15 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/entities/Serie.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="560">
-              <caret line="97" column="25" selection-start-line="97" selection-start-column="25" selection-end-line="97" selection-end-column="25" />
+            <state relative-caret-position="773">
+              <caret line="317" selection-start-line="317" selection-end-line="317" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#2319#2320#0" expanded="true" />
-                <element signature="e#2347#2348#0" expanded="true" />
-                <element signature="e#2774#2775#0" expanded="true" />
-                <element signature="e#2806#2807#0" expanded="true" />
-                <element signature="e#4063#4064#0" expanded="true" />
-                <element signature="e#4092#4093#0" expanded="true" />
-                <element signature="e#4363#4364#0" expanded="true" />
-                <element signature="e#4389#4390#0" expanded="true" />
-                <element signature="e#4421#4422#0" expanded="true" />
-                <element signature="e#4447#4448#0" expanded="true" />
-                <element signature="e#4483#4484#0" expanded="true" />
-                <element signature="e#4516#4517#0" expanded="true" />
-                <element signature="e#4556#4557#0" expanded="true" />
-                <element signature="e#4593#4594#0" expanded="true" />
-                <element signature="e#4676#4677#0" expanded="true" />
-                <element signature="e#4716#4717#0" expanded="true" />
-                <element signature="e#4762#4763#0" expanded="true" />
-                <element signature="e#4788#4789#0" expanded="true" />
+                <element signature="e#4537#4538#0" expanded="true" />
+                <element signature="e#4571#4572#0" expanded="true" />
+                <element signature="e#7602#7603#0" expanded="true" />
+                <element signature="e#7668#7669#0" expanded="true" />
+                <element signature="e#9059#9060#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -273,36 +161,36 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>Netflix.database</find>
-      <find>\\t\\t</find>
-      <find>Netflix.database.execu</find>
-      <find>Netflix.database.</find>
-      <find>DefaultTable</find>
-      <find>Toon media</find>
-      <find>[a-zA-Z]+ *(.+)Creation\(</find>
-      <find>String title</find>
-      <find>[a-z]{2}[_]{1}[A-Z]{2}</find>
-      <find>HEIGHT</find>
-      <find>getSize().height</find>
-      <find>addAccount</find>
-      <find>(ActionEvent e) -&gt;</find>
-      <find>e -&gt;</find>
-      <find>public static List</find>
-      <find>public static Set</find>
-      <find>PropertiesHandle.get</find>
-      <find>&lt;&lt;</find>
-      <find>package.properties</find>
-      <find>seaon</find>
-      <find>Seaon</find>
-      <find>Toon</find>
-      <find>resize</find>
       <find>listener</find>
       <find>Sort</find>
       <find>showFrame</find>
       <find>Row</find>
-      <find>clearPane</find>
       <find>Clear</find>
       <find>Account</find>
+      <find>DELETE FROM WatchedFilms WHERE FilmId=?</find>
+      <find>Episode</find>
+      <find>Bekijk</find>
+      <find>Loading</find>
+      <find>viewFilm</find>
+      <find>INSERT INTO Watched</find>
+      <find>Regisseur</find>
+      <find>gemiddeld</find>
+      <find>viewEpisode</find>
+      <find>CheckBoxL</find>
+      <find>5</find>
+      <find>setVal</find>
+      <find>Email</find>
+      <find>table</find>
+      <find>getColumn</find>
+      <find>Gebru</find>
+      <find>Entiteit</find>
+      <find>Nieuw</find>
+      <find>JButton</find>
+      <find>clearPane</find>
+      <find>viewfilm</find>
+      <find>Bekeken</find>
+      <find>CheckBox</find>
+      <find>view</find>
     </findStrings>
     <replaceStrings>
       <replace>Color.WHITE</replace>
@@ -327,10 +215,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/gui/views/RegistrationView.java" />
-        <option value="$PROJECT_DIR$/src/entities/Episode.java" />
-        <option value="$PROJECT_DIR$/src/entities/Profile.java" />
-        <option value="$PROJECT_DIR$/src/gui/commons/NButton.java" />
         <option value="$PROJECT_DIR$/src/gui/views/createProfileView.java" />
         <option value="$PROJECT_DIR$/src/gui/views/LoginView.java" />
         <option value="$PROJECT_DIR$/src/gui/views/ObjectView.java" />
@@ -363,19 +247,23 @@
         <option value="$PROJECT_DIR$/src/gui/views/management/AdminView.java" />
         <option value="$PROJECT_DIR$/src/gui/views/subpanels/GraphView.java" />
         <option value="$PROJECT_DIR$/tests/com/netflix/FunctionalityTests.java" />
-        <option value="$PROJECT_DIR$/resources/package.properties" />
         <option value="$PROJECT_DIR$/src/commons/Commons.java" />
-        <option value="$PROJECT_DIR$/src/commons/DataHandle.java" />
         <option value="$PROJECT_DIR$/src/gui/views/subpanels/CreationFrame.java" />
         <option value="$PROJECT_DIR$/src/Netflix.java" />
         <option value="$PROJECT_DIR$/src/commons/CreateOnDatabase.java" />
         <option value="$PROJECT_DIR$/src/gui/views/ChildFrames.java" />
+        <option value="$PROJECT_DIR$/src/gui/views/AccountView.java" />
+        <option value="$PROJECT_DIR$/resources/package.properties" />
         <option value="$PROJECT_DIR$/src/entities/Entity.java" />
+        <option value="$PROJECT_DIR$/src/commons/DataHandle.java" />
+        <option value="$PROJECT_DIR$/src/entities/MediaCommons.java" />
+        <option value="$PROJECT_DIR$/src/gui/views/subpanels/ReadPanel.java" />
+        <option value="$PROJECT_DIR$/src/entities/WatchStatistics.java" />
+        <option value="$PROJECT_DIR$/src/entities/Film.java" />
+        <option value="$PROJECT_DIR$/src/gui/views/subpanels/ReadObject.java" />
+        <option value="$PROJECT_DIR$/src/gui/views/AdminView.java" />
         <option value="$PROJECT_DIR$/src/entities/MediaObject.java" />
         <option value="$PROJECT_DIR$/src/entities/Account.java" />
-        <option value="$PROJECT_DIR$/src/entities/Film.java" />
-        <option value="$PROJECT_DIR$/src/entities/MediaCommons.java" />
-        <option value="$PROJECT_DIR$/src/gui/views/AdminView.java" />
         <option value="$PROJECT_DIR$/src/entities/Serie.java" />
         <option value="$PROJECT_DIR$/src/gui/views/subpanels/DeleteFrame.java" />
       </list>
@@ -391,8 +279,8 @@
     <scope name="Copyright" pattern="" />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-11" />
-    <option name="width" value="1940" />
+    <option name="x" value="1170" />
+    <option name="width" value="2679" />
     <option name="height" value="2124" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -406,6 +294,28 @@
     </navigator>
     <panes>
       <pane id="PackagesPane" />
+      <pane id="Scope">
+        <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
+          <expand>
+            <path>
+              <item name="Netflix" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="Netflix" type="2674bda8:ScopeViewTreeModel$GroupNode" />
+            </path>
+            <path>
+              <item name="Netflix" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="Netflix" type="2674bda8:ScopeViewTreeModel$GroupNode" />
+              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="Netflix" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="Netflix" type="2674bda8:ScopeViewTreeModel$GroupNode" />
+              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="handles" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -461,13 +371,6 @@
               <item name="NetflixGit" type="b2602c69:ProjectViewProjectNode" />
               <item name="NetflixGit" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="entities" type="462c0819:PsiDirectoryNode" />
-              <item name="MediaCommons" type="1a9f42e2:ClassTreeNode" />
-            </path>
-            <path>
-              <item name="NetflixGit" type="b2602c69:ProjectViewProjectNode" />
-              <item name="NetflixGit" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="gui" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -480,29 +383,21 @@
               <item name="NetflixGit" type="b2602c69:ProjectViewProjectNode" />
               <item name="NetflixGit" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="AdminView" type="1a9f42e2:ClassTreeNode" />
+            </path>
+            <path>
+              <item name="NetflixGit" type="b2602c69:ProjectViewProjectNode" />
+              <item name="NetflixGit" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="subpanels" type="462c0819:PsiDirectoryNode" />
             </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-      <pane id="Scope">
-        <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
-          <expand>
             <path>
-              <item name="Netflix" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="Netflix" type="2674bda8:ScopeViewTreeModel$GroupNode" />
-            </path>
-            <path>
-              <item name="Netflix" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="Netflix" type="2674bda8:ScopeViewTreeModel$GroupNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="Netflix" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="Netflix" type="2674bda8:ScopeViewTreeModel$GroupNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="handles" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="NetflixGit" type="b2602c69:ProjectViewProjectNode" />
+              <item name="NetflixGit" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="subpanels" type="462c0819:PsiDirectoryNode" />
+              <item name="ReadObject" type="1a9f42e2:ClassTreeNode" />
             </path>
           </expand>
           <select />
@@ -525,7 +420,7 @@
     <property name="UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH" value="437" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1547659129207" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1547734704960" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
     <property name="last.edited.regexp" value="" />
@@ -773,7 +668,8 @@
       <workItem from="1547546226829" duration="273000" />
       <workItem from="1547549957738" duration="699000" />
       <workItem from="1547555790958" duration="896000" />
-      <workItem from="1547631406088" duration="20815000" />
+      <workItem from="1547631406088" duration="33426000" />
+      <workItem from="1547720661083" duration="9934000" />
     </task>
     <servers />
   </component>
@@ -810,18 +706,17 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="227162000" />
+    <option name="totallyTimeSpent" value="249707000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="0" width="1293" height="1416" extended-state="0" />
-    <editor active="true" />
+    <frame x="780" y="0" width="1786" height="1416" extended-state="0" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.6741573" visible="true" weight="0.3117409" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.5729614" visible="true" weight="0.22453703" />
       <window_info id="Image Layers" order="1" />
       <window_info id="Designer" order="2" />
       <window_info id="UI Designer" order="3" />
       <window_info id="Capture Tool" order="4" />
-      <window_info id="Favorites" order="5" side_tool="true" />
+      <window_info id="Favorites" order="5" sideWeight="0.42703864" side_tool="true" weight="0.3117409" />
       <window_info id="JRebel" order="6" side_tool="true" />
       <window_info id="DB Browser" order="7" weight="0.32967034" />
       <window_info anchor="bottom" id="Brew Java" order="0" weight="0.45750263" />
@@ -837,13 +732,14 @@
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50183153" side_tool="true" weight="0.32738718" />
       <window_info anchor="bottom" id="SonarLint" order="11" sideWeight="0.44815257" weight="0.4144" />
       <window_info anchor="bottom" id="TMC Test Results" order="12" />
-      <window_info anchor="bottom" id="Messages" order="13" sideWeight="0.49635628" weight="0.23027375" />
+      <window_info anchor="bottom" id="Messages" order="13" sideWeight="0.4826389" weight="0.23107891" />
       <window_info anchor="bottom" id="FindBugs-IDEA" order="14" weight="0.6841553" />
       <window_info anchor="bottom" id="DB Execution Console" order="15" />
       <window_info anchor="bottom" id="JRebel Console" order="16" side_tool="true" />
       <window_info anchor="bottom" id="Problems" order="17" />
       <window_info anchor="bottom" id="Docker" order="18" show_stripe_button="false" />
-      <window_info anchor="bottom" x="712" y="45" width="968" height="1005" id="Run" order="19" sideWeight="0.50364375" side_tool="true" visible="true" weight="0.24959743" />
+      <window_info active="true" anchor="bottom" x="712" y="45" width="968" height="1005" id="Run" order="19" sideWeight="0.5173611" side_tool="true" visible="true" weight="0.23107891" />
+      <window_info anchor="bottom" id="Duplicate detector" order="20" sideWeight="0.49980134" weight="0.3296" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" sideWeight="0.49947202" weight="0.24980143" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -944,9 +840,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/gui/views/management/creation/SerieCreation.java" />
-    <entry file="file://$PROJECT_DIR$/src/gui/views/management/creation/AccountCreation.java" />
-    <entry file="file://$PROJECT_DIR$/src/gui/views/management/creation/EpisodeCreation.java" />
     <entry file="file://$PROJECT_DIR$/src/gui/views/management/creation/SeasonCreation.java" />
     <entry file="file://$PROJECT_DIR$/src/gui/views/management/creation/FilmCreation.java" />
     <entry file="file://$PROJECT_DIR$/src/gui/views/management/creation/GenreCreation.java" />
@@ -995,33 +888,6 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/gui/views/subpanels/ReadObject.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/gui/views/subpanels/ReadPanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="15" column="22" selection-start-line="15" selection-start-column="22" selection-end-line="15" selection-end-column="22" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/gui/views/FilmReadPanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="128">
-          <caret line="12" column="6" selection-start-line="12" selection-start-column="6" selection-end-line="12" selection-end-column="6" />
         </state>
       </provider>
     </entry>
@@ -1599,13 +1465,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/gui/views/LoginView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="64">
-          <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/gui/views/ProfileCreationPanel.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="144">
@@ -1617,16 +1476,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/logs/log-d.2019-01-14-t.10-39-47.926.xml" />
-    <entry file="file://$PROJECT_DIR$/src/commons/ActionListeners.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="214">
-          <caret line="211" selection-start-line="211" selection-end-line="211" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/gui/views/RegistrationPanel.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="16">
@@ -1634,13 +1483,6 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/gui/views/SerieReadPanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="16" column="19" selection-start-line="16" selection-start-column="19" selection-end-line="16" selection-end-column="19" />
         </state>
       </provider>
     </entry>
@@ -1652,34 +1494,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/logs/log-d.2019-01-14-t.11-11-36.820.log" />
-    <entry file="file://$PROJECT_DIR$/src/commons/Commons.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="735">
-          <caret line="61" column="30" selection-start-line="61" selection-start-column="30" selection-end-line="61" selection-end-column="30" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2347#2348#0" expanded="true" />
-            <element signature="e#2401#2402#0" expanded="true" />
-            <element signature="e#3458#3459#0" expanded="true" />
-            <element signature="e#3525#3526#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Netflix.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="256">
-          <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/package.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="256">
-          <caret line="16" column="16" selection-start-line="16" selection-start-column="16" selection-end-line="16" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/commons/CreateOnDatabase.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="764">
@@ -1690,95 +1504,6 @@
             <element signature="method#createSerie#0;class#CreateOnDatabase#0" />
             <element signature="method#createSeason#0;class#CreateOnDatabase#0" />
             <element signature="method#createEpisode#0;class#CreateOnDatabase#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/gui/views/AccountView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="64">
-          <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/entities/MediaObject.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="19" column="4" selection-start-line="19" selection-start-column="4" selection-end-line="19" selection-end-column="4" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/entities/Film.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="236">
-          <caret line="23" column="25" selection-start-line="23" selection-start-column="25" selection-end-line="23" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/entities/Entity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="512">
-          <caret line="34" column="38" selection-start-line="34" selection-start-column="38" selection-end-line="34" selection-end-column="38" />
-          <folding>
-            <element signature="e#437#438#0" expanded="true" />
-            <element signature="e#471#472#0" expanded="true" />
-            <element signature="e#515#516#0" expanded="true" />
-            <element signature="e#551#552#0" expanded="true" />
-            <element signature="e#355#356#0" expanded="true" />
-            <element signature="e#381#382#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/entities/Account.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="816">
-          <caret line="188" column="40" selection-start-line="188" selection-start-column="40" selection-end-line="188" selection-end-column="40" />
-          <folding>
-            <element signature="e#2639#2640#0" expanded="true" />
-            <element signature="e#2662#2663#0" expanded="true" />
-            <element signature="e#2704#2705#0" expanded="true" />
-            <element signature="e#2734#2735#0" expanded="true" />
-            <element signature="e#2767#2768#0" expanded="true" />
-            <element signature="e#2795#2796#0" expanded="true" />
-            <element signature="e#2844#2845#0" expanded="true" />
-            <element signature="e#2884#2885#0" expanded="true" />
-            <element signature="e#2917#2918#0" expanded="true" />
-            <element signature="e#2942#2943#0" expanded="true" />
-            <element signature="e#2988#2989#0" expanded="true" />
-            <element signature="e#3022#3023#0" expanded="true" />
-            <element signature="e#3051#3052#0" expanded="true" />
-            <element signature="e#3072#3073#0" expanded="true" />
-            <element signature="e#3110#3111#0" expanded="true" />
-            <element signature="e#3136#3137#0" expanded="true" />
-            <element signature="e#3166#3167#0" expanded="true" />
-            <element signature="e#3190#3191#0" expanded="true" />
-            <element signature="e#3231#3232#0" expanded="true" />
-            <element signature="e#3256#3257#0" expanded="true" />
-            <element signature="e#3286#3287#0" expanded="true" />
-            <element signature="e#3308#3309#0" expanded="true" />
-            <element signature="e#3348#3349#0" expanded="true" />
-            <element signature="e#3376#3377#0" expanded="true" />
-            <element signature="e#3409#3410#0" expanded="true" />
-            <element signature="e#3491#3492#0" expanded="true" />
-            <element signature="e#3524#3525#0" expanded="true" />
-            <element signature="e#3549#3550#0" expanded="true" />
-            <element signature="e#3588#3589#0" expanded="true" />
-            <element signature="e#3613#3614#0" expanded="true" />
-            <element signature="e#3736#3737#0" expanded="true" />
-            <element signature="e#3767#3768#0" expanded="true" />
-            <element signature="e#5912#5944#0" expanded="true" />
-            <element signature="e#6422#6423#0" expanded="true" />
-            <element signature="e#6450#6451#0" expanded="true" />
-            <element signature="e#7256#7257#0" expanded="true" />
-            <element signature="e#7281#7282#0" expanded="true" />
-            <element signature="e#7335#7336#0" expanded="true" />
-            <element signature="e#7371#7372#0" expanded="true" />
-            <element signature="e#7413#7414#0" expanded="true" />
-            <element signature="e#7446#7447#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1807,23 +1532,149 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/gui/views/AdminView.java">
+    <entry file="file://$PROJECT_DIR$/src/gui/views/SerieReadPanel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1978">
-          <caret line="154" column="21" selection-start-line="154" selection-start-column="21" selection-end-line="154" selection-end-column="21" />
+        <state relative-caret-position="208">
+          <caret line="16" column="22" selection-start-line="16" selection-start-column="22" selection-end-line="16" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gui/views/LoginView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="432">
+          <caret line="153" column="6" selection-start-line="153" selection-start-column="6" selection-end-line="153" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/package.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="112">
+          <caret line="7" column="24" lean-forward="true" selection-start-line="7" selection-start-column="24" selection-end-line="7" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gui/views/AccountView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="574">
+          <caret line="109" column="13" selection-start-line="109" selection-start-column="13" selection-end-line="109" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/entities/Entity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="578">
+          <caret line="44" column="5" selection-start-line="44" selection-start-column="5" selection-end-line="44" selection-end-column="5" />
+          <folding>
+            <element signature="e#437#438#0" expanded="true" />
+            <element signature="e#471#472#0" expanded="true" />
+            <element signature="e#515#516#0" expanded="true" />
+            <element signature="e#551#552#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gui/views/subpanels/ReadPanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="17" column="22" selection-start-line="17" selection-start-column="22" selection-end-line="17" selection-end-column="22" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/gui/views/ChildFrames.java">
+    <entry file="file://$PROJECT_DIR$/src/entities/MediaCommons.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="379" selection-start-line="379" selection-end-line="379" />
+        <state relative-caret-position="864">
+          <caret line="60" column="40" selection-start-line="60" selection-start-column="40" selection-end-line="60" selection-end-column="40" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#getMediaCommons#0;class#ChildFrames#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gui/views/FilmReadPanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="128">
+          <caret line="12" column="4" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/commons/Commons.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="669">
+          <caret line="100" column="25" selection-start-line="100" selection-start-column="25" selection-end-line="100" selection-end-column="25" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2347#2348#0" expanded="true" />
+            <element signature="e#2401#2402#0" expanded="true" />
+            <element signature="e#3458#3459#0" expanded="true" />
+            <element signature="e#3525#3526#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/entities/WatchStatistics.java">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/entities/Film.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="701">
+          <caret line="102" selection-start-line="102" selection-end-line="102" />
+          <folding>
+            <element signature="e#2740#2741#0" expanded="true" />
+            <element signature="e#2789#2790#0" expanded="true" />
+            <element signature="e#2801#2802#0" expanded="true" />
+            <element signature="e#2837#2838#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/java/text/Collator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="305">
+          <caret line="303" selection-start-line="303" selection-end-line="303" />
+          <folding>
+            <element signature="e#12527#12528#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/javax/swing/DefaultRowSorter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="305">
+          <caret line="552" selection-start-line="552" selection-end-line="552" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/commons/ActionListeners.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="437">
+          <caret line="209" column="71" lean-forward="true" selection-start-line="209" selection-start-column="71" selection-end-line="209" selection-end-column="71" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gui/views/AdminView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="247" lean-forward="true" selection-start-line="247" selection-end-line="247" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#4449#4610#0" expanded="true" />
+            <element signature="e#4609#4610#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gui/views/ChildFrames.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="597">
+          <caret line="409" column="16" selection-start-line="409" selection-start-column="16" selection-end-line="412" selection-end-column="58" />
+          <folding>
+            <element signature="imports" expanded="true" />
             <element signature="class#FilmCreation#0;class#ChildFrames#0" />
             <element signature="class#SeasonCreation#0;class#ChildFrames#0" />
             <element signature="class#EpisodeCreation#0;class#ChildFrames#0" />
@@ -1833,70 +1684,102 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Netflix.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="17" column="18" selection-start-line="17" selection-start-column="18" selection-end-line="17" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/commons/DataHandle.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="123" column="43" selection-start-line="123" selection-start-column="43" selection-end-line="123" selection-end-column="43" />
+        <state relative-caret-position="401">
+          <caret line="48" column="36" selection-start-line="48" selection-start-column="31" selection-end-line="48" selection-end-column="36" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/entities/MediaCommons.java">
+    <entry file="file://$PROJECT_DIR$/src/entities/MediaObject.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="29" column="19" selection-start-line="29" selection-start-column="19" selection-end-line="29" selection-end-column="19" />
+        <state relative-caret-position="629">
+          <caret line="94" lean-forward="true" selection-start-line="94" selection-end-line="94" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1068#1069#0" expanded="true" />
-            <element signature="e#1097#1098#0" expanded="true" />
-            <element signature="e#1136#1137#0" expanded="true" />
-            <element signature="e#1169#1170#0" expanded="true" />
-            <element signature="e#1987#1988#0" expanded="true" />
-            <element signature="e#2017#2018#0" expanded="true" />
-            <element signature="e#2063#2064#0" expanded="true" />
-            <element signature="e#2093#2094#0" expanded="true" />
+            <element signature="e#1497#1498#0" expanded="true" />
+            <element signature="e#1523#1524#0" expanded="true" />
+            <element signature="e#1834#1835#0" expanded="true" />
+            <element signature="e#1855#1856#0" expanded="true" />
+            <element signature="e#1890#1891#0" expanded="true" />
+            <element signature="e#1923#1924#0" expanded="true" />
+            <element signature="e#1953#1954#0" expanded="true" />
+            <element signature="e#1975#1976#0" expanded="true" />
+            <element signature="e#2015#2016#0" expanded="true" />
+            <element signature="e#2043#2044#0" expanded="true" />
+            <element signature="e#2085#2086#0" expanded="true" />
+            <element signature="e#2107#2108#0" expanded="true" />
+            <element signature="e#2159#2160#0" expanded="true" />
+            <element signature="e#2187#2188#0" expanded="true" />
+            <element signature="e#2231#2232#0" expanded="true" />
+            <element signature="e#2252#2253#0" expanded="true" />
+            <element signature="e#2305#2306#0" expanded="true" />
+            <element signature="e#2331#2332#0" expanded="true" />
+            <element signature="e#2299#2300#0" expanded="true" />
+            <element signature="e#2322#2323#0" expanded="true" />
+            <element signature="e#2380#2381#0" expanded="true" />
+            <element signature="e#2410#2411#0" expanded="true" />
+            <element signature="e#2441#2442#0" expanded="true" />
+            <element signature="e#2467#2468#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/entities/Account.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="472">
+          <caret line="313" column="32" lean-forward="true" selection-start-line="313" selection-start-column="32" selection-end-line="313" selection-end-column="32" />
+          <folding>
+            <element signature="e#7427#7428#0" expanded="true" />
+            <element signature="e#7463#7464#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gui/views/subpanels/ReadObject.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="305">
+          <caret line="272" column="24" selection-start-line="272" selection-start-column="24" selection-end-line="272" selection-end-column="24" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="class#ResizeListener#0;class#ReadObject#0" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/entities/Serie.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="560">
-          <caret line="97" column="25" selection-start-line="97" selection-start-column="25" selection-end-line="97" selection-end-column="25" />
+        <state relative-caret-position="773">
+          <caret line="317" selection-start-line="317" selection-end-line="317" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2319#2320#0" expanded="true" />
-            <element signature="e#2347#2348#0" expanded="true" />
-            <element signature="e#2774#2775#0" expanded="true" />
-            <element signature="e#2806#2807#0" expanded="true" />
-            <element signature="e#4063#4064#0" expanded="true" />
-            <element signature="e#4092#4093#0" expanded="true" />
-            <element signature="e#4363#4364#0" expanded="true" />
-            <element signature="e#4389#4390#0" expanded="true" />
-            <element signature="e#4421#4422#0" expanded="true" />
-            <element signature="e#4447#4448#0" expanded="true" />
-            <element signature="e#4483#4484#0" expanded="true" />
-            <element signature="e#4516#4517#0" expanded="true" />
-            <element signature="e#4556#4557#0" expanded="true" />
-            <element signature="e#4593#4594#0" expanded="true" />
-            <element signature="e#4676#4677#0" expanded="true" />
-            <element signature="e#4716#4717#0" expanded="true" />
-            <element signature="e#4762#4763#0" expanded="true" />
-            <element signature="e#4788#4789#0" expanded="true" />
+            <element signature="e#4537#4538#0" expanded="true" />
+            <element signature="e#4571#4572#0" expanded="true" />
+            <element signature="e#7602#7603#0" expanded="true" />
+            <element signature="e#7668#7669#0" expanded="true" />
+            <element signature="e#9059#9060#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/gui/views/subpanels/DeleteFrame.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="122" column="40" selection-start-line="122" selection-start-column="40" selection-end-line="122" selection-end-column="40" />
+        <state relative-caret-position="549">
+          <caret line="233" column="40" selection-start-line="233" selection-start-column="40" selection-end-line="233" selection-end-column="40" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#removeSeason#0;class#DeleteFrame#0" />
-            <element signature="method#removeSerie#0;class#DeleteFrame#0" />
+            <element signature="e#863#1008#0" expanded="true" />
+            <element signature="e#1007#1008#0" expanded="true" />
           </folding>
         </state>
       </provider>

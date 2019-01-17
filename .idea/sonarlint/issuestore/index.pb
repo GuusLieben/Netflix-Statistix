@@ -54,3 +54,5 @@ Q
 !src/commons/CreateOnDatabase.java,1\b\1bb8c3016383a162d2c2d3b3001f4dcd8bd996b6
 Z
 *src/gui/views/subpanels/CreationFrame.java,c\8\c86f4d6051da9458ce4deafcc9c6def88b460d2b
+X
+(src/gui/views/subpanels/DeleteFrame.java,4\b\4bbdb358ade08bd74cc38da33f5c733306e258d9

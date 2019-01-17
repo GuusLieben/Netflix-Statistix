@@ -34,26 +34,16 @@ public class AdminView {
     private static void showGraph(JButton button, GraphView graph) {
       button.addActionListener(
           e -> {
-            if (graph.frame.isVisible()) {
-              graph.showGraph(false);
-              button.setText(button.getText().replace("Verberg", "Toon"));
-            } else {
-              graph.showGraph(true);
-              button.setText(button.getText().replace("Toon", "Verberg"));
-            }
+            if (graph.frame.isVisible()) graph.showGraph(false);
+            else graph.showGraph(true);
           });
     }
 
     private static void showFrame(JButton button, JFrame frame) {
       button.addActionListener(
           e -> {
-            if (frame.isVisible()) {
-              frame.setVisible(false);
-              button.setText(button.getText().replace("Verberg", "Toon"));
-            } else {
-              frame.setVisible(true);
-              button.setText(button.getText().replace("Toon", "Verberg"));
-            }
+            if (frame.isVisible()) frame.setVisible(false);
+            else frame.setVisible(true);
           });
     }
 
@@ -64,9 +54,9 @@ public class AdminView {
 
       JPanel wrapper = new JPanel(new GridLayout(1, 3, 0, 25));
 
-      JButton mediaGraph = new JButton("Toon media grafiek");
-      JButton watchLogs = new JButton("Toon gebruiker statistieken");
-      JButton viewEnts = new JButton("Bekijk entiteiten");
+      JButton mediaGraph = new JButton("Media grafiek");
+      JButton watchLogs = new JButton("Gebruiker statistieken");
+      JButton viewEnts = new JButton("Entiteiten");
 
       showFrame(viewEnts, DeleteFrame.frame());
       showGraph(mediaGraph, buttonGroupMenu.mediaGraph);
@@ -124,7 +114,7 @@ public class AdminView {
               allwatched.getText()
                   + "<br><i>Profiel : "
                   + prof.getName()
-                  + "</i><br>Bekeek media: <br>");
+                  + "</i><br>Bekeken media: <br>");
           for (MediaObject obj : prof.getMediaWatched()) {
             allwatched.setText(
                 String.format(
@@ -133,6 +123,10 @@ public class AdminView {
                     obj.getTitle(),
                     Commons.percentage(obj.getWatchedPercentage())));
           }
+
+          if (prof.getMediaWatched().size() == 0)
+            allwatched.setText(String.format("%s&nbsp;<i>Geen</i><br>", allwatched.getText()));
+
           allwatched.setText(allwatched.getText() + "<br>");
         }
       }
@@ -148,18 +142,24 @@ public class AdminView {
     public static final JPanel tablePanel = new JPanel(new BorderLayout());
 
     static JPanel accountListTable() {
-      JTable table = new JTable();
-      DefaultTableModel tableModel =
-          new DefaultTableModel(0, 0) {
+      JTable table =
+          new JTable() {
             @Override
-            public Class getColumnClass(int column) {
-              if (column == 6) return Integer.class;
-              return String.class;
+            public boolean isCellEditable(int row, int column) {
+              return column != 5;
             }
           };
+      DefaultTableModel tableModel = new DefaultTableModel(0, 0);
       TableColumn tc;
       String[] columnNames = {
-        "E-mail", "Straat", "Huisnummer", "Toevoeging", "Woonplaats", "Admin", "DatabaseId"
+        "E-mail",
+        "Straat",
+        "Huisnummer",
+        "Toevoeging",
+        "Woonplaats",
+        "Profielen",
+        "Admin",
+        "DatabaseId"
       };
       JTableHeader header;
       JPanel tableAccounts;
@@ -186,6 +186,7 @@ public class AdminView {
               account.getHouseNumber(),
               account.getAddition(),
               account.getCity(),
+              account.getProfiles().size(),
               account.isAdmin(),
               account.databaseId
             });
@@ -252,7 +253,7 @@ public class AdminView {
 
       tableScroll.setBorder(new EmptyBorder(0, 0, 10, 0));
 
-      tc = table.getColumnModel().getColumn(5);
+      tc = table.getColumnModel().getColumn(6);
       tc.setCellEditor(table.getDefaultEditor(Boolean.class));
       tc.setCellRenderer(table.getDefaultRenderer(Boolean.class));
 
@@ -303,7 +304,7 @@ public class AdminView {
           addition = "";
         }
         String city = table.getValueAt(row, 4).toString();
-        int id = Account.getUserByEmail(email).databaseId;
+        int id = Integer.parseInt(table.getValueAt(row, 7).toString());
         boolean isAdmin = false;
 
         if (!(addition.equals("") || addition.matches("^[a-zA-Z]$"))) {

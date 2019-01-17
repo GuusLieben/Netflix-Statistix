@@ -42,8 +42,15 @@ public class DataHandle {
 
   public void collectData() {
     // First load items that do not require others entities
+    new MediaCommons.Genre("Geen", -1);
     MediaCommons.Genre.getFromDatabase();
+
+    // Null-Safe from database
+    new MediaCommons.Language("nu_LL", "Geen");
     MediaCommons.Language.getFromDatabase();
+
+    // Null-Safe from database
+    new MediaCommons.AgeRating("Geen", -1);
     MediaCommons.AgeRating.getFromDatabase();
 
     // Load films

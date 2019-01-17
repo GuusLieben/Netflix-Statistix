@@ -3,12 +3,9 @@ package com.netflix.gui.views.subpanels;
 import com.netflix.commons.Commons;
 import com.netflix.entities.MediaObject;
 
-import javax.swing.JComboBox;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
+import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-import java.awt.BorderLayout;
-import java.awt.Color;
+import java.awt.*;
 
 import static java.awt.BorderLayout.CENTER;
 import static java.awt.BorderLayout.NORTH;
@@ -33,10 +30,6 @@ public abstract class ReadPanel {
 
     MediaObject.type = media.getMediaType();
 
-    // Log it to the file and console
-    Commons.logger.info(
-        String.format("Loading new view with type %d::%d", media.getType(), media.getMediaType()));
-
     // Get the overview, add it
     panel.add(readObject.getOverview(media), CENTER);
 
@@ -60,7 +53,12 @@ public abstract class ReadPanel {
 
     // Add all things
     selectMedia.add(selectLabel);
-    selectMedia.add(comboBox);
+
+    JPanel mediaSwitch = new JPanel(new GridLayout());
+    mediaSwitch.add(comboBox);
+    mediaSwitch.add(new JButton("Bewerken"));
+
+    selectMedia.add(mediaSwitch);
 
     selectMedia.setBackground(Color.WHITE);
 
