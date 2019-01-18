@@ -6,6 +6,7 @@ import com.netflix.entities.*;
 import com.netflix.gui.*;
 
 import javax.swing.*;
+import javax.swing.JFrame;
 import javax.swing.table.*;
 import java.awt.*;
 import java.sql.*;

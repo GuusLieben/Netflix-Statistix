@@ -12,6 +12,10 @@ public class Film extends MediaObject { // MediaObject extends Entity
   private Time duration;
   private String director;
 
+  public Film(Object primaryId, Object secondaryId) {
+    super(primaryId, secondaryId);
+  }
+
   public Film(
       MediaCommons.AgeRating rating,
       MediaCommons.Genre genre,
@@ -39,6 +43,14 @@ public class Film extends MediaObject { // MediaObject extends Entity
   public static Film getFilmByName(String title) {
     // Use Lambda to go through all films and check if it equals the given title, else return null
     return films.stream().filter(film -> film.getTitle().equals(title)).findFirst().orElse(null);
+  }
+
+  public void setDuration(Time duration) {
+    this.duration = duration;
+  }
+
+  public void setDirector(String director) {
+    this.director = director;
   }
 
   // Get film from database ID

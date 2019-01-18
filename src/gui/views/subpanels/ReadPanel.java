@@ -2,6 +2,7 @@ package com.netflix.gui.views.subpanels;
 
 import com.netflix.commons.Commons;
 import com.netflix.entities.*;
+import com.netflix.gui.views.*;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -56,7 +57,15 @@ public abstract class ReadPanel {
 
     JPanel mediaSwitch = new JPanel(new GridLayout());
     mediaSwitch.add(comboBox);
-    if (Account.currentAccount.isAdmin()) mediaSwitch.add(new JButton("Bewerken"));
+
+    JButton alterMedia = new JButton("Bewerken");
+    if (Account.currentAccount.isAdmin()) mediaSwitch.add(alterMedia);
+    alterMedia.addActionListener(
+        e -> {
+          new AlterView(
+                  MediaObject.getObjectByName(comboBox.getSelectedItem().toString(), mediaType))
+              .setVisible(true);
+        });
 
     selectMedia.add(mediaSwitch);
 

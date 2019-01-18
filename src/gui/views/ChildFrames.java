@@ -87,7 +87,7 @@ public class ChildFrames {
     }
   }
 
-  private static Object[] getMediaCommons(Map<String, JComboBox> map) {
+  public static Object[] getMediaCommons(Map<String, JComboBox> map) {
     String[] langs = map.get("Taal").getSelectedItem().toString().split(" ");
 
     MediaCommons.Genre genre =

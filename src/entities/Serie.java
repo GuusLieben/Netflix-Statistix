@@ -50,7 +50,7 @@ public class Serie extends MediaObject { // MediaObject extends Entity
   public static void getFromDatabase() {
     for (HashMap<String, Object> map :
         database.executeSql(
-            "SELECT Serie.SerieId, Title, AmountOfSeasons, LijktOp, LanguageCode, Rating, Genre FROM Serie JOIN Koppeltabel_Serie_Genre ON Serie.SerieId = Koppeltabel_Serie_Genre.SerieId LEFT OUTER JOIN Genre ON Koppeltabel_Serie_Genre.GenreId = Genre.GenreId")) {
+            "SELECT Serie.SerieId, Title, LijktOp, LanguageCode, Rating, Genre FROM Serie JOIN Koppeltabel_Serie_Genre ON Serie.SerieId = Koppeltabel_Serie_Genre.SerieId LEFT OUTER JOIN Genre ON Koppeltabel_Serie_Genre.GenreId = Genre.GenreId")) {
       new Serie(
           MediaCommons.Genre.getByName(map.get("Genre")),
           MediaCommons.Language.getByCode(map.get("LanguageCode")),

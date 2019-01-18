@@ -47,13 +47,13 @@ public class CreateOnDatabase {
       String similarMedia) {
 
     String qr =
-        "INSERT INTO Serie (Title, AmountOfSeasons, LijktOp, LanguageCode, Rating) VALUES ('Title', [int AmountOfSeasons], 'LijktOp', 'LanguageCode', 'Rating')";
-    Object[] arr = {title, 0, similarMedia, lang.getLangCode(), rating.getAgeCode()};
+        "INSERT INTO Serie (Title, LijktOp, LanguageCode, Rating) VALUES (?, ?, ?, ?)";
+    Object[] arr = {title, similarMedia, lang.getLangCode(), rating.getAgeCode()};
 
     if (database.executeSqlNoResult(qr, arr) == DataHandle.SQLResults.PASS) {
       for (HashMap<String, Object> map :
           database.executeSql(
-              "SELECT SerieId FROM Serie WHERE Title=? AND AmountOfSeasons=0",
+              "SELECT SerieId FROM Serie WHERE Title=?",
               new Object[] {title})) {
 
         new Serie(genre, lang, title, rating, (int) map.get("SerieId"), similarMedia);

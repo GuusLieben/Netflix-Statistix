@@ -24,7 +24,11 @@ public abstract class MediaObject extends Entity {
     objectIds.add(this);
   }
 
-  // Get Object by name, works for films and series
+    public void setSimilarMedia(String similarMedia) {
+        this.similarMedia = similarMedia;
+    }
+
+    // Get Object by name, works for films and series
   public static MediaObject getObjectByName(String name, int mediaType) {
     switch (mediaType) {
       case 2:
@@ -108,4 +112,8 @@ public abstract class MediaObject extends Entity {
   public int getMediaType() {
     return mediaType;
   }
+
+    public String getSimilarMedia() {
+        return similarMedia;
+    }
 }
