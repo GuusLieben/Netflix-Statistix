@@ -20,7 +20,7 @@ public class ChildFrames {
       super("Nieuwe classificatie");
       addTextField("Code"); // [A-Z]{1,2}[0-9]{1,2}
       JSpinner age = addSpinner("Minimum leeftijd"); // [0-9]{1,2}
-      Common.NButton addEntity = new Common.NButton("Toevoegen");
+      Commons.NButton addEntity = new Commons.NButton("Toevoegen");
       addButton(addEntity);
     }
 
@@ -42,7 +42,7 @@ public class ChildFrames {
     GenreCreation() {
       super("Nieuw genre");
       addTextField("Naam");
-      Common.NButton addEntity = new Common.NButton("Toevoegen");
+      Commons.NButton addEntity = new Commons.NButton("Toevoegen");
       addButton(addEntity);
       actionListenerGenrePress(addEntity);
     }
@@ -65,7 +65,7 @@ public class ChildFrames {
       super("Nieuwe taal");
       addTextField("Taal");
       addTextField("Code (ISO)");
-      Common.NButton addEntity = new Common.NButton("Toevoegen");
+      Commons.NButton addEntity = new Commons.NButton("Toevoegen");
       addButton(addEntity);
       actionListenerLanguagePress(addEntity);
     }
@@ -116,7 +116,7 @@ public class ChildFrames {
       List<String> titles = Film.filmTitles;
       generateDropDown("Vergelijkbaar", titles);
 
-      Common.NButton addEntity = new Common.NButton("Toevoegen");
+      Commons.NButton addEntity = new Commons.NButton("Toevoegen");
       addButton(addEntity);
       actionListenerFilmPress(addEntity, durationPicker);
     }
@@ -170,7 +170,7 @@ public class ChildFrames {
 
       addTextField("Titel");
       JSpinner seasonNum = addSpinner("Seizoensnummer"); // [0-9]*
-      Common.NButton addEntity = new Common.NButton("Toevoegen");
+      Commons.NButton addEntity = new Commons.NButton("Toevoegen");
       addButton(addEntity);
       actionListenerSeasonPress(addEntity, seasonNum);
     }
@@ -215,7 +215,7 @@ public class ChildFrames {
       JTimeChooser timePicker = addTimePicker("Duratie");
       JSpinner episodeNumber = addSpinner("Afleveringsnummer");
 
-      Common.NButton addEntity = new Common.NButton("Toevoegen");
+      Commons.NButton addEntity = new Commons.NButton("Toevoegen");
       addButton(addEntity);
       actionListenerEpisodePress(addEntity, timePicker, episodeNumber);
 
@@ -282,7 +282,7 @@ public class ChildFrames {
       List<String> titles = Serie.serieTitles;
       generateDropDown("Vergelijkbaar", titles);
 
-      Common.NButton addEntity = new Common.NButton("Toevoegen");
+      Commons.NButton addEntity = new Commons.NButton("Toevoegen");
       addButton(addEntity);
       actionListenerSeriePress(addEntity);
     }
@@ -356,7 +356,7 @@ public class ChildFrames {
 
       for (String str : fields) addTextField(str);
 
-      Common.NButton addEntity = new Common.NButton("Toevoegen");
+      Commons.NButton addEntity = new Commons.NButton("Toevoegen");
       addButton(addEntity);
       actionListenerAccountPress(addEntity);
     }

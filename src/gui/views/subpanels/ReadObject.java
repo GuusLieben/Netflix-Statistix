@@ -363,9 +363,17 @@ public class ReadObject {
           int minutes = duration.getMinutes();
           int seconds = duration.getMinutes();
 
-          int watchedHours = random.nextInt(hours);
-          int watchedMinutes = random.nextInt(minutes);
-          int watchedSeconds = random.nextInt(seconds);
+          // Check if the value is above 0, because nextInt bounds can not be zero. Also make the
+          // default value 0, can't watch more than 0 hours of a 48 minute episode, unless you play
+          // in Interstellar or fall into a black hole.
+          int watchedHours = 0;
+          if (hours > 0) watchedHours = random.nextInt(hours);
+
+          int watchedMinutes = 0;
+          if (minutes > 0) watchedMinutes = random.nextInt(minutes);
+
+          int watchedSeconds = 0;
+          if (seconds > 0) watchedSeconds = random.nextInt(seconds);
 
           Account.Profile.currentUser.viewEpisodeNoDB(
               Serie.Episode.getByDbId(dbID),

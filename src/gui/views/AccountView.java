@@ -1,8 +1,7 @@
 package com.netflix.gui.views;
 
+import com.netflix.commons.*;
 import com.netflix.entities.*;
-import com.netflix.gui.*;
-import com.netflix.commons.ActionListeners;
 
 import javax.swing.*;
 import javax.swing.border.*;
@@ -94,10 +93,10 @@ public class AccountView {
     inner.add(accountLabel, BorderLayout.WEST);
 
     JPanel actions = new JPanel(new GridLayout(2, 1));
-    JButton logoutButton = new Common.NButton("Uitloggen");
+    JButton logoutButton = new Commons.NButton("Uitloggen");
     ActionListeners.logoutClickEvent(logoutButton);
 
-    JButton passwordButton = new Common.NButton("Wijzig wachtwoord");
+    JButton passwordButton = new Commons.NButton("Wijzig wachtwoord");
 
     actions.setOpaque(false);
     actions.add(passwordButton);

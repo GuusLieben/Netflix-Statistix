@@ -1,10 +1,9 @@
-package com.netflix.gui.views.subpanels;
+package com.netflix.gui.views;
 
 import com.netflix.*;
 import com.netflix.commons.*;
 import com.netflix.entities.*;
 import com.netflix.gui.*;
-import com.netflix.gui.views.*;
 
 import javax.swing.*;
 import javax.swing.table.*;
@@ -17,9 +16,9 @@ public class DeleteFrame extends JFrame {
   public static DeleteFrame frame() {
     DeleteFrame frame = new DeleteFrame();
     frame.getContentPane().setLayout(new BorderLayout());
-    frame.add(Common.logo(), BorderLayout.NORTH);
+    frame.add(Commons.logo(), BorderLayout.NORTH);
     frame.add(overviewTable(), BorderLayout.CENTER);
-    frame.add(Common.bottomPane(), BorderLayout.SOUTH);
+    frame.add(Commons.credits(), BorderLayout.SOUTH);
     frame.setSize(600, 500);
     frame.setMinimumSize(new Dimension(600, 500));
     return frame;

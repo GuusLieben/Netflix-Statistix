@@ -1,11 +1,15 @@
 
-Usquid:S2696Ó"6Make the enclosing method "static" or remove this set.(Ö„ï8ñŒİÃ…-
-gsquid:CallToDeprecatedMethodÎ"2Remove this use of "getMinutes"; it is deprecated.(¤‚‚¹şÿÿÿÿ8æâÃ…-
-Ysquid:S2696r"6Make the enclosing method "static" or remove this set.(œ ûÿÿÿÿ8ñŒİÃ…-
-esquid:CallToDeprecatedMethodÌ"0Remove this use of "getHours"; it is deprecated.(¥·“Ñıÿÿÿÿ8æâÃ…-
-bsquid:CallToDeprecatedMethodÍ"2Remove this use of "getMinutes"; it is deprecated.(ÎùÆè8æâÃ…-
 asquid:HiddenFieldCheck,"9Rename "serie" which hides the field declared at line 23.(“­×l8ñŒİÃ…-
-hsquid:HiddenFieldCheckê"9Rename "serie" which hides the field declared at line 23.(İõª¶ùÿÿÿÿ8ñŒİÃ…-
+esquid:CallToDeprecatedMethodê"0Remove this use of "getHours"; it is deprecated.(¥·“Ñıÿÿÿÿ8¶öëÜ…-
+<squid:S2119æ"Save and re-use this "Random".(¼İÅf8¼ëÊŞ…-
+<squid:S2119ª"Save and re-use this "Random".(¼İÅf8”Ï¨İ…-
 }squid:S1450!"_Remove the "descriptionLabel" field and declare it as a local variable in the relevant methods.(Óõ‘å8ñŒİÃ…-
-Tsquid:S2696u"6Make the enclosing method "static" or remove this set.(±–š¥8ñŒİÃ…-
-<squid:S2119Ğ"Save and re-use this "Random".(¼İÅf8Ç³æÃ…-
+hsquid:HiddenFieldCheck "9Rename "serie" which hides the field declared at line 23.(İõª¶ùÿÿÿÿ8Øœª‰†-
+Usquid:S2696å"6Make the enclosing method "static" or remove this set.(Ö„ï8”Ï¨İ…-
+bsquid:CallToDeprecatedMethod¯"2Remove this use of "getMinutes"; it is deprecated.(ÎùÆè8°»ëŞ…-
+gsquid:CallToDeprecatedMethod°"2Remove this use of "getMinutes"; it is deprecated.(¤‚‚¹şÿÿÿÿ8°»ëŞ…-
+Ysquid:S2696s"6Make the enclosing method "static" or remove this set.(œ ûÿÿÿÿ8”Ï¨İ…-
+gsquid:CallToDeprecatedMethodì"2Remove this use of "getMinutes"; it is deprecated.(¤‚‚¹şÿÿÿÿ8¼ëÊŞ…-
+Tsquid:S2696v"6Make the enclosing method "static" or remove this set.(±–š¥8”Ï¨İ…-
+esquid:CallToDeprecatedMethod®"0Remove this use of "getHours"; it is deprecated.(¥·“Ñıÿÿÿÿ8°»ëŞ…-
+bsquid:CallToDeprecatedMethodë"2Remove this use of "getMinutes"; it is deprecated.(ÎùÆè8¶öëÜ…-

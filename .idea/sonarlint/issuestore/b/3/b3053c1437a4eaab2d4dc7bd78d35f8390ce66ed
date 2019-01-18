@@ -1,2 +1,8 @@
 
-€squid:S1488N"bImmediately return this expression instead of assigning it to the temporary variable "returnable".(¦εχ8Ήόβΐ…-
+fsquid:CallToDeprecatedMethod_"2Remove this use of "getMinutes"; it is deprecated.(ΪΒΓ£ÿÿÿÿÿ8¨χ…ή…-
+asquid:CallToDeprecatedMethodf"2Remove this use of "getMinutes"; it is deprecated.(…βά8Α¨—ή…-
+asquid:CallToDeprecatedMethodf"2Remove this use of "getSeconds"; it is deprecated.(…βά8Α¨—ή…-
+_squid:CallToDeprecatedMethodf"0Remove this use of "getHours"; it is deprecated.(…βά8Α¨—ή…-
+dsquid:CallToDeprecatedMethod^"0Remove this use of "getHours"; it is deprecated.(«κϋÿÿÿÿ8¨χ…ή…-
+`squid:S2184f"BCast one of the operands of this addition operation to a "double".(…βά8Α¨—ή…-
+asquid:CallToDeprecatedMethod`"2Remove this use of "getSeconds"; it is deprecated.(ίΗ8¨χ…ή…-

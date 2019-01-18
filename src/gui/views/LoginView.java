@@ -3,7 +3,6 @@ package com.netflix.gui.views;
 import com.netflix.commons.Commons;
 import com.netflix.entities.Account;
 import com.netflix.gui.NetflixFrame;
-import com.netflix.gui.Common;
 import com.netflix.commons.ActionListeners;
 
 import javax.swing.*;
@@ -11,7 +10,7 @@ import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.util.Random;
 
-import static com.netflix.gui.Common.logo;
+import static com.netflix.commons.Commons.logo;
 import static java.awt.BorderLayout.SOUTH;
 
 public class LoginView {
@@ -23,7 +22,7 @@ public class LoginView {
   public static class AccountLogin {
     public static JPanel login() {
       // Background gradient
-      Common.GradientPanel gradientPanel = new Common.GradientPanel();
+      Commons.GradientPanel gradientPanel = new Commons.GradientPanel();
 
       // Set panels
       JPanel main = new JPanel(new BorderLayout());
@@ -39,8 +38,8 @@ public class LoginView {
           new Font(loginTitle.getFont().getName(), loginTitle.getFont().getStyle(), 18));
 
       // Buttons
-      JButton login = new Common.NButton("Inloggen");
-      JButton register = new Common.NButton("Registreren");
+      JButton login = new Commons.NButton("Inloggen");
+      JButton register = new Commons.NButton("Registreren");
       JPanel buttonFrame = new JPanel(new BorderLayout());
 
       buttonFrame.add(login, BorderLayout.WEST);
@@ -130,7 +129,7 @@ public class LoginView {
       // Add all the things
       main.add(logo(), BorderLayout.NORTH);
       main.add(loginbox, BorderLayout.CENTER);
-      main.add(Common.bottomPane(), SOUTH);
+      main.add(Commons.credits(), SOUTH);
 
       // If someone presses the button..
       ActionListeners.loginClickEvent(login);
@@ -143,7 +142,7 @@ public class LoginView {
     public static JPanel profileSelection() {
       JPanel main = new JPanel(new BorderLayout());
 
-      JPanel profileWrapper = new Common.GradientPanel().getGradientPanel();
+      JPanel profileWrapper = new Commons.GradientPanel().getGradientPanel();
       profileWrapper.setLayout(new GridBagLayout());
       profileWrapper.setBackground(new Color(34, 34, 34));
 
@@ -167,7 +166,7 @@ public class LoginView {
         ImageIcon icon = new ImageIcon(image.getScaledInstance(100, 100, Image.SCALE_SMOOTH));
 
         String labelText = profile.getName();
-        JButton label = new Common.NButton();
+        JButton label = new Commons.NButton();
 
         // Close the html tags
         label.setText(String.format("<html><center>%s</center></html>", labelText));
@@ -187,7 +186,7 @@ public class LoginView {
       }
 
       if (Account.currentAccount.getProfiles().size() <= 4) {
-        JButton addProfileLabel = new Common.NButton("Nieuw profiel");
+        JButton addProfileLabel = new Commons.NButton("Nieuw profiel");
         image = new ImageIcon("resources/profiles/addprofile.png").getImage();
         ImageIcon icon = new ImageIcon(image.getScaledInstance(100, 100, Image.SCALE_SMOOTH));
 
@@ -219,9 +218,9 @@ public class LoginView {
       watching.setForeground(Color.LIGHT_GRAY);
 
       // Add all the things
-      main.add(Common.logo(), BorderLayout.NORTH);
+      main.add(Commons.logo(), BorderLayout.NORTH);
       main.add(centerWrapper, BorderLayout.CENTER);
-      main.add(Common.bottomPane(), BorderLayout.SOUTH);
+      main.add(Commons.credits(), BorderLayout.SOUTH);
 
       return main;
     }

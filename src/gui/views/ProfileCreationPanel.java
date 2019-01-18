@@ -3,7 +3,6 @@ package com.netflix.gui.views;
 import com.netflix.commons.*;
 import com.netflix.entities.Account;
 import com.netflix.gui.NetflixFrame;
-import com.netflix.gui.Common;
 import org.jdesktop.swingx.JXDatePicker;
 
 import javax.swing.*;
@@ -26,7 +25,7 @@ public class ProfileCreationPanel {
   public static JPanel panel() {
     JPanel main = new JPanel(new BorderLayout());
 
-    JPanel profileWrapper = new Common.GradientPanel().getGradientPanel();
+    JPanel profileWrapper = new Commons.GradientPanel().getGradientPanel();
     profileWrapper.setLayout(new GridBagLayout());
     profileWrapper.setBackground(new Color(34, 34, 34));
 
@@ -51,7 +50,7 @@ public class ProfileCreationPanel {
     header.setFont(new Font(header.getFont().getName(), header.getFont().getStyle(), 18));
     header.setBorder(new EmptyBorder(0, 0, 10, 0));
 
-    JButton addProfile = new Common.NButton("Toevoegen");
+    JButton addProfile = new Commons.NButton("Toevoegen");
 
     addComponent(header, profileWrapper);
     addComponent(nameLabel, profileWrapper);
@@ -65,9 +64,9 @@ public class ProfileCreationPanel {
     addLoginEvent(addProfile);
 
     // Add all the things
-    main.add(Common.logo(), BorderLayout.NORTH);
+    main.add(Commons.logo(), BorderLayout.NORTH);
     main.add(profileWrapper, BorderLayout.CENTER);
-    main.add(Common.bottomPane(), BorderLayout.SOUTH);
+    main.add(Commons.credits(), BorderLayout.SOUTH);
 
     return main;
   }

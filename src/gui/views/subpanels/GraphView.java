@@ -1,6 +1,6 @@
 package com.netflix.gui.views.subpanels;
 
-import com.netflix.gui.Common;
+import com.netflix.commons.*;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.axis.NumberAxis;
@@ -90,9 +90,9 @@ public class GraphView {
     bottomPanel = new JPanel(new BorderLayout());
 
     bottomPanel.add(labelPanel, BorderLayout.NORTH);
-    bottomPanel.add(Common.bottomPane(), BorderLayout.SOUTH);
+    bottomPanel.add(Commons.credits(), BorderLayout.SOUTH);
 
-    frame.add(Common.logo(), BorderLayout.NORTH);
+    frame.add(Commons.logo(), BorderLayout.NORTH);
     frame.add(wrapper, BorderLayout.CENTER);
     frame.add(bottomPanel, BorderLayout.SOUTH);
 

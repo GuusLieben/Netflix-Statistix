@@ -34,8 +34,7 @@ public class CreateOnDatabase {
             street,
             houseNumber,
             addition,
-            city,
-            password);
+            city);
       }
     }
   }

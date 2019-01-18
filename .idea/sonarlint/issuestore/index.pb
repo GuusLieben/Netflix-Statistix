@@ -56,3 +56,5 @@ Z
 *src/gui/views/subpanels/CreationFrame.java,c\8\c86f4d6051da9458ce4deafcc9c6def88b460d2b
 X
 (src/gui/views/subpanels/DeleteFrame.java,4\b\4bbdb358ade08bd74cc38da33f5c733306e258d9
+H
+src/META-INF/MANIFEST.MF,e\4\e4b1fd2293ba1e598e6bec4e0ee3b6b6851eb5a2

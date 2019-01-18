@@ -28,7 +28,6 @@ public class Account extends Entity {
   private int houseNumber;
   private String addition;
   private String city;
-  private String password;
 
   public Account(
       int databaseId,
@@ -37,8 +36,7 @@ public class Account extends Entity {
       String street,
       int houseNumber,
       String addition,
-      String city,
-      String password) {
+      String city) {
     super(email, null);
     // If the email check is valid, create the object, store the user
     if (emailIsValid(email)) {
@@ -50,8 +48,6 @@ public class Account extends Entity {
       if (addition == null) this.addition = "";
       else this.addition = addition;
       this.city = city;
-      // Password is hashed here
-      this.password = Commons.hashSHA256(password);
       // HashSet so each profile is unique
       profiles = new HashSet<>();
       // Add it to the Set
@@ -142,10 +138,6 @@ public class Account extends Entity {
     return String.format("%s %d%s, %s", street, houseNumber, addition, city);
   }
 
-  public String getPassword() {
-    return password;
-  }
-
   public Set<Profile> getProfiles() {
     return profiles;
   }
@@ -164,7 +156,7 @@ public class Account extends Entity {
   public static void getFromDatabase() {
     for (HashMap<String, Object> map :
         database.executeSql(
-            "SELECT AccountID, isAdmin, Email, Straatnaam, Huisnummer, Toevoeging, Woonplaats, Wachtwoord FROM Account")) {
+            "SELECT AccountID, isAdmin, Email, Straatnaam, Huisnummer, Toevoeging, Woonplaats FROM Account")) {
       new Account(
           (int) map.get("AccountID"),
           (boolean) map.get("isAdmin"),
@@ -172,8 +164,7 @@ public class Account extends Entity {
           (String) map.get("Straatnaam"),
           (int) map.get("Huisnummer"),
           (String) map.get("Toevoeging"),
-          (String) map.get("Woonplaats"),
-          (String) map.get("Wachtwoord"));
+          (String) map.get("Woonplaats"));
     }
   }
 
@@ -214,7 +205,6 @@ public class Account extends Entity {
     }
 
     // Get profiles from database
-    @SuppressWarnings("deprecation")
     public static void getFromDatabase() {
       for (HashMap<String, Object> map :
           database.executeSql(

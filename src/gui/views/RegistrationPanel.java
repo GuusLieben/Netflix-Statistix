@@ -1,7 +1,6 @@
 package com.netflix.gui.views;
 
-import com.netflix.gui.*;
-import com.netflix.commons.ActionListeners;
+import com.netflix.commons.*;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -19,8 +18,8 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Toolkit;
 
-import static com.netflix.gui.Common.bottomPane;
-import static com.netflix.gui.Common.logo;
+import static com.netflix.commons.Commons.credits;
+import static com.netflix.commons.Commons.logo;
 import static java.awt.BorderLayout.CENTER;
 
 public class RegistrationPanel {
@@ -33,7 +32,7 @@ public class RegistrationPanel {
         dim.width / 2 - frame.getSize().width / 2, dim.height / 2 - frame.getSize().height / 2);
 
     // Background gradient
-    Common.GradientPanel gradientPanel = new Common.GradientPanel();
+    Commons.GradientPanel gradientPanel = new Commons.GradientPanel();
 
     // Set panels
     JPanel mainRegister = new JPanel(new BorderLayout());
@@ -51,7 +50,7 @@ public class RegistrationPanel {
 
     // Title styling
     JLabel registerTitle = new JLabel("Nieuw account");
-    JButton backToPrevious = new Common.NButton("< Terug");
+    JButton backToPrevious = new Commons.NButton("< Terug");
     backToPrevious.setHorizontalAlignment(JLabel.LEFT);
     backToPrevious.setForeground(Color.LIGHT_GRAY);
     backToPrevious.setBorder(new EmptyBorder(0, 10, 0, 0));
@@ -75,7 +74,7 @@ public class RegistrationPanel {
     JTextField cityBox = new JTextField(15);
 
     // Button
-    JButton register = new Common.NButton("Registreren");
+    JButton register = new Commons.NButton("Registreren");
 
     // Set minimum sizes for the input boxes, to prevent them from being too small
     emailBox.setMinimumSize(
@@ -127,7 +126,7 @@ public class RegistrationPanel {
     // Add all the things
     mainRegister.add(logo(), BorderLayout.NORTH);
     mainRegister.add(boxRegister, BorderLayout.CENTER);
-    mainRegister.add(bottomPane(), BorderLayout.SOUTH);
+    mainRegister.add(credits(), BorderLayout.SOUTH);
 
     return mainRegister;
   }

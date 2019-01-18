@@ -13,7 +13,7 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 
 import static com.netflix.commons.Commons.exception;
-import static com.netflix.gui.Common.logo;
+import static com.netflix.commons.Commons.logo;
 import static java.awt.BorderLayout.CENTER;
 import static java.awt.BorderLayout.NORTH;
 import static java.awt.BorderLayout.SOUTH;
@@ -39,9 +39,9 @@ public class NetflixFrame {
     lpane.add(FilmReadPanel.pane());
 
     // Add all views
-    mainPanel.add(Common.bottomPane(), SOUTH);
+    mainPanel.add(Commons.credits(), SOUTH);
     mainPanel.add(logo(), NORTH);
-    mainPanel.add(Common.menu(), WEST);
+    mainPanel.add(Commons.menu(), WEST);
     mainPanel.add(lpane, CENTER);
   }
 

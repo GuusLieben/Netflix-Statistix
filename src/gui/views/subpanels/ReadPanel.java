@@ -1,7 +1,7 @@
 package com.netflix.gui.views.subpanels;
 
 import com.netflix.commons.Commons;
-import com.netflix.entities.MediaObject;
+import com.netflix.entities.*;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -56,7 +56,7 @@ public abstract class ReadPanel {
 
     JPanel mediaSwitch = new JPanel(new GridLayout());
     mediaSwitch.add(comboBox);
-    mediaSwitch.add(new JButton("Bewerken"));
+    if (Account.currentAccount.isAdmin()) mediaSwitch.add(new JButton("Bewerken"));
 
     selectMedia.add(mediaSwitch);
 

@@ -2,7 +2,6 @@ package com.netflix.gui.views;
 
 import com.netflix.commons.*;
 import com.netflix.entities.*;
-import com.netflix.gui.*;
 import com.netflix.gui.views.subpanels.*;
 
 import javax.swing.*;
@@ -95,9 +94,9 @@ public class AdminView {
               ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED,
               ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 
-      wrapper.add(Common.logo(), BorderLayout.NORTH);
+      wrapper.add(Commons.logo(), BorderLayout.NORTH);
       wrapper.add(scrollPane, BorderLayout.CENTER);
-      wrapper.add(Common.bottomPane(), BorderLayout.SOUTH);
+      wrapper.add(Commons.credits(), BorderLayout.SOUTH);
 
       return wrapper;
     }

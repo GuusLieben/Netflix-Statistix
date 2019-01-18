@@ -1,6 +1,6 @@
 package com.netflix.gui.views.subpanels;
 
-import com.netflix.gui.*;
+import com.netflix.commons.*;
 import lu.tudor.santec.jtimechooser.*;
 
 import javax.swing.*;
@@ -22,7 +22,7 @@ public abstract class CreationFrame extends JFrame {
     Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
     setLocation(dim.width / 2 - getSize().width, dim.height / 2 - getHeight() / 2);
 
-    wrapper = new Common.GradientPanel().getGradientPanel();
+    wrapper = new Commons.GradientPanel().getGradientPanel();
     wrapper.setLayout(new GridBagLayout());
     wrapper.setBackground(new Color(43, 43, 43));
     wrapper.setBorder(new EmptyBorder(10, 10, 10, 10));
@@ -41,9 +41,9 @@ public abstract class CreationFrame extends JFrame {
         new JLabel(String.format("<html><h3 color=white>%s</h3></html>", title)), constraints);
     constraints.gridy++;
 
-    add(Common.logo(), BorderLayout.NORTH);
+    add(Commons.logo(), BorderLayout.NORTH);
     add(wrapper, BorderLayout.CENTER);
-    add(Common.bottomPane(), BorderLayout.SOUTH);
+    add(Commons.credits(), BorderLayout.SOUTH);
   }
 
   protected void addTextField(String str) {
@@ -104,7 +104,7 @@ public abstract class CreationFrame extends JFrame {
     constraints.gridy++;
   }
 
-  protected void addButton(Common.NButton btn) {
+  protected void addButton(Commons.NButton btn) {
     btn.setForeground(Color.LIGHT_GRAY);
 
     constraints.gridy++;
