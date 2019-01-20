@@ -92,18 +92,11 @@ public class AccountView {
     // Add all the things
     inner.add(accountLabel, BorderLayout.WEST);
 
-    JPanel actions = new JPanel(new GridLayout(2, 1));
     JButton logoutButton = new Commons.NButton("Uitloggen");
     ActionListeners.logoutClickEvent(logoutButton);
 
-    JButton passwordButton = new Commons.NButton("Wijzig wachtwoord");
-
-    actions.setOpaque(false);
-    actions.add(passwordButton);
-    actions.add(logoutButton);
-
     JPanel sidebar = new JPanel(new BorderLayout());
-    sidebar.add(actions, BorderLayout.SOUTH);
+    sidebar.add(logoutButton, BorderLayout.SOUTH);
     sidebar.add(label, BorderLayout.NORTH);
 
     wrapper.add(

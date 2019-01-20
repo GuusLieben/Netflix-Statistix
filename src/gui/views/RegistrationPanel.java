@@ -1,6 +1,7 @@
 package com.netflix.gui.views;
 
 import com.netflix.commons.*;
+import com.netflix.gui.*;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -17,12 +18,18 @@ import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Toolkit;
+import java.awt.event.*;
+import java.util.*;
+import java.util.stream.*;
 
+import static com.netflix.commons.ActionListeners.switchLoginPane;
 import static com.netflix.commons.Commons.credits;
 import static com.netflix.commons.Commons.logo;
 import static java.awt.BorderLayout.CENTER;
 
 public class RegistrationPanel {
+
+  private static Map<String, JTextField> values = new HashMap<>();
 
   public static JPanel registerPanel(JFrame frame) {
     frame.setResizable(false);
@@ -84,10 +91,6 @@ public class RegistrationPanel {
 
     // Add borders to create extra spacing
     registerTitle.setBorder(new EmptyBorder(0, 10, 20, 10));
-    register.setBorder(new EmptyBorder(15, 0, 0, 0));
-
-    /* If someone presses the button.. */
-
 
     // Add items in order
     constraints.gridy = 1;
@@ -128,6 +131,57 @@ public class RegistrationPanel {
     mainRegister.add(boxRegister, BorderLayout.CENTER);
     mainRegister.add(credits(), BorderLayout.SOUTH);
 
+    register.addActionListener(
+        e -> {
+          boolean matchingEmail = false;
+          boolean matchingPassword = false;
+          boolean validLocation = false;
+
+          Map<String, JTextField> map = values;
+
+          try {
+            String email = map.get("E-mail").getText();
+            String confirmEmail = map.get("Bevestig e-mail").getText();
+            String password = map.get("Wachtwoord").getText();
+            String confirmPassword = map.get("Bevestig wachtwoord").getText();
+            String street = map.get("Straat").getText();
+            int houseNumber = Integer.parseInt(map.get("Nummer").getText());
+
+            String addition;
+            try {
+              addition = map.get("Toevoeging").getText();
+            } catch (NullPointerException ex) {
+              addition = ""; // Addition can be null, "" is replaced with SQL type NULL
+            }
+
+            String city = map.get("Woonplaats").getText();
+
+            if (!email.equals("") && email.equals(confirmEmail)) {
+              matchingEmail = true;
+            }
+
+            if (!password.equals("") && password.equals(confirmPassword)) {
+              matchingPassword = true;
+            }
+
+            if (Stream.of(street, houseNumber, city).noneMatch(s -> s.equals(""))
+                && (addition.equals("") || addition.matches("^[a-zA-Z]$"))) {
+              validLocation = true;
+            }
+
+            if (matchingEmail && matchingPassword && validLocation) {
+              new CreateOnDatabase()
+                  .createAccount(false, email, street, houseNumber, addition, city, password);
+            }
+
+          } catch (NullPointerException | NumberFormatException ex) {
+            Commons.exception(ex);
+            Commons.showError("Incorrecte gegevens");
+          }
+        });
+
+    switchLoginPane(register);
+
     return mainRegister;
   }
 
@@ -137,6 +191,7 @@ public class RegistrationPanel {
     JPanel spacer = new JPanel();
     spacer.setOpaque(false);
     box.add(spacer, constraints);
+    values.put(description, component);
 
     // Labels
     JPanel fieldLabel = new JPanel(new BorderLayout());

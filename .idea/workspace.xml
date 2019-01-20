@@ -7,17 +7,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="234d0243-9dea-46f1-ab80-3e6e9971e668" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/b/4bbdb358ade08bd74cc38da33f5c733306e258d9" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/1/b1e708b60a39938b0366208232a446a1a2b4e746" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/package.properties" beforeDir="false" afterPath="$PROJECT_DIR$/resources/package.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Netflix.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Netflix.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/commons/ActionListeners.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/commons/ActionListeners.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/commons/Commons.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/commons/Commons.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/commons/CreateOnDatabase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/commons/CreateOnDatabase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entities/Film.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/Film.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entities/MediaObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/MediaObject.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entities/Serie.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/Serie.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gui/views/AlterView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/views/AlterView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gui/views/ChildFrames.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/views/ChildFrames.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gui/views/DeleteFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/views/DeleteFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gui/views/subpanels/ReadPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/views/subpanels/ReadPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gui/views/AccountView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/views/AccountView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gui/views/RegistrationPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/views/RegistrationPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/com/netflix/FunctionalityTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/tests/com/netflix/FunctionalityTests.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -67,10 +67,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/entities/MediaCommons.java">
+        <entry file="file://$PROJECT_DIR$/src/gui/views/RegistrationPanel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="802">
-              <caret line="60" column="40" selection-start-line="60" selection-start-column="40" selection-end-line="60" selection-end-column="40" />
+            <state relative-caret-position="786">
+              <caret line="181" selection-start-line="181" selection-end-line="181" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -79,75 +79,81 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Netflix.java">
+        <entry file="file://$PROJECT_DIR$/src/gui/views/AccountView.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="15" column="27" selection-start-line="15" selection-start-column="27" selection-end-line="15" selection-end-column="27" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="386">
+              <caret line="100" selection-start-line="100" selection-end-line="100" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/entities/Film.java">
+        <entry file="file://$PROJECT_DIR$/resources/package.properties">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="768">
-              <caret line="52" column="9" selection-start-line="52" selection-start-column="9" selection-end-line="52" selection-end-column="9" />
-              <folding>
-                <element signature="e#413#414#0" expanded="true" />
-                <element signature="e#452#453#0" expanded="true" />
-                <element signature="e#1340#1341#0" expanded="true" />
-                <element signature="e#1374#1375#0" expanded="true" />
-                <element signature="e#1420#1421#0" expanded="true" />
-                <element signature="e#1454#1455#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="216">
+              <caret line="19" column="18" selection-start-line="19" selection-start-column="18" selection-end-line="19" selection-end-column="18" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/entities/MediaObject.java">
+        <entry file="file://$PROJECT_DIR$/src/commons/Commons.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="416">
-              <caret line="26" column="54" selection-start-line="26" selection-start-column="54" selection-end-line="26" selection-end-column="54" />
+            <state relative-caret-position="374">
+              <caret line="94" lean-forward="true" selection-start-line="94" selection-end-line="94" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#811#812#0" expanded="true" />
-                <element signature="e#1497#1498#0" expanded="true" />
-                <element signature="e#1523#1524#0" expanded="true" />
-                <element signature="e#1834#1835#0" expanded="true" />
-                <element signature="e#1855#1856#0" expanded="true" />
-                <element signature="e#1890#1891#0" expanded="true" />
-                <element signature="e#1923#1924#0" expanded="true" />
-                <element signature="e#1953#1954#0" expanded="true" />
-                <element signature="e#1975#1976#0" expanded="true" />
-                <element signature="e#2015#2016#0" expanded="true" />
-                <element signature="e#2043#2044#0" expanded="true" />
-                <element signature="e#2085#2086#0" expanded="true" />
-                <element signature="e#2107#2108#0" expanded="true" />
-                <element signature="e#2159#2160#0" expanded="true" />
-                <element signature="e#2187#2188#0" expanded="true" />
-                <element signature="e#2231#2232#0" expanded="true" />
-                <element signature="e#2252#2253#0" expanded="true" />
-                <element signature="e#2305#2306#0" expanded="true" />
-                <element signature="e#2331#2332#0" expanded="true" />
-                <element signature="e#2585#2586#0" expanded="true" />
-                <element signature="e#2620#2621#0" expanded="true" />
+                <element signature="e#2470#2471#0" expanded="true" />
+                <element signature="e#2524#2525#0" expanded="true" />
+                <element signature="e#3581#3582#0" expanded="true" />
+                <element signature="e#3648#3649#0" expanded="true" />
+                <element signature="e#8699#9396#0" expanded="true" />
+                <element signature="e#9395#9396#0" expanded="true" />
+                <element signature="e#9436#9437#0" expanded="true" />
+                <element signature="e#9462#9463#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/gui/views/AlterView.java">
+        <entry file="file://$PROJECT_DIR$/tests/com/netflix/FunctionalityTests.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="754">
-              <caret line="125" column="89" selection-start-line="125" selection-start-column="89" selection-end-line="125" selection-end-column="89" />
+            <state relative-caret-position="656">
+              <caret line="53" column="37" selection-start-line="53" selection-start-column="7" selection-end-line="53" selection-end-column="37" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/commons/DataHandle.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="546">
+              <caret line="189" column="23" selection-start-line="189" selection-start-column="23" selection-end-line="189" selection-end-column="23" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/entities/Account.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="278">
+              <caret line="65" column="24" selection-start-line="65" selection-start-column="24" selection-end-line="65" selection-end-column="24" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/gui/views/LoginView.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="160">
+              <caret line="21" column="34" selection-start-line="21" selection-start-column="22" selection-end-line="21" selection-end-column="34" />
             </state>
           </provider>
         </entry>
@@ -155,25 +161,10 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/commons/ActionListeners.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="406">
-              <caret line="199" column="26" lean-forward="true" selection-start-line="199" selection-start-column="26" selection-end-line="199" selection-end-column="26" />
+            <state relative-caret-position="630">
+              <caret line="191" column="36" selection-start-line="191" selection-start-column="21" selection-end-line="191" selection-end-column="36" />
               <folding>
                 <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/gui/views/ChildFrames.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="291">
-              <caret line="140" column="12" selection-start-line="140" selection-start-column="12" selection-end-line="142" selection-end-column="85" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="class#SeasonCreation#0;class#ChildFrames#0" />
-                <element signature="class#EpisodeCreation#0;class#ChildFrames#0" />
-                <element signature="method#AccountCreation#0;class#AccountCreation#0;class#ChildFrames#0" />
               </folding>
             </state>
           </provider>
@@ -182,43 +173,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/commons/CreateOnDatabase.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="307">
-              <caret line="59" selection-start-line="59" selection-end-line="59" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="method#createSeason#0;class#CreateOnDatabase#0" />
-                <element signature="method#createEpisode#0;class#CreateOnDatabase#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/entities/Serie.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="155">
-              <caret line="53" column="16" lean-forward="true" selection-start-line="53" selection-start-column="16" selection-end-line="53" selection-end-column="16" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#4537#4538#0" expanded="true" />
-                <element signature="e#4571#4572#0" expanded="true" />
-                <element signature="e#7602#7603#0" expanded="true" />
-                <element signature="e#7668#7669#0" expanded="true" />
-                <element signature="e#9059#9060#0" expanded="true" />
-                <element signature="e#9098#9099#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/gui/views/subpanels/CreationFrame.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="162">
-              <caret line="111" column="9" selection-start-line="111" selection-start-column="9" selection-end-line="111" selection-end-column="9" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="80">
+              <caret line="5" column="19" selection-start-line="5" selection-start-column="19" selection-end-line="5" selection-end-column="19" />
             </state>
           </provider>
         </entry>
@@ -239,7 +195,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>Regisseur</find>
       <find>gemiddeld</find>
       <find>viewEpisode</find>
       <find>CheckBoxL</find>
@@ -269,6 +224,7 @@
       <find>FROM Serie</find>
       <find>addButton</find>
       <find>switchPane</find>
+      <find>Regist</find>
     </findStrings>
     <replaceStrings>
       <replace>Color.WHITE</replace>
@@ -307,7 +263,6 @@
         <option value="$PROJECT_DIR$/src/gui/views/management/accountListTable.java" />
         <option value="$PROJECT_DIR$/src/gui/commons/Common.java" />
         <option value="$PROJECT_DIR$/src/gui/views/ProfileCreationPanel.java" />
-        <option value="$PROJECT_DIR$/src/gui/views/RegistrationPanel.java" />
         <option value="$PROJECT_DIR$/src/gui/views/ReadObject.java" />
         <option value="$PROJECT_DIR$/src/gui/views/management/creation/CreateOnDatabase.java" />
         <option value="$PROJECT_DIR$/src/commons/DynamicObject.java" />
@@ -323,9 +278,6 @@
         <option value="$PROJECT_DIR$/src/commons/DatabaseHandle.java" />
         <option value="$PROJECT_DIR$/src/gui/views/management/AdminView.java" />
         <option value="$PROJECT_DIR$/src/gui/views/subpanels/GraphView.java" />
-        <option value="$PROJECT_DIR$/tests/com/netflix/FunctionalityTests.java" />
-        <option value="$PROJECT_DIR$/src/gui/views/AccountView.java" />
-        <option value="$PROJECT_DIR$/resources/package.properties" />
         <option value="$PROJECT_DIR$/src/entities/Entity.java" />
         <option value="$PROJECT_DIR$/src/commons/DataHandle.java" />
         <option value="$PROJECT_DIR$/src/entities/MediaCommons.java" />
@@ -334,7 +286,6 @@
         <option value="$PROJECT_DIR$/src/gui/views/subpanels/DeleteFrame.java" />
         <option value="$PROJECT_DIR$/src/entities/Account.java" />
         <option value="$PROJECT_DIR$/src/gui/views/subpanels/ReadObject.java" />
-        <option value="$PROJECT_DIR$/src/commons/Commons.java" />
         <option value="$PROJECT_DIR$/src/gui/Common.java" />
         <option value="$PROJECT_DIR$/src/gui/views/subpanels/ReadPanel.java" />
         <option value="$PROJECT_DIR$/src/commons/NetflixFrame.java" />
@@ -343,13 +294,18 @@
         <option value="$PROJECT_DIR$/src/Netflix.java" />
         <option value="$PROJECT_DIR$/src/commons/NetFrame.java" />
         <option value="$PROJECT_DIR$/src/gui/views/subpanels/CreationFrame.java" />
-        <option value="$PROJECT_DIR$/src/gui/views/ChildFrames.java" />
         <option value="$PROJECT_DIR$/src/entities/Serie.java" />
-        <option value="$PROJECT_DIR$/src/commons/CreateOnDatabase.java" />
         <option value="$PROJECT_DIR$/src/entities/MediaObject.java" />
         <option value="$PROJECT_DIR$/src/entities/Film.java" />
-        <option value="$PROJECT_DIR$/src/commons/ActionListeners.java" />
         <option value="$PROJECT_DIR$/src/gui/views/AlterView.java" />
+        <option value="$PROJECT_DIR$/src/gui/views/ChildFrames.java" />
+        <option value="$PROJECT_DIR$/src/commons/CreateOnDatabase.java" />
+        <option value="$PROJECT_DIR$/src/commons/ActionListeners.java" />
+        <option value="$PROJECT_DIR$/src/gui/views/RegistrationPanel.java" />
+        <option value="$PROJECT_DIR$/src/gui/views/AccountView.java" />
+        <option value="$PROJECT_DIR$/resources/package.properties" />
+        <option value="$PROJECT_DIR$/src/commons/Commons.java" />
+        <option value="$PROJECT_DIR$/tests/com/netflix/FunctionalityTests.java" />
       </list>
     </option>
   </component>
@@ -362,7 +318,7 @@
   <component name="NamedScopeManager">
     <scope name="Copyright" pattern="" />
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="-7" />
     <option name="width" value="854" />
     <option name="height" value="517" />
@@ -448,6 +404,28 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="META-INF" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="NetflixGit" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+            </path>
+            <path>
+              <item name="NetflixGit" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="JUnit5.2" type="70bed36:NamedLibraryElementNode" />
+            </path>
+            <path>
+              <item name="NetflixGit" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="JUnit5.2" type="70bed36:NamedLibraryElementNode" />
+              <item name="junit-jupiter-api-5.4.0-M1.jar" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="NetflixGit" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="JUnit5.2" type="70bed36:NamedLibraryElementNode" />
+              <item name="junit-jupiter-api-5.4.0-M1.jar" type="462c0819:PsiDirectoryNode" />
+              <item name="io" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -492,16 +470,16 @@
     <property name="UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH" value="437" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1547851734204" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1547983277765" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
     <property name="last.edited.regexp" value="" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/src/commons" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/libs/JTimeChooser_0.1.0.jar!/" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/libs/a-javabeans-1.0.4.jar!/" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="restartRequiresConfirmation" value="false" />
@@ -746,6 +724,7 @@
       <workItem from="1547720661083" duration="10286000" />
       <workItem from="1547808776954" duration="5407000" />
       <workItem from="1547828738512" duration="7601000" />
+      <workItem from="1547973007977" duration="5866000" />
     </task>
     <servers />
   </component>
@@ -782,13 +761,13 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="263067000" />
+    <option name="totallyTimeSpent" value="268933000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1696" height="1036" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.5729614" weight="0.50977993" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.5729614" visible="true" weight="0.27811736" />
       <window_info id="Image Layers" order="1" />
       <window_info id="Designer" order="2" />
       <window_info id="UI Designer" order="3" />
@@ -806,7 +785,7 @@
       <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" weight="0.32948583" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.49938875" weight="0.32906976" />
-      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50183153" side_tool="true" weight="0.3267442" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50183153" side_tool="true" weight="0.32568806" />
       <window_info anchor="bottom" id="SonarLint" order="11" sideWeight="0.4468215" weight="0.41395348" />
       <window_info anchor="bottom" id="TMC Test Results" order="12" sideWeight="0.49938875" weight="0.32906976" />
       <window_info anchor="bottom" id="Messages" order="13" sideWeight="0.46221662" weight="0.22884387" />
@@ -815,8 +794,8 @@
       <window_info anchor="bottom" id="JRebel Console" order="16" side_tool="true" />
       <window_info anchor="bottom" id="Problems" order="17" sideWeight="0.49938875" weight="0.32906976" />
       <window_info anchor="bottom" id="Docker" order="18" show_stripe_button="false" />
-      <window_info anchor="bottom" x="712" y="45" width="968" height="1005" id="Run" order="19" sideWeight="0.5377834" side_tool="true" weight="0.7665094" />
-      <window_info anchor="bottom" id="Duplicate detector" order="20" sideWeight="0.49980134" weight="0.3296" />
+      <window_info anchor="bottom" x="712" y="45" width="968" height="1005" id="Run" order="19" sideWeight="0.5377834" side_tool="true" weight="0.5986239" />
+      <window_info anchor="bottom" id="Duplicate detector" order="20" sideWeight="0.49980134" weight="0.32912844" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" sideWeight="0.49947202" weight="0.24980143" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -1529,16 +1508,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/logs/log-d.2019-01-14-t.10-39-47.926.xml" />
-    <entry file="file://$PROJECT_DIR$/src/gui/views/RegistrationPanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="16">
-          <caret line="91" selection-start-line="91" selection-end-line="91" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/logs/log-d.2019-01-14-t.11-11-36.820.log" />
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/javax/swing/table/DefaultTableModel.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -1558,13 +1527,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="208">
           <caret line="16" column="22" selection-start-line="16" selection-start-column="22" selection-end-line="16" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/gui/views/LoginView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="432">
-          <caret line="153" column="6" selection-start-line="153" selection-start-column="6" selection-end-line="153" selection-end-column="12" />
         </state>
       </provider>
     </entry>
@@ -1624,16 +1586,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tests/com/netflix/FunctionalityTests.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="592">
-          <caret line="44" selection-start-line="44" selection-end-line="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/gui/Common.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gui/Common.java" />
     <entry file="file://$PROJECT_DIR$/src/gui/views/subpanels/ReadPanel.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="6">
@@ -1644,40 +1597,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/package.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="12" column="5" lean-forward="true" selection-start-line="12" selection-start-column="5" selection-end-line="12" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/commons/Commons.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="16">
-          <caret line="172" column="60" selection-start-line="172" selection-start-column="60" selection-end-line="172" selection-end-column="60" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/commons/DataHandle.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="560">
-          <caret line="48" column="36" selection-start-line="48" selection-start-column="31" selection-end-line="48" selection-end-column="36" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/entities/Account.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="592">
-          <caret line="48" column="36" selection-start-line="48" selection-start-column="36" selection-end-line="48" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/gui/NetflixFrame.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="406">
@@ -1685,13 +1604,6 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/gui/views/AccountView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="574">
-          <caret line="109" column="13" selection-start-line="109" selection-start-column="13" selection-end-line="109" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -1720,9 +1632,10 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/commons/NetFrame.java" />
     <entry file="file://$PROJECT_DIR$/src/entities/MediaCommons.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="802">
+        <state relative-caret-position="864">
           <caret line="60" column="40" selection-start-line="60" selection-start-column="40" selection-end-line="60" selection-end-column="40" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -1730,16 +1643,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/commons/NetFrame.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret lean-forward="true" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Netflix.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
+        <state relative-caret-position="192">
           <caret line="15" column="27" selection-start-line="15" selection-start-column="27" selection-end-line="15" selection-end-column="27" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -1747,91 +1653,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/gui/views/ChildFrames.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="291">
-          <caret line="140" column="12" selection-start-line="140" selection-start-column="12" selection-end-line="142" selection-end-column="85" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="class#SeasonCreation#0;class#ChildFrames#0" />
-            <element signature="class#EpisodeCreation#0;class#ChildFrames#0" />
-            <element signature="method#AccountCreation#0;class#AccountCreation#0;class#ChildFrames#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/commons/CreateOnDatabase.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="307">
-          <caret line="59" selection-start-line="59" selection-end-line="59" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#createSeason#0;class#CreateOnDatabase#0" />
-            <element signature="method#createEpisode#0;class#CreateOnDatabase#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/entities/Serie.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="155">
-          <caret line="53" column="16" lean-forward="true" selection-start-line="53" selection-start-column="16" selection-end-line="53" selection-end-column="16" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#4537#4538#0" expanded="true" />
-            <element signature="e#4571#4572#0" expanded="true" />
-            <element signature="e#7602#7603#0" expanded="true" />
-            <element signature="e#7668#7669#0" expanded="true" />
-            <element signature="e#9059#9060#0" expanded="true" />
-            <element signature="e#9098#9099#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/gui/views/subpanels/CreationFrame.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="111" column="9" selection-start-line="111" selection-start-column="9" selection-end-line="111" selection-end-column="9" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/entities/MediaObject.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="416">
-          <caret line="26" column="54" selection-start-line="26" selection-start-column="54" selection-end-line="26" selection-end-column="54" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#811#812#0" expanded="true" />
-            <element signature="e#1497#1498#0" expanded="true" />
-            <element signature="e#1523#1524#0" expanded="true" />
-            <element signature="e#1834#1835#0" expanded="true" />
-            <element signature="e#1855#1856#0" expanded="true" />
-            <element signature="e#1890#1891#0" expanded="true" />
-            <element signature="e#1923#1924#0" expanded="true" />
-            <element signature="e#1953#1954#0" expanded="true" />
-            <element signature="e#1975#1976#0" expanded="true" />
-            <element signature="e#2015#2016#0" expanded="true" />
-            <element signature="e#2043#2044#0" expanded="true" />
-            <element signature="e#2085#2086#0" expanded="true" />
-            <element signature="e#2107#2108#0" expanded="true" />
-            <element signature="e#2159#2160#0" expanded="true" />
-            <element signature="e#2187#2188#0" expanded="true" />
-            <element signature="e#2231#2232#0" expanded="true" />
-            <element signature="e#2252#2253#0" expanded="true" />
-            <element signature="e#2305#2306#0" expanded="true" />
-            <element signature="e#2331#2332#0" expanded="true" />
-            <element signature="e#2585#2586#0" expanded="true" />
-            <element signature="e#2620#2621#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/entities/Film.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="768">
+        <state relative-caret-position="704">
           <caret line="52" column="9" selection-start-line="52" selection-start-column="9" selection-end-line="52" selection-end-column="9" />
           <folding>
             <element signature="e#413#414#0" expanded="true" />
@@ -1844,10 +1668,31 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/commons/ActionListeners.java">
+    <entry file="file://$PROJECT_DIR$/src/entities/MediaObject.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="406">
-          <caret line="199" column="26" lean-forward="true" selection-start-line="199" selection-start-column="26" selection-end-line="199" selection-end-column="26" />
+        <state relative-caret-position="384">
+          <caret line="26" column="54" selection-start-line="26" selection-start-column="54" selection-end-line="26" selection-end-column="54" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#811#812#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/entities/Serie.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="784">
+          <caret line="53" column="16" selection-start-line="53" selection-start-column="16" selection-end-line="53" selection-end-column="16" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gui/views/subpanels/CreationFrame.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1632">
+          <caret line="111" column="9" selection-start-line="111" selection-start-column="9" selection-end-line="111" selection-end-column="9" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1864,6 +1709,112 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/gui/views/ChildFrames.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="48">
+          <caret line="365" column="15" selection-start-line="365" selection-start-column="15" selection-end-line="419" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="class#SeasonCreation#0;class#ChildFrames#0" />
+            <element signature="class#EpisodeCreation#0;class#ChildFrames#0" />
+            <element signature="method#AccountCreation#0;class#AccountCreation#0;class#ChildFrames#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/commons/CreateOnDatabase.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="80">
+          <caret line="5" column="19" selection-start-line="5" selection-start-column="19" selection-end-line="5" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gui/views/LoginView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="21" column="34" selection-start-line="21" selection-start-column="22" selection-end-line="21" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/commons/ActionListeners.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="630">
+          <caret line="191" column="36" selection-start-line="191" selection-start-column="21" selection-end-line="191" selection-end-column="36" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gui/views/RegistrationPanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="786">
+          <caret line="181" selection-start-line="181" selection-end-line="181" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gui/views/AccountView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="386">
+          <caret line="100" selection-start-line="100" selection-end-line="100" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/package.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="19" column="18" selection-start-line="19" selection-start-column="18" selection-end-line="19" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/entities/Account.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="278">
+          <caret line="65" column="24" selection-start-line="65" selection-start-column="24" selection-end-line="65" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/commons/DataHandle.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="546">
+          <caret line="189" column="23" selection-start-line="189" selection-start-column="23" selection-end-line="189" selection-end-column="23" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/commons/Commons.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="94" lean-forward="true" selection-start-line="94" selection-end-line="94" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2470#2471#0" expanded="true" />
+            <element signature="e#2524#2525#0" expanded="true" />
+            <element signature="e#3581#3582#0" expanded="true" />
+            <element signature="e#3648#3649#0" expanded="true" />
+            <element signature="e#8699#9396#0" expanded="true" />
+            <element signature="e#9395#9396#0" expanded="true" />
+            <element signature="e#9436#9437#0" expanded="true" />
+            <element signature="e#9462#9463#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/com/netflix/FunctionalityTests.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="656">
+          <caret line="53" column="37" selection-start-line="53" selection-start-column="7" selection-end-line="53" selection-end-column="37" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
   </component>
   <component name="masterDetails">
     <states>
@@ -1871,10 +1822,10 @@
         <settings>
           <artifact-editor>
             <show-content>
-              <type id="artifact" />
               <type id="library" />
-              <type id="jpa-descriptors" />
               <type id="javaee-facet-resources" />
+              <type id="artifact" />
+              <type id="jpa-descriptors" />
             </show-content>
           </artifact-editor>
           <last-edited>NetflixGit:jar2</last-edited>
@@ -1950,7 +1901,7 @@
       </state>
       <state key="ProjectLibrariesConfigurable.UI">
         <settings>
-          <last-edited>JTimeChooser_0.1.0</last-edited>
+          <last-edited>a-javabeans-1.0.4</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

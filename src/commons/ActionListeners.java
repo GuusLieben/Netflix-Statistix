@@ -189,6 +189,15 @@ public class ActionListeners {
         });
   }
 
+  public static void switchLoginPane(JButton register) {
+    register.addActionListener(
+        e -> {
+          Commons.clearPane(NetflixFrame.mainPanel);
+          NetflixFrame.frame.setSize(width, height);
+          NetflixFrame.mainPanel.add(LoginView.AccountLogin.login());
+        });
+  }
+
   public static void switchPaneOnClick(JButton button, String pane) {
     // Use lambda to handle button pressing to switch views
     button.addActionListener(

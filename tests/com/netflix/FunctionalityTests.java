@@ -37,10 +37,10 @@ class FunctionalityTests {
 
   @Test
   void testPropertyReadingWithIncorrectValue() {
-    Reader stream = new StringReader("value=false");
+    Reader stream = new StringReader("value=true");
     String actual = DataHandle.parseProperties(stream, "value");
 
-    assertNotEquals("true", actual, "Value returned is incorrect");
+    assertNotEquals(null, actual, "Value returned is incorrect");
   }
 
   @Test
@@ -56,6 +56,4 @@ class FunctionalityTests {
         Account.emailIsValid("bob#example,com"),
         "Returned boolean marked incorrect email as valid");
   }
-
-  // TODO : Account creation test (qr,arr CREATE + qr SELECT
 }

@@ -20,8 +20,6 @@ F
 src/entities/Film.java,b\3\b3053c1437a4eaab2d4dc7bd78d35f8390ce66ed
 I
 src/gui/NetflixFrame.java,b\0\b01a0b1f2008b380828975d2b74c6246782bfdfb
-C
-src/gui/Common.java,b\1\b1e708b60a39938b0366208232a446a1a2b4e746
 W
 'src/gui/views/ProfileCreationPanel.java,a\6\a69700846037420dd01ccb227f01d3f9f8af4e59
 T
@@ -54,7 +52,5 @@ Q
 !src/commons/CreateOnDatabase.java,1\b\1bb8c3016383a162d2c2d3b3001f4dcd8bd996b6
 Z
 *src/gui/views/subpanels/CreationFrame.java,c\8\c86f4d6051da9458ce4deafcc9c6def88b460d2b
-X
-(src/gui/views/subpanels/DeleteFrame.java,4\b\4bbdb358ade08bd74cc38da33f5c733306e258d9
 H
 src/META-INF/MANIFEST.MF,e\4\e4b1fd2293ba1e598e6bec4e0ee3b6b6851eb5a2
