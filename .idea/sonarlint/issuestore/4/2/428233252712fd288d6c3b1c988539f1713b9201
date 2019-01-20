@@ -1,6 +1,3 @@
 
-csquid:UselessImportCheck"8Remove this unused import 'com.netflix.commons.Commons'.(„‰‡¹8ÅÝË‹þ,
-esquid:UselessImportCheck	":Remove this unused import 'java.util.logging.FileHandler'.(—­—å8¾ê±‹þ,
-isquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(÷³÷Ë8Ç´æáú,
-isquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(ÅçÈ8Ë¡îãú,
-`squid:UselessImportCheck"0Remove this unused import 'java.io.IOException'.(ªº»Úýÿÿÿÿ8¾ê±‹þ,
+ysquid:S00115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(ÁßÝÙ8äþ›—„-
+~squid:S00115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(èå×üýÿÿÿÿ8äþ›—„-

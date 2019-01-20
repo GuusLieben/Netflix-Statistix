@@ -1,0 +1,13 @@
+
+bsquid:CallToDeprecatedMethod"2Remove this use of "getSeconds"; it is deprecated.(ßÇ8›ÇŞ…-
+gsquid:S2259ä"HA "NullPointerException" could be thrown; "getByDbId()" can return null.(Òı¿õ8Âæ¾Ş…-
+asquid:S2184¤"BCast one of the operands of this addition operation to a "double".(…ŸâÜ8›ÇŞ…-
+bsquid:CallToDeprecatedMethod¤"2Remove this use of "getMinutes"; it is deprecated.(…ŸâÜ8›ÇŞ…-
+gsquid:CallToDeprecatedMethod"2Remove this use of "getMinutes"; it is deprecated.(ÚÂÃ£ÿÿÿÿÿ8›ÇŞ…-
+bsquid:CallToDeprecatedMethod¤"2Remove this use of "getSeconds"; it is deprecated.(…ŸâÜ8›ÇŞ…-
+W
+squid:S106…"9Replace this use of System.out or System.err by a logger.(‰Ì°å8×Š€Â…-
+W
+squid:S106„"9Replace this use of System.out or System.err by a logger.(µˆœÑ8ÇÍ÷Á…-
+`squid:CallToDeprecatedMethod¤"0Remove this use of "getHours"; it is deprecated.(…ŸâÜ8›ÇŞ…-
+esquid:CallToDeprecatedMethodœ"0Remove this use of "getHours"; it is deprecated.(«êˆûÿÿÿÿ8›ÇŞ…-

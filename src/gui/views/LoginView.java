@@ -1,34 +1,28 @@
-/*
- * Copyright © 2018. Guus Lieben.
- * All rights reserved.
- */
-
 package com.netflix.gui.views;
 
+import com.netflix.commons.Commons;
 import com.netflix.entities.Account;
-import com.netflix.entities.Profile;
-import com.netflix.gui.commons.Common;
-import com.netflix.gui.commons.GradientPanel;
-import com.netflix.gui.listeners.ActionListeners;
+import com.netflix.gui.NetflixFrame;
+import com.netflix.commons.ActionListeners;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.util.Random;
 
-import static com.netflix.gui.commons.Common.logo;
+import static com.netflix.commons.Commons.logo;
 import static java.awt.BorderLayout.SOUTH;
 
 public class LoginView {
 
   public static JTextField usernameBox = new JTextField(20);
   public static JPasswordField passwordBox = new JPasswordField(20);
+  private static Random random = new Random();
 
   public static class AccountLogin {
-    @SuppressWarnings("deprecation")
     public static JPanel login() {
       // Background gradient
-      GradientPanel gradientPanel = new GradientPanel();
+      Commons.GradientPanel gradientPanel = new Commons.GradientPanel();
 
       // Set panels
       JPanel main = new JPanel(new BorderLayout());
@@ -44,17 +38,14 @@ public class LoginView {
           new Font(loginTitle.getFont().getName(), loginTitle.getFont().getStyle(), 18));
 
       // Buttons
-      JButton login = new JButton("Inloggen");
-      JButton register = new JButton("Registreren");
+      JButton login = new Commons.NButton("Inloggen");
+      JButton register = new Commons.NButton("Registreren");
       JPanel buttonFrame = new JPanel(new BorderLayout());
 
       buttonFrame.add(login, BorderLayout.WEST);
       buttonFrame.add(register, BorderLayout.EAST);
 
       buttonFrame.setOpaque(false);
-
-      // Make sure all text in passwordBox is obscured with a specific character
-      passwordBox.setEchoChar('⚬');
 
       // Set minimum sizes for the input boxes, to prevent them from being too small
       usernameBox.setMinimumSize(
@@ -73,8 +64,6 @@ public class LoginView {
 
       // If someone presses enter on the passwordBox, simulate a button click
       ActionListeners.simulateClickOnEnter(passwordBox, login);
-      ActionListeners.mouseEventUnderline(login);
-      ActionListeners.mouseEventUnderline(register);
       ActionListeners.updateString(usernameBox);
 
       // Lazy spacing method, as the emptyborder added later will be colored
@@ -140,7 +129,7 @@ public class LoginView {
       // Add all the things
       main.add(logo(), BorderLayout.NORTH);
       main.add(loginbox, BorderLayout.CENTER);
-      main.add(Common.bottomPane(), SOUTH);
+      main.add(Commons.credits(), SOUTH);
 
       // If someone presses the button..
       ActionListeners.loginClickEvent(login);
@@ -153,7 +142,7 @@ public class LoginView {
     public static JPanel profileSelection() {
       JPanel main = new JPanel(new BorderLayout());
 
-      JPanel profileWrapper = new GradientPanel().getGradientPanel();
+      JPanel profileWrapper = new Commons.GradientPanel().getGradientPanel();
       profileWrapper.setLayout(new GridBagLayout());
       profileWrapper.setBackground(new Color(34, 34, 34));
 
@@ -161,29 +150,26 @@ public class LoginView {
       constraints.gridx = 0;
 
       // Use randoms for the profile icons
-      Random random = new Random();
       Image image = null;
 
-      for (Profile profile :
+      for (Account.Profile profile :
           Account.currentAccount
               .getProfiles()) { // For all profiles, shouldn't be more than 5 unless someone hacked
-                                // an extra profile into the account
+        // an extra profile into the account
 
         int randomNum =
             random.nextInt((7 - 1) + 1)
                 + 1; // Random profile picture, can show duplicate icons, intended behavior
-        image = new ImageIcon("resources/profiles/profile" + randomNum + ".png").getImage();
+        image =
+            new ImageIcon(String.format("resources/profiles/profile%d.png", randomNum)).getImage();
         // Scale icon to fit labels, then add it to the label
         ImageIcon icon = new ImageIcon(image.getScaledInstance(100, 100, Image.SCALE_SMOOTH));
 
         String labelText = profile.getName();
-        JButton label = new JButton();
-
-        // If the profile is attached to an Admin account, add a tag
-        if (profile.getAccount().isAdmin()) labelText += " <br><b><sup>[Admin]</sup></b>";
+        JButton label = new Commons.NButton();
 
         // Close the html tags
-        label.setText("<html><center>" + labelText + "</center></html>");
+        label.setText(String.format("<html><center>%s</center></html>", labelText));
 
         // Set icon and basic styling
         label.setIcon(icon);
@@ -199,10 +185,42 @@ public class LoginView {
         profileWrapper.add(label);
       }
 
+      if (Account.currentAccount.getProfiles().size() <= 4) {
+        JButton addProfileLabel = new Commons.NButton("Nieuw profiel");
+        image = new ImageIcon("resources/profiles/addprofile.png").getImage();
+        ImageIcon icon = new ImageIcon(image.getScaledInstance(100, 100, Image.SCALE_SMOOTH));
+
+        addProfileLabel.setIcon(icon);
+        addProfileLabel.setBorder(new EmptyBorder(3, 10, 3, 10));
+        addProfileLabel.setIconTextGap(5);
+        addProfileLabel.setHorizontalTextPosition(JLabel.CENTER);
+        addProfileLabel.setVerticalTextPosition(JLabel.BOTTOM);
+        addProfileLabel.setForeground(Color.LIGHT_GRAY);
+
+        addProfileLabel.addActionListener(
+            e -> {
+              Commons.clearPane(NetflixFrame.mainPanel);
+              NetflixFrame.mainPanel.add(ProfileCreationPanel.panel());
+            });
+
+        profileWrapper.add(addProfileLabel);
+      }
+
+      JPanel centerWrapper = new JPanel(new BorderLayout());
+      JLabel watching = new JLabel("Wie kijkt Netflix Statistix?");
+      watching.setFont(new Font(watching.getFont().getName(), watching.getFont().getStyle(), 18));
+
+      centerWrapper.add(watching, BorderLayout.NORTH);
+      centerWrapper.add(profileWrapper, BorderLayout.CENTER);
+      centerWrapper.setBackground(new Color(34, 34, 34));
+      watching.setHorizontalAlignment(JLabel.CENTER);
+      watching.setBorder(new EmptyBorder(35, 0, 0, 0));
+      watching.setForeground(Color.LIGHT_GRAY);
+
       // Add all the things
-      main.add(Common.logo(), BorderLayout.NORTH);
-      main.add(profileWrapper, BorderLayout.CENTER);
-      main.add(Common.bottomPane(), BorderLayout.SOUTH);
+      main.add(Commons.logo(), BorderLayout.NORTH);
+      main.add(centerWrapper, BorderLayout.CENTER);
+      main.add(Commons.credits(), BorderLayout.SOUTH);
 
       return main;
     }
